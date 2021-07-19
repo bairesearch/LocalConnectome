@@ -1,8 +1,7 @@
 
 //calibration/readme.txt
-These files are used to calibrate the connectionTypesDerivedFromPresynapticNeurons/raw/in_body_cell_connection.csv [svg generated] coordinates with respect to the connections_I/E.svg coordinates.
+These files are used to calibrate the connectionTypesDerivedFromPresynapticNeurons/raw/in_body_cell_connection.csv [svg generated] coordinates with respect to the connections_I/E.svg coordinates;
 
----
 connectionTypesDerivedFromEMimages/connections_IE1-calibrationColours.svg
 connectionTypesDerivedFromPresynapticNeurons/connections_IE2-roughCalibration-calibrationColours.svg
 
