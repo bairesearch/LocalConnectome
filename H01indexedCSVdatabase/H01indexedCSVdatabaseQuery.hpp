@@ -15,6 +15,31 @@
 #include "H01indexedCSVdatabase.hpp"
 
 #ifdef INDEXED_CSV_DATABASE_QUERY
+
+#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING
+class H01indexedCSVdatabaseQueryObject
+{
+public:
+
+	H01indexedCSVdatabaseQueryObject(void);
+	~H01indexedCSVdatabaseQueryObject(void);
+
+	long neuronID;
+	int type;
+	int locationObjectContentsXcoordinates;	//note coordinates are stored as integers in C3 connections database
+	int locationObjectContentsYcoordinates;	//note coordinates are stored as integers in C3 connections database
+	int locationObjectContentsZcoordinates;	//note coordinates are stored as integers in C3 connections database
+	/*
+	string neuronIDstring;
+	string typeString;
+	string locationObjectContentsXcoordinatesContent;
+	string locationObjectContentsYcoordinatesContent;
+	string locationObjectContentsZcoordinatesContent;
+	*/
+};
+#endif
+
+
 bool queryIndexedCSVdatabase();
 	bool queryIndexedCSVdatabase(const string neuronListFileName, const bool queryPresynapticConnectionNeurons, const string neuronListConnectionsFileName);
 		bool queryIndexedCSVdatabaseByNeuronID(const string neuronID, const bool queryPresynapticConnectionNeurons, vector<vector<string>>* neuronConnectionTargetSourceList);

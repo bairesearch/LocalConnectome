@@ -16,8 +16,8 @@
 
 
 //compilation modes:
-#define INDEXED_CSV_DATABASE_CREATE
-//#define INDEXED_CSV_DATABASE_QUERY
+//#define INDEXED_CSV_DATABASE_CREATE
+#define INDEXED_CSV_DATABASE_QUERY
 
 #ifdef INDEXED_CSV_DATABASE_CREATE
 	#define DEBUG_CODE	//disable this DEBUG parameter to create the database (enabled for safety - prevents overwrite of indexed database; takes ~6 hours to regenerate)
@@ -25,14 +25,37 @@
 #endif
 
 #ifdef INDEXED_CSV_DATABASE_QUERY
-	//input (current folder):
-	#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST1_FILE_NAME "localConnectomeNeuronIDlist1.csv"	//from in_body_cell_connection.csv - presynaptic neuron ids
-	#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST2_FILE_NAME "localConnectomeNeuronIDlist2.csv"	//from in_body_cell_connection.csv - postsynaptic neuron ids
-	//output (current folder):
-	#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST1_CONNECTIONS_PRESYNAPTIC_FILE_NAME "localConnectomeNeuronIDlist1connectionsPresynaptic.csv"
-	#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST1_CONNECTIONS_POSTSYNAPTIC_FILE_NAME "localConnectomeNeuronIDlist1connectionsPostsynaptic.csv"
-	#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST2_CONNECTIONS_PRESYNAPTIC_FILE_NAME "localConnectomeNeuronIDlist2connectionsPresynaptic.csv"
-	#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST2_CONNECTIONS_POSTSYNAPTIC_FILE_NAME "localConnectomeNeuronIDlist2connectionsPostsynaptic.csv"
+	#define INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING
+	#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING
+		//input:
+		#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME "localConnectomeNeuronIDlistDistinct.csv"	//from in_body_cell_connection.csv - pre/postsynaptic distinct neuron ids		
+		//output:
+		#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_CONNECTIONS_PRESYNAPTIC_FILE_NAME "localConnectomeNeuronIDdistinctListconnectionsPresynaptic.csv"
+		
+		#define INDEXED_CSV_DATABASE_ALGORITHMS
+		#define INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_MIN_NUM_POINTS_REQUIRED (2)
+		#define INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_NON_LOCAL_NEURONS_REQUIRED
+		#define INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_EST_TYPE_BY_AVERAGE_SYNAPSE_TYPE
+		
+		#define INDEXED_CSV_DATABASE_QUERY_GET_LOCATION	//used to perform incoming long range axonal tract position/direction estimation (not just statistical comparison of distal vs local input)
+		#define INDEXED_CSV_DATABASE_QUERY_OUTPUT	//performance speed by disabling primary output file write
+		#ifdef INDEXED_CSV_DATABASE_QUERY_OUTPUT
+			#define INDEXED_CSV_DATABASE_QUERY_OUTPUT_INCOMING_AXON_MAPPING
+		#endif
+	#else
+		#define INDEXED_CSV_DATABASE_QUERY_OUTPUT
+		#ifdef INDEXED_CSV_DATABASE_QUERY_OUTPUT
+			#define INDEXED_CSV_DATABASE_QUERY_OUTPUT_CONNECTIONS
+		#endif
+		//input:
+		#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST1_FILE_NAME "localConnectomeNeuronIDlist1.csv"	//from in_body_cell_connection.csv - presynaptic neuron ids
+		#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST2_FILE_NAME "localConnectomeNeuronIDlist2.csv"	//from in_body_cell_connection.csv - postsynaptic neuron ids
+		//output:
+		#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST1_CONNECTIONS_PRESYNAPTIC_FILE_NAME "localConnectomeNeuronIDlist1connectionsPresynaptic.csv"
+		#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST1_CONNECTIONS_POSTSYNAPTIC_FILE_NAME "localConnectomeNeuronIDlist1connectionsPostsynaptic.csv"
+		#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST2_CONNECTIONS_PRESYNAPTIC_FILE_NAME "localConnectomeNeuronIDlist2connectionsPresynaptic.csv"
+		#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST2_CONNECTIONS_POSTSYNAPTIC_FILE_NAME "localConnectomeNeuronIDlist2connectionsPostsynaptic.csv"
+	#endif
 	
 	#define INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_CURRENT_FOLDER
 	#ifndef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_CURRENT_FOLDER
@@ -40,8 +63,7 @@
 		#define INDEXED_CSV_DATABASE_QUERY_OUTPUT_FOLDER "/media/user/large/source/h01Connectome/indexedSVGdatabase/H01indexedCSVdatabaseQueryOutput"
 	#endif
 	#define INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_FILE_OBJECT	//only use this if output folder exists on a different harddrive (not just partition) to indexed CSV database folder
-	//max expected file/string size = indexed csv database query output size (neuron_id ~11 bytes + , + type ~1 byte = ~13 bytes) * avg num connections per neuron ID (~2000) * number of neuron IDs in list (~30000) = 13*2000*30000 = ~1GB of RAM if string
-		
+	//max expected file/string size = indexed csv database query output size (neuron_id ~11 bytes + , + type ~1 byte = ~13 bytes) * avg num connections per neuron ID (~2000) * number of neuron IDs in list (~30000) = 13*2000*30000 = ~1GB of RAM if string	
 #endif
 
 #ifdef DEBUG_CODE
@@ -113,4 +135,5 @@
 #define CPP_STRING_FIND_RESULT_FAIL_VALUE2 int(CPP_STRING_FIND_RESULT_FAIL_VALUE)
 
 int main();
+
 
