@@ -28,7 +28,7 @@ string currentDirectory;
 
 #ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING
 map<long,vector<H01indexedCSVdatabaseQueryObject>> neuronConnectionMap;	//map<connectionNeuronIDindex,vector<H01indexedCSVdatabaseQueryObject [with neuronIDindex]>> 
-vector<H01indexedCSVdatabaseAlgorithmsPolyFit> neuronConnectionPolyFitVector;
+vector<H01indexedCSVdatabaseAlgorithmsFit> neuronConnectionPolyFitVector;
 
 H01indexedCSVdatabaseQueryObject::H01indexedCSVdatabaseQueryObject(void)
 {
@@ -236,9 +236,14 @@ bool queryIndexedCSVdatabase(const string neuronListFileName, const bool queryPr
 	{
 		long connectionNeuronID = it->first;
 		vector<H01indexedCSVdatabaseQueryObject>* neuronVector = &(it->second);
+		#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_2D_POLY_REGRESSION
 		vector<double> x;
 		vector<double> y;
 		//vector<double> z;
+		#endif
+		#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_3D_LINEAR_REGRESSION
+		vector<Eigen::Vector3d> xyz;
+		#endif
 		
 		if(neuronVector->size() >= INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_MIN_NUM_POINTS_REQUIRED)
 		{
@@ -250,10 +255,20 @@ bool queryIndexedCSVdatabase(const string neuronListFileName, const bool queryPr
 			{
 				H01indexedCSVdatabaseQueryObject* queryObject = &((*neuronVector)[i]);
 				cout << "x = " << queryObject->locationObjectContentsXcoordinates << ", y = " << queryObject->locationObjectContentsYcoordinates << endl;
-		
-				x.push_back((double)(queryObject->locationObjectContentsXcoordinates));
-				y.push_back((double)(queryObject->locationObjectContentsYcoordinates));
-				//z.push_back((double)(queryObject->locationObjectContentsZcoordinates));	//not yet modelled/plotted
+				double xCoord = (double)(queryObject->locationObjectContentsXcoordinates);
+				double yCoord = (double)(queryObject->locationObjectContentsYcoordinates);
+				double zCoord = (double)(queryObject->locationObjectContentsZcoordinates);
+				#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_2D_POLY_REGRESSION
+				x.push_back(xCoord);
+				y.push_back(yCoord);
+				//z.push_back(zCoord);	//not yet modelled/plotted
+				#endif
+				#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_3D_LINEAR_REGRESSION
+				std::vector<double> vec = {xCoord, yCoord, zCoord};
+				Eigen::Vector3d vec3D(vec.data());
+				//Eigen::Vector3d vec3D(xCoord, yCoord, zCoord);
+				xyz.push_back(vec3D);
+				#endif
 				#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_EST_TYPE_BY_AVERAGE_SYNAPSE_TYPE
 				totalSynapseType = totalSynapseType + queryObject->type;
 				#endif
@@ -265,29 +280,77 @@ bool queryIndexedCSVdatabase(const string neuronListFileName, const bool queryPr
 			estSynapseType = round(averageSynapseType);	//1: inhibitory, 2: exitatory
 			#endif
 			
+			#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_2D_POLY_REGRESSION
 			PolynomialRegression<double> polyreg;
 			vector<double> coeffs;
 			const int order = 2;
 			polyreg.fitIt(x, y, order, coeffs);
+			#endif
+			#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_3D_LINEAR_REGRESSION
+			std::pair<Eigen::Vector3d, Eigen::Vector3d> line3D = best_line_from_points<Eigen::Vector3d>(xyz);
+			#endif
 			
 			#ifdef INDEXED_CSV_DATABASE_QUERY_OUTPUT_INCOMING_AXON_MAPPING
-			H01indexedCSVdatabaseAlgorithmsPolyFit polyFit;
+			H01indexedCSVdatabaseAlgorithmsFit polyFit;
 			polyFit.connectionNeuronID = connectionNeuronID;
 			#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_EST_TYPE_BY_AVERAGE_SYNAPSE_TYPE
 			polyFit.estSynapseType = estSynapseType;
 			#endif
+			#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_2D_POLY_REGRESSION
 			polyFit.a = coeffs[0];
 			polyFit.b = coeffs[1];
 			polyFit.c = coeffs[2];
+			#endif
+			#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_3D_LINEAR_REGRESSION
+			polyFit.origin.x = line3D.first[0];
+			polyFit.origin.y = line3D.first[1];
+			polyFit.origin.z = line3D.first[2];
+			polyFit.axis.x = line3D.second[0];
+			polyFit.axis.y = line3D.second[1];
+			polyFit.axis.z = line3D.second[2];
+			#endif
 			neuronConnectionPolyFitVector.push_back(polyFit);
 			const string doubleFormat = "%0.9f";
+			#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_2D_POLY_REGRESSION
 			string neuronConnectionString = SHAREDvars.convertLongToString(polyFit.connectionNeuronID) + csvDelimiter + SHAREDvars.convertIntToString(polyFit.estSynapseType) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.a, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.b, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.c, doubleFormat) + STRING_NEWLINE;
+			#endif
+			#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_3D_LINEAR_REGRESSION
+			#ifdef INDEXED_CSV_DATABASE_QUERY_OUTPUT_INCOMING_AXON_MAPPING_LDR
+			//2 <colour> x1 y1 z1 x2 y2 z2 - https://www.ldraw.org/article/218.html
+			string ldrDelimiter = LDR_DELIMITER;
+			int ldrawColor = 0;
+			if(polyFit.estSynapseType == AVRO_JSON_DATABASE_EXCITATORY_SYNAPSE_TYPE)
+			{
+				ldrawColor = SHARED_COLOUR_GREEN;
+			}
+			else if(polyFit.estSynapseType == AVRO_JSON_DATABASE_INHIBITORY_SYNAPSE_TYPE)
+			{
+				ldrawColor = SHARED_COLOUR_RED;
+			}
+			else
+			{
+				cerr << "bool queryIndexedCSVdatabase unknown polyFit.estSynapseType; " << polyFit.estSynapseType << endl;
+				exit(EXIT_ERROR);
+			}
+			vec plot3DpointStart;
+			plot3DpointStart.x = polyFit.origin.x - polyFit.axis.x * (AVRO_JSON_DATABASE_COORDINATES_RANGE_X/2);
+			plot3DpointStart.y = polyFit.origin.y - polyFit.axis.y * (AVRO_JSON_DATABASE_COORDINATES_RANGE_Y/2);
+			plot3DpointStart.z = polyFit.origin.z - polyFit.axis.z * (AVRO_JSON_DATABASE_COORDINATES_RANGE_Z/2);
+			vec plot3DpointEnd;
+			plot3DpointEnd.x = polyFit.origin.x + polyFit.axis.x * (AVRO_JSON_DATABASE_COORDINATES_RANGE_X/2);
+			plot3DpointEnd.y = polyFit.origin.y + polyFit.axis.y * (AVRO_JSON_DATABASE_COORDINATES_RANGE_Y/2);
+			plot3DpointEnd.z = polyFit.origin.z + polyFit.axis.z * (AVRO_JSON_DATABASE_COORDINATES_RANGE_Z/2);
+			string neuronConnectionString = SHAREDvars.convertIntToString(LDR_TYPE_LINE) + ldrDelimiter + SHAREDvars.convertIntToString(ldrawColor) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointStart.x, doubleFormat) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointStart.y, doubleFormat) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointStart.z, doubleFormat) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointEnd.x, doubleFormat) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointEnd.y, doubleFormat) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointEnd.z, doubleFormat) + STRING_NEWLINE;	
+			#else
+			string neuronConnectionString = SHAREDvars.convertLongToString(polyFit.connectionNeuronID) + csvDelimiter + SHAREDvars.convertIntToString(polyFit.estSynapseType) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.origin.x, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.origin.y, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.origin.z, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.axis.x, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.axis.y, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.axis.z, doubleFormat) + STRING_NEWLINE;
+			#endif
+			#endif
 			#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_FILE_OBJECT
 			SHAREDvars.writeStringToFileObject(neuronConnectionString, &writeFileObject);
 			#else
 			appendStringBufferToPreallocatedString(neuronListConnectionsString, neuronConnectionString);
 			//neuronListConnectionsString = neuronListConnectionsString + neuronConnectionString	//inefficient
-			#endif		
+			#endif
 			#else
 			cout << "INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING: queryIndexedCSVdatabase(): connectionNeuronID = " << connectionNeuronID << ", estSynapseType = " << estSynapseType << ", poly fit; a = " << coeffs[0] << ", b = " << coeffs[1] << ", c = " << coeffs[2] << endl;			
 			#endif

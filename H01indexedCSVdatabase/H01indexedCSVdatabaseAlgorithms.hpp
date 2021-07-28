@@ -14,6 +14,9 @@
 
 #include "H01indexedCSVdatabase.hpp"
 
+#include <Eigen/Core>
+#include <Eigen/Dense>
+
 #ifdef INDEXED_CSV_DATABASE_ALGORITHMS
 
 //https://gist.github.com/chrisengelsma/108f7ab0a746323beaaf7d6634cf4add
@@ -59,21 +62,30 @@
 #include <stdlib.h>
 #include <cmath>
 #include <stdexcept>
+#include "SHAREDvars.hpp"
 
-class H01indexedCSVdatabaseAlgorithmsPolyFit
+class H01indexedCSVdatabaseAlgorithmsFit
 {
 public:
 
-	H01indexedCSVdatabaseAlgorithmsPolyFit(void);
-	~H01indexedCSVdatabaseAlgorithmsPolyFit(void);
+	H01indexedCSVdatabaseAlgorithmsFit(void);
+	~H01indexedCSVdatabaseAlgorithmsFit(void);
 
+	#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_2D_POLY_REGRESSION
 	double calculatePoly(int xx);
+	#endif
 
 	long connectionNeuronID;
 	int estSynapseType;
+	#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_2D_POLY_REGRESSION
 	double a;
 	double b;
 	double c;
+	#endif
+	#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_3D_LINEAR_REGRESSION
+	vec origin;
+	vec axis;
+	#endif
 };
 		
 template <class TYPE>
@@ -189,6 +201,26 @@ bool PolynomialRegression<TYPE>::fitIt(
 		coeffs[i] = a[i];
 
 	return true;
+}
+
+
+//https://gist.github.com/ialhashim/0a2554076a6cf32831ca (ialhashim/fitting3D.cpp)
+
+template<class Vector3>
+std::pair < Vector3, Vector3 > best_line_from_points(const std::vector<Vector3> & c)
+{
+	//copy coordinates to matrix in Eigen format
+	size_t num_atoms = c.size();
+	Eigen::Matrix< double, Eigen::Dynamic, Eigen::Dynamic > centers(num_atoms, 3);
+	for (size_t i = 0; i < num_atoms; ++i) centers.row(i) = c[i];
+
+	Vector3 origin = centers.colwise().mean();
+	Eigen::MatrixXd centered = centers.rowwise() - origin.transpose();
+	Eigen::MatrixXd cov = centered.adjoint() * centered;
+	Eigen::SelfAdjointEigenSolver<Eigen::MatrixXd> eig(cov);
+	Vector3 axis = eig.eigenvectors().col(2).normalized();
+
+	return std::make_pair(origin, axis);
 }
 
 
