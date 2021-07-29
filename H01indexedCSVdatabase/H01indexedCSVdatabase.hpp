@@ -4,7 +4,7 @@
  * Author: Richard Bruce Baxter - Copyright (c) 2021 Baxter AI (baxterai.com)
  * License: MIT License
  * Project: H01LocalConnectome
- * Requirements: BAI SHARED C++ library
+ * Requirements: BAI SHARED C++ library, Eigen 3 C++ library
  * Compilation: ./compileH01indexedCSVdatabase.sh
  * Usage: ./H01indexedCSVdatabase.exe
  * Description: H01 indexed CSV database
@@ -31,7 +31,7 @@
 		#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME "localConnectomeNeuronIDlistDistinct.csv"	//from in_body_cell_connection.csv - pre/postsynaptic distinct neuron ids		
 		
 		#define INDEXED_CSV_DATABASE_ALGORITHMS
-		#define INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_MIN_NUM_POINTS_REQUIRED (2)
+		#define INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_MIN_NUM_POINTS_REQUIRED (3)	//(2)
 		#define INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_NON_LOCAL_NEURONS_REQUIRED
 		#define INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_EST_TYPE_BY_AVERAGE_SYNAPSE_TYPE
 		
@@ -45,6 +45,8 @@
 		#define INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_3D_LINEAR_REGRESSION
 		#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_3D_LINEAR_REGRESSION
 			#define INDEXED_CSV_DATABASE_QUERY_OUTPUT_INCOMING_AXON_MAPPING_LDR
+		#else
+			#define INDEXED_CSV_DATABASE_QUERY_OUTPUT_INCOMING_AXON_MAPPING_CSV
 		#endif
 		
 		//output:
