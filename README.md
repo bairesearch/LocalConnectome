@@ -9,7 +9,7 @@ Acknowledgements
 
 Source datasets are from the H01 Release of the Petascale Reconstruction of the Human Cortex, as provided by The Lichtman laboratory at Harvard University and the Connectomics at Google team (https://h01-release.storage.googleapis.com/landing.html):
 
-*Shapson-Coe, A., Januszewski, M., Berger, D.R., Pope, A., Wu, Y., Blakely, T., Schalek, R.L., Li, P., Wang, S., Maitin-Shepard, J. and Karlupia, N., 2021. A connectomic study of a petascale fragment of human cerebral cortex. bioRxiv. (https://www.biorxiv.org/content/10.1101/2021.05.29.446289v2)*
+*Shapson-Coe, A., Januszewski, M., Berger, D.R., Pope, A., Wu, Y., Blakely, T., Schalek, R.L., Li, P., Wang, S., Maitin-Shepard, J. et al. (2021). A connectomic study of a petascale fragment of human cerebral cortex. bioRxiv. (https://www.biorxiv.org/content/10.1101/2021.05.29.446289v2)*
 
 **SVG plots of excitatory/inhibitory connections in local connectome** (connection types derived from EM images, directionality not encoded):
 - https://storage.googleapis.com/h01-release/data/20210601/svg/connections_E.svg

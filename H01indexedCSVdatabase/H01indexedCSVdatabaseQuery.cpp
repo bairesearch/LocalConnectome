@@ -265,10 +265,10 @@ bool queryIndexedCSVdatabase(const string neuronListFileName, const bool queryPr
 			for(int i=0; i<neuronVector->size(); i++)
 			{
 				H01indexedCSVdatabaseQueryObject* queryObject = &((*neuronVector)[i]);
-				cout << "x = " << queryObject->locationObjectContentsXcoordinates << ", y = " << queryObject->locationObjectContentsYcoordinates << endl;
-				double xCoord = (double)(queryObject->locationObjectContentsXcoordinates);
-				double yCoord = (double)(queryObject->locationObjectContentsYcoordinates);
-				double zCoord = (double)(queryObject->locationObjectContentsZcoordinates);
+				cout << "x = " << queryObject->locationObjectContentsXcoordinates << ", y = " << queryObject->locationObjectContentsYcoordinates << ", z = " << queryObject->locationObjectContentsZcoordinates << endl;
+				double xCoord = (double)(queryObject->locationObjectContentsXcoordinates) * AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_X;
+				double yCoord = (double)(queryObject->locationObjectContentsYcoordinates) * AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_Y;
+				double zCoord = (double)(queryObject->locationObjectContentsZcoordinates) * AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_Z;
 				#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_2D_POLY_REGRESSION
 				x.push_back(xCoord);
 				y.push_back(yCoord);
