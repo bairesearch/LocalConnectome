@@ -163,7 +163,7 @@ bool createIndexedCSVdatabase()
 	return result;
 }	
 
-bool addSynapseToCSVdatabase(const string neuronIDcontents, string* csvText, string* rawText, const bool indexByPresynapticNeuron)
+bool addSynapseToCSVdatabase(const string neuronIDcontents, const string* csvText, const string* rawText, const bool indexByPresynapticNeuron)
 {
 	bool result = true;
 	

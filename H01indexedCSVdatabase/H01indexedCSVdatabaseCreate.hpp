@@ -18,7 +18,7 @@
 
 #ifdef INDEXED_CSV_DATABASE_CREATE
 bool createIndexedCSVdatabase();
-	bool addSynapseToCSVdatabase(const string neuronIDcontents, string* csvText, string* rawText, const bool indexByPresynapticNeuron);
+	bool addSynapseToCSVdatabase(const string neuronIDcontents, const string* csvText, const string* rawText, const bool indexByPresynapticNeuron);
 	string findJsonFieldValue(const string* currentLineText, const string jsonFieldName, bool lastInstance);
 	string findJsonFieldValue(const string* currentLineText, const string jsonFieldName, bool lastInstance, const int searchStartPos);
 	string findJsonFieldValue(const string* currentLineText, const string jsonFieldName, bool lastInstance, const int searchStartPos, int* jsonFieldNameIndex);

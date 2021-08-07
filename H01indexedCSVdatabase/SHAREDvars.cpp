@@ -4,7 +4,7 @@
  * Author: Richard Bruce Baxter - Copyright (c) 2005-2021 Baxter AI (baxterai.com)
  * License: AGPLv3
  * Project: Generic Construct Functions
- * Project Version: 3p3a 19-March-2021
+ * Project Version: 3p4a 07-August-2021
  * /
  *******************************************************************************/
 
@@ -618,7 +618,7 @@ void SHAREDvarsClass::writeStringToFileObject(string s, ofstream* writeFileObjec
 	}
 }
 
-void SHAREDvarsClass::writeStringToFile(const string fileName, string* s)
+void SHAREDvarsClass::writeStringToFile(const string fileName, const string* s)
 {
 	ofstream writeFileObject(fileName.c_str());
 
@@ -631,7 +631,7 @@ void SHAREDvarsClass::writeStringToFile(const string fileName, string* s)
 	writeFileObject.close();
 }
 
-void SHAREDvarsClass::appendStringToFile(const string fileName, string* s)
+void SHAREDvarsClass::appendStringToFile(const string fileName, const string* s)
 {
 	ofstream writeFileObject(fileName.c_str(), ofstream::app);
 
