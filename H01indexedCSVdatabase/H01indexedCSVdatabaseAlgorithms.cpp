@@ -15,6 +15,7 @@
 #include "H01indexedCSVdatabaseAlgorithms.hpp"
 
 
+#ifdef INDEXED_CSV_DATABASE_ALGORITHMS
 H01indexedCSVdatabaseAlgorithmsFit::H01indexedCSVdatabaseAlgorithmsFit(void)
 {	
 	connectionNeuronID = 0;
@@ -41,4 +42,5 @@ double H01indexedCSVdatabaseAlgorithmsFit::calculatePoly(int xx)
 {
 	return a + b * xx + c * xx*xx;
 }
+#endif
 #endif

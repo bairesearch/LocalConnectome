@@ -5,7 +5,7 @@
  * License: MIT License
  * Project: H01LocalConnectome
  * Requirements: BAI SHARED C++ library, Eigen 3 C++ library
- * Compilation: ./compileH01indexedCSVdatabase.sh
+ * Compilation: ./compileH01indexedCSVdatabase.sh (enable INDEXED_CSV_DATABASE_CREATE/INDEXED_CSV_DATABASE_QUERY)
  * Usage: ./H01indexedCSVdatabase.exe
  * Description: H01 indexed CSV database
  * Comments:
@@ -16,8 +16,8 @@
 
 
 //compilation modes:
-//#define INDEXED_CSV_DATABASE_CREATE
-#define INDEXED_CSV_DATABASE_QUERY
+#define INDEXED_CSV_DATABASE_CREATE
+//#define INDEXED_CSV_DATABASE_QUERY
 
 #ifdef INDEXED_CSV_DATABASE_CREATE
 	#define DEBUG_CODE	//disable this DEBUG parameter to create the database (enabled for safety - prevents overwrite of indexed database; takes ~6 hours to regenerate)
@@ -96,7 +96,7 @@
 #endif
 
 #ifdef DEBUG_CODE
-	#define INDEXED_CSV_DATABASE_FOLDER "/media/user/large/source/h01Connectome/indexedSVGdatabase/trial"
+	#define INDEXED_CSV_DATABASE_FOLDER "/media/user/large/source/h01Connectome/indexedSVGdatabase/trial/indexedTrial"
 #else
 	#define INDEXED_CSV_DATABASE_FOLDER "/media/user/ssddata/indexed"
 #endif
