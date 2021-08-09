@@ -1,6 +1,6 @@
 /*******************************************************************************
  *
- * File Name: H01indexedCSVdatabaseQuery.hpp
+ * File Name: H01indexedCSVdatabaseQuery.cpp
  * Author: Richard Bruce Baxter - Copyright (c) 2021 Baxter AI (baxterai.com)
  * License: MIT License
  * Project: H01LocalConnectome
@@ -337,11 +337,11 @@ bool queryIndexedCSVdatabase(const string neuronListFileName, const bool queryPr
 				int ldrawColor = 0;
 				if(polyFit.estSynapseType == AVRO_JSON_DATABASE_EXCITATORY_SYNAPSE_TYPE)
 				{
-					ldrawColor = SHARED_COLOUR_GREEN;
+					ldrawColor = INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_CONNECTION_TYPE_EXCITATORY_COLOUR;
 				}
 				else if(polyFit.estSynapseType == AVRO_JSON_DATABASE_INHIBITORY_SYNAPSE_TYPE)
 				{
-					ldrawColor = SHARED_COLOUR_RED;
+					ldrawColor = INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_CONNECTION_TYPE_INHIBITORY_COLOUR;
 				}
 				else
 				{

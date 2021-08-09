@@ -2,7 +2,7 @@
  *
  * File Name: SHAREDvars.cpp
  * Author: Richard Bruce Baxter - Copyright (c) 2005-2021 Baxter AI (baxterai.com)
- * License: AGPLv3
+ * License: MIT License
  * Project: Generic Construct Functions
  * Project Version: 3p4a 07-August-2021
  * /
