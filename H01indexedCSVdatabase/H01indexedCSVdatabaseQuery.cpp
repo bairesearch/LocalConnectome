@@ -24,14 +24,11 @@
  *******************************************************************************/
 
 #include "H01indexedCSVdatabaseQuery.hpp"
-#include "SHAREDvars.hpp"
 #ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING
 #include "H01indexedCSVdatabaseAlgorithms.hpp"
 #endif
 
 #ifdef INDEXED_CSV_DATABASE_QUERY
-
-SHAREDvarsClass SHAREDvars;
 
 #ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_CURRENT_FOLDER
 string currentDirectory;
@@ -63,7 +60,7 @@ H01indexedCSVdatabaseQueryObject::~H01indexedCSVdatabaseQueryObject(void)
 #endif
 
 
-bool queryIndexedCSVdatabase()
+bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabase()
 {
 	bool result = true;
 
@@ -72,18 +69,18 @@ bool queryIndexedCSVdatabase()
 	#endif
 	
 	#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING
-	queryIndexedCSVdatabase(INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME, true, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_CONNECTIONS_PRESYNAPTIC_FILE_NAME);	
+	this->queryIndexedCSVdatabase(INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME, true, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_CONNECTIONS_PRESYNAPTIC_FILE_NAME);	
 	#else
-	queryIndexedCSVdatabase(INDEXED_CSV_DATABASE_QUERY_NEURON_LIST1_FILE_NAME, true, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST1_CONNECTIONS_PRESYNAPTIC_FILE_NAME);
-	queryIndexedCSVdatabase(INDEXED_CSV_DATABASE_QUERY_NEURON_LIST1_FILE_NAME, false, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST1_CONNECTIONS_POSTSYNAPTIC_FILE_NAME);
-	queryIndexedCSVdatabase(INDEXED_CSV_DATABASE_QUERY_NEURON_LIST2_FILE_NAME, true, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST2_CONNECTIONS_PRESYNAPTIC_FILE_NAME);
-	queryIndexedCSVdatabase(INDEXED_CSV_DATABASE_QUERY_NEURON_LIST2_FILE_NAME, false, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST2_CONNECTIONS_POSTSYNAPTIC_FILE_NAME);
+	this->queryIndexedCSVdatabase(INDEXED_CSV_DATABASE_QUERY_NEURON_LIST1_FILE_NAME, true, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST1_CONNECTIONS_PRESYNAPTIC_FILE_NAME);
+	this->queryIndexedCSVdatabase(INDEXED_CSV_DATABASE_QUERY_NEURON_LIST1_FILE_NAME, false, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST1_CONNECTIONS_POSTSYNAPTIC_FILE_NAME);
+	this->queryIndexedCSVdatabase(INDEXED_CSV_DATABASE_QUERY_NEURON_LIST2_FILE_NAME, true, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST2_CONNECTIONS_PRESYNAPTIC_FILE_NAME);
+	this->queryIndexedCSVdatabase(INDEXED_CSV_DATABASE_QUERY_NEURON_LIST2_FILE_NAME, false, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST2_CONNECTIONS_POSTSYNAPTIC_FILE_NAME);
 	#endif
 	
 	return result;
 }
 
-bool queryIndexedCSVdatabase(const string neuronListFileName, const bool queryPresynapticConnectionNeurons, const string neuronListConnectionsFileName)
+bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabase(const string neuronListFileName, const bool queryPresynapticConnectionNeurons, const string neuronListConnectionsFileName)
 {
 	bool result = true;
 	
@@ -134,7 +131,7 @@ bool queryIndexedCSVdatabase(const string neuronListFileName, const bool queryPr
 	{
 		string neuronID = neuronList[l];
 		vector<vector<string>> neuronConnectionList;
-		queryIndexedCSVdatabaseByNeuronID(neuronID, queryPresynapticConnectionNeurons, &neuronConnectionList);
+		this->queryIndexedCSVdatabaseByNeuronID(neuronID, queryPresynapticConnectionNeurons, &neuronConnectionList);
 
 		if(neuronConnectionList.size() == 0)
 		{
@@ -143,7 +140,7 @@ bool queryIndexedCSVdatabase(const string neuronListFileName, const bool queryPr
 			#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_FILE_OBJECT
 			SHAREDvars.writeStringToFileObject(STRING_NEWLINE, &writeFileObject);
 			#else
-			appendStringBufferToPreallocatedString(&neuronListConnectionsString, STRING_NEWLINE);
+			this->appendStringBufferToPreallocatedString(&neuronListConnectionsString, STRING_NEWLINE);
 			//neuronListConnectionsString = neuronListConnectionsString + STRING_NEWLINE;	//inefficient
 			#endif			
 			#endif
@@ -209,7 +206,7 @@ bool queryIndexedCSVdatabase(const string neuronListFileName, const bool queryPr
 				#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_FILE_OBJECT
 				SHAREDvars.writeStringToFileObject(neuronConnectionString, &writeFileObject);
 				#else
-				appendStringBufferToPreallocatedString(neuronListConnectionsString, neuronConnectionString);
+				this->appendStringBufferToPreallocatedString(neuronListConnectionsString, neuronConnectionString);
 				//neuronListConnectionsString = neuronListConnectionsString + neuronConnectionString	//inefficient
 				#endif
 				if(i == neuronConnectionList.size()-1)
@@ -217,7 +214,7 @@ bool queryIndexedCSVdatabase(const string neuronListFileName, const bool queryPr
 					#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_FILE_OBJECT
 					SHAREDvars.writeStringToFileObject(STRING_NEWLINE, &writeFileObject);
 					#else
-					appendStringBufferToPreallocatedString(&neuronListConnectionsString, STRING_NEWLINE);
+					this->appendStringBufferToPreallocatedString(&neuronListConnectionsString, STRING_NEWLINE);
 					//neuronListConnectionsString = neuronListConnectionsString + STRING_NEWLINE;	//inefficient
 					#endif
 				}
@@ -226,7 +223,7 @@ bool queryIndexedCSVdatabase(const string neuronListFileName, const bool queryPr
 					#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_FILE_OBJECT
 					SHAREDvars.writeStringToFileObject(csvDelimiter, &writeFileObject);
 					#else
-					appendStringBufferToPreallocatedString(&neuronListConnectionsString, csvDelimiter);
+					this->appendStringBufferToPreallocatedString(&neuronListConnectionsString, csvDelimiter);
 					//neuronListConnectionsString = neuronListConnectionsString + csvDelimiter;	//inefficient
 					#endif
 				}
@@ -364,11 +361,11 @@ bool queryIndexedCSVdatabase(const string neuronListFileName, const bool queryPr
 				#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_FILE_OBJECT
 				SHAREDvars.writeStringToFileObject(neuronConnectionString, &writeFileObject);
 				#else
-				appendStringBufferToPreallocatedString(neuronListConnectionsString, neuronConnectionString);
+				this->appendStringBufferToPreallocatedString(neuronListConnectionsString, neuronConnectionString);
 				//neuronListConnectionsString = neuronListConnectionsString + neuronConnectionString	//inefficient
 				#endif
 				#else
-				cout << "INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING: queryIndexedCSVdatabase(): connectionNeuronID = " << connectionNeuronID << ", estSynapseType = " << estSynapseType << ", poly fit; a = " << coeffs[0] << ", b = " << coeffs[1] << ", c = " << coeffs[2] << endl;			
+				cout << "INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING: this->queryIndexedCSVdatabase(): connectionNeuronID = " << connectionNeuronID << ", estSynapseType = " << estSynapseType << ", poly fit; a = " << coeffs[0] << ", b = " << coeffs[1] << ", c = " << coeffs[2] << endl;			
 				#endif
 				
 			#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_CONNECTION_TYPE_REQUIRED
@@ -395,7 +392,7 @@ bool queryIndexedCSVdatabase(const string neuronListFileName, const bool queryPr
 }
 
 
-bool queryIndexedCSVdatabaseByNeuronID(const string neuronID, const bool queryPresynapticConnectionNeurons, vector<vector<string>>* neuronConnectionList)
+bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronID(const string neuronID, const bool queryPresynapticConnectionNeurons, vector<vector<string>>* neuronConnectionList)
 {
 	bool result = true;
 	
@@ -468,7 +465,7 @@ bool queryIndexedCSVdatabaseByNeuronID(const string neuronID, const bool queryPr
 					//cout << "sourceNeuronID = " << sourceNeuronID << endl;
 
 					vector<string> csvLineVector;
-					convertCSVlineToVector(&csvLineText, &csvLineVector);
+					this->convertCSVlineToVector(&csvLineText, &csvLineVector);
 				
 					neuronConnectionList->push_back(csvLineVector);
 				}
@@ -492,7 +489,7 @@ bool queryIndexedCSVdatabaseByNeuronID(const string neuronID, const bool queryPr
 	return result;
 }
 
-bool convertCSVlineToVector(const string* csvLineText, vector<string>* csvLineVector)
+bool H01indexedCSVdatabaseQueryClass::convertCSVlineToVector(const string* csvLineText, vector<string>* csvLineVector)
 {	
 	bool result = true;
 	
@@ -515,7 +512,7 @@ bool convertCSVlineToVector(const string* csvLineText, vector<string>* csvLineVe
 
 
 #ifndef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_FILE_OBJECT
-void appendStringBufferToPreallocatedString(string* s, string stringToAppend)
+void H01indexedCSVdatabaseQueryClass::appendStringBufferToPreallocatedString(string* s, string stringToAppend)
 {
 	s->append(fileName.c_str(), stringToAppend->length());
 }

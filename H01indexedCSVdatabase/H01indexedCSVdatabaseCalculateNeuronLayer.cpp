@@ -16,17 +16,15 @@
 
 #include "H01indexedCSVdatabaseCalculateNeuronLayer.hpp"
 
-SHAREDvarsClass SHAREDvars2;
-
 #ifdef INDEXED_CSV_DATABASE_CALCULATE_NEURON_LAYERS
 
-bool readCorticalLayersBoundaryKeypointTable(const string corticalLayersBoundaryKeypointTableFileName, vector<vector<vec>>* corticalLayersKeypoints)
+bool H01indexedCSVdatabaseCalculateNeuronLayerClass::readCorticalLayersBoundaryKeypointTable(const string corticalLayersBoundaryKeypointTableFileName, vector<vector<vec>>* corticalLayersKeypoints)
 {
 	bool result = true;
 	
 	vector<vector<string>> dataSetFile;
 	int dataSetFileSize = 0;
-	getLinesFromFileCSV(corticalLayersBoundaryKeypointTableFileName, &dataSetFile, &dataSetFileSize, CSV_DELIMITER_CHAR, true);
+	this->getLinesFromFileCSV(corticalLayersBoundaryKeypointTableFileName, &dataSetFile, &dataSetFileSize, CSV_DELIMITER_CHAR, true);
 	for(int layerIndex=0; layerIndex<dataSetFile.size(); layerIndex++)
 	{
 		vector<string> corticalLayerKeypointsXY = dataSetFile[layerIndex];
@@ -35,8 +33,8 @@ bool readCorticalLayersBoundaryKeypointTable(const string corticalLayersBoundary
 		for(int i=0; i<corticalLayersNumKeypointsMax; i=i+2)
 		{
 			int k = i/2;
-			corticalLayerKeypoints[k].x = SHAREDvars2.convertStringToDouble(corticalLayerKeypointsXY[i]);
-			corticalLayerKeypoints[k].y = SHAREDvars2.convertStringToDouble(corticalLayerKeypointsXY[i+1]);
+			corticalLayerKeypoints[k].x = SHAREDvars.convertStringToDouble(corticalLayerKeypointsXY[i]);
+			corticalLayerKeypoints[k].y = SHAREDvars.convertStringToDouble(corticalLayerKeypointsXY[i+1]);
 			//cout << "corticalLayerKeypoints[k].x = " << corticalLayerKeypoints[k].x << endl;
 			//cout << "corticalLayerKeypoints[k].y = " << corticalLayerKeypoints[k].y << endl;
 		}
@@ -46,7 +44,7 @@ bool readCorticalLayersBoundaryKeypointTable(const string corticalLayersBoundary
 	return result;	
 }
 
-bool calculateNeuronLayers(const bool localConnectomeDatasetType, vector<vector<string>>* localConnectionCSVdataset, vector<vector<vec>>* corticalLayersKeypoints)
+bool H01indexedCSVdatabaseCalculateNeuronLayerClass::calculateNeuronLayers(const bool localConnectomeDatasetType, vector<vector<string>>* localConnectionCSVdataset, vector<vector<vec>>* corticalLayersKeypoints)
 {
 	bool result = true;
 	int corticalLayersNumLayers = CORTICAL_LAYER_NUMBER_OF_LAYERS;
@@ -57,34 +55,34 @@ bool calculateNeuronLayers(const bool localConnectomeDatasetType, vector<vector<
 		
 		if(localConnectomeDatasetType)	//localConnectionCSVdatasetNeurons
 		{
-			double neuronX = calibrateCoordinateX(SHAREDvars2.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X]));
-			double neuronY = calibrateCoordinateY(SHAREDvars2.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y]));
+			double neuronX = this->calibrateCoordinateX(SHAREDvars.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X]));
+			double neuronY = this->calibrateCoordinateY(SHAREDvars.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y]));
 			//cout << "neuronX = " << neuronX << endl;
 			//cout << "neuronY = " << neuronY << endl;
-			int layerIndex = calculateNeuronLayer(corticalLayersNumLayers, corticalLayersKeypoints, neuronX, neuronY);
-			localConnectionCSVdatasetLine->push_back(SHAREDvars2.convertIntToString(layerIndex));
+			int layerIndex = this->calculateNeuronLayer(corticalLayersNumLayers, corticalLayersKeypoints, neuronX, neuronY);
+			localConnectionCSVdatasetLine->push_back(SHAREDvars.convertIntToString(layerIndex));
 		}
 		else	//localConnectionCSVdatasetConnections
 		{
-			double neuronX = calibrateCoordinateX(SHAREDvars2.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_X]));
-			double neuronY = calibrateCoordinateY(SHAREDvars2.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Y]));
+			double neuronX = this->calibrateCoordinateX(SHAREDvars.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_X]));
+			double neuronY = this->calibrateCoordinateY(SHAREDvars.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Y]));
 			//cout << "neuronX = " << neuronX << endl;
 			//cout << "neuronY = " << neuronY << endl;
-			int layerIndex = calculateNeuronLayer(corticalLayersNumLayers, corticalLayersKeypoints, neuronX, neuronY);
-			localConnectionCSVdatasetLine->push_back(SHAREDvars2.convertIntToString(layerIndex));
-			neuronX = calibrateCoordinateX(SHAREDvars2.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_X]));
-			neuronY = calibrateCoordinateY(SHAREDvars2.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Y]));
+			int layerIndex = this->calculateNeuronLayer(corticalLayersNumLayers, corticalLayersKeypoints, neuronX, neuronY);
+			localConnectionCSVdatasetLine->push_back(SHAREDvars.convertIntToString(layerIndex));
+			neuronX = this->calibrateCoordinateX(SHAREDvars.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_X]));
+			neuronY = this->calibrateCoordinateY(SHAREDvars.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Y]));
 			//cout << "neuronX = " << neuronX << endl;
 			//cout << "neuronY = " << neuronY << endl;
-			layerIndex = calculateNeuronLayer(corticalLayersNumLayers, corticalLayersKeypoints, neuronX, neuronY);
-			localConnectionCSVdatasetLine->push_back(SHAREDvars2.convertIntToString(layerIndex));		
+			layerIndex = this->calculateNeuronLayer(corticalLayersNumLayers, corticalLayersKeypoints, neuronX, neuronY);
+			localConnectionCSVdatasetLine->push_back(SHAREDvars.convertIntToString(layerIndex));		
 		}
 	}
 	
 	return result;
 }
 
-int calculateNeuronLayer(int corticalLayersNumLayers, vector<vector<vec>>* corticalLayersKeypoints, double neuronX, double neuronY)
+int H01indexedCSVdatabaseCalculateNeuronLayerClass::calculateNeuronLayer(int corticalLayersNumLayers, vector<vector<vec>>* corticalLayersKeypoints, double neuronX, double neuronY)
 {
 	//so algorithm for testing whether a neuron is to the left of a cortical layer boundary;
 	//for every cortical layer boundary (L2toL1 (1), L3toL2 (2), L4toL3 (3), L5toL4 (4), L6toL5 (5), WMtoL6 (6), WM (7)):
@@ -103,7 +101,7 @@ int calculateNeuronLayer(int corticalLayersNumLayers, vector<vector<vec>>* corti
 			if(layerIndex < corticalLayersNumLayers)
 			{
 				vector<vec>* corticalLayerKeypoints = &((*corticalLayersKeypoints)[layerIndex-1]);
-				if(isNeuronInCorticalLayer(layerIndex, neuronX, neuronY, corticalLayerKeypoints))
+				if(this->isNeuronInCorticalLayer(layerIndex, neuronX, neuronY, corticalLayerKeypoints))
 				{
 					foundLayer = true;
 					foundLayerIndex = layerIndex;
@@ -120,7 +118,7 @@ int calculateNeuronLayer(int corticalLayersNumLayers, vector<vector<vec>>* corti
 	return foundLayerIndex;
 }
 
-bool isNeuronInCorticalLayer(int layerIndex, double neuronX, double neuronY, vector<vec>* corticalLayerKeypoints)
+bool H01indexedCSVdatabaseCalculateNeuronLayerClass::isNeuronInCorticalLayer(int layerIndex, double neuronX, double neuronY, vector<vec>* corticalLayerKeypoints)
 {
 	//get two nearest (y) points on cortical layer boundary, draw a straight line between them
 
@@ -180,14 +178,14 @@ bool isNeuronInCorticalLayer(int layerIndex, double neuronX, double neuronY, vec
 		nearest2CorticalLayerKeypointY = nearest1CorticalLayerKeypointYtemp;
 	}
 	
-	double pointRightOfLine = isPointRightOfLine(nearest1CorticalLayerKeypointX, nearest1CorticalLayerKeypointY, nearest2CorticalLayerKeypointX, nearest2CorticalLayerKeypointY, neuronX, neuronY);
+	double pointRightOfLine = this->isPointRightOfLine(nearest1CorticalLayerKeypointX, nearest1CorticalLayerKeypointY, nearest2CorticalLayerKeypointX, nearest2CorticalLayerKeypointY, neuronX, neuronY);
 	
 	bool result = pointRightOfLine;
 	
 	return result;
 }
 				
-bool isPointRightOfLine(double Ax, double Ay, double Bx, double By, double X, double Y)
+bool H01indexedCSVdatabaseCalculateNeuronLayerClass::isPointRightOfLine(double Ax, double Ay, double Bx, double By, double X, double Y)
 {
 	//note left/right is defined when looking at point B from point A
 	double position = ((Bx - Ax) * (Y - Ay) - (By - Ay) * (X - Ax));
@@ -208,11 +206,11 @@ bool isPointRightOfLine(double Ax, double Ay, double Bx, double By, double X, do
 
 #endif
 
-void getLinesFromFileCSV(const string fileName, vector<vector<string>>* CSVdatasetFile, int* CSVdatasetFileSize, const char delimiter, const bool expectFirstLineHeader)
+void H01indexedCSVdatabaseCalculateNeuronLayerClass::getLinesFromFileCSV(const string fileName, vector<vector<string>>* CSVdatasetFile, int* CSVdatasetFileSize, const char delimiter, const bool expectFirstLineHeader)
 {
 	vector<string> dataSetFile;
 	int dataSetFileSize = 0;
-	SHAREDvars2.getLinesFromFile(fileName, &dataSetFile, &dataSetFileSize);
+	SHAREDvars.getLinesFromFile(fileName, &dataSetFile, &dataSetFileSize);
 	
 	bool firstLine = true;
 	
@@ -256,19 +254,20 @@ void getLinesFromFileCSV(const string fileName, vector<vector<string>>* CSVdatas
 	*CSVdatasetFileSize = CSVdatasetFile->size();
 }
 
-double calibrateCoordinateX(const double csvDatabaseCoordinateX)
+#ifdef INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME
+double H01indexedCSVdatabaseCalculateNeuronLayerClass::calibrateCoordinateX(const double csvDatabaseCoordinateX)
 {
 	double visualisationCoordinateX = (csvDatabaseCoordinateX*LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_X) + LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_MIN_X;
 	return visualisationCoordinateX;
 }
-double calibrateCoordinateY(const double csvDatabaseCoordinateY)
+double H01indexedCSVdatabaseCalculateNeuronLayerClass::calibrateCoordinateY(const double csvDatabaseCoordinateY)
 {
 	double visualisationCoordinateY = (csvDatabaseCoordinateY*LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_Y) + LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_MIN_Y;
 	return visualisationCoordinateY;
 }
-double calibrateCoordinateZ(const double csvDatabaseCoordinateZ)
+double H01indexedCSVdatabaseCalculateNeuronLayerClass::calibrateCoordinateZ(const double csvDatabaseCoordinateZ)
 {
 	double visualisationCoordinateZ = (csvDatabaseCoordinateZ*LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_Z) + LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_MIN_Z;
 	return visualisationCoordinateZ;
 }
-
+#endif

@@ -7,7 +7,7 @@
  * Requirements: BAI SHARED C++ library, Eigen 3 C++ library
  * Compilation: ./compileH01indexedCSVdatabase.sh (enable INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME/INDEXED_CSV_DATABASE_CREATE/INDEXED_CSV_DATABASE_QUERY)
  * Usage: ./H01indexedCSVdatabase.exe
- * Description: H01 indexed CSV database
+ * Description: H01 indexed CSV database (global defs)
  * Comments:
  * /
  *******************************************************************************/
@@ -198,8 +198,9 @@
 	#define LOCAL_CONNECTOME_VISUALISATION_FOLDER_CONNECTION_TYPES_DERIVED_FROM_EM_IMAGES "connectionTypesFromEMimages/"
 	#define LOCAL_CONNECTOME_VISUALISATION_FOLDER_2D "2D/"
 	#define LOCAL_CONNECTOME_VISUALISATION_FOLDER_3D "3D/"
+	#define LOCAL_CONNECTOME_VISUALISATION_TEMPLATES_FOLDER "visualisations/templates"
 	
-	//calibration values extracted from working/calibration/readme.txt - conversion from C3/CSV database to SVG/LDR visualisation:		
+	//calibration values extracted from dev/working/calibration/readme.txt - conversion from C3/CSV database to SVG/LDR visualisation:		
 	#define LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_X (0.00744)
 	#define LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_Y (0.00744)
 	#define LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_Z (0.00744)
@@ -364,8 +365,4 @@
 
 #define CPP_STRING_FIND_RESULT_FAIL_VALUE2 int(CPP_STRING_FIND_RESULT_FAIL_VALUE)
 
-
-int main();
-
-void getLinesFromFileCSV(const string fileName, vector<vector<string>>* CSVdatasetFile, int* CSVdatasetFileSize, char delimiter);
 

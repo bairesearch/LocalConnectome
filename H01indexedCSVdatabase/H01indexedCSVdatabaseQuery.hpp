@@ -24,6 +24,7 @@
  *******************************************************************************/
 
 #include "H01indexedCSVdatabase.hpp"
+#include "SHAREDvars.hpp"
 
 #ifdef INDEXED_CSV_DATABASE_QUERY
 
@@ -51,12 +52,18 @@ public:
 #endif
 
 
-bool queryIndexedCSVdatabase();
-	bool queryIndexedCSVdatabase(const string neuronListFileName, const bool queryPresynapticConnectionNeurons, const string neuronListConnectionsFileName);
-		bool queryIndexedCSVdatabaseByNeuronID(const string neuronID, const bool queryPresynapticConnectionNeurons, vector<vector<string>>* neuronConnectionTargetSourceList);
-			bool convertCSVlineToVector(const string* csvLineText, vector<string>* csvLineVector);
+class H01indexedCSVdatabaseQueryClass
+{
+	private: SHAREDvarsClass SHAREDvars;
+
+	public: bool queryIndexedCSVdatabase();
+		private: bool queryIndexedCSVdatabase(const string neuronListFileName, const bool queryPresynapticConnectionNeurons, const string neuronListConnectionsFileName);
+			private: bool queryIndexedCSVdatabaseByNeuronID(const string neuronID, const bool queryPresynapticConnectionNeurons, vector<vector<string>>* neuronConnectionList);
+				private: bool convertCSVlineToVector(const string* csvLineText, vector<string>* csvLineVector);
 			
 #ifndef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_FILE_OBJECT
-void appendStringBufferToPreallocatedString(string* s, string stringToAppend);
+	private: void appendStringBufferToPreallocatedString(string* s, string stringToAppend);
 #endif
+};
+
 #endif

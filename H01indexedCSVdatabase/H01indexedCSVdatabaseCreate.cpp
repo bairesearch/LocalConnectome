@@ -15,13 +15,11 @@
  *******************************************************************************/
 
 #include "H01indexedCSVdatabaseCreate.hpp"
-#include "SHAREDvars.hpp"
 
 #ifdef INDEXED_CSV_DATABASE_CREATE
 
-SHAREDvarsClass SHAREDvars;
 
-bool createIndexedCSVdatabase()
+bool H01indexedCSVdatabaseCreateClass::createIndexedCSVdatabase()
 {
 	bool result = true;
 	
@@ -87,8 +85,8 @@ bool createIndexedCSVdatabase()
 			cout << "currentLineText = " << currentLineText << endl;
 			#endif
 
-			string neuronIDcontents1 = findJsonFieldValue(&currentLineText, neuronIDname, false);
-			string neuronIDcontents2 = findJsonFieldValue(&currentLineText, neuronIDname, true);
+			string neuronIDcontents1 = this->findJsonFieldValue(&currentLineText, neuronIDname, false);
+			string neuronIDcontents2 = this->findJsonFieldValue(&currentLineText, neuronIDname, true);
 			if(((neuronIDcontents1 != "") && (neuronIDcontents2 != "")) && (neuronIDcontents1 != neuronIDcontents2))
 			{
 				/*//alternative;
@@ -98,21 +96,21 @@ bool createIndexedCSVdatabase()
 				string synapseTypeContents = currentLineText.substr(synapseTypeIndex, 1);	//1/2
 				*/
 				int synapseTypeNameIndex = CPP_STRING_FIND_RESULT_FAIL_VALUE2;
-				string synapseTypeContents = findJsonFieldValue(&currentLineText, synapseTypeName, true, currentLineText.length(), &synapseTypeNameIndex);
+				string synapseTypeContents = this->findJsonFieldValue(&currentLineText, synapseTypeName, true, currentLineText.length(), &synapseTypeNameIndex);
 				int locationNameStartIndex = currentLineText.find(locationName);
 				int locationObjectContentsStartIndex = locationNameStartIndex + 2;	//eg "location":{	[+ :{]
 				int locationObjectContentsCloseIndex = currentLineText.find(jsonObjectCharacterClose, locationObjectContentsStartIndex);
 				string locationObjectContents = currentLineText.substr(locationObjectContentsStartIndex, locationObjectContentsCloseIndex-locationObjectContentsStartIndex);
-				string locationObjectContentsXcoordinatesContent = findJsonFieldValue(&locationObjectContents, locationObjectContentsXcoordinatesName, false);
-				string locationObjectContentsYcoordinatesContent = findJsonFieldValue(&locationObjectContents, locationObjectContentsYcoordinatesName, false);
-				string locationObjectContentsZcoordinatesContent = findJsonFieldValue(&locationObjectContents, locationObjectContentsZcoordinatesName, false);				
+				string locationObjectContentsXcoordinatesContent = this->findJsonFieldValue(&locationObjectContents, locationObjectContentsXcoordinatesName, false);
+				string locationObjectContentsYcoordinatesContent = this->findJsonFieldValue(&locationObjectContents, locationObjectContentsYcoordinatesName, false);
+				string locationObjectContentsZcoordinatesContent = this->findJsonFieldValue(&locationObjectContents, locationObjectContentsZcoordinatesName, false);				
 		
-				string synapticSiteTypeContents1 = findJsonFieldValue(&currentLineText, synapticSiteTypeName, false, 0);
-				string synapticSiteTypeContents2 = findJsonFieldValue(&currentLineText, synapticSiteTypeName, true, synapseTypeNameIndex);		
-				string classLabelContents1 = findJsonFieldValue(&currentLineText, classLabelName, false, 0);
-				string classLabelContents2 = findJsonFieldValue(&currentLineText, classLabelName, true, synapseTypeNameIndex);			
-				string baseNeuronIDcontents1 = findJsonFieldValue(&currentLineText, baseNeuronIDname, false, 0);
-				string baseNeuronIDcontents2 = findJsonFieldValue(&currentLineText, baseNeuronIDname, true, synapseTypeNameIndex);			
+				string synapticSiteTypeContents1 = this->findJsonFieldValue(&currentLineText, synapticSiteTypeName, false, 0);
+				string synapticSiteTypeContents2 = this->findJsonFieldValue(&currentLineText, synapticSiteTypeName, true, synapseTypeNameIndex);		
+				string classLabelContents1 = this->findJsonFieldValue(&currentLineText, classLabelName, false, 0);
+				string classLabelContents2 = this->findJsonFieldValue(&currentLineText, classLabelName, true, synapseTypeNameIndex);			
+				string baseNeuronIDcontents1 = this->findJsonFieldValue(&currentLineText, baseNeuronIDname, false, 0);
+				string baseNeuronIDcontents2 = this->findJsonFieldValue(&currentLineText, baseNeuronIDname, true, synapseTypeNameIndex);			
 
 				string classLabelContentsSmall1 = classLabelContents1.substr(0,1);	//save first character only (A:AXON, D:DENDRITE, C:SOMA, etc)
 				string classLabelContentsSmall2 = classLabelContents2.substr(0,1);	//save first character only (A:AXON, D:DENDRITE, C:SOMA, etc)
@@ -150,8 +148,8 @@ bool createIndexedCSVdatabase()
 				#endif
 				
 				string rawText = currentLineText + STRING_NEWLINE;	
-				addSynapseToCSVdatabase(neuronIDcontents1, &csvText, &rawText, true);
-				addSynapseToCSVdatabase(neuronIDcontents2, &csvText, &rawText, false);
+				this->addSynapseToCSVdatabase(neuronIDcontents1, &csvText, &rawText, true);
+				this->addSynapseToCSVdatabase(neuronIDcontents2, &csvText, &rawText, false);
 			}
 			else
 			{
@@ -163,7 +161,7 @@ bool createIndexedCSVdatabase()
 	return result;
 }	
 
-bool addSynapseToCSVdatabase(const string neuronIDcontents, const string* csvText, const string* rawText, const bool indexByPresynapticNeuron)
+bool H01indexedCSVdatabaseCreateClass::addSynapseToCSVdatabase(const string neuronIDcontents, const string* csvText, const string* rawText, const bool indexByPresynapticNeuron)
 {
 	bool result = true;
 	
@@ -239,7 +237,7 @@ bool addSynapseToCSVdatabase(const string neuronIDcontents, const string* csvTex
 	return result;
 }
 				
-string findJsonFieldValue(const string* currentLineText, const string jsonFieldName, bool lastInstance)
+string H01indexedCSVdatabaseCreateClass::findJsonFieldValue(const string* currentLineText, const string jsonFieldName, bool lastInstance)
 {
 	int searchStartPos = 0;
 	if(lastInstance)
@@ -247,14 +245,14 @@ string findJsonFieldValue(const string* currentLineText, const string jsonFieldN
 		searchStartPos = currentLineText->length();
 	}
 	int jsonFieldNameIndex = CPP_STRING_FIND_RESULT_FAIL_VALUE2;
-	return findJsonFieldValue(currentLineText, jsonFieldName, lastInstance, searchStartPos, &jsonFieldNameIndex);
+	return this->findJsonFieldValue(currentLineText, jsonFieldName, lastInstance, searchStartPos, &jsonFieldNameIndex);
 }
-string findJsonFieldValue(const string* currentLineText, const string jsonFieldName, bool lastInstance, const int searchStartPos)
+string H01indexedCSVdatabaseCreateClass::findJsonFieldValue(const string* currentLineText, const string jsonFieldName, bool lastInstance, const int searchStartPos)
 {
 	int jsonFieldNameIndex = CPP_STRING_FIND_RESULT_FAIL_VALUE2;
-	return findJsonFieldValue(currentLineText, jsonFieldName, lastInstance, searchStartPos, &jsonFieldNameIndex);
+	return this->findJsonFieldValue(currentLineText, jsonFieldName, lastInstance, searchStartPos, &jsonFieldNameIndex);
 }
-string findJsonFieldValue(const string* currentLineText, const string jsonFieldName, bool lastInstance, const int searchStartPos, int* jsonFieldNameIndex)
+string H01indexedCSVdatabaseCreateClass::findJsonFieldValue(const string* currentLineText, const string jsonFieldName, bool lastInstance, const int searchStartPos, int* jsonFieldNameIndex)
 {
 	string jsonFieldContents = "";
 	

@@ -17,18 +17,26 @@
 #include "H01indexedCSVdatabase.hpp"
 #include "SHAREDvars.hpp"
 
-#ifdef INDEXED_CSV_DATABASE_CALCULATE_NEURON_LAYERS
 
-bool readCorticalLayersBoundaryKeypointTable(const string corticalLayersBoundaryKeypointTableFileName, vector<vector<vec>>* corticalLayersKeypoints);
-bool calculateNeuronLayers(const bool , vector<vector<string>>* localConnectionCSVdataset, vector<vector<vec>>* corticalLayersKeypoints);
-	int calculateNeuronLayer(int corticalLayersNumLayers, vector<vector<vec>>* corticalLayersKeypoints, double neuronX, double neuronY);
-		bool isNeuronInCorticalLayer(int layerIndex, double neuronX, double neuronY, vector<vec>* corticalLayerKeypoints);
-			bool isPointRightOfLine(double Ax, double Ay, double Bx, double By, double X, double Y);
+class H01indexedCSVdatabaseCalculateNeuronLayerClass
+{
+	private: SHAREDvarsClass SHAREDvars;
+
+#ifdef INDEXED_CSV_DATABASE_CALCULATE_NEURON_LAYERS
+	public: bool readCorticalLayersBoundaryKeypointTable(const string corticalLayersBoundaryKeypointTableFileName, vector<vector<vec>>* corticalLayersKeypoints);
+	public: bool calculateNeuronLayers(const bool localConnectomeDatasetType, vector<vector<string>>* localConnectionCSVdataset, vector<vector<vec>>* corticalLayersKeypoints);
+		private: int calculateNeuronLayer(int corticalLayersNumLayers, vector<vector<vec>>* corticalLayersKeypoints, double neuronX, double neuronY);
+			private: bool isNeuronInCorticalLayer(int layerIndex, double neuronX, double neuronY, vector<vec>* corticalLayerKeypoints);
+				private: bool isPointRightOfLine(double Ax, double Ay, double Bx, double By, double X, double Y);
 #endif
 
-void getLinesFromFileCSV(const string fileName, vector<vector<string>>* CSVdatasetFile, int* CSVdatasetFileSize, const char delimiter, const bool expectFirstLineHeader);
-double calibrateCoordinateX(const double csvDatabaseCoordinateX);
-double calibrateCoordinateY(const double csvDatabaseCoordinateY);
-double calibrateCoordinateZ(const double csvDatabaseCoordinateZ);
+	//should be moved to separate file;
+	public: void getLinesFromFileCSV(const string fileName, vector<vector<string>>* CSVdatasetFile, int* CSVdatasetFileSize, const char delimiter, const bool expectFirstLineHeader);
+	#ifdef INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME
+	public: double calibrateCoordinateX(const double csvDatabaseCoordinateX);
+	public: double calibrateCoordinateY(const double csvDatabaseCoordinateY);
+	public: double calibrateCoordinateZ(const double csvDatabaseCoordinateZ);
+	#endif
+};
 
 
