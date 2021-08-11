@@ -31,7 +31,6 @@ class H01indexedCSVdatabaseCalculateNeuronLayerClass
 #endif
 
 	//should be moved to separate file;
-	public: void getLinesFromFileCSV(const string fileName, vector<vector<string>>* CSVdatasetFile, int* CSVdatasetFileSize, const char delimiter, const bool expectFirstLineHeader);
 	#ifdef INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME
 	public: double calibrateCoordinateX(const double csvDatabaseCoordinateX);
 	public: double calibrateCoordinateY(const double csvDatabaseCoordinateY);

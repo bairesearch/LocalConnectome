@@ -41,7 +41,7 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 	
 	cout << "connectionTypesDerivedFromPresynapticNeuronsOrEMimages = " << connectionTypesDerivedFromPresynapticNeuronsOrEMimages << endl;
 	
-	#ifdef INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME_USE_RELATIVE_FOLDER
+	#ifdef LOCAL_CONNECTOME_FOLDER_BASE_USE_RELATIVE_FOLDER
 	SHAREDvars.setCurrentDirectory(currentDirectory);
 	#endif
 	string localConnectomeCSVdatabaseFolder = LOCAL_CONNECTOME_FOLDER_BASE;
@@ -51,17 +51,17 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 
 	vector<vector<string>> localConnectionCSVdatasetNeurons;
 	int localConnectionCSVdatasetNeuronsSize = 0;
-	H01indexedCSVdatabaseCalculateNeuronLayer.getLinesFromFileCSV(LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME, &localConnectionCSVdatasetNeurons, &localConnectionCSVdatasetNeuronsSize, CSV_DELIMITER_CHAR, true);
+	SHAREDvars.getLinesFromFileCSV(LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME, &localConnectionCSVdatasetNeurons, &localConnectionCSVdatasetNeuronsSize, CSV_DELIMITER_CHAR, true);
 	
 	vector<vector<string>> localConnectionCSVdatasetConnections;
 	int localConnectionCSVdatasetConnectionsSize = 0;
 	if(connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
 	{
-		H01indexedCSVdatabaseCalculateNeuronLayer.getLinesFromFileCSV(LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS, &localConnectionCSVdatasetConnections, &localConnectionCSVdatasetConnectionsSize, CSV_DELIMITER_CHAR, true);
+		SHAREDvars.getLinesFromFileCSV(LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS, &localConnectionCSVdatasetConnections, &localConnectionCSVdatasetConnectionsSize, CSV_DELIMITER_CHAR, true);
 	}
 	else
 	{
-		H01indexedCSVdatabaseCalculateNeuronLayer.getLinesFromFileCSV(LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES, &localConnectionCSVdatasetConnections, &localConnectionCSVdatasetConnectionsSize, CSV_DELIMITER_CHAR, true);
+		SHAREDvars.getLinesFromFileCSV(LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES, &localConnectionCSVdatasetConnections, &localConnectionCSVdatasetConnectionsSize, CSV_DELIMITER_CHAR, true);
 	}
 
 	#ifdef LOCAL_CONNECTOME_VISUALISATION_LAYERS
@@ -208,7 +208,7 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 	{
 		vector<string> localConnectionCSVdatasetNeuron = (*localConnectionCSVdatasetNeurons)[i];
 		//cout << "localConnectionCSVdatasetNeurons: i = " << i << endl;
-		
+				
 		int excitationType = SHAREDvars.convertStringToInt(localConnectionCSVdatasetNeuron[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE]);
 		//cout << "excitationType = " << excitationType << endl;
 		string neuronTypeStringSVG = ""; 
@@ -276,11 +276,11 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 						{
 							if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY)
 							{
-								neuronTypeStringLDR = SHAREDvars.convertIntToString(local_connectome_visualisation_neurons_colour_exciteneuron_layer_array[layerIndex]);
+								neuronTypeStringLDR = SHAREDvars.convertIntToString(local_connectome_visualisation_neurons_colour_exciteneuron_layer_array[layerIndex-1]);
 							}
 							else if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY)
 							{
-								neuronTypeStringLDR = SHAREDvars.convertIntToString(local_connectome_visualisation_neurons_colour_inhibitneuron_layer_array[layerIndex]);
+								neuronTypeStringLDR = SHAREDvars.convertIntToString(local_connectome_visualisation_neurons_colour_inhibitneuron_layer_array[layerIndex-1]);
 							}
 						}
 					}			
@@ -338,167 +338,172 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 		//cout << "localConnectionCSVdatasetConnections: i = " << i << endl;
 
 		vector<string> localConnectionCSVdatasetConnection = (*localConnectionCSVdatasetConnections)[i];
+
+		int numberOfSynapses = SHAREDvars.convertStringToInt(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_SYN_NUM]);
+		for(int s=0; s<numberOfSynapses; s++)
+		{
 			
-		int excitationType = SHAREDvars.convertStringToInt(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE]);
-		string connectionTypeStringSVG = ""; 
-		string connectionTypeStringLDR = "";
-		if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY)
-		{
-			connectionTypeStringSVG = connectionTypeStringSVG + LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_EXCITATION_TYPE_EXCITATORY;
-			#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
-			connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_EXCITATORY);	
-			#endif
-		}
-		else if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY)
-		{
-			connectionTypeStringSVG = connectionTypeStringSVG + LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_EXCITATION_TYPE_INHIBITORY;
-			#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
-			connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_INHIBITORY);
-			#endif
-		}
-		else
-		{
-			cerr << "visualiseLocalConnectomeGenerateContent error; localConnectionCSVdatasetConnection excitationType unknown = " << excitationType << endl;
-		}
-
-		#ifdef LOCAL_CONNECTOME_VISUALISATION_LAYERS
-		bool passLayerVisualisationChecks = true;
-		int layerIndex = INT_DEFAULT_VALUE;
-		if(visualiseLayers)
-		{
-			layerIndex = SHAREDvars.convertStringToInt(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_ARTIFICIAL_LAYER]);
-			connectionTypeStringSVG = connectionTypeStringSVG + LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_LAYER + SHAREDvars.convertIntToString(layerIndex);
-						
-			if(visualiseLayersSpecific)
+			int excitationType = SHAREDvars.convertStringToInt(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE]);
+			string connectionTypeStringSVG = ""; 
+			string connectionTypeStringLDR = "";
+			if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY)
 			{
-				passLayerVisualisationChecks = false;
-				if(layerIndex == layerIndexVisualise)
-				{
-					passLayerVisualisationChecks = true;	
-				}
+				connectionTypeStringSVG = connectionTypeStringSVG + LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_EXCITATION_TYPE_EXCITATORY;
+				#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
+				connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_EXCITATORY);	
+				#endif
 			}
-		}
-		if(passLayerVisualisationChecks)
-		{
-		#endif
-
-			double xCalibratedPre = H01indexedCSVdatabaseCalculateNeuronLayer.calibrateCoordinateX(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_X]));
-			double yCalibratedPre = H01indexedCSVdatabaseCalculateNeuronLayer.calibrateCoordinateY(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Y]));
-			double zCalibratedPre = H01indexedCSVdatabaseCalculateNeuronLayer.calibrateCoordinateZ(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Z]));
-			double xCalibratedPost = H01indexedCSVdatabaseCalculateNeuronLayer.calibrateCoordinateX(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_X]));
-			double yCalibratedPost = H01indexedCSVdatabaseCalculateNeuronLayer.calibrateCoordinateY(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Y]));
-			double zCalibratedPost = H01indexedCSVdatabaseCalculateNeuronLayer.calibrateCoordinateZ(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Z]));		
-
-			int connectionRadialGradientType = this->calculateConnectionRadialGradientType(xCalibratedPre, xCalibratedPost);	
-			if(connectionRadialGradientType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_RADIALGRADIENT_TYPE_POSITIVE)
+			else if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY)
 			{
-				connectionTypeStringSVG = connectionTypeStringSVG + LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_RADIALGRADIENT_TYPE_POSITIVE;
+				connectionTypeStringSVG = connectionTypeStringSVG + LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_EXCITATION_TYPE_INHIBITORY;
+				#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
+				connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_INHIBITORY);
+				#endif
 			}
-			else if(connectionRadialGradientType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_RADIALGRADIENT_TYPE_NEGATIVE)
-			{
-				connectionTypeStringSVG = connectionTypeStringSVG + LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_RADIALGRADIENT_TYPE_NEGATIVE;
-			}
-			
-			int connectionFlowType = INT_DEFAULT_VALUE;
-			if(visualiseFlow)
-			{
-				connectionFlowType = this->calculateConnectionFlowType(xCalibratedPre, yCalibratedPre, xCalibratedPost, yCalibratedPost);	
-				if(connectionFlowType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_POSITIVE)
-				{
-					connectionTypeStringSVG = connectionTypeStringSVG + LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_FLOW_TYPE_POSITIVE;
-				}
-				else if(connectionFlowType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_NEGATIVE)
-				{
-					connectionTypeStringSVG = connectionTypeStringSVG + LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_FLOW_TYPE_NEGATIVE;
-				}
-			}
-	
-			connectionTypeStringSVG = connectionTypeStringSVG + LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_APPEND;
-
-			#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
-			if(!generate2Dvisualisation)
-			{	
-				//LDR format doesn't support (line) radial colour gradients; so connection direction will be ignored (not rendered)
-				if(visualiseFlow)
-				{
-					if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY)
-					{
-						if(connectionFlowType)
-						{
-							connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_EXCITATORY_FLOW_TYPE_POSITIVE);
-						}
-						else
-						{
-							connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_EXCITATORY_FLOW_TYPE_NEGATIVE);
-						}
-					}
-					else if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY)
-					{
-						if(connectionFlowType)
-						{
-							connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_INHIBITORY_FLOW_TYPE_POSITIVE);
-						}
-						else
-						{
-							connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_INHIBITORY_FLOW_TYPE_NEGATIVE);
-						}
-					}
-					//cout << "connectionTypeStringLDR = " << connectionTypeStringLDR << endl;
-				}
-			}
-			#endif
-			#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
-			//special case (hard coded); colour by layer
-			if(!generate2Dvisualisation)
-			{	
-				if(!visualiseFlow)
-				{
-					if(visualiseLayers)
-					{
-						if(coloursetNumber == 1)
-						{
-							if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY)
-							{
-								connectionTypeStringLDR = SHAREDvars.convertIntToString(local_connectome_visualisation_neurons_colour_exciteneuron_layer_array[layerIndex]);
-							}
-							else if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY)
-							{
-								connectionTypeStringLDR = SHAREDvars.convertIntToString(local_connectome_visualisation_neurons_colour_inhibitneuron_layer_array[layerIndex]);
-							}
-						}
-					}			
-				}
-			}
-			#endif
-
-			string localConnectionVisualisationConnectionText = "";
-			if(generate2Dvisualisation)
-			{
-				localConnectionVisualisationConnectionText = localConnectionVisualisationConnectionText + "     <path clip-path='url(#p9a78a7c8e7)' d='M " + this->convertDoubleToStringCalibrationPrecision(xCalibratedPre) + " " + this->convertDoubleToStringCalibrationPrecision(yCalibratedPre) + "  L " + this->convertDoubleToStringCalibrationPrecision(xCalibratedPost) + " " + this->convertDoubleToStringCalibrationPrecision(yCalibratedPost) + "  ' style='fill:none;stroke:url(#" + connectionTypeStringSVG + ");stroke-opacity:0.75;stroke-width:0.25;'/>" + STRING_NEWLINE;
-				//eg     <path clip-path='url(#p9a78a7c8e7)' d='M 2959.68672 1597.1004  L 2856.87336 1772.75136  ' style='fill:none;stroke:url(#exciteConnectionRadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
-			}
-			#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 			else
 			{
-				localConnectionVisualisationConnectionText = localConnectionVisualisationConnectionText + SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_LDR_REFERENCE_TYPE) + LDR_DELIMITER + connectionTypeStringLDR + LDR_DELIMITER + this->convertDoubleToStringCalibrationPrecision(xCalibratedPre) + LDR_DELIMITER + this->convertDoubleToStringCalibrationPrecision(yCalibratedPre) + LDR_DELIMITER + this->convertDoubleToStringCalibrationPrecision(zCalibratedPre) + LDR_DELIMITER + this->convertDoubleToStringCalibrationPrecision(xCalibratedPost) + LDR_DELIMITER + this->convertDoubleToStringCalibrationPrecision(yCalibratedPost) + LDR_DELIMITER + this->convertDoubleToStringCalibrationPrecision(zCalibratedPost) + STRING_NEWLINE;
-				//eg 2 2 2959.68672 1597.1004 0 2856.87336 1772.75136 3.80928
+				cerr << "visualiseLocalConnectomeGenerateContent error; localConnectionCSVdatasetConnection excitationType unknown = " << excitationType << endl;
+			}
+
+			#ifdef LOCAL_CONNECTOME_VISUALISATION_LAYERS
+			bool passLayerVisualisationChecks = true;
+			int layerIndex = INT_DEFAULT_VALUE;
+			if(visualiseLayers)
+			{
+				layerIndex = SHAREDvars.convertStringToInt(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_ARTIFICIAL_LAYER]);
+				connectionTypeStringSVG = connectionTypeStringSVG + LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_LAYER + SHAREDvars.convertIntToString(layerIndex);
+
+				if(visualiseLayersSpecific)
+				{
+					passLayerVisualisationChecks = false;
+					if(layerIndex == layerIndexVisualise)
+					{
+						passLayerVisualisationChecks = true;	
+					}
+				}
+			}
+			if(passLayerVisualisationChecks)
+			{
+			#endif
+
+				double xCalibratedPre = H01indexedCSVdatabaseCalculateNeuronLayer.calibrateCoordinateX(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_X]));
+				double yCalibratedPre = H01indexedCSVdatabaseCalculateNeuronLayer.calibrateCoordinateY(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Y]));
+				double zCalibratedPre = H01indexedCSVdatabaseCalculateNeuronLayer.calibrateCoordinateZ(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Z]));
+				double xCalibratedPost = H01indexedCSVdatabaseCalculateNeuronLayer.calibrateCoordinateX(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_X]));
+				double yCalibratedPost = H01indexedCSVdatabaseCalculateNeuronLayer.calibrateCoordinateY(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Y]));
+				double zCalibratedPost = H01indexedCSVdatabaseCalculateNeuronLayer.calibrateCoordinateZ(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Z]));		
+
+				int connectionRadialGradientType = this->calculateConnectionRadialGradientType(xCalibratedPre, xCalibratedPost);	
+				if(connectionRadialGradientType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_RADIALGRADIENT_TYPE_POSITIVE)
+				{
+					connectionTypeStringSVG = connectionTypeStringSVG + LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_RADIALGRADIENT_TYPE_POSITIVE;
+				}
+				else if(connectionRadialGradientType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_RADIALGRADIENT_TYPE_NEGATIVE)
+				{
+					connectionTypeStringSVG = connectionTypeStringSVG + LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_RADIALGRADIENT_TYPE_NEGATIVE;
+				}
+
+				int connectionFlowType = INT_DEFAULT_VALUE;
+				if(visualiseFlow)
+				{
+					connectionFlowType = this->calculateConnectionFlowType(xCalibratedPre, yCalibratedPre, xCalibratedPost, yCalibratedPost);	
+					if(connectionFlowType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_POSITIVE)
+					{
+						connectionTypeStringSVG = connectionTypeStringSVG + LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_FLOW_TYPE_POSITIVE;
+					}
+					else if(connectionFlowType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_NEGATIVE)
+					{
+						connectionTypeStringSVG = connectionTypeStringSVG + LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_FLOW_TYPE_NEGATIVE;
+					}
+				}
+
+				connectionTypeStringSVG = connectionTypeStringSVG + LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_APPEND;
+
+				#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
+				if(!generate2Dvisualisation)
+				{	
+					//LDR format doesn't support (line) radial colour gradients; so connection direction will be ignored (not rendered)
+					if(visualiseFlow)
+					{
+						if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY)
+						{
+							if(connectionFlowType)
+							{
+								connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_EXCITATORY_FLOW_TYPE_POSITIVE);
+							}
+							else
+							{
+								connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_EXCITATORY_FLOW_TYPE_NEGATIVE);
+							}
+						}
+						else if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY)
+						{
+							if(connectionFlowType)
+							{
+								connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_INHIBITORY_FLOW_TYPE_POSITIVE);
+							}
+							else
+							{
+								connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_INHIBITORY_FLOW_TYPE_NEGATIVE);
+							}
+						}
+						//cout << "connectionTypeStringLDR = " << connectionTypeStringLDR << endl;
+					}
+				}
+				#endif
+				#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
+				//special case (hard coded); colour by layer
+				if(!generate2Dvisualisation)
+				{	
+					if(!visualiseFlow)
+					{
+						if(visualiseLayers)
+						{
+							if(coloursetNumber == 1)
+							{
+								if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY)
+								{
+									connectionTypeStringLDR = SHAREDvars.convertIntToString(local_connectome_visualisation_neurons_colour_exciteneuron_layer_array[layerIndex-1]);
+								}
+								else if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY)
+								{
+									connectionTypeStringLDR = SHAREDvars.convertIntToString(local_connectome_visualisation_neurons_colour_inhibitneuron_layer_array[layerIndex-1]);
+								}
+							}
+						}			
+					}
+				}
+				#endif
+
+				string localConnectionVisualisationConnectionText = "";
+				if(generate2Dvisualisation)
+				{
+					localConnectionVisualisationConnectionText = localConnectionVisualisationConnectionText + "     <path clip-path='url(#p9a78a7c8e7)' d='M " + this->convertDoubleToStringCalibrationPrecision(xCalibratedPre) + " " + this->convertDoubleToStringCalibrationPrecision(yCalibratedPre) + "  L " + this->convertDoubleToStringCalibrationPrecision(xCalibratedPost) + " " + this->convertDoubleToStringCalibrationPrecision(yCalibratedPost) + "  ' style='fill:none;stroke:url(#" + connectionTypeStringSVG + ");stroke-opacity:0.75;stroke-width:0.25;'/>" + STRING_NEWLINE;
+					//eg     <path clip-path='url(#p9a78a7c8e7)' d='M 2959.68672 1597.1004  L 2856.87336 1772.75136  ' style='fill:none;stroke:url(#exciteConnectionRadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+				}
+				#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
+				else
+				{
+					localConnectionVisualisationConnectionText = localConnectionVisualisationConnectionText + SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_LDR_REFERENCE_TYPE) + LDR_DELIMITER + connectionTypeStringLDR + LDR_DELIMITER + this->convertDoubleToStringCalibrationPrecision(xCalibratedPre) + LDR_DELIMITER + this->convertDoubleToStringCalibrationPrecision(yCalibratedPre) + LDR_DELIMITER + this->convertDoubleToStringCalibrationPrecision(zCalibratedPre) + LDR_DELIMITER + this->convertDoubleToStringCalibrationPrecision(xCalibratedPost) + LDR_DELIMITER + this->convertDoubleToStringCalibrationPrecision(yCalibratedPost) + LDR_DELIMITER + this->convertDoubleToStringCalibrationPrecision(zCalibratedPost) + STRING_NEWLINE;
+					//eg 2 2 2959.68672 1597.1004 0 2856.87336 1772.75136 3.80928
+				}
+				#endif
+
+				//cout << "localConnectionVisualisationConnectionText = " << localConnectionVisualisationConnectionText << endl;
+
+				localConnectomeVisualisationContentsPart6 = localConnectomeVisualisationContentsPart6 + localConnectionVisualisationConnectionText;
+
+			#ifdef LOCAL_CONNECTOME_VISUALISATION_LAYERS
 			}
 			#endif
-			
-			//cout << "localConnectionVisualisationConnectionText = " << localConnectionVisualisationConnectionText << endl;
-
-			localConnectomeVisualisationContentsPart6 = localConnectomeVisualisationContentsPart6 + localConnectionVisualisationConnectionText;
-
-		#ifdef LOCAL_CONNECTOME_VISUALISATION_LAYERS
 		}
-		#endif
 				
 	}
 	
 	
 	
 	//other data;
-	#ifdef INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME_USE_RELATIVE_FOLDER
+	#ifdef LOCAL_CONNECTOME_FOLDER_BASE_USE_RELATIVE_FOLDER
 	SHAREDvars.setCurrentDirectory(currentDirectory);
 	#endif
 	string localConnectomeVisualisationTemplatesFolder = LOCAL_CONNECTOME_FOLDER_BASE;
@@ -587,7 +592,7 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 {
 	bool result = true;
 	
-	#ifdef INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME_USE_RELATIVE_FOLDER
+	#ifdef LOCAL_CONNECTOME_FOLDER_BASE_USE_RELATIVE_FOLDER
 	SHAREDvars.setCurrentDirectory(currentDirectory);
 	#endif
 	string localConnectomeVisualisationFolder = LOCAL_CONNECTOME_FOLDER_BASE;
@@ -597,22 +602,26 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 	if(connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
 	{
 		localConnectomeVisualisationFolder = LOCAL_CONNECTOME_VISUALISATION_FOLDER_CONNECTION_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS;
-		SHAREDvars.setCurrentDirectory(localConnectomeVisualisationFolder);	
+		//SHAREDvars.setCurrentDirectory(localConnectomeVisualisationFolder);
+		SHAREDvars.checkIfFolderExistsAndIfNotMakeAndSetAsCurrent(&localConnectomeVisualisationFolder);
 	}
 	else
 	{
 		localConnectomeVisualisationFolder = LOCAL_CONNECTOME_VISUALISATION_FOLDER_CONNECTION_TYPES_DERIVED_FROM_EM_IMAGES;
-		SHAREDvars.setCurrentDirectory(localConnectomeVisualisationFolder);	
+		//SHAREDvars.setCurrentDirectory(localConnectomeVisualisationFolder);
+		SHAREDvars.checkIfFolderExistsAndIfNotMakeAndSetAsCurrent(&localConnectomeVisualisationFolder);
 	}	
 	if(generate2Dvisualisation)
 	{
 		localConnectomeVisualisationFolder = LOCAL_CONNECTOME_VISUALISATION_FOLDER_2D;
-		SHAREDvars.setCurrentDirectory(localConnectomeVisualisationFolder);	
+		//SHAREDvars.setCurrentDirectory(localConnectomeVisualisationFolder);
+		SHAREDvars.checkIfFolderExistsAndIfNotMakeAndSetAsCurrent(&localConnectomeVisualisationFolder);
 	}
 	else
 	{
 		localConnectomeVisualisationFolder = LOCAL_CONNECTOME_VISUALISATION_FOLDER_3D;
-		SHAREDvars.setCurrentDirectory(localConnectomeVisualisationFolder);	
+		//SHAREDvars.setCurrentDirectory(localConnectomeVisualisationFolder);
+		SHAREDvars.checkIfFolderExistsAndIfNotMakeAndSetAsCurrent(&localConnectomeVisualisationFolder);	
 	}
 	
 	
@@ -669,6 +678,12 @@ string H01indexedCSVdatabaseVisualiseLocalConnectomeClass::convertDoubleToString
 {	
 	const string doubleFormat = "%0." + SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_DOUBLE_PRECISION) + "f";	//"%0.5f";
 	string doubleString = SHAREDvars.convertDoubleToString(value, doubleFormat);
+		
+	//remove trailing zeros (https://stackoverflow.com/a/13709929);
+	doubleString.erase(doubleString.find_last_not_of('0') + 1, CPP_STRING_FIND_RESULT_FAIL_VALUE); 
+	doubleString.erase(doubleString.find_last_not_of('.') + 1, CPP_STRING_FIND_RESULT_FAIL_VALUE);
+	//cout << "doubleString = " << doubleString << endl;
+
 	return doubleString;
 }
 

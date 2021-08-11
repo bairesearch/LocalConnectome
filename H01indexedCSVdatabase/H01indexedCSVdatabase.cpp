@@ -5,7 +5,7 @@
  * License: MIT License
  * Project: H01LocalConnectome
  * Requirements: BAI SHARED C++ library, Eigen 3 C++ library
- * Compilation: ./compileH01indexedCSVdatabase.sh (enable INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME/INDEXED_CSV_DATABASE_CREATE/INDEXED_CSV_DATABASE_QUERY)
+ * Compilation: ./compileH01indexedCSVdatabase.sh (enable INDEXED_CSV_DATABASE_CREATE/INDEXED_CSV_DATABASE_QUERY/INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME)
  * Usage: ./H01indexedCSVdatabase.exe
  * Description: H01 indexed CSV database (global defs)
  * Comments:

@@ -40,7 +40,7 @@ H01indexedCSVdatabase.cpp/.hpp:
 
  * Description: H01 indexed CSV database
  * Requirements: BAI SHARED C++ library, Eigen 3 C++ library
- * Compilation: ./compileH01indexedCSVdatabase.sh
+ * Compilation: ./compileH01indexedCSVdatabase.sh (enable INDEXED_CSV_DATABASE_CREATE/INDEXED_CSV_DATABASE_QUERY/INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME)
  * Usage: ./H01indexedCSVdatabase.exe
 
 H01indexedCSVdatabaseCreate.cpp/.hpp:
@@ -50,33 +50,52 @@ H01indexedCSVdatabaseCreate.cpp/.hpp:
  * Output Format: ssddata/indexed/123/csvPreSynapticNeuronID123456.csv - presynapticSiteNeuronID, postsynapticSiteNeuronID, presynapticSiteType, postsynapticSiteType, presynapticSiteClassLabel, postsynapticSiteClassLabel, presynapticSiteBaseNeuronID, postsynapticSiteBaseNeuronID, synapseLocationXcoordinates, synapseLocationYcoordinates, synapseLocationZcoordinates, synapseType
 
 H01indexedCSVdatabaseQuery.cpp/.hpp:
- * Description: H01 indexed CSV database query - lookup indexed CSV database by pre/postsynaptic neuron ID, and find target/source connections
+ * Description: H01 indexed CSV database query -
+     * INDEXED_CSV_DATABASE_QUERY_EXTRACT_INCOMING_OUTGOING_CONNECTIONS: mode 1 (lookup indexed CSV database by neuron ID, and find incoming/outgoing target connections, and write them to file)
+     * INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING: mode 2 (lookup indexed CSV database by neuron ID, find incoming target connections, and generate visualisation)
+     * INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET: mode 3 (automatically generate localConnectomeConnections-typesFromPresynapticNeurons.csv/localConnectomeConnections-typesFromEMimages.csv from localConnectomeNeurons.csv and H01 indexed CSV database)
  * Input: 
-     * INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING: localConnectomeNeuronIDlistDistinct.csv
-     * INDEXED_CSV_DATABASE_QUERY_OUTPUT_CONNECTIONS: localConnectomeNeuronIDlist1.csv/localConnectomeNeuronIDlist2.csv
+     * INDEXED_CSV_DATABASE_QUERY_OUTPUT_CONNECTIONS: localConnectomeNeurons.csv (or localConnectomeNeuronIDlistDistinct.csv)
+     * INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING: localConnectomeNeurons.csv (or localConnectomeNeuronIDlistDistinct.csv)
+     * INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET: localConnectomeNeurons.csv
  * Output Format (csv):
+     * INDEXED_CSV_DATABASE_QUERY_OUTPUT_CONNECTIONS: localConnectomeNeuronIDlistConnectionsPresynaptic.csv/localConnectomeNeuronIDlistConnectionsPostsynaptic.csv - connectionNeuronID1, connectionType1 [, locationObjectContentsXcoordinatesContent1, locationObjectContentsYcoordinatesContent1, locationObjectContentsZcoordinatesContent1], connectionNeuronID2, connectionType2 [, locationObjectContentsXcoordinatesContent2, locationObjectContentsYcoordinatesContent2, locationObjectContentsZcoordinatesContent2], etc 
      * INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING:
         * INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_3D_LINEAR_REGRESSION:
             * INDEXED_CSV_DATABASE_QUERY_OUTPUT_INCOMING_AXON_MAPPING_LDR: localConnectomeIncomingAxonMapping.ldr - LDR_TYPE_LINE ldrawColor plot3DpointStart.x plot3DpointStart.y plot3DpointStart.z plot3DpointEnd.x plot3DpointEnd.y plot3DpointEnd.z
              * INDEXED_CSV_DATABASE_QUERY_OUTPUT_INCOMING_AXON_MAPPING_CSV: localConnectomeIncomingAxonMapping.csv - polyFit.connectionNeuronID, polyFit.estSynapseType, polyFit.origin.x, polyFit.origin.y, polyFit.origin.z, polyFit.axis.x, polyFit.axis.y, polyFit.axis.z
         * INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_2D_POLY_REGRESSION:
              * INDEXED_CSV_DATABASE_QUERY_OUTPUT_INCOMING_AXON_MAPPING_CSV: localConnectomeIncomingAxonMapping.csv - polyFit.connectionNeuronID, polyFit.estSynapseType, polyFit.a, polyFit.b, polyFit.c
-     * INDEXED_CSV_DATABASE_QUERY_OUTPUT_CONNECTIONS: localConnectomeNeuronIDlist1connectionsPresynaptic.csv/localConnectomeNeuronIDlist1connectionsPostsynaptic.csv/localConnectomeNeuronIDlist2connectionsPresynaptic.csv/localConnectomeNeuronIDlist2connectionsPostsynaptic.csv - connectionNeuronID1, connectionType1 [, locationObjectContentsXcoordinatesContent1, locationObjectContentsYcoordinatesContent1, locationObjectContentsZcoordinatesContent1], connectionNeuronID2, connectionType2 [, locationObjectContentsXcoordinatesContent2, locationObjectContentsYcoordinatesContent2, locationObjectContentsZcoordinatesContent2], etc 
+     * INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET: localConnectomeConnections.csv - pre_id, pre_x, pre_y, pre_z, pre_type, post_id, post_x, post_y, post_z, post_type, post_class_label, syn_num, excitation_type
 
 Note LDView can be used to view 3D LDR visualisations (https://tcobbs.github.io/ldview/Downloads.html). A web browser/Inkscape/etc can be used to view 2D SVG visualisations.
 
 Local connectome visualisations
 -------------------------------
 
-*connectionTypesFromEMimages*
-*connectionTypesFromPresynapticNeurons*
+*visualisations/connectionTypesFromEMimages*
+*visualisations/connectionTypesFromPresynapticNeurons*
 
 Current local connectome visualisations for connectionTypesDerivedFromEMimages/connectionTypesDerivedFromPresynapticNeurons include:
 
-- connections_IE.svg (connections_IE_Lx.svg) - connections coloured by excitatory/inhibitory type and pre/post synaptic direction; neurons colours by cell type.
-- connections_IE_layered.svg (connections_IE_layeredLx.svg) - neurons/connections coloured by layer.
-- connections_IE_flow.svg (connections_IE_flow_Lx.svg) - connections coloured by excitatory/inhibitory type and flow direction (through the cortical layers); neurons colours by cell type.
-- connections_IE_flowIO.svg (connections_IE_flowIO_Lx.svg) - connections coloured by excitatory/inhibitory type, pre/post synaptic direction, and flow direction (through the cortical layers); neurons colours by cell type.
+*2D (SVG)*
+- connections_IE1.svg - connections coloured by excitatory/inhibitory type and pre/post synaptic direction; neurons coloured by cell type.
+- connections_IE_flow1.svg - connections coloured by excitatory/inhibitory type and flow direction (through the cortical layers); neurons coloured by cell type.
+- connections_IE_flow2.svg - connections coloured by excitatory/inhibitory type, pre/post synaptic direction, and flow direction (through the cortical layers) [unique hue for connection source and target]; neurons coloured by cell type.
+- connections_IE_flow3.svg - connections coloured by excitatory/inhibitory type, pre/post synaptic direction, and flow direction (through the cortical layers) [unique hue for connection target only]; neurons coloured by cell type.
+- connections_IE_layered1.svg (connections_IE_layered1_Lx.svg) - neurons/connections coloured by layer.
+- connections_IE_layered2.svg (connections_IE_layered2_Lx.svg) - connections coloured by excitatory/inhibitory type and pre/post synaptic direction; neurons coloured by cell type.
+- connections_IE_layered_flow1.svg (connections_IE_layered_flow1_Lx.svg) - connections coloured by excitatory/inhibitory type and flow direction (through the cortical layers); neurons coloured by cell type.
+- connections_IE_layered_flow2.svg (connections_IE_layered_flow2_Lx.svg) - connections coloured by excitatory/inhibitory type, pre/post synaptic direction, and flow direction (through the cortical layers) [unique hue for connection source and target]; neurons coloured by cell type.
 
-The colour sets can be modified/customised within the svg file <"linearGradient"> tags.
+2D SVG colour sets can be changed by modifying the visualisations/templates/connections_IE_part2-*.svg file <"linearGradient"> tags. 2D SVG colour sets can be added/removed by modifying H01indexedCSVdatabase.hpp: LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_*_NUMBER_COLOURSETS and adding/removing visualisations/templates/connections_IE_part2-*X.svg.
+
+*3D (SVG)*
+- connections_IE1.ldr - connections coloured by excitatory/inhibitory type; neurons coloured by cell type.
+- connections_IE_flow1.ldr - connections coloured by excitatory/inhibitory type and flow direction (through the cortical layers); neurons coloured by cell type.
+- connections_IE_layered1.ldr (connections_IE_layered1_Lx.ldr) - neurons/connections coloured by layer.
+- connections_IE_layered2.ldr (connections_IE_layered2_Lx.ldr) - connections coloured by excitatory/inhibitory type; neurons coloured by cell type.
+- connections_IE_layered_flow1.ldr (connections_IE_layered_flow1_Lx.ldr) - connections coloured by excitatory/inhibitory type and flow direction (through the cortical layers); neurons coloured by cell type.
+
+3D LDR colour sets can be changed by modifying H01indexedCSVdatabase.hpp: LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_*. 3D LDR colour sets can be added/removed by modifying H01indexedCSVdatabase.hpp: LOCAL_CONNECTOME_VISUALISATION_LDR_FILENAME_*_NUMBER_COLOURSETS and upgrading the source code (advanced).
 

@@ -4,21 +4,26 @@
  * Author: Richard Bruce Baxter - Copyright (c) 2021 Baxter AI (baxterai.com)
  * License: MIT License
  * Project: H01LocalConnectome
- * Requirements: requires H01 indexed CSV database to have already been generated (see H01indexedCSVdatabaseCreate.cpp/.hpp)
+ * Requirements: requires H01 indexed CSV database to have already been generated (see INDEXED_CSV_DATABASE_CREATE: H01indexedCSVdatabaseCreate.cpp/.hpp)
  * Compilation: see H01indexedCSVdatabase.hpp
  * Usage: see H01indexedCSVdatabase.hpp
- * Description: H01 indexed CSV database query - lookup indexed CSV database by pre/postsynaptic neuron ID, and find target/source connections
+ * Description: H01 indexed CSV database query - 
+ * 	INDEXED_CSV_DATABASE_QUERY_EXTRACT_INCOMING_OUTGOING_CONNECTIONS: mode 1 (lookup indexed CSV database by neuron ID, and find incoming/outgoing target connections, and write them to file)
+ * 	INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING: mode 2 (lookup indexed CSV database by neuron ID, find incoming target connections, and generate visualisation)
+ * 	INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET: mode 3 (automatically generate localConnectomeConnections-typesFromPresynapticNeurons.csv/localConnectomeConnections-typesFromEMimages.csv from localConnectomeNeurons.csv and H01 indexed CSV database)
  * Input: 
- * 	INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING: localConnectomeNeuronIDlistDistinct.csv
- * 	INDEXED_CSV_DATABASE_QUERY_OUTPUT_CONNECTIONS: localConnectomeNeuronIDlist1.csv/localConnectomeNeuronIDlist2.csv
+ * 	INDEXED_CSV_DATABASE_QUERY_OUTPUT_CONNECTIONS: localConnectomeNeurons.csv (or localConnectomeNeuronIDlistDistinct.csv)
+ * 	INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING: localConnectomeNeurons.csv (or localConnectomeNeuronIDlistDistinct.csv)
+ * 	INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET: localConnectomeNeurons.csv
  * Output Format:
+ *	INDEXED_CSV_DATABASE_QUERY_OUTPUT_CONNECTIONS: localConnectomeNeuronIDlistConnectionsPresynaptic.csv/localConnectomeNeuronIDlistConnectionsPostsynaptic.csv - connectionNeuronID1, connectionType1 [, locationObjectContentsXcoordinatesContent1, locationObjectContentsYcoordinatesContent1, locationObjectContentsZcoordinatesContent1], connectionNeuronID2, connectionType2 [, locationObjectContentsXcoordinatesContent2, locationObjectContentsYcoordinatesContent2, locationObjectContentsZcoordinatesContent2], etc 
  * 	INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING:
  * 		INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_3D_LINEAR_REGRESSION:
- *			INDEXED_CSV_DATABASE_QUERY_OUTPUT_INCOMING_AXON_MAPPING_LDR: localConnectomeIncomingAxonMapping.ldr - LDR_TYPE_LINE ldrawColor plot3DpointStart.x plot3DpointStart.y plot3DpointStart.z plot3DpointEnd.x plot3DpointEnd.y plot3DpointEnd.z
+ *			INDEXED_CSV_DATABASE_QUERY_OUTPUT_INCOMING_AXON_MAPPING_LDR: localConnectomeIncomingAxonMapping.ldr - LDR_REFERENCE_TYPE_LINE ldrawColor plot3DpointStart.x plot3DpointStart.y plot3DpointStart.z plot3DpointEnd.x plot3DpointEnd.y plot3DpointEnd.z
  * 			INDEXED_CSV_DATABASE_QUERY_OUTPUT_INCOMING_AXON_MAPPING_CSV: localConnectomeIncomingAxonMapping.csv - polyFit.connectionNeuronID, polyFit.estSynapseType, polyFit.origin.x, polyFit.origin.y, polyFit.origin.z, polyFit.axis.x, polyFit.axis.y, polyFit.axis.z
  *		INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_2D_POLY_REGRESSION:
  * 			INDEXED_CSV_DATABASE_QUERY_OUTPUT_INCOMING_AXON_MAPPING_CSV: localConnectomeIncomingAxonMapping.csv - polyFit.connectionNeuronID, polyFit.estSynapseType, polyFit.a, polyFit.b, polyFit.c
- *	INDEXED_CSV_DATABASE_QUERY_OUTPUT_CONNECTIONS: localConnectomeNeuronIDlist1connectionsPresynaptic.csv/localConnectomeNeuronIDlist1connectionsPostsynaptic.csv/localConnectomeNeuronIDlist2connectionsPresynaptic.csv/localConnectomeNeuronIDlist2connectionsPostsynaptic.csv - connectionNeuronID1, connectionType1 [, locationObjectContentsXcoordinatesContent1, locationObjectContentsYcoordinatesContent1, locationObjectContentsZcoordinatesContent1], connectionNeuronID2, connectionType2 [, locationObjectContentsXcoordinatesContent2, locationObjectContentsYcoordinatesContent2, locationObjectContentsZcoordinatesContent2], etc 
+ *  INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET: localConnectomeConnections.csv - pre_id, pre_x, pre_y, pre_z, pre_type, post_id, post_x, post_y, post_z, post_type, post_class_label, syn_num, excitation_type
  * Comments:
  * /
  *******************************************************************************/
@@ -30,17 +35,15 @@
 
 #ifdef INDEXED_CSV_DATABASE_QUERY
 
-#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_CURRENT_FOLDER
 string currentDirectory;
-#endif
 
 #ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING
-map<long,vector<H01indexedCSVdatabaseQueryObject>> neuronConnectionMap;	//map<connectionNeuronIDindex,vector<H01indexedCSVdatabaseQueryObject [with neuronIDindex]>> 
+map<long,vector<H01indexedCSVdatabaseQueryObject>> neuronConnectionMap;	//map<targetNeuronIDindex,vector<H01indexedCSVdatabaseQueryObject [with neuronIDindex]>> 
 vector<H01indexedCSVdatabaseAlgorithmsFit> neuronConnectionPolyFitVector;
 
 H01indexedCSVdatabaseQueryObject::H01indexedCSVdatabaseQueryObject(void)
 {
-	neuronID = 0;
+	neuronID = 0;	//sourceNeuronID
 	type = 0;
 	locationObjectContentsXcoordinates = 0;
 	locationObjectContentsYcoordinates = 0;
@@ -64,179 +67,98 @@ bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabase()
 {
 	bool result = true;
 
-	#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_CURRENT_FOLDER
 	currentDirectory = SHAREDvars.getCurrentDirectory();
-	#endif
 	
+	bool na = false;
+	#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET
+	this->queryIndexedCSVdatabaseByNeuronListFile(LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME, na, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS, true);	
+	this->queryIndexedCSVdatabaseByNeuronListFile(LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME, na, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES, false);
+	#endif
 	#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING
-	this->queryIndexedCSVdatabase(INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME, true, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_CONNECTIONS_PRESYNAPTIC_FILE_NAME);	
-	#else
-	this->queryIndexedCSVdatabase(INDEXED_CSV_DATABASE_QUERY_NEURON_LIST1_FILE_NAME, true, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST1_CONNECTIONS_PRESYNAPTIC_FILE_NAME);
-	this->queryIndexedCSVdatabase(INDEXED_CSV_DATABASE_QUERY_NEURON_LIST1_FILE_NAME, false, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST1_CONNECTIONS_POSTSYNAPTIC_FILE_NAME);
-	this->queryIndexedCSVdatabase(INDEXED_CSV_DATABASE_QUERY_NEURON_LIST2_FILE_NAME, true, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST2_CONNECTIONS_PRESYNAPTIC_FILE_NAME);
-	this->queryIndexedCSVdatabase(INDEXED_CSV_DATABASE_QUERY_NEURON_LIST2_FILE_NAME, false, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST2_CONNECTIONS_POSTSYNAPTIC_FILE_NAME);
+	this->queryIndexedCSVdatabaseByNeuronListFile(INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME, true, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_CONNECTIONS_PRESYNAPTIC_FILE_NAME, na);	
+	#endif
+	#ifdef INDEXED_CSV_DATABASE_QUERY_EXTRACT_INCOMING_OUTGOING_CONNECTIONS
+	this->queryIndexedCSVdatabaseByNeuronListFile(INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME, true, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_CONNECTIONS_PRESYNAPTIC_FILE_NAME, na);
+	this->queryIndexedCSVdatabaseByNeuronListFile(INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME, false, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_CONNECTIONS_POSTSYNAPTIC_FILE_NAME, na);
+	/*
+	//depreciated;
+	this->queryIndexedCSVdatabaseByNeuronListFile(INDEXED_CSV_DATABASE_QUERY_NEURON_LIST1_FILE_NAME, true, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST1_CONNECTIONS_PRESYNAPTIC_FILE_NAME, na);
+	this->queryIndexedCSVdatabaseByNeuronListFile(INDEXED_CSV_DATABASE_QUERY_NEURON_LIST1_FILE_NAME, false, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST1_CONNECTIONS_POSTSYNAPTIC_FILE_NAME, na);
+	this->queryIndexedCSVdatabaseByNeuronListFile(INDEXED_CSV_DATABASE_QUERY_NEURON_LIST2_FILE_NAME, true, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST2_CONNECTIONS_PRESYNAPTIC_FILE_NAME, na);
+	this->queryIndexedCSVdatabaseByNeuronListFile(INDEXED_CSV_DATABASE_QUERY_NEURON_LIST2_FILE_NAME, false, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST2_CONNECTIONS_POSTSYNAPTIC_FILE_NAME, na);
+	*/
 	#endif
 	
 	return result;
 }
 
-bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabase(const string neuronListFileName, const bool queryPresynapticConnectionNeurons, const string neuronListConnectionsFileName)
+bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronListFile(const string neuronListFileName, const bool queryPresynapticConnectionNeurons, const string neuronListConnectionsFileName, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
 {
 	bool result = true;
 	
 	vector<string> neuronList;
-	#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_NON_LOCAL_NEURONS_REQUIRED
-	map<string, string> neuronMap;	//for lookup efficiency //key and value are identical
+
+	int neuronListFileLength = 0;
+
+	vector<vector<string>> localConnectomeNeurons;	
+	
+	#ifdef INDEXED_CSV_DATABASE_QUERY_READ_CURRENT_FOLDER
+	const string indexedCSVdatabaseQueryInputFolder = currentDirectory;	
+	SHAREDvars.setCurrentDirectory(indexedCSVdatabaseQueryInputFolder);
+	cout << "indexedCSVdatabaseQueryInputFolder = " << indexedCSVdatabaseQueryInputFolder << endl;
+	#else
+	#ifdef LOCAL_CONNECTOME_FOLDER_BASE_USE_RELATIVE_FOLDER
+	SHAREDvars.setCurrentDirectory(currentDirectory);
+	#endif
+	string localConnectomeCSVdatasetFolder = LOCAL_CONNECTOME_FOLDER_BASE;
+	SHAREDvars.setCurrentDirectory(localConnectomeCSVdatasetFolder);
+	localConnectomeCSVdatasetFolder = LOCAL_CONNECTOME_DATASET_FOLDER;
+	SHAREDvars.setCurrentDirectory(localConnectomeCSVdatasetFolder);
 	#endif
 	
-	int neuronListFileLength = 0;
-	#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_CURRENT_FOLDER
-	const string indexedCSVdatabaseQueryInputFolder = currentDirectory;	
+	#ifdef INDEXED_CSV_DATABASE_QUERY_READ_DATASET_LOCAL_CONNECTOME_NEURONS	
+	SHAREDvars.getLinesFromFileCSV(neuronListFileName, &localConnectomeNeurons, &neuronListFileLength, CSV_DELIMITER_CHAR, true);
+	for(int i=0; i<localConnectomeNeurons.size(); i++)
+	{
+		vector<string>* localConnectomeNeuron = &(localConnectomeNeurons[i]);
+		string neuronID = (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_NEURON_ID];
+		//cout << "neuronID = " << neuronID << endl;
+		neuronList.push_back(neuronID);
+	}
 	#else
-	const string indexedCSVdatabaseQueryInputFolder = INDEXED_CSV_DATABASE_QUERY_INPUT_FOLDER;
+	SHAREDvars.getLinesFromFile(neuronListFileName, &neuronList, &neuronListFileLength);
 	#endif
+	
 	cout << "neuronListFileName = " << neuronListFileName << endl;
 	cout << "neuronListConnectionsFileName = " << neuronListConnectionsFileName << endl;
-	cout << "indexedCSVdatabaseQueryInputFolder = " << indexedCSVdatabaseQueryInputFolder << endl;
-	SHAREDvars.setCurrentDirectory(indexedCSVdatabaseQueryInputFolder);
-	SHAREDvars.getLinesFromFile(neuronListFileName, &neuronList, &neuronListFileLength);
-	#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_NON_LOCAL_NEURONS_REQUIRED
-	for(int i=0; i < neuronList.size(); i++)
-	{
-    	neuronMap[neuronList[i]] = neuronList[i];
-	}
-	#endif
-		
+
 	const string csvDelimiter = CSV_DELIMITER;
 
-	#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_CURRENT_FOLDER
+	#ifdef INDEXED_CSV_DATABASE_QUERY_WRITE_CURRENT_FOLDER
 	const string indexedCSVdatabaseQueryOutputFolder = currentDirectory;	
 	#else
 	const string indexedCSVdatabaseQueryOutputFolder = INDEXED_CSV_DATABASE_QUERY_OUTPUT_FOLDER;
 	#endif
 	
+	string writeFileString;
+	ofstream writeFileObject;
 	#ifdef INDEXED_CSV_DATABASE_QUERY_OUTPUT
 	#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_FILE_OBJECT
 	SHAREDvars.setCurrentDirectory(indexedCSVdatabaseQueryOutputFolder);
-	ofstream writeFileObject(neuronListConnectionsFileName.c_str());
+	writeFileObject.open(neuronListConnectionsFileName.c_str());
 	#else
-	string neuronListConnectionsString;
-	neuronListConnectionsString.reserve(2000000000);	//max expected file/string size = indexed csv database query output size (neuron_id ~11 bytes + , + type ~1 byte = ~13 bytes) * avg num connections per neuron ID (~2000) * number of neuron IDs in list (~30000) = 13*2000*30000 = ~1GB of RAM if string
-	//string neuronListConnectionsString = "";	//inefficient
+	writeFileString.reserve(2000000000);	//max expected file/string size = indexed csv database query output size (neuron_id ~11 bytes + , + type ~1 byte = ~13 bytes) * avg num connections per neuron ID (~2000) * number of neuron IDs in list (~30000) = 13*2000*30000 = ~1GB of RAM if string
+	//string writeFileString = "";	//inefficient
 	#endif
 	#endif
 	
-			
-	for(int l=0; l<neuronListFileLength; l++)
-	{
-		string neuronID = neuronList[l];
-		vector<vector<string>> neuronConnectionList;
-		this->queryIndexedCSVdatabaseByNeuronID(neuronID, queryPresynapticConnectionNeurons, &neuronConnectionList);
-
-		if(neuronConnectionList.size() == 0)
-		{
-			//add a new line such that database lengths are matched
-			#ifdef INDEXED_CSV_DATABASE_QUERY_OUTPUT
-			#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_FILE_OBJECT
-			SHAREDvars.writeStringToFileObject(STRING_NEWLINE, &writeFileObject);
-			#else
-			this->appendStringBufferToPreallocatedString(&neuronListConnectionsString, STRING_NEWLINE);
-			//neuronListConnectionsString = neuronListConnectionsString + STRING_NEWLINE;	//inefficient
-			#endif			
-			#endif
-		}
-		else
-		{		
-			for(int i=0; i<neuronConnectionList.size(); i++)
-			{
-				vector<string> csvLineVector = neuronConnectionList[i];
-
-				string connectionNeuronID = "";
-				if(queryPresynapticConnectionNeurons)
-				{
-					connectionNeuronID = csvLineVector[INDEXED_CSV_DATABASE_PRESYNAPTIC_SITE_NEURON_ID_FIELD_INDEX];
-				}
-				else
-				{
-					connectionNeuronID = csvLineVector[INDEXED_CSV_DATABASE_POSTSYNAPTIC_SITE_NEURON_ID_FIELD_INDEX];
-				}
-				string connectionType = csvLineVector[INDEXED_CSV_DATABASE_SYNAPSE_TYPE_FIELD_INDEX];
-				string neuronConnectionString = connectionNeuronID + csvDelimiter + connectionType;
-				#ifdef INDEXED_CSV_DATABASE_QUERY_GET_LOCATION
-				string locationObjectContentsXcoordinatesContent = csvLineVector[INDEXED_CSV_DATABASE_SYNAPSE_LOCATION_COORDINATE_X_FIELD_INDEX];
-				string locationObjectContentsYcoordinatesContent = csvLineVector[INDEXED_CSV_DATABASE_SYNAPSE_LOCATION_COORDINATE_Y_FIELD_INDEX];
-				string locationObjectContentsZcoordinatesContent = csvLineVector[INDEXED_CSV_DATABASE_SYNAPSE_LOCATION_COORDINATE_Z_FIELD_INDEX];
-				neuronConnectionString = neuronConnectionString + csvDelimiter + locationObjectContentsXcoordinatesContent + csvDelimiter + locationObjectContentsYcoordinatesContent + csvDelimiter + locationObjectContentsZcoordinatesContent;
-				#endif
-								
-				#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING			
-				#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_NON_LOCAL_NEURONS_REQUIRED
-				//if(!std::count(neuronList.begin(), neuronList.end(), connectionNeuronID))	//verify that connectionNeuronID is not in neuronList
-				if(neuronMap.count(connectionNeuronID) == 0)	//verify that connectionNeuronID is not in neuronList
-				{
-				#endif
-					long connectionNeuronIDindex = SHAREDvars.convertStringToLong(connectionNeuronID);
-					long neuronIDIndex = SHAREDvars.convertStringToLong(neuronID);
-
-					//H01indexedCSVdatabaseQueryObject* queryObject = new H01indexedCSVdatabaseQueryObject();
-					H01indexedCSVdatabaseQueryObject queryObject;
-					queryObject.neuronID = neuronIDIndex;
-					queryObject.type = SHAREDvars.convertStringToInt(connectionType);
-					queryObject.locationObjectContentsXcoordinates = SHAREDvars.convertStringToInt(locationObjectContentsXcoordinatesContent);
-					queryObject.locationObjectContentsYcoordinates = SHAREDvars.convertStringToInt(locationObjectContentsYcoordinatesContent);
-					queryObject.locationObjectContentsZcoordinates = SHAREDvars.convertStringToInt(locationObjectContentsZcoordinatesContent);
-					vector<H01indexedCSVdatabaseQueryObject>* neuronIDvector;
-					if(neuronConnectionMap.count(connectionNeuronIDindex) != 0)
-					{
-						neuronIDvector = &(neuronConnectionMap.at(connectionNeuronIDindex));
-					}
-					else
-					{
-						vector<H01indexedCSVdatabaseQueryObject> innerVectorNewObject; 
-						neuronIDvector = &innerVectorNewObject;
-						neuronConnectionMap.insert(std::pair<long, vector<H01indexedCSVdatabaseQueryObject>>(connectionNeuronIDindex, innerVectorNewObject)); 
-					}
-					neuronIDvector->push_back(queryObject); 
-				#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_NON_LOCAL_NEURONS_REQUIRED
-				}
-				#endif
-				#endif
-				
-				#ifdef INDEXED_CSV_DATABASE_QUERY_OUTPUT_CONNECTIONS
-				#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_FILE_OBJECT
-				SHAREDvars.writeStringToFileObject(neuronConnectionString, &writeFileObject);
-				#else
-				this->appendStringBufferToPreallocatedString(neuronListConnectionsString, neuronConnectionString);
-				//neuronListConnectionsString = neuronListConnectionsString + neuronConnectionString	//inefficient
-				#endif
-				if(i == neuronConnectionList.size()-1)
-				{
-					#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_FILE_OBJECT
-					SHAREDvars.writeStringToFileObject(STRING_NEWLINE, &writeFileObject);
-					#else
-					this->appendStringBufferToPreallocatedString(&neuronListConnectionsString, STRING_NEWLINE);
-					//neuronListConnectionsString = neuronListConnectionsString + STRING_NEWLINE;	//inefficient
-					#endif
-				}
-				else
-				{
-					#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_FILE_OBJECT
-					SHAREDvars.writeStringToFileObject(csvDelimiter, &writeFileObject);
-					#else
-					this->appendStringBufferToPreallocatedString(&neuronListConnectionsString, csvDelimiter);
-					//neuronListConnectionsString = neuronListConnectionsString + csvDelimiter;	//inefficient
-					#endif
-				}
-				#endif
-			}
-		}
-
-		//#ifdef INDEXED_CSV_DATABASE_QUERY_OUTPUT_CONNECTIONS
-		//notify user that program is still running
-		cout << "l = " << l << ", neuronID = " << neuronID << ", neuronConnectionList.size() = " << neuronConnectionList.size() << endl;
-		//#endif
-		
-	}
+	#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET
+	queryIndexedCSVdatabaseByNeuronList(&localConnectomeNeurons, &neuronList, true, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, &writeFileObject, &writeFileString);
+	queryIndexedCSVdatabaseByNeuronList(&localConnectomeNeurons, &neuronList, false, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, &writeFileObject, &writeFileString);	
+	#else
+	bool queryByPresynapticConnectionNeurons = !queryPresynapticConnectionNeurons;
+	queryIndexedCSVdatabaseByNeuronList(&localConnectomeNeurons, &neuronList, queryByPresynapticConnectionNeurons, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, &writeFileObject, &writeFileString);
+	#endif
 	
 	#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING
     map<long,vector<H01indexedCSVdatabaseQueryObject>>::iterator it;
@@ -342,7 +264,7 @@ bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabase(const string neuro
 				}
 				else
 				{
-					cerr << "bool queryIndexedCSVdatabase unknown polyFit.estSynapseType; " << polyFit.estSynapseType << endl;
+					cerr << "bool queryIndexedCSVdatabaseByNeuronListFile unknown polyFit.estSynapseType; " << polyFit.estSynapseType << endl;
 					exit(EXIT_ERROR);
 				}
 				vec plot3DpointStart;
@@ -353,7 +275,7 @@ bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabase(const string neuro
 				plot3DpointEnd.x = polyFit.origin.x + polyFit.axis.x * (AVRO_JSON_DATABASE_COORDINATES_RANGE_X/2);
 				plot3DpointEnd.y = polyFit.origin.y + polyFit.axis.y * (AVRO_JSON_DATABASE_COORDINATES_RANGE_Y/2);
 				plot3DpointEnd.z = polyFit.origin.z + polyFit.axis.z * (AVRO_JSON_DATABASE_COORDINATES_RANGE_Z/2);
-				string neuronConnectionString = SHAREDvars.convertIntToString(LDR_TYPE_LINE) + ldrDelimiter + SHAREDvars.convertIntToString(ldrawColor) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointStart.x, doubleFormat) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointStart.y, doubleFormat) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointStart.z, doubleFormat) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointEnd.x, doubleFormat) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointEnd.y, doubleFormat) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointEnd.z, doubleFormat) + STRING_NEWLINE;	
+				string neuronConnectionString = SHAREDvars.convertIntToString(LDR_REFERENCE_TYPE_LINE) + ldrDelimiter + SHAREDvars.convertIntToString(ldrawColor) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointStart.x, doubleFormat) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointStart.y, doubleFormat) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointStart.z, doubleFormat) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointEnd.x, doubleFormat) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointEnd.y, doubleFormat) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointEnd.z, doubleFormat) + STRING_NEWLINE;	
 				#else
 				string neuronConnectionString = SHAREDvars.convertLongToString(polyFit.connectionNeuronID) + csvDelimiter + SHAREDvars.convertIntToString(polyFit.estSynapseType) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.origin.x, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.origin.y, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.origin.z, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.axis.x, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.axis.y, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.axis.z, doubleFormat) + STRING_NEWLINE;
 				#endif
@@ -361,11 +283,11 @@ bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabase(const string neuro
 				#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_FILE_OBJECT
 				SHAREDvars.writeStringToFileObject(neuronConnectionString, &writeFileObject);
 				#else
-				this->appendStringBufferToPreallocatedString(neuronListConnectionsString, neuronConnectionString);
-				//neuronListConnectionsString = neuronListConnectionsString + neuronConnectionString	//inefficient
+				this->appendStringBufferToPreallocatedString(writeFileString, neuronConnectionString);
+				//writeFileString = writeFileString + neuronConnectionString	//inefficient
 				#endif
 				#else
-				cout << "INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING: this->queryIndexedCSVdatabase(): connectionNeuronID = " << connectionNeuronID << ", estSynapseType = " << estSynapseType << ", poly fit; a = " << coeffs[0] << ", b = " << coeffs[1] << ", c = " << coeffs[2] << endl;			
+				cout << "INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING: queryIndexedCSVdatabaseByNeuronListFile(): connectionNeuronID = " << connectionNeuronID << ", estSynapseType = " << estSynapseType << ", poly fit; a = " << coeffs[0] << ", b = " << coeffs[1] << ", c = " << coeffs[2] << endl;			
 				#endif
 				
 			#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_CONNECTION_TYPE_REQUIRED
@@ -379,11 +301,11 @@ bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabase(const string neuro
 	#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_FILE_OBJECT
 	writeFileObject.close();
 	#else
-	//cout << "neuronListConnectionsString = " << neuronListConnectionsString << endl;
+	//cout << "writeFileString = " << writeFileString << endl;
 	SHAREDvars.setCurrentDirectory(indexedCSVdatabaseQueryOutputFolder);
-	//SHAREDvars.writeStringToFile(neuronListConnectionsFileName, &neuronListConnectionsString);	//inefficient?
+	//SHAREDvars.writeStringToFile(neuronListConnectionsFileName, &writeFileString);	//inefficient?
 	ofstream out(neuronListConnectionsFileName);
-    out << neuronListConnectionsString;
+    out << writeFileString;
     out.close();
 	#endif
 	#endif
@@ -391,8 +313,237 @@ bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabase(const string neuro
 	return result;
 }
 
+bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronList(vector<vector<string>>* localConnectomeNeurons, vector<string>* neuronList, const bool queryByPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, ofstream* writeFileObject, string* writeFileString)
+{
+	bool result = true;
+	
+	#ifdef INDEXED_CSV_DATABASE_QUERY_EFFICIENT_STORE_NEURON_IDS_IN_MAP
+	map<string, int> neuronMap;
+	for(int i=0; i < neuronList->size(); i++)
+	{
+    	neuronMap[(*neuronList)[i]] = i;
+	}
+	#endif
+		
+	const string csvDelimiter = CSV_DELIMITER;
+	
+	for(int neuronIndex=0; neuronIndex<neuronList->size(); neuronIndex++)
+	{
+		string neuronID = (*neuronList)[neuronIndex];
+		vector<vector<string>> neuronConnectionList;
+		this->queryIndexedCSVdatabaseByNeuronID(neuronID, queryByPresynapticConnectionNeurons, &neuronConnectionList);
 
-bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronID(const string neuronID, const bool queryPresynapticConnectionNeurons, vector<vector<string>>* neuronConnectionList)
+		#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET
+		vector<string>* localConnectomeNeuron = &((*localConnectomeNeurons)[neuronIndex]);
+		#endif
+
+		#ifndef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET
+		if(neuronConnectionList.size() == 0)
+		{
+			//add a new line such that database lengths are matched
+			#ifdef INDEXED_CSV_DATABASE_QUERY_OUTPUT
+			#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_FILE_OBJECT
+			SHAREDvars.writeStringToFileObject(STRING_NEWLINE, writeFileObject);
+			#else
+			this->appendStringBufferToPreallocatedString(writeFileString, STRING_NEWLINE);
+			//writeFileString = writeFileString + STRING_NEWLINE;	//inefficient
+			#endif			
+			#endif
+		}
+		else
+		{	
+		#endif	
+			for(int connectionIndex=0; connectionIndex<neuronConnectionList.size(); connectionIndex++)
+			{
+				vector<string> csvLineVector = neuronConnectionList[connectionIndex];
+
+				string sourceNeuronID = "";
+				string targetNeuronID = "";
+				if(queryByPresynapticConnectionNeurons)
+				{
+					sourceNeuronID = csvLineVector[INDEXED_CSV_DATABASE_PRESYNAPTIC_SITE_NEURON_ID_FIELD_INDEX];
+					targetNeuronID = csvLineVector[INDEXED_CSV_DATABASE_POSTSYNAPTIC_SITE_NEURON_ID_FIELD_INDEX];
+				}
+				else
+				{
+					sourceNeuronID = csvLineVector[INDEXED_CSV_DATABASE_POSTSYNAPTIC_SITE_NEURON_ID_FIELD_INDEX];
+					targetNeuronID = csvLineVector[INDEXED_CSV_DATABASE_PRESYNAPTIC_SITE_NEURON_ID_FIELD_INDEX];	
+				}
+				if(sourceNeuronID != neuronID)
+				{
+					cerr << "H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronList error: (sourceNeuronID != neuronID), targetNeuronID = " << sourceNeuronID << ", neuronID = " << neuronID << endl;
+					exit(EXIT_ERROR);
+				}
+				string connectionType = csvLineVector[INDEXED_CSV_DATABASE_SYNAPSE_TYPE_FIELD_INDEX];	//connection/synapse type as automatically derived from EM images (exitatory/inhibitory)
+				string locationObjectContentsXcoordinatesContent = csvLineVector[INDEXED_CSV_DATABASE_SYNAPSE_LOCATION_COORDINATE_X_FIELD_INDEX];	//connection/synapse location
+				string locationObjectContentsYcoordinatesContent = csvLineVector[INDEXED_CSV_DATABASE_SYNAPSE_LOCATION_COORDINATE_Y_FIELD_INDEX];	//connection/synapse location
+				string locationObjectContentsZcoordinatesContent = csvLineVector[INDEXED_CSV_DATABASE_SYNAPSE_LOCATION_COORDINATE_Z_FIELD_INDEX];	//connection/synapse location
+				
+				
+				//mode INDEXED_CSV_DATABASE_QUERY_EXTRACT_INCOMING_OUTGOING_CONNECTIONS:
+				#ifdef INDEXED_CSV_DATABASE_QUERY_EXTRACT_INCOMING_OUTGOING_CONNECTIONS
+				string neuronConnectionString = targetNeuronID + csvDelimiter + connectionType;
+				#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_FILE_OBJECT
+				SHAREDvars.writeStringToFileObject(neuronConnectionString, writeFileObject);
+				#else
+				this->appendStringBufferToPreallocatedString(writeFileString, neuronConnectionString);
+				//writeFileString = writeFileString + neuronConnectionString	//inefficient
+				#endif
+				//append csvDelimiter or STRING_NEWLINE:
+				if(connectionIndex == neuronConnectionList.size()-1)
+				{
+					#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_FILE_OBJECT
+					SHAREDvars.writeStringToFileObject(STRING_NEWLINE, writeFileObject);
+					#else
+					this->appendStringBufferToPreallocatedString(writeFileString, STRING_NEWLINE);
+					//writeFileString = writeFileString + STRING_NEWLINE;	//inefficient
+					#endif
+				}
+				else
+				{
+					#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_FILE_OBJECT
+					SHAREDvars.writeStringToFileObject(csvDelimiter, writeFileObject);
+					#else
+					this->appendStringBufferToPreallocatedString(writeFileString, csvDelimiter);
+					//writeFileString = writeFileString + csvDelimiter;	//inefficient
+					#endif
+				}
+				#endif		
+						
+								
+				//mode INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING:	
+				#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING	
+				string neuronConnectionString = targetNeuronID + csvDelimiter + connectionType + csvDelimiter + locationObjectContentsXcoordinatesContent + csvDelimiter + locationObjectContentsYcoordinatesContent + csvDelimiter + locationObjectContentsZcoordinatesContent;		
+				#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_NON_LOCAL_NEURONS_REQUIRED
+				//if(!std::count(neuronList.begin(), neuronList.end(), connectionNeuronID))	//verify that connectionNeuronID is not in neuronList
+				if(neuronMap.count(targetNeuronID) == 0)	//verify that targetNeuronID is not in neuronList
+				{
+				#endif
+					long targetNeuronIDindex = SHAREDvars.convertStringToLong(targetNeuronID);
+					long sourceNeuronIDIndex = SHAREDvars.convertStringToLong(sourceNeuronID);
+
+					//H01indexedCSVdatabaseQueryObject* queryObject = new H01indexedCSVdatabaseQueryObject();
+					H01indexedCSVdatabaseQueryObject queryObject;
+					queryObject.neuronID = sourceNeuronIDIndex;
+					queryObject.type = SHAREDvars.convertStringToInt(connectionType);
+					queryObject.locationObjectContentsXcoordinates = SHAREDvars.convertStringToInt(locationObjectContentsXcoordinatesContent);
+					queryObject.locationObjectContentsYcoordinates = SHAREDvars.convertStringToInt(locationObjectContentsYcoordinatesContent);
+					queryObject.locationObjectContentsZcoordinates = SHAREDvars.convertStringToInt(locationObjectContentsZcoordinatesContent);
+					vector<H01indexedCSVdatabaseQueryObject>* neuronIDvector;
+					if(neuronConnectionMap.count(targetNeuronIDindex) != 0)
+					{
+						neuronIDvector = &(neuronConnectionMap.at(targetNeuronIDindex));
+					}
+					else
+					{
+						vector<H01indexedCSVdatabaseQueryObject> innerVectorNewObject; 
+						neuronIDvector = &innerVectorNewObject;
+						neuronConnectionMap.insert(std::pair<long, vector<H01indexedCSVdatabaseQueryObject>>(targetNeuronIDindex, innerVectorNewObject)); 
+					}
+					neuronIDvector->push_back(queryObject); 
+				#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_NON_LOCAL_NEURONS_REQUIRED
+				}
+				#endif
+				#endif
+
+
+				//mode INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET:
+				#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET
+				#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_LOCAL_NEURONS_REQUIRED		
+				//verify that targetNeuronID centroid/soma is also in local connectome;
+				if(neuronMap.count(targetNeuronID) != 0)	//verify that targetNeuronID is in neuronList
+				{
+				#endif
+					string neuronConnectionString = "";
+
+					int neuronIndexTarget = neuronMap[targetNeuronID];
+					vector<string>* localConnectomeNeuronTarget = &((*localConnectomeNeurons)[neuronIndexTarget]);
+				
+					int connectionTypeInt = SHAREDvars.convertStringToInt(connectionType);
+					int excitationType;
+					if(connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
+					{
+						if(connectionTypeInt == AVRO_JSON_DATABASE_EXCITATORY_SYNAPSE_TYPE)
+						{
+							excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY;
+						}
+						else if(connectionTypeInt == AVRO_JSON_DATABASE_INHIBITORY_SYNAPSE_TYPE)
+						{
+							excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY;
+						}
+						else
+						{
+							excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN;
+							cerr << "H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronList warning, connection type unknown, connectionType = " << connectionType << endl;
+						}
+					}
+					else
+					{	
+						string sourceNeuronType = "";
+						if(queryByPresynapticConnectionNeurons)
+						{
+							sourceNeuronType = (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
+						}
+						else
+						{
+							sourceNeuronType = (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
+						}
+						if(sourceNeuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_PYRAMIDAL)
+						{
+							excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY;
+						}
+						else if(sourceNeuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_INTERNEURON)
+						{
+							excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY;
+						}
+						else
+						{
+							excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN;
+							cerr << "H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronList warning, connection type unknown, connectionType = " << connectionType << endl;
+						}
+					}
+					int numberOfSynapses = 1;
+					//pre_id, pre_x, pre_y, pre_z, pre_type, post_id, post_x, post_y, post_z, post_type, post_class_label, syn_num, excitation_type
+					if(queryByPresynapticConnectionNeurons)
+					{
+						neuronConnectionString = sourceNeuronID + CSV_DELIMITER + (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_X] + CSV_DELIMITER + (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Y] + CSV_DELIMITER + (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Z] + CSV_DELIMITER + (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE] + CSV_DELIMITER + targetNeuronID + CSV_DELIMITER + (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_X] + CSV_DELIMITER + (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Y] + CSV_DELIMITER + (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Z] + CSV_DELIMITER + (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE] + CSV_DELIMITER + LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_CLASS_LABEL_UNKNOWN + CSV_DELIMITER + SHAREDvars.convertIntToString(numberOfSynapses) + CSV_DELIMITER + SHAREDvars.convertIntToString(excitationType) + STRING_NEWLINE;
+					}
+					else
+					{
+						neuronConnectionString = targetNeuronID + CSV_DELIMITER + (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_X] + CSV_DELIMITER + (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Y] + CSV_DELIMITER + (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Z] + CSV_DELIMITER + (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE] + CSV_DELIMITER + sourceNeuronID + CSV_DELIMITER + (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_X] + CSV_DELIMITER + (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Y] + CSV_DELIMITER + (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Z] + CSV_DELIMITER + (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE] + CSV_DELIMITER + LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_CLASS_LABEL_UNKNOWN + CSV_DELIMITER + SHAREDvars.convertIntToString(numberOfSynapses) + CSV_DELIMITER + SHAREDvars.convertIntToString(excitationType) + STRING_NEWLINE;		
+					}
+					
+					#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_FILE_OBJECT
+					SHAREDvars.writeStringToFileObject(neuronConnectionString, writeFileObject);
+					#else
+					this->appendStringBufferToPreallocatedString(writeFileString, neuronConnectionString);
+					//writeFileString = writeFileString + neuronConnectionString	//inefficient
+					#endif
+					
+				#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_LOCAL_NEURONS_REQUIRED		
+				}
+				#endif
+				#endif	
+				
+
+			}
+		#ifndef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET
+		}
+		#endif
+
+		//#ifdef INDEXED_CSV_DATABASE_QUERY_EXTRACT_INCOMING_OUTGOING_CONNECTIONS
+		//notify user that program is still running
+		cout << "neuronIndex = " << neuronIndex << ", neuronID = " << neuronID << ", neuronConnectionList.size() = " << neuronConnectionList.size() << endl;
+		//#endif
+		
+	}
+	
+	return result;
+}
+
+
+
+bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronID(const string neuronID, const bool queryByPresynapticConnectionNeurons, vector<vector<string>>* neuronConnectionList)
 {
 	bool result = true;
 	
@@ -409,13 +560,13 @@ bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronID(const st
 	const string indexedCSVdatabaseFileNameCsvExtension = CSV_FILE_EXTENSION;
 	
 	string indexedCSVdatabaseFileNameCsvPrefix = "";
-	if(queryPresynapticConnectionNeurons)
+	if(queryByPresynapticConnectionNeurons)
 	{
-		indexedCSVdatabaseFileNameCsvPrefix = INDEXED_CSV_DATABASE_FILENAME_PREFIX_POSTSYNAPTIC_CSV;	//look for the presynaptic neuron/connection id within the database file indexed by postsynaptic neuron id	//note opposite of queryPresynapticConnectionNeurons	
+		indexedCSVdatabaseFileNameCsvPrefix = INDEXED_CSV_DATABASE_FILENAME_PREFIX_PRESYNAPTIC_CSV;		//look for the postsynaptic neuron/connection id (!queryPresynapticConnectionNeurons) within the database file indexed by presynaptic neuron id (queryByPresynapticConnectionNeurons)
 	}
 	else
 	{
-		indexedCSVdatabaseFileNameCsvPrefix = INDEXED_CSV_DATABASE_FILENAME_PREFIX_PRESYNAPTIC_CSV;		//look for the postsynaptic neuron/connection id within the database file indexed by presynaptic neuron id
+		indexedCSVdatabaseFileNameCsvPrefix = INDEXED_CSV_DATABASE_FILENAME_PREFIX_POSTSYNAPTIC_CSV;	//look for the presynaptic neuron/connection id (queryPresynapticConnectionNeurons) within the database file indexed by postsynaptic neuron id (!queryByPresynapticConnectionNeurons)
 	}
 	
 	const string csvDelimiter = CSV_DELIMITER;
@@ -444,20 +595,20 @@ bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronID(const st
 				string csvLineText = csvFileContents[l];
 
 				string sourceNeuronID = "";
-				if(queryPresynapticConnectionNeurons)
+				if(queryByPresynapticConnectionNeurons)
+				{
+					//get INDEXED_CSV_DATABASE_PRESYNAPTIC_SITE_NEURON_ID_FIELD_INDEX (optimised): 
+					int sourceNeuronIDindexEnd = csvLineText.find(csvDelimiter);
+					sourceNeuronID = csvLineText.substr(0, sourceNeuronIDindexEnd);
+					//sourceNeuronID = csvLineVector[INDEXED_CSV_DATABASE_PRESYNAPTIC_SITE_NEURON_ID_FIELD_INDEX];	//inefficient;
+				}
+				else
 				{
 					//get INDEXED_CSV_DATABASE_POSTSYNAPTIC_SITE_NEURON_ID_FIELD_INDEX (optimised):
 					int sourceNeuronIDindexStart = csvLineText.find(csvDelimiter)+1;
 					int sourceNeuronIDindexEnd = csvLineText.find(csvDelimiter, sourceNeuronIDindexStart);
 					sourceNeuronID = csvLineText.substr(sourceNeuronIDindexStart, sourceNeuronIDindexEnd-sourceNeuronIDindexStart);
 					//sourceNeuronID = csvLineVector[INDEXED_CSV_DATABASE_POSTSYNAPTIC_SITE_NEURON_ID_FIELD_INDEX];	//inefficient;
-				}
-				else
-				{
-					//get INDEXED_CSV_DATABASE_PRESYNAPTIC_SITE_NEURON_ID_FIELD_INDEX (optimised): 
-					int sourceNeuronIDindexEnd = csvLineText.find(csvDelimiter);
-					sourceNeuronID = csvLineText.substr(0, sourceNeuronIDindexEnd);
-					//sourceNeuronID = csvLineVector[INDEXED_CSV_DATABASE_PRESYNAPTIC_SITE_NEURON_ID_FIELD_INDEX];	//inefficient;
 				}
 								
 				if(sourceNeuronID == neuronID)

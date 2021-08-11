@@ -24,7 +24,7 @@ bool H01indexedCSVdatabaseCalculateNeuronLayerClass::readCorticalLayersBoundaryK
 	
 	vector<vector<string>> dataSetFile;
 	int dataSetFileSize = 0;
-	this->getLinesFromFileCSV(corticalLayersBoundaryKeypointTableFileName, &dataSetFile, &dataSetFileSize, CSV_DELIMITER_CHAR, true);
+	SHAREDvars.getLinesFromFileCSV(corticalLayersBoundaryKeypointTableFileName, &dataSetFile, &dataSetFileSize, CSV_DELIMITER_CHAR, true);
 	for(int layerIndex=0; layerIndex<dataSetFile.size(); layerIndex++)
 	{
 		vector<string> corticalLayerKeypointsXY = dataSetFile[layerIndex];
@@ -206,53 +206,6 @@ bool H01indexedCSVdatabaseCalculateNeuronLayerClass::isPointRightOfLine(double A
 
 #endif
 
-void H01indexedCSVdatabaseCalculateNeuronLayerClass::getLinesFromFileCSV(const string fileName, vector<vector<string>>* CSVdatasetFile, int* CSVdatasetFileSize, const char delimiter, const bool expectFirstLineHeader)
-{
-	vector<string> dataSetFile;
-	int dataSetFileSize = 0;
-	SHAREDvars.getLinesFromFile(fileName, &dataSetFile, &dataSetFileSize);
-	
-	bool firstLine = true;
-	
-	for(int i=0; i<dataSetFileSize; i++)
-	{
-		vector<string> lineContentsVector;
-		string lineContents = dataSetFile[i];
-		string fieldContents = "";
-		int fieldIndex = 0;
-		for(int charIndex=0; charIndex<lineContents.length(); charIndex++)
-		{
-			if(lineContents[charIndex] == delimiter)
-			{	
-				//cout << "fieldContents = " << fieldContents << endl;
-				lineContentsVector.push_back(fieldContents);
-				fieldContents = "";
-				fieldIndex++;
-			}
-			else
-			{
-				fieldContents = fieldContents+lineContents[charIndex];
-			}
-		}
-		//fill final field on line;
-		lineContentsVector.push_back(fieldContents);	
-		fieldContents = "";
-		fieldIndex++;
-		
-		if(expectFirstLineHeader && firstLine)
-		{
-			//ignore first line header
-		}
-		else
-		{
-			CSVdatasetFile->push_back(lineContentsVector);
-		}
-		
-		firstLine = false;
-	}
-	
-	*CSVdatasetFileSize = CSVdatasetFile->size();
-}
 
 #ifdef INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME
 double H01indexedCSVdatabaseCalculateNeuronLayerClass::calibrateCoordinateX(const double csvDatabaseCoordinateX)

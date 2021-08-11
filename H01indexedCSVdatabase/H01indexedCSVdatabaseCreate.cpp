@@ -62,7 +62,7 @@ bool H01indexedCSVdatabaseCreateClass::createIndexedCSVdatabase()
 		SHAREDvars.setCurrentDirectory(avroJsonDatabaseFolder);
 		SHAREDvars.getLinesFromFile(fileToOpenName, &fileLinesList, &numberOfLinesInFile);
 		
-		#ifdef DEBUG_CODE
+		#ifdef INDEXED_CSV_DATABASE_CREATE_DEBUG
 		numberOfLinesInFile = 1;
 		#endif
 		
@@ -81,7 +81,7 @@ bool H01indexedCSVdatabaseCreateClass::createIndexedCSVdatabase()
 			#ifndef MAX_SSD_SIZE
 			cout << "l = " << l << endl;
 			#endif
-			#ifdef DEBUG_CODE
+			#ifdef INDEXED_CSV_DATABASE_CREATE_DEBUG
 			cout << "currentLineText = " << currentLineText << endl;
 			#endif
 
@@ -143,7 +143,7 @@ bool H01indexedCSVdatabaseCreateClass::createIndexedCSVdatabase()
 						csvText = csvText + csvDelimiter;
 					}
 				}
-				#ifdef DEBUG_CODE
+				#ifdef INDEXED_CSV_DATABASE_CREATE_DEBUG
 				cout << "csvText = " << csvText << endl;
 				#endif
 				
@@ -220,7 +220,7 @@ bool H01indexedCSVdatabaseCreateClass::addSynapseToCSVdatabase(const string neur
 			string csvFileName = indexedCSVdatabaseFileNameCsvPrefix + fileNameNeuronIDidentifier + indexedCSVdatabaseFileNameCsvExtension;
 			SHAREDvars.appendStringToFile(csvFileName, csvText);
 
-			#ifdef DEBUG_CODE
+			#ifdef INDEXED_CSV_DATABASE_CREATE_DEBUG
 			//cout << "rawFileName = " << rawFileName << endl;
 			//cout << "rawText = " << *rawText << endl;
 			cout << "csvFileName = " << csvFileName << endl;
@@ -274,7 +274,7 @@ string H01indexedCSVdatabaseCreateClass::findJsonFieldValue(const string* curren
 		int jsonFieldContentsStartIndex = *jsonFieldNameIndex + jsonFieldContentsStartRelativeIndex;
 		int jsonFieldContentsEndIndex = currentLineText->find("\"", jsonFieldContentsStartIndex);
 		jsonFieldContents = currentLineText->substr(jsonFieldContentsStartIndex, jsonFieldContentsEndIndex-jsonFieldContentsStartIndex);
-		#ifdef DEBUG_CODE
+		#ifdef INDEXED_CSV_DATABASE_CREATE_DEBUG
 		//cout << "jsonFieldContents = " << jsonFieldContents << endl;
 		#endif
 	}

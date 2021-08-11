@@ -152,7 +152,8 @@ class SHAREDvarsClass
 	public: bool isCapitalised(const string text);
 	
 	public: void printTime(const string startString, const string endString);
-
+	
+	public: void getLinesFromFileCSV(const string fileName, vector<vector<string>>* CSVdatasetFile, int* CSVdatasetFileSize, const char delimiter, const bool expectFirstLineHeader);
 
 
 };
