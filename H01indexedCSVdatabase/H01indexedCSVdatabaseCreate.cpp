@@ -19,14 +19,14 @@
 #ifdef INDEXED_CSV_DATABASE_CREATE
 
 
-bool H01indexedCSVdatabaseCreateClass::createIndexedCSVdatabase()
+bool H01indexedCSVdatabaseCreateClass::createIndexedCSVdatabase(const string avro_json_database_folder, const string indexed_csv_database_folder)
 {
 	bool result = true;
 	
 	int minJsonFileIndex = AVRO_JSON_DATABASE_FILEINDEX_START;
 	int maxJsonFileIndex = AVRO_JSON_DATABASE_FILEINDEX_END;
 	
-	const string avroJsonDatabaseFolder = AVRO_JSON_DATABASE_FOLDER;
+	const string avroJsonDatabaseFolder = avro_json_database_folder;
 	const string avroJsonDatabaseFileExtension = JSON_FILE_EXTENSION;
 		
 	//int jsonFieldContentsStartRelativeIndex = neuronIDname.length() + 2;	//"neuron_id":"	[+ :"]
@@ -148,8 +148,8 @@ bool H01indexedCSVdatabaseCreateClass::createIndexedCSVdatabase()
 				#endif
 				
 				string rawText = currentLineText + STRING_NEWLINE;	
-				this->addSynapseToCSVdatabase(neuronIDcontents1, &csvText, &rawText, true);
-				this->addSynapseToCSVdatabase(neuronIDcontents2, &csvText, &rawText, false);
+				this->addSynapseToCSVdatabase(indexed_csv_database_folder, neuronIDcontents1, &csvText, &rawText, true);
+				this->addSynapseToCSVdatabase(indexed_csv_database_folder, neuronIDcontents2, &csvText, &rawText, false);
 			}
 			else
 			{
@@ -161,7 +161,7 @@ bool H01indexedCSVdatabaseCreateClass::createIndexedCSVdatabase()
 	return result;
 }	
 
-bool H01indexedCSVdatabaseCreateClass::addSynapseToCSVdatabase(const string neuronIDcontents, const string* csvText, const string* rawText, const bool indexByPresynapticNeuron)
+bool H01indexedCSVdatabaseCreateClass::addSynapseToCSVdatabase(string indexed_csv_database_folder, const string neuronIDcontents, const string* csvText, const string* rawText, const bool indexByPresynapticNeuron)
 {
 	bool result = true;
 	
@@ -182,7 +182,7 @@ bool H01indexedCSVdatabaseCreateClass::addSynapseToCSVdatabase(const string neur
 	int numberFilesPerLevel = pow(10, numberCharactersPerFileLevel);	//eg 100
 	*/
 		
-	const string indexedCSVdatabaseFolder = INDEXED_CSV_DATABASE_FOLDER;
+	const string indexedCSVdatabaseFolder = indexed_csv_database_folder;
 	const string indexedCSVdatabaseFileNameRawExtension = JSON_FILE_EXTENSION;
 	const string indexedCSVdatabaseFileNameCsvExtension = CSV_FILE_EXTENSION;
 	

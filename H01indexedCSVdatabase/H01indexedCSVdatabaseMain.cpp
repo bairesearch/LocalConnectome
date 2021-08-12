@@ -13,28 +13,165 @@
  *******************************************************************************/
 
 #include "H01indexedCSVdatabaseMain.hpp"
-#ifdef INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME
-#include "H01indexedCSVdatabaseVisualiseLocalConnectome.hpp"
-#endif
 #ifdef INDEXED_CSV_DATABASE_CREATE
 #include "H01indexedCSVdatabaseCreate.hpp"
 #endif
 #ifdef INDEXED_CSV_DATABASE_QUERY
 #include "H01indexedCSVdatabaseQuery.hpp"
 #endif
+#ifdef INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME
+#include "H01indexedCSVdatabaseVisualiseLocalConnectome.hpp"
+#endif
+#include "SHAREDvars.hpp"
 
 
-int main()
+
+static string executionModesArray[EXECUTION_MODES_TOTAL] = {"create:CREATE","query:QUERY","visualise:VISUALISE_LOCAL_CONNECTOME"};
+static string queryModesArray[QUERY_MODES_TOTAL] = {"extract:EXTRACT_INCOMING_OUTGOING_CONNECTIONS","map:PERFORM_INCOMING_AXON_MAPPING","generate:GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET","count:COUNT_PROPORTION_LOCAL_VS_NONLOCAL_CONNECTIONS"};
+
+static char errmessage[] = "Usage:  H01indexedCSVdatabase.exe [options]"
+"\n"
+"\n\twhere options are any of the following (see documentation)"
+"\n"
+"\n\t-mode [int]                             : execution mode (1: create, 2: query, 3: visualise (def: 2) [compulsory]"
+"\n\t-query [int]                            : query mode (1: extract, 2: map, 3: generate, 4: count (def: 4)"
+"\n"
+"\n\t-avro_json_database_folder [string]     : H01 C3 Synaptic connections database json folder (def: /media/user/large/h01data/data/exported/json)"
+"\n\t-indexed_csv_database_folder [string]   : H01 indexed csv database folder (def: /media/user/ssddata/indexed)"
+"\n\t-local_connectome_folder_base [string]  : H01 local connectome base folder containing \"datasets\" and \"visualisations\" (def: ../)"
+"\n"
+"\n";
+
+static char infomessage[] = "Information regarding execution/query modes:"
+"\n"
+"\nexecution mode 1 - INDEXED_CSV_DATABASE_CREATE - converts Avro Json C3 Synaptic connections database to indexed CSV database, indexed by pre/postsynaptic neuron ID"
+"\nexecution mode 2 - INDEXED_CSV_DATABASE_QUERY - queries indexed CSV database, based on local connectome neuron id list"
+"\nexecution mode 3 - INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME - visualises datasets"
+"\n"
+"\nquery mode 1 - INDEXED_CSV_DATABASE_QUERY_EXTRACT_INCOMING_OUTGOING_CONNECTIONS - lookup indexed CSV database by neuron ID, and find incoming/outgoing target connections, and write them to file"
+"\nquery mode 2 - INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING - lookup indexed CSV database by neuron ID, find incoming target connections, and generate visualisation"
+"\nquery mode 3 - INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET - automatically generate localConnectomeConnections-typesFromPresynapticNeurons.csv/localConnectomeConnections-typesFromEMimages.csv from localConnectomeNeurons.csv and indexed CSV database"
+"\nquery mode 4 - INDEXED_CSV_DATABASE_QUERY_COUNT_PROPORTION_LOCAL_VS_NONLOCAL_CONNECTIONS - lookup indexed CSV database by neuron ID, count/infer proportion of incoming/outgoing excitatory/inhibitory target connections to local vs distal neurons"
+"\n"
+"\nexecution mode 1 - INDEXED_CSV_DATABASE_CREATE - converts Avro Json C3 Synaptic connections database to indexed CSV database, indexed by pre/postsynaptic neuron ID"
+"\n * Input: C3 Synaptic connections database (gs://h01-release/data/20210601/c3/synapses/exported/json)"
+"\n * Output Format: ssddata/indexed/123/csvPreSynapticNeuronID123456.csv - presynapticSiteNeuronID, postsynapticSiteNeuronID, presynapticSiteType, postsynapticSiteType, presynapticSiteClassLabel, postsynapticSiteClassLabel, presynapticSiteBaseNeuronID, postsynapticSiteBaseNeuronID, synapseLocationXcoordinates, synapseLocationYcoordinates, synapseLocationZcoordinates, synapseType"
+"\n"
+"\nexecution mode 2 - INDEXED_CSV_DATABASE_QUERY	- queries indexed CSV database, based on local connectome neuron id list"
+"\n * Input: "
+"\n * 	1 INDEXED_CSV_DATABASE_QUERY_OUTPUT_CONNECTIONS: localConnectomeNeurons.csv (or localConnectomeNeuronIDlistDistinct.csv)"
+"\n * 	2 INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING: localConnectomeNeurons.csv (or localConnectomeNeuronIDlistDistinct.csv)"
+"\n * 	3 INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET: localConnectomeNeurons.csv"
+"\n *   4 INDEXED_CSV_DATABASE_QUERY_COUNT_PROPORTION_LOCAL_VS_NONLOCAL_CONNECTIONS: localConnectomeNeurons.csv (or localConnectomeNeuronIDlistDistinct.csv)"
+"\n * Output Format:"
+"\n *	1 INDEXED_CSV_DATABASE_QUERY_OUTPUT_CONNECTIONS: localConnectomeNeuronIDlistConnectionsPresynaptic.csv/localConnectomeNeuronIDlistConnectionsPostsynaptic.csv - connectionNeuronID1, connectionType1 [, locationObjectContentsXcoordinatesContent1, locationObjectContentsYcoordinatesContent1, locationObjectContentsZcoordinatesContent1], connectionNeuronID2, connectionType2 [, locationObjectContentsXcoordinatesContent2, locationObjectContentsYcoordinatesContent2, locationObjectContentsZcoordinatesContent2], etc "
+"\n * 	2 INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING:"
+"\n * 		INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_3D_LINEAR_REGRESSION:"
+"\n *			INDEXED_CSV_DATABASE_QUERY_OUTPUT_INCOMING_AXON_MAPPING_LDR: localConnectomeIncomingAxonMapping.ldr - LDR_REFERENCE_TYPE_LINE ldrawColor plot3DpointStart.x plot3DpointStart.y plot3DpointStart.z plot3DpointEnd.x plot3DpointEnd.y plot3DpointEnd.z"
+"\n * 			INDEXED_CSV_DATABASE_QUERY_OUTPUT_INCOMING_AXON_MAPPING_CSV: localConnectomeIncomingAxonMapping.csv - polyFit.connectionNeuronID, polyFit.estSynapseType, polyFit.origin.x, polyFit.origin.y, polyFit.origin.z, polyFit.axis.x, polyFit.axis.y, polyFit.axis.z"
+"\n *		INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_2D_POLY_REGRESSION:"
+"\n * 			INDEXED_CSV_DATABASE_QUERY_OUTPUT_INCOMING_AXON_MAPPING_CSV: localConnectomeIncomingAxonMapping.csv - polyFit.connectionNeuronID, polyFit.estSynapseType, polyFit.a, polyFit.b, polyFit.c"
+"\n *  3 INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET: localConnectomeConnections.csv - pre_id, pre_x, pre_y, pre_z, pre_type, post_id, post_x, post_y, post_z, post_type, post_class_label, syn_num, excitation_type"
+"\n *  4 INDEXED_CSV_DATABASE_QUERY_COUNT_PROPORTION_LOCAL_VS_NONLOCAL_CONNECTIONS: N/A"
+"\n"
+"\nexecution mode 3 - INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME - visualises datasets"
+"\n * Input: localConnectomeNeurons.csv / localConnectomeConnectionsX.csv"
+"\n * Output Format: SVG (2D) / LDR (3D)"
+"\n"
+"\n";
+
+
+int main(const int argc, const char** argv)
 {
-	#ifdef INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME
-	H01indexedCSVdatabaseVisualiseLocalConnectomeClass().visualiseLocalConnectomeCSVdataset();
-	#endif
+	currentDirectory = SHAREDvarsClass().getCurrentDirectory();
+
+	bool passInputReq = true;
+
+	int executionMode = EXECUTION_MODE_DEFAULT;
+	int queryMode = QUERY_MODE_DEFAULT;
+
+	string avro_json_database_folder = AVRO_JSON_DATABASE_FOLDER;
+	string indexed_csv_database_folder = INDEXED_CSV_DATABASE_FOLDER;
+	string local_connectome_folder_base = LOCAL_CONNECTOME_FOLDER_BASE;
+
+	if(SHAREDvarsClass().argumentExists(argc, argv, "-mode"))
+	{
+		executionMode = SHAREDvarsClass().getFloatArgument(argc, argv, "-mode");
+	}
+	else
+	{
+		passInputReq = false;
+	}
+	if(SHAREDvarsClass().argumentExists(argc, argv, "-query"))
+	{
+		queryMode = SHAREDvarsClass().getFloatArgument(argc, argv, "-query");
+	}
+	else
+	{
+		if(executionMode == EXECUTION_MODE_INDEXED_CSV_DATABASE_QUERY)
+		{
+			passInputReq = false;
+		}
+	}
+	
+	if(SHAREDvarsClass().argumentExists(argc, argv, "-avro_json_database_folder"))
+	{
+		avro_json_database_folder = SHAREDvarsClass().getStringArgument(argc, argv, "-avro_json_database_folder");
+	}
+	if(SHAREDvarsClass().argumentExists(argc, argv, "-indexed_csv_database_folder"))
+	{
+		indexed_csv_database_folder = SHAREDvarsClass().getStringArgument(argc, argv, "-indexed_csv_database_folder");
+	}
+	if(SHAREDvarsClass().argumentExists(argc, argv, "-local_connectome_folder_base"))
+	{
+		local_connectome_folder_base = SHAREDvarsClass().getStringArgument(argc, argv, "-local_connectome_folder_base");
+	}
+
+	if(!passInputReq)
+	{
+		cerr << errmessage << endl;
+		cerr << infomessage << endl;
+		exit(EXIT_ERROR);
+	}
+	
+	cout << "executionMode = " << executionMode << " " << executionModesArray[executionMode-1] << endl;
+	cout << "queryMode = " << queryMode << " " << queryModesArray[queryMode-1] << endl;
+	
+	cout << "avro_json_database_folder = " << avro_json_database_folder << endl;
+	cout << "indexed_csv_database_folder = " << indexed_csv_database_folder << endl;
+	cout << "local_connectome_folder_base = " << local_connectome_folder_base << endl;
+
+	//exit(EXIT_ERROR);
+	
 	#ifdef INDEXED_CSV_DATABASE_CREATE
-	H01indexedCSVdatabaseCreateClass().createIndexedCSVdatabase();
+	if(executionMode == EXECUTION_MODE_INDEXED_CSV_DATABASE_CREATE)
+	{	
+		char userAnswer;
+		cout << "The user has indicated they wish to create an indexed CSV database. This will take approximately 6 hours to generate, and will overwrite any existing indexed CSV database. Are you sure you wish to continue? (y/n)" << endl;
+    	cin >> userAnswer;	
+		if(userAnswer == 'y')
+		{
+			H01indexedCSVdatabaseCreateClass().createIndexedCSVdatabase(avro_json_database_folder, indexed_csv_database_folder);
+		}
+		else
+		{
+			exit(EXIT_ERROR);
+		}
+	}
 	#endif
 	#ifdef INDEXED_CSV_DATABASE_QUERY
-	H01indexedCSVdatabaseQueryClass().queryIndexedCSVdatabase();
+	else if(executionMode == EXECUTION_MODE_INDEXED_CSV_DATABASE_QUERY)
+	{
+		H01indexedCSVdatabaseQueryClass().queryIndexedCSVdatabase(queryMode, indexed_csv_database_folder, local_connectome_folder_base);
+	}
+	#endif
+	#ifdef INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME
+	else if(executionMode == EXECUTION_MODE_INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME)
+	{
+		H01indexedCSVdatabaseVisualiseLocalConnectomeClass().visualiseLocalConnectomeCSVdataset(local_connectome_folder_base);
+	}
 	#endif
 	
 }
+
 

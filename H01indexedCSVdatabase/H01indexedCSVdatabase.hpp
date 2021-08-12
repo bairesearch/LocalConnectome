@@ -14,27 +14,48 @@
 
 #include "SHAREDglobalDefs.hpp"
 
+#ifndef HEADER_H01indexedCSVdatabase
+#define HEADER_H01indexedCSVdatabase
 
-//compilation (execution) modes:
-//#define INDEXED_CSV_DATABASE_CREATE	//mode 1 (converts Avro Json C3 Synaptic connections database to indexed CSV database, indexed by pre/postsynaptic neuron ID)
+extern string currentDirectory;
+
+//execution modes:
+#define INDEXED_CSV_DATABASE_CREATE	//mode 1 (converts Avro Json C3 Synaptic connections database to indexed CSV database, indexed by pre/postsynaptic neuron ID)
 #define INDEXED_CSV_DATABASE_QUERY	//mode 2 (queries indexed CSV database, based on local connectome neuron id list)
-//#define INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME	//mode 3 (visualises datasets)	//aka LOCAL_CONNECTOME_CSV_DATASET_VISUALISE
+#define INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME	//mode 3 (visualises datasets)	//aka LOCAL_CONNECTOME_CSV_DATASET_VISUALISE
+//query modes:
 #ifdef INDEXED_CSV_DATABASE_QUERY
-	//#define INDEXED_CSV_DATABASE_QUERY_EXTRACT_INCOMING_OUTGOING_CONNECTIONS	//mode 1 (lookup indexed CSV database by neuron ID, and find incoming/outgoing target connections, and write them to file)
-	//#define INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING	//mode 2 (lookup indexed CSV database by neuron ID, find incoming target connections, and generate visualisation)
-	//#define INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET	//mode 3 (automatically generate localConnectomeConnections-typesFromPresynapticNeurons.csv/localConnectomeConnections-typesFromEMimages.csv from localConnectomeNeurons.csv and H01 indexed CSV database)
+	#define INDEXED_CSV_DATABASE_QUERY_EXTRACT_INCOMING_OUTGOING_CONNECTIONS	//mode 1 (lookup indexed CSV database by neuron ID, and find incoming/outgoing target connections, and write them to file)
+	#define INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING	//mode 2 (lookup indexed CSV database by neuron ID, find incoming target connections, and generate visualisation)
+	#define INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET	//mode 3 (automatically generate localConnectomeConnections-typesFromPresynapticNeurons.csv/localConnectomeConnections-typesFromEMimages.csv from localConnectomeNeurons.csv and H01 indexed CSV database)
 	#define INDEXED_CSV_DATABASE_QUERY_COUNT_PROPORTION_LOCAL_VS_NONLOCAL_CONNECTIONS	//mode 4 (lookup indexed CSV database by neuron ID, count/infer proportion of incoming/outgoing excitatory/inhibitory target connections to local vs distal neurons)
 #endif
 
+#define EXECUTION_MODE_INDEXED_CSV_DATABASE_CREATE 1
+#define EXECUTION_MODE_INDEXED_CSV_DATABASE_QUERY 2
+#define EXECUTION_MODE_INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME 3
+#ifdef INDEXED_CSV_DATABASE_QUERY
+	#define QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_EXTRACT_INCOMING_OUTGOING_CONNECTIONS 1
+	#define QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING 2
+	#define QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET	3
+	#define QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_PROPORTION_LOCAL_VS_NONLOCAL_CONNECTIONS 4
+#endif
+#define EXECUTION_MODE_DEFAULT (EXECUTION_MODE_INDEXED_CSV_DATABASE_QUERY) 
+#define QUERY_MODE_DEFAULT (QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_PROPORTION_LOCAL_VS_NONLOCAL_CONNECTIONS)
+#define EXECUTION_MODES_TOTAL (3)
+#define QUERY_MODES_TOTAL (4)
+
+
 #ifdef INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME
-	#define LOCAL_CONNECTOME_VISUALISATION_BACKWARDS_COMPATIBILITY_WITH_ODS_GENERATED_FILES	//temporary for diff comparisons between H01indexedCSVdatabase generated visualisations and ODS generated visualisations (visualisation generation verification)
+	//#define LOCAL_CONNECTOME_VISUALISATION_BACKWARDS_COMPATIBILITY_WITH_ODS_GENERATED_FILES	//temporary for diff comparisons between H01indexedCSVdatabase generated visualisations and ODS generated visualisations (visualisation generation verification)	//slower as uses non-distinct neuron id lists
 #endif
 
 //apache avro C3 Synaptic connections database parameters:
 #ifdef INDEXED_CSV_DATABASE_CREATE
-	#define INDEXED_CSV_DATABASE_CREATE_DEBUG	//disable this DEBUG parameter to create the database (enabled for safety - prevents overwrite of indexed database; takes ~6 hours to regenerate)
+	//#define INDEXED_CSV_DATABASE_CREATE_DEBUG	//disable this DEBUG parameter to create the database (enabled for safety - prevents overwrite of indexed database; takes ~6 hours to regenerate)
 	#define AVRO_JSON_DATABASE_FOLDER "/media/user/large/h01data/data/exported/json"
 #endif
+
 //common H01 indexed csv database parameters:
 #ifdef INDEXED_CSV_DATABASE_CREATE_DEBUG
 	#define INDEXED_CSV_DATABASE_FOLDER "/media/user/large/source/h01Connectome/indexedSVGdatabase/trial/indexedTrial"
@@ -175,18 +196,25 @@
 
 //mode INDEXED_CSV_DATABASE_QUERY parameters:
 #ifdef INDEXED_CSV_DATABASE_QUERY
-		
+	
+	#define INDEXED_CSV_DATABASE_QUERY_PREFER_DATASET_LOCAL_CONNECTOME_NEURONS
+	#ifdef INDEXED_CSV_DATABASE_QUERY_PREFER_DATASET_LOCAL_CONNECTOME_NEURONS
+		//always read neuron lists from local connectome dataset ("localConnectomeNeurons.csv")
+		#define INDEXED_CSV_DATABASE_QUERY_PREFER_DATASET_LOCAL_CONNECTOME_NEURONS_VALUE true
+		#define INDEXED_CSV_DATABASE_QUERY_READ_DATASET_LOCAL_CONNECTOME_NEURONS	//localConnectomeNeurons.csv derived from in_body_cell_connection.csv - pre/postsynaptic distinct neuron ids
+		#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME (LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME)
+	#else
+		//read neuron lists from separate file if possible ("localConnectomeNeuronIDlistDistinct.csv")
+		#define INDEXED_CSV_DATABASE_QUERY_PREFER_DATASET_LOCAL_CONNECTOME_NEURONS_VALUE false
+		#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME "localConnectomeNeuronIDlistDistinct.csv"	//from in_body_cell_connection.csv - pre/postsynaptic distinct neuron ids		
+	#endif
+	
 	//mode INDEXED_CSV_DATABASE_QUERY_EXTRACT_INCOMING_OUTGOING_CONNECTIONS parameters:
 	#ifdef INDEXED_CSV_DATABASE_QUERY_EXTRACT_INCOMING_OUTGOING_CONNECTIONS
-		#define INDEXED_CSV_DATABASE_QUERY_OUTPUT
+		#define INDEXED_CSV_DATABASE_QUERY_OUTPUT	//mandatory
 
 		//input:
-		#define INDEXED_CSV_DATABASE_QUERY_READ_DATASET_LOCAL_CONNECTOME_NEURONS	//localConnectomeNeurons.csv derived from in_body_cell_connection.csv - pre/postsynaptic distinct neuron ids
-		#ifdef INDEXED_CSV_DATABASE_QUERY_READ_DATASET_LOCAL_CONNECTOME_NEURONS
-			#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME (LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME)
-		#else
-			#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME "localConnectomeNeuronIDlistDistinct.csv"	//from in_body_cell_connection.csv - pre/postsynaptic distinct neuron ids
-		#endif	
+		//see above
 		
 		/*	
 		//depreciated;
@@ -199,20 +227,15 @@
 		*/
 		//output:
 		#define INDEXED_CSV_DATABASE_QUERY_WRITE_CURRENT_FOLDER
-		#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_CONNECTIONS_PRESYNAPTIC_FILE_NAME "localConnectomeNeuronIDlistConnectionsPresynaptic.csv"
-		#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_CONNECTIONS_POSTSYNAPTIC_FILE_NAME "localConnectomeNeuronIDlistConnectionsPostsynaptic.csv"
+		#define INDEXED_CSV_DATABASE_QUERY_EXTRACT_INCOMING_OUTGOING_CONNECTIONS_NEURON_LIST_CONNECTIONS_PRESYNAPTIC_FILE_NAME "localConnectomeNeuronIDlistConnectionsPresynaptic.csv"
+		#define INDEXED_CSV_DATABASE_QUERY_EXTRACT_INCOMING_OUTGOING_CONNECTIONS_NEURON_LIST_CONNECTIONS_POSTSYNAPTIC_FILE_NAME "localConnectomeNeuronIDlistConnectionsPostsynaptic.csv"
 	#endif
 	
 	//mode INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING parameters:
 	#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING
 		
 		//input:
-		#define INDEXED_CSV_DATABASE_QUERY_READ_DATASET_LOCAL_CONNECTOME_NEURONS	//localConnectomeNeurons.csv derived from in_body_cell_connection.csv - pre/postsynaptic distinct neuron ids
-		#ifdef INDEXED_CSV_DATABASE_QUERY_READ_DATASET_LOCAL_CONNECTOME_NEURONS
-			#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME (LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME)
-		#else
-			#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME "localConnectomeNeuronIDlistDistinct.csv"	//from in_body_cell_connection.csv - pre/postsynaptic distinct neuron ids
-		#endif	
+		//see above
 
 		#define INDEXED_CSV_DATABASE_ALGORITHMS
 		#define INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_MIN_NUM_POINTS_REQUIRED (20)	//(2)
@@ -229,7 +252,7 @@
 		#endif
 		
 		//MANDATORY: INDEXED_CSV_DATABASE_QUERY_GET_LOCATION	//used to perform incoming long range axonal tract position/direction estimation (not just statistical comparison of distal vs local input)
-		#define INDEXED_CSV_DATABASE_QUERY_OUTPUT	//performance speed by disabling primary output file write
+		#define INDEXED_CSV_DATABASE_QUERY_OUTPUT	//mandatory	//performance speed by disabling primary output file write
 		#ifdef INDEXED_CSV_DATABASE_QUERY_OUTPUT
 			#define INDEXED_CSV_DATABASE_QUERY_OUTPUT_INCOMING_AXON_MAPPING
 		#endif
@@ -248,9 +271,9 @@
 		//output:
 		#define INDEXED_CSV_DATABASE_QUERY_WRITE_CURRENT_FOLDER
 		#ifdef INDEXED_CSV_DATABASE_QUERY_OUTPUT_INCOMING_AXON_MAPPING_LDR
-			#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_CONNECTIONS_PRESYNAPTIC_FILE_NAME "localConnectomeIncomingAxonMapping.ldr"		
+			#define INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_FILE_NAME "localConnectomeIncomingAxonMapping.ldr"		
 		#else
-			#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_CONNECTIONS_PRESYNAPTIC_FILE_NAME "localConnectomeIncomingAxonMapping.csv"	//"localConnectomeNeuronIDdistinctListconnectionsPresynaptic.csv"	
+			#define INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_FILE_NAME "localConnectomeIncomingAxonMapping.csv"	//"localConnectomeNeuronIDdistinctListconnectionsPresynaptic.csv"	
 		#endif
 	#endif
 
@@ -267,19 +290,14 @@
 		
 		//output:
 		#define INDEXED_CSV_DATABASE_QUERY_WRITE_CURRENT_FOLDER
-		#define INDEXED_CSV_DATABASE_QUERY_OUTPUT
+		#define INDEXED_CSV_DATABASE_QUERY_OUTPUT	//mandatory
 		
 	#endif
 	
 	//mode INDEXED_CSV_DATABASE_QUERY_COUNT_PROPORTION_LOCAL_VS_NONLOCAL_CONNECTIONS parameters:
 	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_PROPORTION_LOCAL_VS_NONLOCAL_CONNECTIONS
 		//input:
-		#define INDEXED_CSV_DATABASE_QUERY_READ_DATASET_LOCAL_CONNECTOME_NEURONS	//localConnectomeNeurons.csv derived from in_body_cell_connection.csv - pre/postsynaptic distinct neuron ids
-		#ifdef INDEXED_CSV_DATABASE_QUERY_READ_DATASET_LOCAL_CONNECTOME_NEURONS
-			#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME (LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME)
-		#else
-			#define INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME "localConnectomeNeuronIDlistDistinct.csv"	//from in_body_cell_connection.csv - pre/postsynaptic distinct neuron ids
-		#endif	
+		//see above
 
 		#define INDEXED_CSV_DATABASE_QUERY_EFFICIENT_STORE_NEURON_IDS_IN_MAP
 	#endif
@@ -288,7 +306,7 @@
 		#define INDEXED_CSV_DATABASE_QUERY_OUTPUT_FOLDER "/media/user/large/source/h01Connectome/indexedSVGdatabase/H01indexedCSVdatabaseQueryOutput"
 	#endif
 	#ifndef INDEXED_CSV_DATABASE_QUERY_READ_DATASET_LOCAL_CONNECTOME_NEURONS
-		//#define INDEXED_CSV_DATABASE_QUERY_READ_CURRENT_FOLDER	
+		//#define INDEXED_CSV_DATABASE_QUERY_READ_CURRENT_FOLDER
 	#endif
 	
 
@@ -459,13 +477,7 @@
 	#define LOCAL_CONNECTOME_VISUALISATION_POSITIVE_FLOW_VECTOR_Y (-(2069.5776 - 2837.22192))	//(L1->L6)	
 #endif
 
-
-
-
-
-
-
-
 #define CPP_STRING_FIND_RESULT_FAIL_VALUE2 int(CPP_STRING_FIND_RESULT_FAIL_VALUE)
 
 
+#endif

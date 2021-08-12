@@ -13,3 +13,5 @@
  *******************************************************************************/
 
 #include "H01indexedCSVdatabase.hpp"
+
+string currentDirectory;

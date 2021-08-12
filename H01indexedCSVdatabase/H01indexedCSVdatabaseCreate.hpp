@@ -22,8 +22,8 @@ class H01indexedCSVdatabaseCreateClass
 {
 	private: SHAREDvarsClass SHAREDvars;
 
-	public: bool createIndexedCSVdatabase();
-		private: bool addSynapseToCSVdatabase(const string neuronIDcontents, const string* csvText, const string* rawText, const bool indexByPresynapticNeuron);
+	public: bool createIndexedCSVdatabase(const string avro_json_database_folder, const string indexed_csv_database_folder);
+		private: bool addSynapseToCSVdatabase(const string indexed_csv_database_folder, const string neuronIDcontents, const string* csvText, const string* rawText, const bool indexByPresynapticNeuron);
 		private: string findJsonFieldValue(const string* currentLineText, const string jsonFieldName, bool lastInstance);
 		private: string findJsonFieldValue(const string* currentLineText, const string jsonFieldName, bool lastInstance, const int searchStartPos);
 		private: string findJsonFieldValue(const string* currentLineText, const string jsonFieldName, bool lastInstance, const int searchStartPos, int* jsonFieldNameIndex);
