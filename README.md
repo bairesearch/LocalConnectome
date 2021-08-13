@@ -86,11 +86,11 @@ Usage:  H01indexedCSVdatabase.exe [options]
 
 where options are any of the following (see documentation)
 
--mode [int] 							: execution mode (1: create, 2: query, 3: visualise (def: 2) [compulsory]
--query [int]							: query mode (1: extract, 2: map, 3: generate, 4: count (def: 4)
+-mode [int]                             : execution mode (1: create, 2: query, 3: visualise (def: 2) [compulsory]
+-query [int]                            : query mode (1: extract, 2: map, 3: generate, 4: count (def: 4)
 
--avro_json_database_folder [string] 	: H01 C3 Synaptic connections database json folder (def: /media/user/large/h01data/data/exported/json)
--indexed_csv_database_folder [string]	: H01 indexed csv database folder (def: /media/user/ssddata/indexed)
+-avro_json_database_folder [string]     : H01 C3 Synaptic connections database json folder (def: /media/user/large/h01data/data/exported/json)
+-indexed_csv_database_folder [string]   : H01 indexed csv database folder (def: /media/user/ssddata/indexed)
 -local_connectome_folder_base [string]  : H01 local connectome base folder containing "datasets" and "visualisations" (def: ../)
 
 
@@ -120,10 +120,10 @@ query mode 4 - INDEXED_CSV_DATABASE_QUERY_COUNT_PROPORTION_LOCAL_VS_NONLOCAL_CON
 H01 local connectome visualisations
 -----------------------------------
 
-*visualisations/connectionTypesFromEMimages*
+*visualisations/connectionTypesFromEMimages*\
 *visualisations/connectionTypesFromPresynapticNeurons*
 
-LDView can be used to view 3D LDR visualisations (https://tcobbs.github.io/ldview/Downloads.html).\
+LDView can be used to view 3D LDR visualisations (https://tcobbs.github.io/ldview/Downloads.html). \
 A web browser/Inkscape/etc can be used to view 2D SVG visualisations.
 
 Current local connectome visualisations for connectionTypesDerivedFromEMimages/connectionTypesDerivedFromPresynapticNeurons include:
