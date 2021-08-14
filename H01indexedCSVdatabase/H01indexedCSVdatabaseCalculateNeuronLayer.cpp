@@ -55,8 +55,8 @@ bool H01indexedCSVdatabaseCalculateNeuronLayerClass::calculateNeuronLayers(const
 		
 		if(localConnectomeDatasetType)	//localConnectionCSVdatasetNeurons
 		{
-			double neuronX = this->calibrateCoordinateX(SHAREDvars.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X]));
-			double neuronY = this->calibrateCoordinateY(SHAREDvars.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y]));
+			double neuronX = H01indexedCSVdatabaseOperations.calibrateCoordinateX(SHAREDvars.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X]));
+			double neuronY = H01indexedCSVdatabaseOperations.calibrateCoordinateY(SHAREDvars.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y]));
 			//cout << "neuronX = " << neuronX << endl;
 			//cout << "neuronY = " << neuronY << endl;
 			int layerIndex = this->calculateNeuronLayer(corticalLayersNumLayers, corticalLayersKeypoints, neuronX, neuronY);
@@ -64,14 +64,14 @@ bool H01indexedCSVdatabaseCalculateNeuronLayerClass::calculateNeuronLayers(const
 		}
 		else	//localConnectionCSVdatasetConnections
 		{
-			double neuronX = this->calibrateCoordinateX(SHAREDvars.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_X]));
-			double neuronY = this->calibrateCoordinateY(SHAREDvars.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Y]));
+			double neuronX = H01indexedCSVdatabaseOperations.calibrateCoordinateX(SHAREDvars.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_X]));
+			double neuronY = H01indexedCSVdatabaseOperations.calibrateCoordinateY(SHAREDvars.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Y]));
 			//cout << "neuronX = " << neuronX << endl;
 			//cout << "neuronY = " << neuronY << endl;
 			int layerIndex = this->calculateNeuronLayer(corticalLayersNumLayers, corticalLayersKeypoints, neuronX, neuronY);
 			localConnectionCSVdatasetLine->push_back(SHAREDvars.convertIntToString(layerIndex));
-			neuronX = this->calibrateCoordinateX(SHAREDvars.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_X]));
-			neuronY = this->calibrateCoordinateY(SHAREDvars.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Y]));
+			neuronX = H01indexedCSVdatabaseOperations.calibrateCoordinateX(SHAREDvars.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_X]));
+			neuronY = H01indexedCSVdatabaseOperations.calibrateCoordinateY(SHAREDvars.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Y]));
 			//cout << "neuronX = " << neuronX << endl;
 			//cout << "neuronY = " << neuronY << endl;
 			layerIndex = this->calculateNeuronLayer(corticalLayersNumLayers, corticalLayersKeypoints, neuronX, neuronY);
@@ -207,20 +207,3 @@ bool H01indexedCSVdatabaseCalculateNeuronLayerClass::isPointRightOfLine(double A
 #endif
 
 
-#ifdef INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME
-double H01indexedCSVdatabaseCalculateNeuronLayerClass::calibrateCoordinateX(const double csvDatabaseCoordinateX)
-{
-	double visualisationCoordinateX = (csvDatabaseCoordinateX*LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_X) + LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_MIN_X;
-	return visualisationCoordinateX;
-}
-double H01indexedCSVdatabaseCalculateNeuronLayerClass::calibrateCoordinateY(const double csvDatabaseCoordinateY)
-{
-	double visualisationCoordinateY = (csvDatabaseCoordinateY*LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_Y) + LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_MIN_Y;
-	return visualisationCoordinateY;
-}
-double H01indexedCSVdatabaseCalculateNeuronLayerClass::calibrateCoordinateZ(const double csvDatabaseCoordinateZ)
-{
-	double visualisationCoordinateZ = (csvDatabaseCoordinateZ*LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_Z) + LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_MIN_Z;
-	return visualisationCoordinateZ;
-}
-#endif

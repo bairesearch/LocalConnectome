@@ -12,6 +12,9 @@
  * /
  *******************************************************************************/
 
+#ifndef HEADER_H01indexedCSVdatabaseAlgorithms
+#define HEADER_H01indexedCSVdatabaseAlgorithms
+
 #include "H01indexedCSVdatabase.hpp"
 
 #include <Eigen/Core>
@@ -224,5 +227,7 @@ std::pair < Vector3, Vector3 > best_line_from_points(const std::vector<Vector3> 
 }
 
 
+
+#endif
 
 #endif

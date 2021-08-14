@@ -14,6 +14,9 @@
  * /
  *******************************************************************************/
 
+#ifndef HEADER_H01indexedCSVdatabaseCreate
+#define HEADER_H01indexedCSVdatabaseCreate
+
 #include "H01indexedCSVdatabase.hpp"
 #include "SHAREDvars.hpp"
 
@@ -31,4 +34,4 @@ class H01indexedCSVdatabaseCreateClass
 
 #endif
 
-
+#endif
