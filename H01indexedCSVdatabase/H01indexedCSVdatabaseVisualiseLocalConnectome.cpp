@@ -346,7 +346,7 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 						}			
 					}
 				}
-			#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME
+			#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_COLOUR_ACTIVE_NEURONS
 			}
 			#endif
 			#endif
