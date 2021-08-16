@@ -1,30 +1,26 @@
       <linearGradient id="exciteConnectionRadialGradient1">
-        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <!-- green -->
         <stop offset="0%" stop-color="#00ff4c"/>
-        <stop offset="100%" stop-color="#ffff00"/>
       </linearGradient>
       <linearGradient id="inhibitConnectionRadialGradient1">
-        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <!-- red -->
         <stop offset="0%" stop-color="#ff0000 "/>
-        <stop offset="100%" stop-color="#ff00ff"/>
       </linearGradient>
       <linearGradient id="exciteConnectionRadialGradient2">
-        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
-        <stop offset="0%" stop-color="#ffff00"/>
-        <stop offset="100%" stop-color="#00ff4c"/>
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff4c"/>
       </linearGradient>
       <linearGradient id="inhibitConnectionRadialGradient2">
-        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
-        <stop offset="0%" stop-color="#ff00ff"/>
-        <stop offset="100%" stop-color="#ff0000"/>
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000"/>
       </linearGradient>
       <linearGradient id="inhibitNeuronColor">
         <!-- purple -->
-        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#FECCCF "/>
       </linearGradient>
       <linearGradient id="exciteNeuronColor">
         <!-- yellow -->
-        <stop offset="0%" stop-color="#ffff00 "/>
+        <stop offset="0%" stop-color="#ADD9A8 "/>
       </linearGradient>
       <linearGradient id="unknownNeuronColor">
         <!-- white -->
@@ -33,40 +29,36 @@
 
 
 
-
       <linearGradient id="traceActiveexciteConnectionRadialGradient1">
-        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <!-- green -->
         <stop offset="0%" stop-color="#00ff4c"/>
-        <stop offset="100%" stop-color="#ffff00"/>
       </linearGradient>
       <linearGradient id="traceActiveinhibitConnectionRadialGradient1">
-        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <!-- red -->
         <stop offset="0%" stop-color="#ff0000 "/>
-        <stop offset="100%" stop-color="#ff00ff"/>
       </linearGradient>
       <linearGradient id="traceActiveexciteConnectionRadialGradient2">
-        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
-        <stop offset="0%" stop-color="#ffff00"/>
-        <stop offset="100%" stop-color="#00ff4c"/>
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff4c"/>
       </linearGradient>
       <linearGradient id="traceActiveinhibitConnectionRadialGradient2">
-        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
-        <stop offset="0%" stop-color="#ff00ff"/>
-        <stop offset="100%" stop-color="#ff0000"/>
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000"/>
       </linearGradient>
       <linearGradient id="traceActiveinhibitNeuronColor">
         <!-- purple -->
-        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#FECCCF "/>
       </linearGradient>
       <linearGradient id="traceActiveexciteNeuronColor">
         <!-- yellow -->
-        <stop offset="0%" stop-color="#ffff00 "/>
+        <stop offset="0%" stop-color="#ADD9A8 "/>
       </linearGradient>
       <linearGradient id="traceActiveunknownNeuronColor">
         <!-- white -->
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient>
-
+	  
+	  
 
       <linearGradient id="traceActiveMarkexciteConnectionRadialGradient1">
         <!-- green -->
@@ -96,3 +88,4 @@
         <!-- white -->
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient>
+	  
