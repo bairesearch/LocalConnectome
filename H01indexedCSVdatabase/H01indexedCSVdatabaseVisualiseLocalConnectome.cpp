@@ -152,14 +152,14 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 		this->visualiseLocalConnectomeGenerateContent(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, generate2Dvisualisation, localConnectionCSVdatasetNeurons, localConnectionCSVdatasetConnections, local_connectome_visualisation_filename_base, coloursetIndex, false, true, false, false, INT_DEFAULT_VALUE, visualiseTrace, traceIterationIndex);
 	}
 	
-	if(!visualiseTrace)	//visualiseTrace coloursets not (yet) defined
+	for(int coloursetIndex=1; coloursetIndex<=local_connectome_visualisation_filename_direction_flow_number_coloursets; coloursetIndex++)
 	{
-		for(int coloursetIndex=1; coloursetIndex<=local_connectome_visualisation_filename_direction_flow_number_coloursets; coloursetIndex++)
-		{
-			string local_connectome_visualisation_filename_base = string(LOCAL_CONNECTOME_VISUALISATION_FILENAME_COLOURSET_PREPEND) + local_connectome_visualisation_filename_direction_flow + SHAREDvars.convertIntToString(coloursetIndex);
-			this->visualiseLocalConnectomeGenerateContent(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, generate2Dvisualisation, localConnectionCSVdatasetNeurons, localConnectionCSVdatasetConnections, local_connectome_visualisation_filename_base, coloursetIndex, false, true, true, false, INT_DEFAULT_VALUE, visualiseTrace, traceIterationIndex);
-		}
-	
+		string local_connectome_visualisation_filename_base = string(LOCAL_CONNECTOME_VISUALISATION_FILENAME_COLOURSET_PREPEND) + local_connectome_visualisation_filename_direction_flow + SHAREDvars.convertIntToString(coloursetIndex);
+		this->visualiseLocalConnectomeGenerateContent(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, generate2Dvisualisation, localConnectionCSVdatasetNeurons, localConnectionCSVdatasetConnections, local_connectome_visualisation_filename_base, coloursetIndex, false, true, true, false, INT_DEFAULT_VALUE, visualiseTrace, traceIterationIndex);
+	}
+
+	if(!visualiseTrace)	//visualiseTrace coloursets not (yet) defined
+	{	
 		#ifdef LOCAL_CONNECTOME_VISUALISATION_LAYERS
 		cout << "generate visualisations (layered);" << endl;
 		for(int coloursetIndex=1; coloursetIndex<=local_connectome_visualisation_filename_layered_direction_number_coloursets; coloursetIndex++)
@@ -672,43 +672,36 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 				connectionTypeStringSVG = connectionTypeStringSVG + LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_APPEND;
 
 				#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
-				#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME
-				if(!traceActiveConnection)
-				{
-				#endif
-					if(!generate2Dvisualisation)
-					{	
-						//LDR format doesn't support (line) radial colour gradients; so connection direction will be ignored (not rendered)
-						if(visualiseFlow)
+				if(!generate2Dvisualisation)
+				{	
+					//LDR format doesn't support (line) radial colour gradients; so connection direction will be ignored (not rendered)
+					if(visualiseFlow)
+					{
+						if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY)
 						{
-							if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY)
+							if(connectionFlowType)
 							{
-								if(connectionFlowType)
-								{
-									connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_EXCITATORY_FLOW_TYPE_POSITIVE);
-								}
-								else
-								{
-									connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_EXCITATORY_FLOW_TYPE_NEGATIVE);
-								}
+								connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_EXCITATORY_FLOW_TYPE_POSITIVE);
 							}
-							else if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY)
+							else
 							{
-								if(connectionFlowType)
-								{
-									connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_INHIBITORY_FLOW_TYPE_POSITIVE);
-								}
-								else
-								{
-									connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_INHIBITORY_FLOW_TYPE_NEGATIVE);
-								}
+								connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_EXCITATORY_FLOW_TYPE_NEGATIVE);
 							}
-							//cout << "connectionTypeStringLDR = " << connectionTypeStringLDR << endl;
 						}
+						else if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY)
+						{
+							if(connectionFlowType)
+							{
+								connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_INHIBITORY_FLOW_TYPE_POSITIVE);
+							}
+							else
+							{
+								connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_INHIBITORY_FLOW_TYPE_NEGATIVE);
+							}
+						}
+						//cout << "connectionTypeStringLDR = " << connectionTypeStringLDR << endl;
 					}
-				#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME
 				}
-				#endif
 				#endif
 				
 				#ifdef LOCAL_CONNECTOME_VISUALISATION_3D

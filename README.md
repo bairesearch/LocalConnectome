@@ -166,6 +166,7 @@ Current local connectome visualisations for connectionTypesDerivedFromEMimages/c
 
 *2D (SVG)*
 - connections_IE1.svg - connections coloured by excitatory/inhibitory type and pre/post synaptic direction; neurons coloured by cell type.
+- connections_IE2.svg - connections coloured by excitatory/inhibitory type; neurons coloured by cell type.
 - connections_IE_flow1.svg - connections coloured by excitatory/inhibitory type and flow direction (through the cortical layers); neurons coloured by cell type.
 - connections_IE_flow2.svg - connections coloured by excitatory/inhibitory type, pre/post synaptic direction, and flow direction (through the cortical layers) [unique hue for connection source and target]; neurons coloured by cell type.
 - connections_IE_flow3.svg - connections coloured by excitatory/inhibitory type, pre/post synaptic direction, and flow direction (through the cortical layers) [unique hue for connection target only]; neurons coloured by cell type.
@@ -179,11 +180,12 @@ Current local connectome visualisations for connectionTypesDerivedFromEMimages/c
 
 *3D (SVG)*
 - connections_IE1.ldr - connections coloured by excitatory/inhibitory type; neurons coloured by cell type.
+- connections_IE2.ldr - connections coloured by excitatory/inhibitory type; neurons coloured by cell type.
 - connections_IE_flow1.ldr - connections coloured by excitatory/inhibitory type and flow direction (through the cortical layers); neurons coloured by cell type.
 - connections_IE_layered1.ldr (connections_IE_layered1_Lx.ldr) - neurons/connections coloured by layer (excitatory/inhibitory connection types indicated by saturation).
 - connections_IE_layered2.ldr (connections_IE_layered2_Lx.ldr) - connections coloured by excitatory/inhibitory type; neurons coloured by cell type.
 - connections_IE_layered_flow1.ldr (connections_IE_layered_flow1_Lx.ldr) - connections coloured by excitatory/inhibitory type and flow direction (through the cortical layers); neurons coloured by cell type.
 
-3D LDR colour sets can be changed by modifying H01indexedCSVdatabase.hpp: LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_\*.\
+3D LDR colour sets can be changed by modifying H01indexedCSVdatabase.hpp: local_connectome_visualisation_neurons_colour_\*. / local_connectome_visualisation_connections_colour_\*. \
 3D LDR colour sets can be added/removed by modifying H01indexedCSVdatabase.hpp: LOCAL_CONNECTOME_VISUALISATION_LDR_FILENAME_\*_NUMBER_COLOURSETS and upgrading the source code (advanced).
 
