@@ -146,20 +146,25 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 	}
 		
 	//generate visualisations;
+	#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_EMULATE_PUBLICATION_INFORMATION_FLOW_THROUGH_THE_H01_NETWORK
+	int coloursetIndex = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_EMULATE_PUBLICATION_INFORMATION_FLOW_THROUGH_THE_H01_NETWORK_DIRECTION_COLOURSET_INDEX;
+	string local_connectome_visualisation_filename_base = string(LOCAL_CONNECTOME_VISUALISATION_FILENAME_COLOURSET_PREPEND) + local_connectome_visualisation_filename_direction + SHAREDvars.convertIntToString(coloursetIndex);
+	this->visualiseLocalConnectomeGenerateContent(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, generate2Dvisualisation, localConnectionCSVdatasetNeurons, localConnectionCSVdatasetConnections, local_connectome_visualisation_filename_base, coloursetIndex, false, true, false, false, INT_DEFAULT_VALUE, visualiseTrace, traceIterationIndex);
+	#else
 	for(int coloursetIndex=1; coloursetIndex<=local_connectome_visualisation_filename_direction_number_coloursets; coloursetIndex++)
 	{
 		string local_connectome_visualisation_filename_base = string(LOCAL_CONNECTOME_VISUALISATION_FILENAME_COLOURSET_PREPEND) + local_connectome_visualisation_filename_direction + SHAREDvars.convertIntToString(coloursetIndex);
 		this->visualiseLocalConnectomeGenerateContent(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, generate2Dvisualisation, localConnectionCSVdatasetNeurons, localConnectionCSVdatasetConnections, local_connectome_visualisation_filename_base, coloursetIndex, false, true, false, false, INT_DEFAULT_VALUE, visualiseTrace, traceIterationIndex);
 	}
-	
 	for(int coloursetIndex=1; coloursetIndex<=local_connectome_visualisation_filename_direction_flow_number_coloursets; coloursetIndex++)
 	{
 		string local_connectome_visualisation_filename_base = string(LOCAL_CONNECTOME_VISUALISATION_FILENAME_COLOURSET_PREPEND) + local_connectome_visualisation_filename_direction_flow + SHAREDvars.convertIntToString(coloursetIndex);
 		this->visualiseLocalConnectomeGenerateContent(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, generate2Dvisualisation, localConnectionCSVdatasetNeurons, localConnectionCSVdatasetConnections, local_connectome_visualisation_filename_base, coloursetIndex, false, true, true, false, INT_DEFAULT_VALUE, visualiseTrace, traceIterationIndex);
 	}
-
+	#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME
 	if(!visualiseTrace)	//visualiseTrace coloursets not (yet) defined
 	{	
+	#endif
 		#ifdef LOCAL_CONNECTOME_VISUALISATION_LAYERS
 		cout << "generate visualisations (layered);" << endl;
 		for(int coloursetIndex=1; coloursetIndex<=local_connectome_visualisation_filename_layered_direction_number_coloursets; coloursetIndex++)
@@ -172,7 +177,6 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 			string local_connectome_visualisation_filename_base = string(LOCAL_CONNECTOME_VISUALISATION_FILENAME_COLOURSET_PREPEND) + local_connectome_visualisation_filename_layered_direction_flow + SHAREDvars.convertIntToString(coloursetIndex);
 			this->visualiseLocalConnectomeGenerateContent(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, generate2Dvisualisation, localConnectionCSVdatasetNeurons, localConnectionCSVdatasetConnections, local_connectome_visualisation_filename_base, coloursetIndex, true, true, true, false, INT_DEFAULT_VALUE, visualiseTrace, traceIterationIndex);
 		}
-
 		//generate visualisations (specific layers; LX);
 		cout << "generate visualisations (layered - specific layers; LX);" << endl;
 		int numberLayers = CORTICAL_LAYER_NUMBER_OF_LAYERS;
@@ -190,7 +194,10 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 			}		
 		}
 		#endif
+	#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME
 	}
+	#endif
+	#endif
 	
 	return result;
 }
@@ -320,6 +327,10 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 				#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 				neuronTypeStringLDR = SHAREDvars.convertIntToString(neuronExcitatoryColourLDRtraceHighlight);
 				#endif
+				#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_HIDE_INACTIVE_NEURONS
+				passLayerVisualisationChecks = true;
+				#endif
+				traceActiveNeuron = true;
 			}
 			else if(neuronTraceHighlightValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_HIGHLIGHT_VALUE_INHIBITORY)
 			{
@@ -327,6 +338,10 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 				#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 				neuronTypeStringLDR = SHAREDvars.convertIntToString(neuronInhibitoryColourLDRtraceHighlight);
 				#endif
+				#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_HIDE_INACTIVE_NEURONS
+				passLayerVisualisationChecks = true;
+				#endif
+				traceActiveNeuron = true;
 			}			
 			#endif
 			#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_COLOUR_HIGHLIGHTED_INACTIVE_NEURONS
@@ -336,6 +351,10 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 				#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 				neuronTypeStringLDR = SHAREDvars.convertIntToString(neuronInactiveColourLDRtraceHighlight);
 				#endif
+				#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_HIDE_INACTIVE_NEURONS
+				passLayerVisualisationChecks = true;
+				#endif
+				traceActiveNeuron = true;
 			}
 			#endif
 						
@@ -347,6 +366,10 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 				#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 				neuronTypeStringLDR = SHAREDvars.convertIntToString(neuronExcitatoryColourLDRtraceMark);
 				#endif
+				#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_HIDE_INACTIVE_NEURONS
+				passLayerVisualisationChecks = true;
+				#endif
+				traceActiveNeuron = true;
 			}			
 			else if(neuronTraceMarkValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_MARK_VALUE_INHIBITORY)
 			{
@@ -354,6 +377,10 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 				#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 				neuronTypeStringLDR = SHAREDvars.convertIntToString(neuronInhibitoryColourLDRtraceMark);
 				#endif
+				#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_HIDE_INACTIVE_NEURONS
+				passLayerVisualisationChecks = true;
+				#endif
+				traceActiveNeuron = true;
 			}
 			#endif
 			#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_COLOUR_MARKED_INACTIVE_NEURONS
@@ -363,6 +390,10 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 				#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 				neuronTypeStringLDR = SHAREDvars.convertIntToString(neuronInactiveColourLDRtraceMark);
 				#endif
+				#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_HIDE_INACTIVE_NEURONS
+				passLayerVisualisationChecks = true;
+				#endif
+				traceActiveNeuron = true;
 			}
 			#endif
 			
@@ -568,6 +599,10 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 					#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 					connectionTypeStringLDR = SHAREDvars.convertIntToString(connectionExcitatoryColourLDRtraceHighlight);
 					#endif
+					#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_HIDE_INACTIVE_NEURONS
+					passLayerVisualisationChecks = true;
+					#endif
+					traceActiveConnection = true;	
 				}
 				else if(connectionTraceHighlightValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_CONNECTION_TRACE_HIGHLIGHT_VALUE_INHIBITORY)
 				{
@@ -575,6 +610,10 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 					#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 					connectionTypeStringLDR = SHAREDvars.convertIntToString(connectionInhibitoryColourLDRtraceHighlight);
 					#endif
+					#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_HIDE_INACTIVE_NEURONS
+					passLayerVisualisationChecks = true;
+					#endif
+					traceActiveConnection = true;
 				}			
 				#endif
 				#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_COLOUR_HIGHLIGHTED_INACTIVE_CONNECTIONS
@@ -584,6 +623,10 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 					#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 					connectionTypeStringLDR = SHAREDvars.convertIntToString(connectionInactiveColourLDRtraceHighlight);
 					#endif
+					#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_HIDE_INACTIVE_NEURONS
+					passLayerVisualisationChecks = true;
+					#endif
+					traceActiveConnection = true;
 				}
 				#endif
 
@@ -595,6 +638,10 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 					#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 					connectionTypeStringLDR = SHAREDvars.convertIntToString(connectionExcitatoryColourLDRtraceMark);
 					#endif
+					#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_HIDE_INACTIVE_NEURONS
+					passLayerVisualisationChecks = true;
+					#endif
+					traceActiveConnection = true;
 				}			
 				else if(connectionTraceMarkValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_CONNECTION_TRACE_MARK_VALUE_INHIBITORY)
 				{
@@ -602,6 +649,10 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 					#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 					connectionTypeStringLDR = SHAREDvars.convertIntToString(connectionInhibitoryColourLDRtraceMark);
 					#endif
+					#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_HIDE_INACTIVE_NEURONS
+					passLayerVisualisationChecks = true;
+					#endif
+					traceActiveConnection = true;
 				}
 				#endif
 				#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_COLOUR_MARKED_INACTIVE_CONNECTIONS
@@ -611,6 +662,10 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 					#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 					connectionTypeStringLDR = SHAREDvars.convertIntToString(connectionInactiveColourLDRtraceMark);
 					#endif
+					#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_HIDE_INACTIVE_NEURONS
+					passLayerVisualisationChecks = true;
+					#endif
+					traceActiveConnection = true;
 				}
 				#endif
 
@@ -775,6 +830,12 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 		string localConnectomeVisualisationContentsPart3FileName = string(LOCAL_CONNECTOME_VISUALISATION_SVG_PART_IMPORT_FILENAME_PREPEND) + SHAREDvars.convertIntToString(3) + SVG_FILE_EXTENSION; 
 		string localConnectomeVisualisationContentsPart5FileName = string(LOCAL_CONNECTOME_VISUALISATION_SVG_PART_IMPORT_FILENAME_PREPEND) + SHAREDvars.convertIntToString(5) + SVG_FILE_EXTENSION; 
 		string localConnectomeVisualisationContentsPart7FileName = string(LOCAL_CONNECTOME_VISUALISATION_SVG_PART_IMPORT_FILENAME_PREPEND) + SHAREDvars.convertIntToString(7) + SVG_FILE_EXTENSION; 
+		#ifdef INDEXED_CSV_DATABASE_TRACE_VISUALISATION_VIDEO_CROP
+		if(visualiseTrace)
+		{
+			localConnectomeVisualisationContentsPart7FileName = string(LOCAL_CONNECTOME_VISUALISATION_SVG_PART_IMPORT_FILENAME_PREPEND) + SHAREDvars.convertIntToString(7) + LOCAL_CONNECTOME_VISUALISATION_SVG_PART_IMPORT_FILENAME_APPEND_TRACE_LOCAL_CONNECTOME + SVG_FILE_EXTENSION; 		
+		}
+		#endif
 		string localConnectomeVisualisationContentsPart1 = SHAREDvars.getFileContents(localConnectomeVisualisationContentsPart1FileName);
 		string localConnectomeVisualisationContentsPart3 = SHAREDvars.getFileContents(localConnectomeVisualisationContentsPart3FileName);
 		string localConnectomeVisualisationContentsPart5 = SHAREDvars.getFileContents(localConnectomeVisualisationContentsPart5FileName);
@@ -897,7 +958,12 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 	#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME
 	if(visualiseTrace)
 	{
-		local_connectome_visualisation_filename = local_connectome_visualisation_filename + INDEXED_CSV_DATABASE_TRACE_INDEX_PREPEND + SHAREDvars.convertIntToString(traceIterationIndex);
+		#ifdef INDEXED_CSV_DATABASE_TRACE_VISUALISATION_VIDEO
+		const string format = "%03d";
+		local_connectome_visualisation_filename = local_connectome_visualisation_filename + INDEXED_CSV_DATABASE_TRACE_INDEX_PREPEND + SHAREDvars.convertIntToString(traceIterationIndex, format);
+		#else
+		local_connectome_visualisation_filename = local_connectome_visualisation_filename + INDEXED_CSV_DATABASE_TRACE_INDEX_PREPEND + SHAREDvars.convertIntToString(traceIterationIndex);		
+		#endif
 	}
 	#endif
 	

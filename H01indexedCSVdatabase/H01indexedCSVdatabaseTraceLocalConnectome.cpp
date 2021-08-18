@@ -22,19 +22,17 @@ int traceIterationIndexSubMax = 0;
 
 bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdataset(const string local_connectome_folder_base)
 {
-	this->traceLocalConnectomeCSVdatasetFile(local_connectome_folder_base, READ_FILE_TRUE, LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS, QUERY_POSTSYNAPTIC_CONNECTION_NEURONS, WRITE_FILE_TRUE, APPEND_FILE_FALSE, 0, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS, CONNECTION_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS, LAYER_ENFORCEMENT_TRUE, INDEXED_CSV_DATABASE_TRACE_START_LAYER_INDEX);
+	this->traceLocalConnectomeCSVdatasetFile(local_connectome_folder_base, READ_FILE_TRUE, LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS, QUERY_POSTSYNAPTIC_CONNECTION_NEURONS, WRITE_FILE_TRUE, APPEND_FILE_FALSE, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS, CONNECTION_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS);
 
-	this->traceLocalConnectomeCSVdatasetFile(local_connectome_folder_base, READ_FILE_TRUE, LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES, QUERY_POSTSYNAPTIC_CONNECTION_NEURONS, WRITE_FILE_TRUE, APPEND_FILE_FALSE, 0, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES, CONNECTION_TYPES_DERIVED_FROM_EM_IMAGES, LAYER_ENFORCEMENT_TRUE, INDEXED_CSV_DATABASE_TRACE_START_LAYER_INDEX);
+	this->traceLocalConnectomeCSVdatasetFile(local_connectome_folder_base, READ_FILE_TRUE, LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES, QUERY_POSTSYNAPTIC_CONNECTION_NEURONS, WRITE_FILE_TRUE, APPEND_FILE_FALSE, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES, CONNECTION_TYPES_DERIVED_FROM_EM_IMAGES);
 }
 
 
 
-bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdatasetFile(const string local_connectome_folder_base, const bool datasetRead, const string neuronDatasetFileNameRead, const string connectionDatasetFileNameRead, const bool queryPresynapticConnectionNeurons, const bool connectionDatasetWrite, const bool appendToFile, const int traceIterationIndex, const string connectionDatasetFileNameWrite, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, const bool layerIndexEnforcement, const int layerIndex)
+bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdatasetFile(const string local_connectome_folder_base, const bool datasetRead, const string neuronDatasetFileNameRead, const string connectionDatasetFileNameRead, const bool queryPresynapticConnectionNeurons, const bool connectionDatasetWrite, const bool appendToFile, const string connectionDatasetFileNameWrite, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
 {
 	bool result = true;
 		
-	//cout << "\nH01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdataset: traceIterationIndex = " << traceIterationIndex << endl;
-
 	vector<vector<string>> localConnectomeNeurons;
 	vector<vector<string>> localConnectomeConnections;
 	map<string, int> neuronMap;
@@ -101,6 +99,10 @@ bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdata
 		localConnectomeNeuron->push_back(SHAREDvars.convertIntToString(INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_VALUE_INACTIVE));	//add field LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE
 		localConnectomeNeuron->push_back(SHAREDvars.convertIntToString(INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_HIGHLIGHT_VALUE_INACTIVE));	//add field LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE_HIGHLIGHT
 		localConnectomeNeuron->push_back(SHAREDvars.convertIntToString(INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_MARK_VALUE_INACTIVE));	//add field LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE_MARK
+		#ifdef INDEXED_CSV_DATABASE_TRACE_VISUALISATION_SIMULATION
+		localConnectomeNeuron->push_back(SHAREDvars.convertIntToString(INDEXED_CSV_DATABASE_TRACE_VISUALISATION_SIMULATION_ACTIVATION_LEVEL_INITIAL));	//add field LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_ACTIVATION_LEVEL_POSITIVE
+		localConnectomeNeuron->push_back(SHAREDvars.convertIntToString(INDEXED_CSV_DATABASE_TRACE_VISUALISATION_SIMULATION_ACTIVATION_LEVEL_INITIAL));	//add field LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_ACTIVATION_LEVEL_NEGATIVE
+		#endif
 	}
 	for(int i=0; i<localConnectomeConnections.size(); i++)
 	{
@@ -109,8 +111,9 @@ bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdata
 		localConnectomeConnection->push_back(SHAREDvars.convertIntToString(INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_CONNECTION_TRACE_HIGHLIGHT_VALUE_INACTIVE));	//add field LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_ARTIFICIAL_TRACE_HIGHLIGHT
 		localConnectomeConnection->push_back(SHAREDvars.convertIntToString(INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_CONNECTION_TRACE_MARK_VALUE_INACTIVE));	//add field LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_ARTIFICIAL_TRACE_MARK
 	}
-
-	this->traceLocalConnectomeCSVdataset(local_connectome_folder_base, &localConnectomeNeurons, &localConnectomeConnections, &neuronMap, &connectionsMap, queryPresynapticConnectionNeurons, connectionDatasetWrite, appendToFile, traceIterationIndex, connectionDatasetFileNameWrite, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, layerIndexEnforcement, layerIndex);
+	
+	int traceIterationIndex = 0;
+	this->traceLocalConnectomeCSVdataset(local_connectome_folder_base, &localConnectomeNeurons, &localConnectomeConnections, &neuronMap, &connectionsMap, queryPresynapticConnectionNeurons, connectionDatasetWrite, appendToFile, traceIterationIndex, connectionDatasetFileNameWrite, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, LAYER_ENFORCEMENT_TRUE, INDEXED_CSV_DATABASE_TRACE_START_LAYER_INDEX);
 
 
 	return result;
@@ -146,7 +149,14 @@ bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdata
 		//if neuron on cortex entry layer;
 		if(layerIndexEnforcement && (localConnectomeNeuronLayer == layerIndex))
 		{
-			neuronTraceValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_VALUE_SOURCE;
+			#ifdef INDEXED_CSV_DATABASE_TRACE_START_LAYER_EXCITATORY_NEURONS
+			if(neuronExcitationType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY)
+			{
+			#endif
+				neuronTraceValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_VALUE_SOURCE;
+			#ifdef INDEXED_CSV_DATABASE_TRACE_START_LAYER_EXCITATORY_NEURONS
+			}
+			#endif
 		}
 		else
 		{
@@ -179,6 +189,18 @@ bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdata
 		(*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE] = SHAREDvars.convertIntToString(neuronTraceValue);
 	}
 
+	//clear neuron traceHighlight, traceMask;
+	for(int i=0; i<localConnectomeNeurons->size(); i++)
+	{
+		vector<string>* localConnectomeNeuron = &((*localConnectomeNeurons)[i]);
+		(*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE_HIGHLIGHT] = SHAREDvars.convertIntToString(INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_HIGHLIGHT_VALUE_INACTIVE);
+		(*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE_MARK] = SHAREDvars.convertIntToString(INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_MARK_VALUE_INACTIVE);
+		#ifdef INDEXED_CSV_DATABASE_TRACE_VISUALISATION_SIMULATION
+		(*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_ACTIVATION_LEVEL_POSITIVE] = SHAREDvars.convertIntToString(INDEXED_CSV_DATABASE_TRACE_VISUALISATION_SIMULATION_ACTIVATION_LEVEL_INITIAL);
+		(*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_ACTIVATION_LEVEL_NEGATIVE] = SHAREDvars.convertIntToString(INDEXED_CSV_DATABASE_TRACE_VISUALISATION_SIMULATION_ACTIVATION_LEVEL_INITIAL);
+		#endif
+	}
+	
 	//clear connection trace, traceHighlight, traceMask;
 	for(int i=0; i<localConnectomeConnections->size(); i++)
 	{
@@ -186,15 +208,53 @@ bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdata
 		(*localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_ARTIFICIAL_TRACE] = SHAREDvars.convertIntToString(INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_CONNECTION_TRACE_VALUE_INACTIVE);
 		(*localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_ARTIFICIAL_TRACE_HIGHLIGHT] = SHAREDvars.convertIntToString(INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_CONNECTION_TRACE_HIGHLIGHT_VALUE_INACTIVE);
 		(*localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_ARTIFICIAL_TRACE_MARK] = SHAREDvars.convertIntToString(INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_CONNECTION_TRACE_MARK_VALUE_INACTIVE);
+		
 	}
-	//clear neuron traceHighlight, traceMask;
-	for(int i=0; i<localConnectomeNeurons->size(); i++)
+
+	#ifdef INDEXED_CSV_DATABASE_TRACE_VISUALISATION_SIMULATION
+	//adjust target neuron input activation level;
+	for(int i=0; i<localConnectomeConnections->size(); i++)
 	{
-		vector<string>* localConnectomeNeuron = &((*localConnectomeNeurons)[i]);
-		(*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE_HIGHLIGHT] = SHAREDvars.convertIntToString(INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_HIGHLIGHT_VALUE_INACTIVE);
-		(*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE_MARK] = SHAREDvars.convertIntToString(INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_MARK_VALUE_INACTIVE);
+		vector<string>* localConnectomeConnection = &((*localConnectomeConnections)[i]);
+		bool activateConnection = false;
+		string connectionSourceNeuronID = (*localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_ID];
+		string connectionTargetNeuronID = (*localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_ID];
+		#ifdef LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES_STILL_REQUIRING_COMPLETION
+		if((connectionSourceNeuronID != LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES_UNKNOWN_NEURON_ID) && (connectionTargetNeuronID != LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES_UNKNOWN_NEURON_ID))
+		{
+		#endif
+			int sourceNeuronIndex = (*neuronMap)[connectionSourceNeuronID];
+			vector<string>* connectionSourceNeuron = &((*localConnectomeNeurons)[sourceNeuronIndex]);
+			int sourceNeuronTraceValue = SHAREDvars.convertStringToInt((*connectionSourceNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE]);
+			if(sourceNeuronTraceValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_VALUE_SOURCE)
+			{
+				activateConnection = true;
+			}
+	
+			int targetNeuronIndex = (*neuronMap)[connectionTargetNeuronID];
+			vector<string>* connectionTargetNeuron = &((*localConnectomeNeurons)[targetNeuronIndex]);
+			if(activateConnection)
+			{
+				int activationLevelPositiveCurrent = SHAREDvars.convertStringToInt((*connectionTargetNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_ACTIVATION_LEVEL_POSITIVE]);
+				int activationLevelNegativeCurrent = SHAREDvars.convertStringToInt((*connectionTargetNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_ACTIVATION_LEVEL_NEGATIVE]);
+				int connectionExcitationType = SHAREDvars.convertStringToInt((*localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE]);		
+				if(connectionExcitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY)
+				{
+					activationLevelPositiveCurrent = activationLevelPositiveCurrent + INDEXED_CSV_DATABASE_TRACE_VISUALISATION_SIMULATION_ACTIVATION_LEVEL_RESOLUTION;
+				}
+				else if(connectionExcitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY)
+				{
+					activationLevelNegativeCurrent = activationLevelNegativeCurrent + INDEXED_CSV_DATABASE_TRACE_VISUALISATION_SIMULATION_ACTIVATION_LEVEL_RESOLUTION;
+				}
+				(*connectionTargetNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_ACTIVATION_LEVEL_POSITIVE] = SHAREDvars.convertIntToString(activationLevelPositiveCurrent);
+				(*connectionTargetNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_ACTIVATION_LEVEL_NEGATIVE] = SHAREDvars.convertIntToString(activationLevelNegativeCurrent);
+			}
+		#ifdef LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES_STILL_REQUIRING_COMPLETION
+		}
+		#endif
 	}
-			
+	#endif
+					
 	//perform trace: highlight neurons/connections;
 	int traceIterationIndexSub = 0;
 	#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_SUB
@@ -203,7 +263,7 @@ bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdata
 	this->traceLocalConnectomeCSVdatasetHighlight(
 	false, false, false, false, false, false, 
 	false, false, false, false, false, false, 
-	false, false, false, false, false, false, 
+	false, false, false, false, false, false, false, false,
 	local_connectome_folder_base, localConnectomeNeurons, localConnectomeConnections, neuronMap, connectionsMap, queryPresynapticConnectionNeurons, connectionDatasetWrite, appendToFile, traceIterationIndex, traceIterationIndexSub, connectionDatasetFileNameWrite, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, layerIndexEnforcement, layerIndex);
 	traceIterationIndexSub = traceIterationIndexSub + 1;	
 	#endif
@@ -211,23 +271,33 @@ bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdata
 	this->traceLocalConnectomeCSVdatasetHighlight(
 	true, true, false, false, false, false, 
 	false, false, false, false, false, false, 
-	false, false, false, false, false, false, 
+	false, false, false, false, false, false, false, false,
 	local_connectome_folder_base, localConnectomeNeurons, localConnectomeConnections, neuronMap, connectionsMap, queryPresynapticConnectionNeurons, connectionDatasetWrite, appendToFile, traceIterationIndex, traceIterationIndexSub, connectionDatasetFileNameWrite, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, layerIndexEnforcement, layerIndex);
 	traceIterationIndexSub = traceIterationIndexSub + 1;
 	#endif
+	/*
 	#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_SUB_CONNECTION_TARGETS_OF_INHIBITORY_CONNECTIONS
 	this->traceLocalConnectomeCSVdatasetHighlight(
 	true, true, false, false, false, false, 
 	false, false, false, false, false, false, 
-	false, true, false, false, false, true, 
+	false, true, false, false, false, true, false, false,
 	local_connectome_folder_base, localConnectomeNeurons, localConnectomeConnections, neuronMap, connectionsMap, queryPresynapticConnectionNeurons, connectionDatasetWrite, appendToFile, traceIterationIndex, traceIterationIndexSub, connectionDatasetFileNameWrite, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, layerIndexEnforcement, layerIndex);
 	traceIterationIndexSub = traceIterationIndexSub + 1;
+	#endif
+	*/
+	#ifdef INDEXED_CSV_DATABASE_TRACE_VISUALISATION_SIMULATION_MARK_INHIBITED_NEURONS
+	this->traceLocalConnectomeCSVdatasetHighlight(
+	true, true, false, false, false, false, 
+	false, false, false, false, false, false, 
+	false, true, false, false, false, false, true, false,
+	local_connectome_folder_base, localConnectomeNeurons, localConnectomeConnections, neuronMap, connectionsMap, queryPresynapticConnectionNeurons, connectionDatasetWrite, appendToFile, traceIterationIndex, traceIterationIndexSub, connectionDatasetFileNameWrite, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, layerIndexEnforcement, layerIndex);
+	traceIterationIndexSub = traceIterationIndexSub + 1;	
 	#endif
 	#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_SUB_CONNECTION_TARGETS
 	this->traceLocalConnectomeCSVdatasetHighlight(
 	true, true, false, false, false, false, 
 	true, true, false, false, false, false, 
-	false, false, false, false, false, false, 
+	false, false, false, false, false, false, false, false,
 	local_connectome_folder_base, localConnectomeNeurons, localConnectomeConnections, neuronMap, connectionsMap, queryPresynapticConnectionNeurons, connectionDatasetWrite, appendToFile, traceIterationIndex, traceIterationIndexSub, connectionDatasetFileNameWrite, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, layerIndexEnforcement, layerIndex);
 	traceIterationIndexSub = traceIterationIndexSub + 1;
 	#endif
@@ -236,14 +306,14 @@ bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdata
 	this->traceLocalConnectomeCSVdatasetHighlight(
 	true, true, false, false, false, false, 
 	true, true, false, false, false, false, 
-	false, false, false, false, false, false, 
+	false, false, false, false, false, false, false, false,
 	local_connectome_folder_base, localConnectomeNeurons, localConnectomeConnections, neuronMap, connectionsMap, queryPresynapticConnectionNeurons, connectionDatasetWrite, appendToFile, traceIterationIndex, traceIterationIndexSub, connectionDatasetFileNameWrite, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, layerIndexEnforcement, layerIndex);
 	traceIterationIndexSub = traceIterationIndexSub + 1;	
 	#endif
 	
 	traceIterationIndexSubMax = traceIterationIndexSub;
 	
-	if(traceIterationIndex < INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_MAX_NUMBER_ITERATIONS)
+	if(traceIterationIndex < INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_MAX_NUMBER_ITERATIONS-1)
 	{
 		bool layerIndexEnforcementNext = LAYER_ENFORCEMENT_FALSE;	//checkthis
 		this->traceLocalConnectomeCSVdataset(local_connectome_folder_base, localConnectomeNeurons, localConnectomeConnections, neuronMap, connectionsMap, queryPresynapticConnectionNeurons, connectionDatasetWrite, appendToFile, (traceIterationIndex+1), connectionDatasetFileNameWrite, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, layerIndexEnforcementNext, layerIndex);
@@ -255,7 +325,7 @@ bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdata
 bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdatasetHighlight(
 	const bool drawConnectionExcitatory, const bool drawConnectionInhibitory, const bool highlightConnectionExcitatory, const bool highlightConnectionInhibitory, const bool markConnectionExcitatory, const bool markConnectionInhibitory, 
 	const bool drawTargetExcitatory, const bool drawTargetInhibitory, const bool highlightTargetExcitatory, const bool highlightTargetInhibitory, const bool markTargetExcitatory, const bool markTargetInhibitory, 
-	const bool drawTargetOfExcitatoryConnection, const bool drawTargetOfInhibitoryConnection, const bool highlightTargetOfExcitatoryConnection, const bool highlightTargetOfInhibitoryConnection, const bool markTargetOfExcitatoryConnection, const bool markTargetOfInhibitoryConnection,
+	const bool drawTargetOfExcitatoryConnection, const bool drawTargetOfInhibitoryConnection, const bool highlightTargetOfExcitatoryConnection, const bool highlightTargetOfInhibitoryConnection, const bool markTargetOfExcitatoryConnection, const bool markTargetOfInhibitoryConnection, const bool markInhibitedNeurons, const bool markExcitedNeurons, 
 	const string local_connectome_folder_base, vector<vector<string>>* localConnectomeNeurons, vector<vector<string>>* localConnectomeConnections, map<string, int>* neuronMap, map<string, int>* connectionsMap, const bool queryPresynapticConnectionNeurons, const bool connectionDatasetWrite, const bool appendToFile, const int traceIterationIndex, const int traceIterationIndexSub, const string connectionDatasetFileNameWrite, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, const bool layerIndexEnforcement, const int layerIndex)
 {
 	bool result = true;
@@ -270,32 +340,51 @@ bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdata
 		
 		//cout << "connectionExcitationType = " << connectionExcitationType << endl;
 		bool activateConnection = false;
-		if(connectionSourceNeuronID != LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES_UNKNOWN_NEURON_ID)
+		#ifdef LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES_STILL_REQUIRING_COMPLETION
+		if((connectionSourceNeuronID != LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES_UNKNOWN_NEURON_ID) && (connectionTargetNeuronID != LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES_UNKNOWN_NEURON_ID))
 		{
+		#endif
 			int sourceNeuronIndex = (*neuronMap)[connectionSourceNeuronID];
 			vector<string>* connectionSourceNeuron = &((*localConnectomeNeurons)[sourceNeuronIndex]);
 
-			int neuronTraceValue = SHAREDvars.convertStringToInt((*connectionSourceNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE]);
-			if(neuronTraceValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_VALUE_SOURCE)
+			int targetNeuronIndex = (*neuronMap)[connectionTargetNeuronID];
+			vector<string>* connectionTargetNeuron = &((*localConnectomeNeurons)[targetNeuronIndex]);
+
+			#ifdef INDEXED_CSV_DATABASE_TRACE_VISUALISATION_SIMULATION
+			int activationLevelCurrent = SHAREDvars.convertStringToInt((*connectionTargetNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_ACTIVATION_LEVEL_POSITIVE]) - SHAREDvars.convertStringToInt((*connectionTargetNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_ACTIVATION_LEVEL_NEGATIVE]);
+			int activationLevelNegativeCurrent = SHAREDvars.convertStringToInt((*connectionTargetNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_ACTIVATION_LEVEL_NEGATIVE]);
+			#endif
+				
+			//target neuron activation;
+			int sourceNeuronTraceValue = SHAREDvars.convertStringToInt((*connectionSourceNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE]);
+			if(sourceNeuronTraceValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_VALUE_SOURCE)
 			{
-				if(drawConnectionExcitatory)
+				#ifdef INDEXED_CSV_DATABASE_TRACE_VISUALISATION_SIMULATION_DRAW_CONNECTIONS_IF_TARGET_ACTIVATED
+				if(activationLevelCurrent > INDEXED_CSV_DATABASE_TRACE_VISUALISATION_SIMULATION_ACTIVATION_LEVEL_THRESHOLD_CRITERIA);
 				{
-					if(connectionExcitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY)
+				#endif
+					if(drawConnectionExcitatory)
 					{
-						activateConnection = true;
+						if(connectionExcitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY)
+						{
+							activateConnection = true;
+						}
 					}
-				}
-				#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_DRAW_INHIBITORY_CONNECTIONS
-				if(drawConnectionInhibitory)
-				{
-					if(connectionExcitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY)
+					#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_DRAW_INHIBITORY_CONNECTIONS
+					if(drawConnectionInhibitory)
 					{
-						activateConnection = true;
+						if(connectionExcitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY)
+						{
+							activateConnection = true;
+						}
 					}
+					#endif
+				#ifdef INDEXED_CSV_DATABASE_TRACE_VISUALISATION_SIMULATION_DRAW_CONNECTIONS_IF_TARGET_ACTIVATED
 				}
 				#endif
 			}
-		
+
+			//connection update;
 			int connectionTraceValue = SHAREDvars.convertStringToInt((*localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_ARTIFICIAL_TRACE]);	
 			int connectionTraceHighlightValue = SHAREDvars.convertStringToInt((*localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_ARTIFICIAL_TRACE_HIGHLIGHT]);
 			int connectionTraceMarkValue = SHAREDvars.convertStringToInt((*localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_ARTIFICIAL_TRACE_MARK]);
@@ -342,12 +431,9 @@ bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdata
 			(*localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_ARTIFICIAL_TRACE] = SHAREDvars.convertIntToString(connectionTraceValue);	
 			(*localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_ARTIFICIAL_TRACE_HIGHLIGHT] = SHAREDvars.convertIntToString(connectionTraceHighlightValue);	
 			(*localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_ARTIFICIAL_TRACE_MARK] =  SHAREDvars.convertIntToString(connectionTraceMarkValue);			
-		}
-		if(connectionTargetNeuronID != LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES_UNKNOWN_NEURON_ID)
-		{
-			int targetNeuronIndex = (*neuronMap)[connectionTargetNeuronID];
-			vector<string>* connectionTargetNeuron = &((*localConnectomeNeurons)[targetNeuronIndex]);
 		
+		
+			//target neuron update;
 			string neuronType = (*connectionTargetNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
 			int neuronExcitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN;
 			if(neuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_PYRAMIDAL)
@@ -358,84 +444,110 @@ bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdata
 			{
 				neuronExcitationType = LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY;
 			}
-		
-			int neuronTraceValue = SHAREDvars.convertStringToInt((*connectionTargetNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE]);
+			int targetNeuronTraceValue = SHAREDvars.convertStringToInt((*connectionTargetNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE]);
 			int neuronTraceHighlightValue = SHAREDvars.convertStringToInt((*connectionTargetNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE_HIGHLIGHT]);
 			int neuronTraceMarkValue = SHAREDvars.convertStringToInt((*connectionTargetNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE_MARK]);
 			if(activateConnection)
 			{
-				if(neuronExcitationType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY)
+				#ifdef INDEXED_CSV_DATABASE_TRACE_VISUALISATION_SIMULATION_DRAW_CONNECTIONS_IF_SOURCE_ACTIVATED
+				if(activationLevelCurrent > INDEXED_CSV_DATABASE_TRACE_VISUALISATION_SIMULATION_ACTIVATION_LEVEL_THRESHOLD_CRITERIA)
 				{
-					if(drawTargetExcitatory)
-					{
-						neuronTraceValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_VALUE_TARGET;
-					}
-					if(highlightTargetExcitatory)
-					{
-						neuronTraceHighlightValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_HIGHLIGHT_VALUE_EXCITATORY;
-					}
-					if(markTargetExcitatory)
-					{
-						neuronTraceMarkValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_MARK_VALUE_EXCITATORY;
-					}
-				}			
-				#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_DRAW_INHIBITORY_NEURONS
-				if(neuronExcitationType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY)
-				{
-					if(drawTargetInhibitory)
-					{
-						neuronTraceValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_VALUE_TARGET;
-					}
-					if(highlightTargetInhibitory)
-					{
-						neuronTraceHighlightValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_HIGHLIGHT_VALUE_INHIBITORY;
-					}
-					if(markTargetInhibitory)
-					{
-						neuronTraceMarkValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_MARK_VALUE_INHIBITORY;
-					}
-				}						
 				#endif
-				if(connectionExcitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY)
-				{	
-					if(drawTargetOfExcitatoryConnection)
+					if(neuronExcitationType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY)
 					{
-						neuronTraceValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_VALUE_TARGET;
-					}
-					if(highlightTargetOfExcitatoryConnection)
+						if(drawTargetExcitatory)
+						{
+							targetNeuronTraceValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_VALUE_TARGET;
+						}
+						if(highlightTargetExcitatory)
+						{
+							neuronTraceHighlightValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_HIGHLIGHT_VALUE_EXCITATORY;
+						}
+						if(markTargetExcitatory)
+						{
+							neuronTraceMarkValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_MARK_VALUE_EXCITATORY;
+						}
+					}			
+					#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_DRAW_INHIBITORY_NEURONS
+					if(neuronExcitationType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY)
 					{
-						neuronTraceHighlightValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_HIGHLIGHT_VALUE_EXCITATORY;
+						if(drawTargetInhibitory)
+						{
+							targetNeuronTraceValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_VALUE_TARGET;
+						}
+						if(highlightTargetInhibitory)
+						{
+							neuronTraceHighlightValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_HIGHLIGHT_VALUE_INHIBITORY;
+						}
+						if(markTargetInhibitory)
+						{
+							neuronTraceMarkValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_MARK_VALUE_INHIBITORY;
+						}
+					}						
+					#endif
+					if(connectionExcitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY)
+					{	
+						if(drawTargetOfExcitatoryConnection)
+						{
+							targetNeuronTraceValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_VALUE_TARGET;
+						}
+						if(highlightTargetOfExcitatoryConnection)
+						{
+							neuronTraceHighlightValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_HIGHLIGHT_VALUE_EXCITATORY;
+						}
+						if(markTargetOfExcitatoryConnection)
+						{
+							neuronTraceMarkValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_MARK_VALUE_EXCITATORY;
+						}
 					}
-					if(markTargetOfExcitatoryConnection)
+					if(connectionExcitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY)
 					{
-						neuronTraceMarkValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_MARK_VALUE_EXCITATORY;
+						if(drawTargetOfInhibitoryConnection)
+						{
+							targetNeuronTraceValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_VALUE_TARGET;
+						}
+						if(highlightTargetOfInhibitoryConnection)
+						{
+							neuronTraceHighlightValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_HIGHLIGHT_VALUE_INHIBITORY;
+						}
+						if(markTargetOfInhibitoryConnection)
+						{
+							neuronTraceMarkValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_MARK_VALUE_INHIBITORY;
+						}
 					}
+				#ifdef INDEXED_CSV_DATABASE_TRACE_VISUALISATION_SIMULATION_DRAW_CONNECTIONS_IF_SOURCE_ACTIVATED
 				}
-				if(connectionExcitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY)
+				#ifdef INDEXED_CSV_DATABASE_TRACE_VISUALISATION_SIMULATION_MARK_INHIBITED_NEURONS
+				else if(activationLevelCurrent < 0)	//CHECKTHIS	//(activationLevelNegativeCurrent > 0)
 				{
-					if(drawTargetOfInhibitoryConnection)
-					{
-						neuronTraceValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_VALUE_TARGET;
-					}
-					if(highlightTargetOfInhibitoryConnection)
-					{
-						neuronTraceHighlightValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_HIGHLIGHT_VALUE_INHIBITORY;
-					}
-					if(markTargetOfInhibitoryConnection)
+					if(markInhibitedNeurons)
 					{
 						neuronTraceMarkValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_MARK_VALUE_INHIBITORY;
-					}
+					}	
 				}
+				#endif
+				#ifdef INDEXED_CSV_DATABASE_TRACE_VISUALISATION_SIMULATION_MARK_EXCITED_NEURONS
+				else if(activationLevelCurrent > 0)	//CHECKTHIS
+				{
+					if(markExcitedNeurons)
+					{
+						neuronTraceMarkValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_MARK_VALUE_EXCITATORY;
+					}	
+				}
+				#endif
+				#endif
 			}
 			else	
 			{
 				//support many-to-one and one-to-many connections (take no action)
 				//neuronTraceHighlightValue = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_VALUE_INACTIVE;
 			}
-			(*connectionTargetNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE] =  SHAREDvars.convertIntToString(neuronTraceValue);
+			(*connectionTargetNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE] =  SHAREDvars.convertIntToString(targetNeuronTraceValue);
 			(*connectionTargetNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE_HIGHLIGHT] =  SHAREDvars.convertIntToString(neuronTraceHighlightValue);	
 			(*connectionTargetNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE_MARK] =  SHAREDvars.convertIntToString(neuronTraceMarkValue);			
+		#ifdef LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES_STILL_REQUIRING_COMPLETION
 		}
+		#endif
 	}
 	
 	bool visualiseTrace = true;
@@ -444,8 +556,10 @@ bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdata
 	#ifdef LOCAL_CONNECTOME_VISUALISATION_2D_SVG
 	H01indexedCSVdatabaseVisualiseLocalConnectome.visualiseLocalConnectomeCSVdataset(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, true, localConnectomeNeurons, localConnectomeConnections, visualiseTrace, traceIterationIndexVisualisation);
 	#endif
+	#ifndef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_EMULATE_PUBLICATION_INFORMATION_FLOW_THROUGH_THE_H01_NETWORK
 	#ifdef LOCAL_CONNECTOME_VISUALISATION_3D_LDR
 	H01indexedCSVdatabaseVisualiseLocalConnectome.visualiseLocalConnectomeCSVdataset(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, false, localConnectomeNeurons, localConnectomeConnections, visualiseTrace, traceIterationIndexVisualisation);
+	#endif
 	#endif
 	
 	return result;
