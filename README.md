@@ -159,9 +159,6 @@ H01 local connectome visualisations
 *visualisations/connectionTypesFromEMimages*\
 *visualisations/connectionTypesFromPresynapticNeurons*
 
-LDView can be used to view 3D LDR visualisations (https://tcobbs.github.io/ldview/Downloads.html - **[LDView Ubuntu 20.04 installation](https://gist.github.com/baxterai/d7ca85a88d253b68501b5166d752746d)** \
-A web browser/Inkscape/etc can be used to view 2D SVG visualisations.
-
 Current local connectome visualisations for connectionTypesDerivedFromEMimages/connectionTypesDerivedFromPresynapticNeurons include:
 
 *2D (SVG)*
@@ -175,8 +172,9 @@ Current local connectome visualisations for connectionTypesDerivedFromEMimages/c
 - connections_IE_layered_flow1.svg (connections_IE_layered_flow1_Lx.svg) - connections coloured by excitatory/inhibitory type and flow direction (through the cortical layers); neurons coloured by cell type.
 - connections_IE_layered_flow2.svg (connections_IE_layered_flow2_Lx.svg) - connections coloured by excitatory/inhibitory type, pre/post synaptic direction, and flow direction (through the cortical layers) [unique hue for connection source and target]; neurons coloured by cell type.
 
-2D SVG colour sets can be changed by modifying the visualisations/templates/connections_IE_part2-\*.svg file <"linearGradient"> tags.\
-2D SVG colour sets can be added/removed by modifying H01indexedCSVdatabase.hpp: LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_\*_NUMBER_COLOURSETS and adding/removing visualisations/templates/connections_IE_part2-\*X.svg.
+\- A web browser/Inkscape/etc can be used to view 2D SVG visualisations.\
+\- 2D SVG colour sets can be changed by modifying the visualisations/templates/connections_IE_part2-\*.svg file <"linearGradient"> tags.\
+\- 2D SVG colour sets can be added/removed by modifying H01indexedCSVdatabase.hpp: LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_\*_NUMBER_COLOURSETS and adding/removing visualisations/templates/connections_IE_part2-\*X.svg.
 
 *3D (SVG)*
 - connections_IE1.ldr - connections coloured by excitatory/inhibitory type; neurons coloured by cell type.
@@ -186,6 +184,7 @@ Current local connectome visualisations for connectionTypesDerivedFromEMimages/c
 - connections_IE_layered2.ldr (connections_IE_layered2_Lx.ldr) - connections coloured by excitatory/inhibitory type; neurons coloured by cell type.
 - connections_IE_layered_flow1.ldr (connections_IE_layered_flow1_Lx.ldr) - connections coloured by excitatory/inhibitory type and flow direction (through the cortical layers); neurons coloured by cell type.
 
-3D LDR colour sets can be changed by modifying H01indexedCSVdatabase.hpp: local_connectome_visualisation_neurons_colour_\*. / local_connectome_visualisation_connections_colour_\*. \
-3D LDR colour sets can be added/removed by modifying H01indexedCSVdatabase.hpp: LOCAL_CONNECTOME_VISUALISATION_LDR_FILENAME_\*_NUMBER_COLOURSETS and upgrading the source code (advanced).
+\- LDView can be used to view 3D LDR visualisations (https://tcobbs.github.io/ldview/Downloads.html - **[LDView Ubuntu 20.04 installation](https://gist.github.com/baxterai/d7ca85a88d253b68501b5166d752746d)**) \
+\- 3D LDR colour sets can be changed by modifying H01indexedCSVdatabase.hpp: local_connectome_visualisation_neurons_colour_\*. / local_connectome_visualisation_connections_colour_\*. \
+\- 3D LDR colour sets can be added/removed by modifying H01indexedCSVdatabase.hpp: LOCAL_CONNECTOME_VISUALISATION_LDR_FILENAME_\*_NUMBER_COLOURSETS and upgrading the source code (advanced).
 
