@@ -6,6 +6,9 @@ Cortical Learning Algorithm
 
 ### Autoencoder / Knowledgebase
 
+*23 August 2021* - 
+* need to verify that negative weights can be encoded by intermediary inhibitory interneurons
+
 *22 August 2021* - 
 * determine how to use autoencoded layers in processing of an independent/new (eg higher or lower layer) subnet
     * not every cortical circuit is necessarily an autoencoder; some circuits map a set of inputs to a set of ideal (supervised) outputs

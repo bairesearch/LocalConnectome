@@ -236,12 +236,12 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 		int neuronExcitatoryColourLDR = local_connectome_visualisation_neurons_colour_excitation_type_excitatory[0];
 		int neuronInhibitoryColourLDR = local_connectome_visualisation_neurons_colour_excitation_type_inhibitory[0];
 		#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME
-		int neuronInactiveColourLDRtraceHighlight = local_connectome_visualisation_neurons_colour_trace_highlight_value_inactive[0];
-		int neuronExcitatoryColourLDRtraceHighlight = local_connectome_visualisation_neurons_colour_trace_highlight_value_excitatory[0];
-		int neuronInhibitoryColourLDRtraceHighlight = local_connectome_visualisation_neurons_colour_trace_highlight_value_inhibitory[0];
-		int neuronInactiveColourLDRtraceMark = local_connectome_visualisation_neurons_colour_trace_mark_value_inactive[0];
-		int neuronExcitatoryColourLDRtraceMark = local_connectome_visualisation_neurons_colour_trace_mark_value_excitatory[0];
-		int neuronInhibitoryColourLDRtraceMark = local_connectome_visualisation_neurons_colour_trace_mark_value_inhibitory[0];
+		int neuronInactiveColourLDRtraceHighlight = local_connectome_visualisation_neurons_colour_trace_highlight1_value_inactive[0];
+		int neuronExcitatoryColourLDRtraceHighlight = local_connectome_visualisation_neurons_colour_trace_highlight1_value_excitatory[0];
+		int neuronInhibitoryColourLDRtraceHighlight = local_connectome_visualisation_neurons_colour_trace_highlight1_value_inhibitory[0];
+		int neuronInactiveColourLDRtraceMark = local_connectome_visualisation_neurons_colour_trace_highlight2_value_inactive[0];
+		int neuronExcitatoryColourLDRtraceMark = local_connectome_visualisation_neurons_colour_trace_highlight2_value_excitatory[0];
+		int neuronInhibitoryColourLDRtraceMark = local_connectome_visualisation_neurons_colour_trace_highlight2_value_inhibitory[0];
 		#endif
 		if(!generate2Dvisualisation)
 		{
@@ -255,12 +255,12 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 						neuronExcitatoryColourLDR = local_connectome_visualisation_neurons_colour_excitation_type_excitatory[coloursetNumber-1];
 						neuronInhibitoryColourLDR = local_connectome_visualisation_neurons_colour_excitation_type_inhibitory[coloursetNumber-1];
 						#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME
-						neuronInactiveColourLDRtraceHighlight = local_connectome_visualisation_neurons_colour_trace_highlight_value_inactive[coloursetNumber-1];
-						neuronExcitatoryColourLDRtraceHighlight = local_connectome_visualisation_neurons_colour_trace_highlight_value_excitatory[coloursetNumber-1];
-						neuronInhibitoryColourLDRtraceHighlight = local_connectome_visualisation_neurons_colour_trace_highlight_value_inhibitory[coloursetNumber-1];
-						neuronInactiveColourLDRtraceMark = local_connectome_visualisation_neurons_colour_trace_mark_value_inactive[coloursetNumber-1];
-						neuronExcitatoryColourLDRtraceMark = local_connectome_visualisation_neurons_colour_trace_mark_value_excitatory[coloursetNumber-1];
-						neuronInhibitoryColourLDRtraceMark = local_connectome_visualisation_neurons_colour_trace_mark_value_inhibitory[coloursetNumber-1];						
+						neuronInactiveColourLDRtraceHighlight = local_connectome_visualisation_neurons_colour_trace_highlight1_value_inactive[coloursetNumber-1];
+						neuronExcitatoryColourLDRtraceHighlight = local_connectome_visualisation_neurons_colour_trace_highlight1_value_excitatory[coloursetNumber-1];
+						neuronInhibitoryColourLDRtraceHighlight = local_connectome_visualisation_neurons_colour_trace_highlight1_value_inhibitory[coloursetNumber-1];
+						neuronInactiveColourLDRtraceMark = local_connectome_visualisation_neurons_colour_trace_highlight2_value_inactive[coloursetNumber-1];
+						neuronExcitatoryColourLDRtraceMark = local_connectome_visualisation_neurons_colour_trace_highlight2_value_excitatory[coloursetNumber-1];
+						neuronInhibitoryColourLDRtraceMark = local_connectome_visualisation_neurons_colour_trace_highlight2_value_inhibitory[coloursetNumber-1];						
 						#endif
 					}
 				}
@@ -319,11 +319,11 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 
 			//string neuronTypeStringSVGprepend = "";
 			
-			int neuronTraceHighlightValue = SHAREDvars.convertStringToInt(localConnectionCSVdatasetNeuron[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE_HIGHLIGHT]);
-			#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_COLOUR_HIGHLIGHTED_ACTIVE_NEURONS
-			if(neuronTraceHighlightValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_HIGHLIGHT_VALUE_EXCITATORY)
+			int neuronTraceHighlightValue = SHAREDvars.convertStringToInt(localConnectionCSVdatasetNeuron[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE_HIGHLIGHT1]);
+			#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_COLOUR_HIGHLIGHT1_ACTIVE_NEURONS
+			if(neuronTraceHighlightValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_HIGHLIGHT1_VALUE_EXCITATORY)
 			{
-				neuronTypeStringSVG = string(LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_HIGHLIGHT_EXCITATORY_NEURON);
+				neuronTypeStringSVG = string(LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_HIGHLIGHT1_EXCITATORY_NEURON);
 				#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 				neuronTypeStringLDR = SHAREDvars.convertIntToString(neuronExcitatoryColourLDRtraceHighlight);
 				#endif
@@ -332,9 +332,9 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 				#endif
 				traceActiveNeuron = true;
 			}
-			else if(neuronTraceHighlightValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_HIGHLIGHT_VALUE_INHIBITORY)
+			else if(neuronTraceHighlightValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_HIGHLIGHT1_VALUE_INHIBITORY)
 			{
-				neuronTypeStringSVG = string(LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_HIGHLIGHT_INHIBITORY_NEURON);
+				neuronTypeStringSVG = string(LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_HIGHLIGHT1_INHIBITORY_NEURON);
 				#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 				neuronTypeStringLDR = SHAREDvars.convertIntToString(neuronInhibitoryColourLDRtraceHighlight);
 				#endif
@@ -344,10 +344,10 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 				traceActiveNeuron = true;
 			}			
 			#endif
-			#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_COLOUR_HIGHLIGHTED_INACTIVE_NEURONS
-			else if(neuronTraceHighlightValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_HIGHLIGHT_VALUE_INACTIVE)
+			#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_COLOUR_HIGHLIGHT1_INACTIVE_NEURONS
+			else if(neuronTraceHighlightValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_HIGHLIGHT1_VALUE_INACTIVE)
 			{
-				neuronTypeStringSVG = string(LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_HIGHLIGHT_INACTIVE_NEURON);
+				neuronTypeStringSVG = string(LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_HIGHLIGHT1_INACTIVE_NEURON);
 				#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 				neuronTypeStringLDR = SHAREDvars.convertIntToString(neuronInactiveColourLDRtraceHighlight);
 				#endif
@@ -358,11 +358,11 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 			}
 			#endif
 						
-			int neuronTraceMarkValue = SHAREDvars.convertStringToInt(localConnectionCSVdatasetNeuron[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE_MARK]);
-			#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_COLOUR_MARKED_ACTIVE_NEURONS
-			if(neuronTraceMarkValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_MARK_VALUE_EXCITATORY)
+			int neuronTraceMarkValue = SHAREDvars.convertStringToInt(localConnectionCSVdatasetNeuron[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE_HIGHLIGHT2]);
+			#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_COLOUR_HIGHLIGHT2_ACTIVE_NEURONS
+			if(neuronTraceMarkValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_HIGHLIGHT2_VALUE_EXCITATORY)
 			{
-				neuronTypeStringSVG = string(LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_MARK_EXCITATORY_NEURON);
+				neuronTypeStringSVG = string(LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_HIGHLIGHT2_EXCITATORY_NEURON);
 				#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 				neuronTypeStringLDR = SHAREDvars.convertIntToString(neuronExcitatoryColourLDRtraceMark);
 				#endif
@@ -371,9 +371,9 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 				#endif
 				traceActiveNeuron = true;
 			}			
-			else if(neuronTraceMarkValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_MARK_VALUE_INHIBITORY)
+			else if(neuronTraceMarkValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_HIGHLIGHT2_VALUE_INHIBITORY)
 			{
-				neuronTypeStringSVG = string(LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_MARK_INHIBITORY_NEURON);
+				neuronTypeStringSVG = string(LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_HIGHLIGHT2_INHIBITORY_NEURON);
 				#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 				neuronTypeStringLDR = SHAREDvars.convertIntToString(neuronInhibitoryColourLDRtraceMark);
 				#endif
@@ -383,10 +383,10 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 				traceActiveNeuron = true;
 			}
 			#endif
-			#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_COLOUR_MARKED_INACTIVE_NEURONS
-			else if(neuronTraceMarkValue == LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_MARK_INACTIVE_NEURON)
+			#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_COLOUR_HIGHLIGHT2_INACTIVE_NEURONS
+			else if(neuronTraceMarkValue == LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_HIGHLIGHT2_INACTIVE_NEURON)
 			{
-				neuronTypeStringSVG = string(LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_MARK);
+				neuronTypeStringSVG = string(LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_HIGHLIGHT2);
 				#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 				neuronTypeStringLDR = SHAREDvars.convertIntToString(neuronInactiveColourLDRtraceMark);
 				#endif
@@ -510,12 +510,12 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 		int connectionExcitatoryColourLDR = local_connectome_visualisation_connections_colour_excitation_type_excitatory[0];
 		int connectionInhibitoryColourLDR = local_connectome_visualisation_connections_colour_excitation_type_inhibitory[0];
 		#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME
-		int connectionInactiveColourLDRtraceHighlight = local_connectome_visualisation_connections_colour_trace_highlight_value_inactive[0];
-		int connectionExcitatoryColourLDRtraceHighlight = local_connectome_visualisation_connections_colour_trace_highlight_value_excitatory[0];
-		int connectionInhibitoryColourLDRtraceHighlight = local_connectome_visualisation_connections_colour_trace_highlight_value_inhibitory[0];
-		int connectionInactiveColourLDRtraceMark = local_connectome_visualisation_connections_colour_trace_mark_value_inactive[0];
-		int connectionExcitatoryColourLDRtraceMark = local_connectome_visualisation_connections_colour_trace_mark_value_excitatory[0];
-		int connectionInhibitoryColourLDRtraceMark = local_connectome_visualisation_connections_colour_trace_mark_value_inhibitory[0];
+		int connectionInactiveColourLDRtraceHighlight = local_connectome_visualisation_connections_colour_trace_highlight1_value_inactive[0];
+		int connectionExcitatoryColourLDRtraceHighlight = local_connectome_visualisation_connections_colour_trace_highlight1_value_excitatory[0];
+		int connectionInhibitoryColourLDRtraceHighlight = local_connectome_visualisation_connections_colour_trace_highlight1_value_inhibitory[0];
+		int connectionInactiveColourLDRtraceMark = local_connectome_visualisation_connections_colour_trace_highlight2_value_inactive[0];
+		int connectionExcitatoryColourLDRtraceMark = local_connectome_visualisation_connections_colour_trace_highlight2_value_excitatory[0];
+		int connectionInhibitoryColourLDRtraceMark = local_connectome_visualisation_connections_colour_trace_highlight2_value_inhibitory[0];
 		#endif
 		if(!generate2Dvisualisation)
 		{
@@ -529,12 +529,12 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 						connectionExcitatoryColourLDR = local_connectome_visualisation_connections_colour_excitation_type_excitatory[coloursetNumber-1];
 						connectionInhibitoryColourLDR = local_connectome_visualisation_connections_colour_excitation_type_inhibitory[coloursetNumber-1];
 						#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME
-						connectionInactiveColourLDRtraceHighlight = local_connectome_visualisation_connections_colour_trace_highlight_value_inactive[coloursetNumber-1];
-						connectionExcitatoryColourLDRtraceHighlight = local_connectome_visualisation_connections_colour_trace_highlight_value_excitatory[coloursetNumber-1];
-						connectionInhibitoryColourLDRtraceHighlight = local_connectome_visualisation_connections_colour_trace_highlight_value_inhibitory[coloursetNumber-1];
-						connectionInactiveColourLDRtraceMark = local_connectome_visualisation_connections_colour_trace_mark_value_inactive[coloursetNumber-1];
-						connectionExcitatoryColourLDRtraceMark = local_connectome_visualisation_connections_colour_trace_mark_value_excitatory[coloursetNumber-1];
-						connectionInhibitoryColourLDRtraceMark = local_connectome_visualisation_connections_colour_trace_mark_value_inhibitory[coloursetNumber-1];						
+						connectionInactiveColourLDRtraceHighlight = local_connectome_visualisation_connections_colour_trace_highlight1_value_inactive[coloursetNumber-1];
+						connectionExcitatoryColourLDRtraceHighlight = local_connectome_visualisation_connections_colour_trace_highlight1_value_excitatory[coloursetNumber-1];
+						connectionInhibitoryColourLDRtraceHighlight = local_connectome_visualisation_connections_colour_trace_highlight1_value_inhibitory[coloursetNumber-1];
+						connectionInactiveColourLDRtraceMark = local_connectome_visualisation_connections_colour_trace_highlight2_value_inactive[coloursetNumber-1];
+						connectionExcitatoryColourLDRtraceMark = local_connectome_visualisation_connections_colour_trace_highlight2_value_excitatory[coloursetNumber-1];
+						connectionInhibitoryColourLDRtraceMark = local_connectome_visualisation_connections_colour_trace_highlight2_value_inhibitory[coloursetNumber-1];						
 						#endif
 					}
 				}
@@ -591,11 +591,11 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 				
 				string connectionTypeStringSVGprepend = "";
 
-				int connectionTraceHighlightValue = SHAREDvars.convertStringToInt(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_ARTIFICIAL_TRACE_HIGHLIGHT]);
-				#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_COLOUR_HIGHLIGHTED_ACTIVE_CONNECTIONS
-				if(connectionTraceHighlightValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_CONNECTION_TRACE_HIGHLIGHT_VALUE_EXCITATORY)
+				int connectionTraceHighlightValue = SHAREDvars.convertStringToInt(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_ARTIFICIAL_TRACE_HIGHLIGHT1]);
+				#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_COLOUR_HIGHLIGHT1_ACTIVE_CONNECTIONS
+				if(connectionTraceHighlightValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_CONNECTION_TRACE_HIGHLIGHT1_VALUE_EXCITATORY)
 				{
-					connectionTypeStringSVGprepend = string(LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_HIGHLIGHT);
+					connectionTypeStringSVGprepend = string(LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_HIGHLIGHT1);
 					#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 					connectionTypeStringLDR = SHAREDvars.convertIntToString(connectionExcitatoryColourLDRtraceHighlight);
 					#endif
@@ -604,9 +604,9 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 					#endif
 					traceActiveConnection = true;	
 				}
-				else if(connectionTraceHighlightValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_CONNECTION_TRACE_HIGHLIGHT_VALUE_INHIBITORY)
+				else if(connectionTraceHighlightValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_CONNECTION_TRACE_HIGHLIGHT1_VALUE_INHIBITORY)
 				{
-					connectionTypeStringSVGprepend = string(LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_HIGHLIGHT);
+					connectionTypeStringSVGprepend = string(LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_HIGHLIGHT1);
 					#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 					connectionTypeStringLDR = SHAREDvars.convertIntToString(connectionInhibitoryColourLDRtraceHighlight);
 					#endif
@@ -616,10 +616,10 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 					traceActiveConnection = true;
 				}			
 				#endif
-				#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_COLOUR_HIGHLIGHTED_INACTIVE_CONNECTIONS
-				else if(connectionTraceHighlightValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_CONNECTION_TRACE_HIGHLIGHT_VALUE_INACTIVE)
+				#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_COLOUR_HIGHLIGHT1_INACTIVE_CONNECTIONS
+				else if(connectionTraceHighlightValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_CONNECTION_TRACE_HIGHLIGHT1_VALUE_INACTIVE)
 				{
-					connectionTypeStringSVGprepend = string(LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_HIGHLIGHT);
+					connectionTypeStringSVGprepend = string(LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_HIGHLIGHT1);
 					#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 					connectionTypeStringLDR = SHAREDvars.convertIntToString(connectionInactiveColourLDRtraceHighlight);
 					#endif
@@ -630,11 +630,11 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 				}
 				#endif
 
-				int connectionTraceMarkValue = SHAREDvars.convertStringToInt(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_ARTIFICIAL_TRACE_MARK]);
-				#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_COLOUR_MARKED_ACTIVE_CONNECTIONS
-				if(connectionTraceMarkValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_CONNECTION_TRACE_MARK_VALUE_EXCITATORY)
+				int connectionTraceMarkValue = SHAREDvars.convertStringToInt(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_ARTIFICIAL_TRACE_HIGHLIGHT2]);
+				#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_COLOUR_HIGHLIGHT2_ACTIVE_CONNECTIONS
+				if(connectionTraceMarkValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_CONNECTION_TRACE_HIGHLIGHT2_VALUE_EXCITATORY)
 				{
-					connectionTypeStringSVGprepend = string(LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_MARK);
+					connectionTypeStringSVGprepend = string(LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_HIGHLIGHT2);
 					#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 					connectionTypeStringLDR = SHAREDvars.convertIntToString(connectionExcitatoryColourLDRtraceMark);
 					#endif
@@ -643,9 +643,9 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 					#endif
 					traceActiveConnection = true;
 				}			
-				else if(connectionTraceMarkValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_CONNECTION_TRACE_MARK_VALUE_INHIBITORY)
+				else if(connectionTraceMarkValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_CONNECTION_TRACE_HIGHLIGHT2_VALUE_INHIBITORY)
 				{
-					connectionTypeStringSVGprepend = string(LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_MARK);
+					connectionTypeStringSVGprepend = string(LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_HIGHLIGHT2);
 					#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 					connectionTypeStringLDR = SHAREDvars.convertIntToString(connectionInhibitoryColourLDRtraceMark);
 					#endif
@@ -655,10 +655,10 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 					traceActiveConnection = true;
 				}
 				#endif
-				#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_COLOUR_MARKED_INACTIVE_CONNECTIONS
-				else if(connectionTraceMarkValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_CONNECTION_TRACE_MARK_VALUE_INACTIVE)
+				#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_COLOUR_HIGHLIGHT2_INACTIVE_CONNECTIONS
+				else if(connectionTraceMarkValue == INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_CONNECTION_TRACE_HIGHLIGHT2_VALUE_INACTIVE)
 				{
-					connectionTypeStringSVGprepend = string(LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_MARK);
+					connectionTypeStringSVGprepend = string(LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_APPEND_COLOURSET_TRACE_ACTIVE_HIGHLIGHT2);
 					#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 					connectionTypeStringLDR = SHAREDvars.convertIntToString(connectionInactiveColourLDRtraceMark);
 					#endif

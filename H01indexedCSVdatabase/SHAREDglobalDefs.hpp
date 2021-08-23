@@ -89,7 +89,7 @@ using namespace std;
 #define CHAR_GREATER_THAN '>'
 #define CHAR_LESS_THAN '<'
 #define CHAR_PLUS '+'
-#define CHAR_EXCLAMATION_MARK '!'
+#define CHAR_EXCLAMATION_HIGHLIGHT2 '!'
 #define CHAR_AMPERSAND '&'
 #define CHAR_TILDA '~'
 #define CHAR_FOLDER_DELIMITER '/'
