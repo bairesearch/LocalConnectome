@@ -759,10 +759,11 @@ bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronList(const 
 		cout << "numberConnectionsToExternalConnectome = " << numberConnectionsToExternalConnectome << endl;
 		cout << "numberConnectionsToExternalConnectomeExcitatory = " << numberConnectionsToExternalConnectomeExcitatory << endl;
 		cout << "numberConnectionsToExternalConnectomeInhibitory = " << numberConnectionsToExternalConnectomeInhibitory << endl;
-		double normalisationFactor = double(AVRO_JSON_DATABASE_COORDINATES_RANGE_X*AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_X + AVRO_JSON_DATABASE_COORDINATES_RANGE_Y*AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_Y)/2.0 / AVRO_JSON_DATABASE_COORDINATES_RANGE_Z*AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_Z;
+		double normalisationFactor = double(AVRO_JSON_DATABASE_COORDINATES_RANGE_X*AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_X + AVRO_JSON_DATABASE_COORDINATES_RANGE_Y*AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_Y)/2.0 / (AVRO_JSON_DATABASE_COORDINATES_RANGE_Z*AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_Z);
 		double numberConnectionsToLocalConnectomeNormalisedZ = double(numberConnectionsToLocalConnectome) * normalisationFactor;
 		double numberConnectionsToLocalConnectomeExcitatoryNormalisedZ = double(numberConnectionsToLocalConnectomeExcitatory) * normalisationFactor;
 		double numberConnectionsToLocalConnectomeInhibitoryNormalisedZ = double(numberConnectionsToLocalConnectomeInhibitory) * normalisationFactor;
+		cout << "normalisationFactor = " << normalisationFactor << endl;
 		cout << "numberConnectionsToLocalConnectomeNormalisedZ = " << numberConnectionsToLocalConnectomeNormalisedZ << endl;
 		cout << "numberConnectionsToLocalConnectomeExcitatoryNormalisedZ = " << numberConnectionsToLocalConnectomeExcitatoryNormalisedZ << endl;
 		cout << "numberConnectionsToLocalConnectomeInhibitoryNormalisedZ = " << numberConnectionsToLocalConnectomeInhibitoryNormalisedZ << endl;
