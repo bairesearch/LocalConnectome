@@ -2,7 +2,7 @@
 Introduction
 ============
 
-This repository (H01LocalConnectome) contains various structural/functional interrogations (and visualisations) of the H01 Release human connectome dataset, and software used in their derivation. The H01 "Local Connectome" is taken as the connectivity data between those neurons (neuron_id) which have cell soma/centroids that reside within the H01 Release dataset. The local connectome is analysed along with its immediate incoming and outgoing connections.
+This repository (H01LocalConnectome) contains various structural/functional interrogations (including visualisations) of the H01 Release human connectome dataset, and software used in their derivation. The H01 "Local Connectome" is taken as the connectivity data between those neurons (neuron_id) which have cell soma/centroids that reside within the H01 Release dataset. The local connectome is analysed along with its immediate incoming and outgoing connections.
 
 Acknowledgements
 ================
@@ -57,7 +57,7 @@ Usage:  H01indexedCSVdatabase.exe [options]
 where options are any of the following (see documentation)
 
 -mode [int]                             : execution mode (1: create, 2: query, 3: visualise, 4: trace (def: 2) [required]
--query [int]                            : query mode (1: extract, 2: map, 3: generate, 4: count, 5: complete (def: 4) [required for mode:query]
+-query [int]                            : query mode (1: extract, 2: map, 3: generate, 4: count, 5: complete, 6: crawl (def: 4) [required for mode:query]
 
 -avro_json_database_folder [string]     : H01 C3 Synaptic connections database json folder (def: /media/user/large/h01data/data/exported/json)
 -indexed_csv_database_folder [string]   : H01 indexed csv database folder (def: /media/user/ssddata/indexed)
@@ -73,7 +73,8 @@ query mode 1 - INDEXED_CSV_DATABASE_QUERY_EXTRACT_INCOMING_OUTGOING_CONNECTIONS 
 query mode 2 - INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING - lookup indexed CSV database by neuron ID, find incoming target connections, and generate visualisation
 query mode 3 - INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET - automatically generate localConnectomeConnections-typesFromPresynapticNeurons.csv/localConnectomeConnections-typesFromEMimages.csv from localConnectomeNeurons.csv and indexed CSV database
 query mode 4 - INDEXED_CSV_DATABASE_QUERY_COUNT_PROPORTION_LOCAL_VS_NONLOCAL_CONNECTIONS - lookup indexed CSV database by neuron ID, count/infer proportion of incoming/outgoing excitatory/inhibitory target connections to local vs distal neurons
-query mode 5 - INDEXED_CSV_DATABASE_QUERY_COMPLETE_LOCAL_CONNECTOME_CONNECTIONS_DATASET - lookup indexed CSV database by post/pre synaptic connection neuron ID, and identify connection with pre/post synaptic X/Y coordinates (if pre/post synaptic type=UNKNOWN), add pre/post synaptic neuron ID, Z coordinates, and type coordinates to connection dataset
+query mode 5 - INDEXED_CSV_DATABASE_QUERY_COMPLETE_LOCAL_CONNECTOME_CONNECTIONS_DATASET - lookup indexed CSV database by post/pre synaptic connection neuron ID, and identify connection with pre/post synaptic X/Y coordinates (if pre/post synaptic type=UNKNOWN), add pre/post synaptic neuron ID, Z coordinates, and type coordinates to connection dataset [incomplete]
+query mode 6 - INDEXED_CSV_DATABASE_QUERY_COUNT_NUMBER_UNIQUE_AXONS_DENDRITES - crawl indexed CSV database by pre/post synaptic connection neuron ID, and count number of unique axons/dendrites as specified by neuron ID - not explicitly connected to local connectome [incomplete]
 
 ```
 
@@ -86,6 +87,7 @@ query mode 5 - INDEXED_CSV_DATABASE_QUERY_COMPLETE_LOCAL_CONNECTOME_CONNECTIONS_
 ./H01indexedCSVdatabase.exe -mode 2 -query 3 -indexed_csv_database_folder "/media/user/ssddata/indexed"
 ./H01indexedCSVdatabase.exe -mode 2 -query 4 -indexed_csv_database_folder "/media/user/ssddata/indexed"
 ./H01indexedCSVdatabase.exe -mode 2 -query 5 -indexed_csv_database_folder "/media/user/ssddata/indexed"
+./H01indexedCSVdatabase.exe -mode 2 -query 6 -indexed_csv_database_folder "/media/user/ssddata/indexed"
 ./H01indexedCSVdatabase.exe -mode 3
 ./H01indexedCSVdatabase.exe -mode 4
 ```
@@ -121,12 +123,14 @@ H01indexedCSVdatabaseQuery.cpp/.hpp (execution mode 2: INDEXED_CSV_DATABASE_QUER
      * INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET - automatically generate localConnectomeConnections-typesFromPresynapticNeurons.csv/localConnectomeConnections-typesFromEMimages.csv from localConnectomeNeurons.csv and indexed CSV database
      * INDEXED_CSV_DATABASE_QUERY_COUNT_PROPORTION_LOCAL_VS_NONLOCAL_CONNECTIONS - lookup indexed CSV database by neuron ID, count/infer proportion of incoming/outgoing excitatory/inhibitory target connections to local vs distal neurons
      * INDEXED_CSV_DATABASE_QUERY_COMPLETE_LOCAL_CONNECTOME_CONNECTIONS_DATASET - lookup indexed CSV database by post/pre synaptic connection neuron ID, and identify connection with pre/post synaptic X/Y coordinates (if pre/post synaptic type=UNKNOWN), add pre/post synaptic neuron ID, Z coordinates, and type coordinates to connection dataset [incomplete: awaiting release of H01 Release C3 neurons dataset; will print UNKNOWN neurons (with x/y coordinates only) along with candidate neuron_ids but not reconcile them]
+     * INDEXED_CSV_DATABASE_QUERY_COUNT_NUMBER_UNIQUE_AXONS_DENDRITES - crawl indexed CSV database by pre/post synaptic connection neuron ID, and count number of unique axons/dendrites as specified by neuron ID - not explicitly connected to local connectome [incomplete]
  * Input: 
      * INDEXED_CSV_DATABASE_QUERY_OUTPUT_CONNECTIONS: localConnectomeNeurons.csv (or localConnectomeNeuronIDlistDistinct.csv) - id, x, y, z, type, excitation_type (or id)
      * INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING: localConnectomeNeurons.csv (or localConnectomeNeuronIDlistDistinct.csv) - id, x, y, z, type, excitation_type (or id)
      * INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET: localConnectomeNeurons.csv - id, x, y, z, type, excitation_type
      * INDEXED_CSV_DATABASE_QUERY_COUNT_PROPORTION_LOCAL_VS_NONLOCAL_CONNECTIONS: localConnectomeNeurons.csv (or localConnectomeNeuronIDlistDistinct.csv) - id, x, y, z, type, excitation_type (or id)
      * INDEXED_CSV_DATABASE_QUERY_COMPLETE_LOCAL_CONNECTOME_CONNECTIONS_DATASET: localConnectomeConnections-typesFromEMimages-useAllValuesAvailableFromInBodyCellConnection.csv - pre_id, pre_x, pre_y, pre_z, pre_type, post_id, post_x, post_y, post_z, post_type, post_class_label, syn_num, excitation_type
+     * INDEXED_CSV_DATABASE_QUERY_COUNT_NUMBER_UNIQUE_AXONS_DENDRITES: N/A
  * Output Format (csv):
      * INDEXED_CSV_DATABASE_QUERY_OUTPUT_CONNECTIONS: localConnectomeNeuronIDlistConnectionsPresynaptic.csv/localConnectomeNeuronIDlistConnectionsPostsynaptic.csv - connectionNeuronID1, connectionType1 [, locationObjectContentsXcoordinatesContent1, locationObjectContentsYcoordinatesContent1, locationObjectContentsZcoordinatesContent1], connectionNeuronID2, connectionType2 [, locationObjectContentsXcoordinatesContent2, locationObjectContentsYcoordinatesContent2, locationObjectContentsZcoordinatesContent2], etc 
      * INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING:
@@ -138,6 +142,7 @@ H01indexedCSVdatabaseQuery.cpp/.hpp (execution mode 2: INDEXED_CSV_DATABASE_QUER
      * INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET: localConnectomeConnections-typesFromPresynapticNeurons.csv/localConnectomeConnections-typesFromEMimages.csv - pre_id, pre_x, pre_y, pre_z, pre_type, post_id, post_x, post_y, post_z, post_type, post_class_label, syn_num, excitation_type
      * INDEXED_CSV_DATABASE_QUERY_COUNT_PROPORTION_LOCAL_VS_NONLOCAL_CONNECTIONS: N/A
      * INDEXED_CSV_DATABASE_QUERY_COMPLETE_LOCAL_CONNECTOME_CONNECTIONS_DATASET: localConnectomeConnections-typesFromEMimages.csv - pre_id, pre_x, pre_y, pre_z, pre_type, post_id, post_x, post_y, post_z, post_type, post_class_label, syn_num, excitation_type
+     * INDEXED_CSV_DATABASE_QUERY_COUNT_NUMBER_UNIQUE_AXONS_DENDRITES: N/A
 
 H01indexedCSVdatabaseVisualiseLocalConnectome.cpp/.hpp (execution mode 3: INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME):
 
