@@ -47,8 +47,7 @@ bool H01indexedCSVdatabaseCreateClass::createIndexedCSVdatabase(const string avr
 	string synapseTypeName = "\"type\"";
 	string confidenceName = "\"confidence\"";	
 	//int confidenceSynapseTypeRelativeIndex = -3;	//"type":"1","confidence"
-
-		
+	
 	for(int f=minJsonFileIndex; f<=maxJsonFileIndex; f++)
 	{
 		//cout << "f = " << f << endl;
@@ -150,12 +149,20 @@ bool H01indexedCSVdatabaseCreateClass::createIndexedCSVdatabase(const string avr
 				string rawText = currentLineText + STRING_NEWLINE;	
 				this->addSynapseToCSVdatabase(indexed_csv_database_folder, neuronIDcontents1, &csvText, &rawText, true);
 				this->addSynapseToCSVdatabase(indexed_csv_database_folder, neuronIDcontents2, &csvText, &rawText, false);
+				
+				#ifdef INDEXED_CSV_DATABASE_CREATE_PRINT_STATUS
+				cout << "l = " << l << "\r";
+				#endif
 			}
 			else
 			{
 				//ignore synapse where at least one neuron_id is missing (class_label: UNKNOWN)
 			}
 		}
+			
+		#ifdef INDEXED_CSV_DATABASE_CREATE_PRINT_STATUS
+		cout << endl;
+		#endif
 	}
 	
 	return result;

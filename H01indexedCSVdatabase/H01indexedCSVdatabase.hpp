@@ -29,9 +29,9 @@ extern string currentDirectory;
 	#define INDEXED_CSV_DATABASE_QUERY_EXTRACT_INCOMING_OUTGOING_CONNECTIONS	//mode 1 (lookup indexed CSV database by neuron ID, and find incoming/outgoing target connections, and write them to file)
 	#define INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING	//mode 2 (lookup indexed CSV database by neuron ID, find incoming target connections, and generate visualisation)
 	#define INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET	//mode 3 (automatically generate localConnectomeConnections-typesFromPresynapticNeurons.csv/localConnectomeConnections-typesFromEMimages.csv from localConnectomeNeurons.csv and H01 indexed CSV database)
-	#define INDEXED_CSV_DATABASE_QUERY_COUNT_PROPORTION_LOCAL_VS_NONLOCAL_CONNECTIONS	//mode 4 (lookup indexed CSV database by neuron ID, count/infer proportion of incoming/outgoing excitatory/inhibitory target connections to local vs distal neurons)
+	#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS	//mode 4 (lookup indexed CSV database by neuron ID, count/infer proportion of incoming/outgoing excitatory/inhibitory target connections to local vs distal neurons)
 	#define INDEXED_CSV_DATABASE_QUERY_COMPLETE_LOCAL_CONNECTOME_CONNECTIONS_DATASET	//mode 5 (lookup indexed CSV database by pre/post synaptic connection neuron ID, and identify connection with post/pre synaptic X/Y coordinates (if type=UNKNOWN), add post/pre synaptic neuron ID, Z coordinates, and type to connection dataset)
-	#define INDEXED_CSV_DATABASE_QUERY_COUNT_NUMBER_UNIQUE_AXONS_DENDRITES	//mode 6 (crawl indexed CSV database by pre/post synaptic connection neuron ID, and count number of unique axons/dendrites as specified by neuron ID - not explicitly connected to local connectome)
+	#define INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS	//mode 6 (crawl indexed CSV database by pre/post synaptic connection neuron ID, and count number of unique axons/dendrites as specified by neuron ID - not explicitly connected to local connectome)
 #endif
 
 #define EXECUTION_MODE_INDEXED_CSV_DATABASE_CREATE 1
@@ -42,14 +42,14 @@ extern string currentDirectory;
 	#define QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_EXTRACT_INCOMING_OUTGOING_CONNECTIONS 1
 	#define QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING 2
 	#define QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET	3
-	#define QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_PROPORTION_LOCAL_VS_NONLOCAL_CONNECTIONS 4
+	#define QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS 4
 	#define QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COMPLETE_LOCAL_CONNECTOME_CONNECTIONS_DATASET 5
-	#define QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_NUMBER_UNIQUE_AXONS_DENDRITES 6
+	#define QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS 6
 #endif
 #define EXECUTION_MODE_DEFAULT (EXECUTION_MODE_INDEXED_CSV_DATABASE_QUERY) 
-#define QUERY_MODE_DEFAULT (QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_PROPORTION_LOCAL_VS_NONLOCAL_CONNECTIONS)
+#define QUERY_MODE_DEFAULT (QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS)
 #define EXECUTION_MODES_TOTAL (4)
-#define QUERY_MODES_TOTAL (5)
+#define QUERY_MODES_TOTAL (6)
 
 #ifdef INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME
 	//#define LOCAL_CONNECTOME_VISUALISATION_BACKWARDS_COMPATIBILITY_WITH_ODS_GENERATED_FILES	//temporary for diff comparisons between H01indexedCSVdatabase generated visualisations and ODS generated visualisations (visualisation generation verification)	//slower as uses non-distinct neuron id lists
@@ -192,6 +192,9 @@ extern string currentDirectory;
 
 //mode INDEXED_CSV_DATABASE_CREATE parameters:
 #ifdef INDEXED_CSV_DATABASE_CREATE
+
+	#define INDEXED_CSV_DATABASE_CREATE_PRINT_STATUS	//notify user of status during database creation
+	
 	//apache avro C3 Synaptic connections database parameters:
 	#define MAX_SSD_SIZE	//impose database size limit (50GB)
 	#ifdef MAX_SSD_SIZE
@@ -320,12 +323,29 @@ extern string currentDirectory;
 		
 	#endif
 	
-	//mode INDEXED_CSV_DATABASE_QUERY_COUNT_PROPORTION_LOCAL_VS_NONLOCAL_CONNECTIONS parameters:
-	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_PROPORTION_LOCAL_VS_NONLOCAL_CONNECTIONS
+	//mode INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS parameters:
+	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS
+		
 		//input:
 		//see above
 
+		#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PROPORTION_LOCAL_VS_NONLOCAL_CONNECTIONS	//original functionality
+		#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_NUMBER_EXCITATORY_INHIBITORY_NEURONS
+		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_NUMBER_EXCITATORY_INHIBITORY_NEURONS
+			#define INDEXED_CSV_DATABASE_QUERY_READ_DATASET_LOCAL_CONNECTOME_NEURONS
+		#endif
+		
+		#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+			#define INDEXED_CSV_DATABASE_QUERY_READ_DATASET_LOCAL_CONNECTOME_NEURONS	
+			#define INDEXED_CSV_DATABASE_QUERY_LAYERS
+			#ifdef INDEXED_CSV_DATABASE_QUERY_LAYERS
+				#define INDEXED_CSV_DATABASE_CALCULATE_NEURON_LAYERS
+			#endif
+		#endif
+			
 		#define INDEXED_CSV_DATABASE_QUERY_EFFICIENT_STORE_NEURON_IDS_IN_MAP
+		
 	#endif
 	
 	//mode INDEXED_CSV_DATABASE_QUERY_COMPLETE_LOCAL_CONNECTOME_CONNECTIONS_DATASET parameters:
@@ -338,6 +358,13 @@ extern string currentDirectory;
 		#define INDEXED_CSV_DATABASE_QUERY_OUTPUT	//mandatory
 		
 	#endif
+	
+	//mode INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS parameters:
+	#ifdef INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS
+		#define INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS_COUNT_NUMBER_UNIQUE_AXONS_DENDRITES
+	#endif	
+	
+	
 	
 	#ifndef INDEXED_CSV_DATABASE_QUERY_WRITE_CURRENT_FOLDER
 		#define INDEXED_CSV_DATABASE_QUERY_OUTPUT_FOLDER "/media/user/large/source/h01Connectome/indexedSVGdatabase/H01indexedCSVdatabaseQueryOutput"
@@ -367,11 +394,7 @@ extern string currentDirectory;
 	#ifdef LOCAL_CONNECTOME_VISUALISATION_LAYERS
 		#define INDEXED_CSV_DATABASE_CALCULATE_NEURON_LAYERS
 	#endif
-	#ifdef INDEXED_CSV_DATABASE_CALCULATE_NEURON_LAYERS
-		#define CORTICAL_LAYER_KEYPOINT_UNAVAILABLE_VALUE 0
-		#define CORTICAL_LAYER_NUMBER_OF_LAYERS (7)	//L2toL1 (1), L3toL2 (2), L4toL3 (3), L5toL4 (4), L6toL5 (5), WMtoL6 (6), WM (7)
-		#define CORTICAL_LAYER_BOUNDARY_KEYPOINT_TABLE_FILE_NAME "corticalLayersBoundaryKeypoints.csv"	//this dataset has already had its X/Y coordindates calibrated for visualisation (as it was derived from connections_I/E.svg visualisation; see working/calibration/connections_IE-FlattenBezier.svg)
-	#endif
+
 
 
 	//visualisation folder names;	
@@ -688,6 +711,15 @@ extern string currentDirectory;
 	#endif	
 #endif
 
+
+#ifdef INDEXED_CSV_DATABASE_CALCULATE_NEURON_LAYERS
+	#define CORTICAL_LAYER_KEYPOINT_UNAVAILABLE_VALUE 0
+	#define CORTICAL_LAYER_NUMBER_OF_LAYERS (7)	//L2toL1 (1), L3toL2 (2), L4toL3 (3), L5toL4 (4), L6toL5 (5), WMtoL6 (6), WM (7)
+	#define CORTICAL_LAYER_BOUNDARY_KEYPOINT_TABLE_FILE_NAME "corticalLayersBoundaryKeypoints.csv"	//this dataset has already had its X/Y coordindates calibrated for visualisation (as it was derived from connections_I/E.svg visualisation; see working/calibration/connections_IE-FlattenBezier.svg)
+	
+	#define LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL (0)
+#endif
+			
 
 #define CPP_STRING_FIND_RESULT_FAIL_VALUE2 int(CPP_STRING_FIND_RESULT_FAIL_VALUE)
 

@@ -60,7 +60,7 @@ bool H01indexedCSVdatabaseCalculateNeuronLayerClass::calculateNeuronLayers(const
 			//cout << "neuronX = " << neuronX << endl;
 			//cout << "neuronY = " << neuronY << endl;
 			int layerIndex = this->calculateNeuronLayer(corticalLayersNumLayers, corticalLayersKeypoints, neuronX, neuronY);
-			localConnectionCSVdatasetLine->push_back(SHAREDvars.convertIntToString(layerIndex));
+			localConnectionCSVdatasetLine->push_back(SHAREDvars.convertIntToString(layerIndex));	//LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER	
 		}
 		else	//localConnectionCSVdatasetConnections
 		{
@@ -69,13 +69,13 @@ bool H01indexedCSVdatabaseCalculateNeuronLayerClass::calculateNeuronLayers(const
 			//cout << "neuronX = " << neuronX << endl;
 			//cout << "neuronY = " << neuronY << endl;
 			int layerIndex = this->calculateNeuronLayer(corticalLayersNumLayers, corticalLayersKeypoints, neuronX, neuronY);
-			localConnectionCSVdatasetLine->push_back(SHAREDvars.convertIntToString(layerIndex));
+			localConnectionCSVdatasetLine->push_back(SHAREDvars.convertIntToString(layerIndex));	//LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_ARTIFICIAL_LAYER	
 			neuronX = H01indexedCSVdatabaseOperations.calibrateCoordinateX(SHAREDvars.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_X]));
 			neuronY = H01indexedCSVdatabaseOperations.calibrateCoordinateY(SHAREDvars.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Y]));
 			//cout << "neuronX = " << neuronX << endl;
 			//cout << "neuronY = " << neuronY << endl;
 			layerIndex = this->calculateNeuronLayer(corticalLayersNumLayers, corticalLayersKeypoints, neuronX, neuronY);
-			localConnectionCSVdatasetLine->push_back(SHAREDvars.convertIntToString(layerIndex));		
+			localConnectionCSVdatasetLine->push_back(SHAREDvars.convertIntToString(layerIndex));	//LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_ARTIFICIAL_LAYER	
 		}
 	}
 	
