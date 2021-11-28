@@ -16,8 +16,75 @@
 
 #include "H01indexedCSVdatabaseCalculateNeuronLayer.hpp"
 
+
 #ifdef INDEXED_CSV_DATABASE_CALCULATE_NEURON_LAYERS
 
+bool H01indexedCSVdatabaseCalculateNeuronLayerClass::calculateLocalConnectomeLayers(vector<vector<string>>* localConnectomeNeurons, vector<vector<string>>* localConnectomeConnections, map<string, int>* neuronMap, const bool readConnections)
+{
+	#ifdef LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS_LAYERS
+	if(readConnections)
+	{
+		transferLocalConnectomeNeuronLayersToConnectionsLayers(localConnectomeNeurons, localConnectomeConnections, neuronMap);
+	}
+	#else
+	//initialise connection/neuron layer indices;
+	//int corticalLayersNumKeypointsMax;	//= 28	//maximum number keypoints (number cols/2)
+	const string corticalLayersBoundaryKeypointTableFileName = CORTICAL_LAYER_BOUNDARY_KEYPOINT_TABLE_FILE_NAME;
+	vector<vector<vec>> corticalLayersKeypoints;
+	readCorticalLayersBoundaryKeypointTable(corticalLayersBoundaryKeypointTableFileName, &corticalLayersKeypoints);
+	calculateNeuronLayers(true, localConnectomeNeurons, &corticalLayersKeypoints);
+	if(readConnections)
+	{
+		calculateNeuronLayers(false, localConnectomeConnections, &corticalLayersKeypoints);
+	}
+	#endif
+}
+		
+#ifdef LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS_LAYERS
+bool H01indexedCSVdatabaseCalculateNeuronLayerClass::transferLocalConnectomeNeuronLayersToConnectionsLayers(vector<vector<string>>* localConnectomeNeurons, vector<vector<string>>* localConnectionCSVdataset, map<string, int>* neuronMap)
+{
+	bool result = true;
+	int corticalLayersNumLayers = CORTICAL_LAYER_NUMBER_OF_LAYERS;
+	
+	for(int i=0; i<localConnectionCSVdataset->size(); i++)
+	{
+		vector<string>* localConnectionCSVdatasetLine = &((*localConnectionCSVdataset)[i]);
+		string sourceNeuronID = (*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_ID];
+		string targetNeuronID = (*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_ID];	
+		
+		string layerIndexString = "";		
+		if(neuronMap->count(sourceNeuronID) != 0)	//verify that sourceNeuronID is in neuronList
+		{
+			int neuronIndex = (*neuronMap)[sourceNeuronID];
+			vector<string>* localConnectomeNeuron = &((*localConnectomeNeurons)[neuronIndex]);	
+			layerIndexString = (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER];
+		}
+		else
+		{
+			layerIndexString = SHAREDvars.convertIntToString(CORTICAL_LAYER_UNKNOWN);	//TODO: verify this is supported
+			//cerr << "H01indexedCSVdatabaseCalculateNeuronLayerClass::transferLocalConnectomeNeuronLayersToConnectionsLayers warning: sourceNeuronID cannot be found; " << sourceNeuronID << endl;	//approx 222 non-unique instances of unknown neurons being referenced by localConnectionCSVdataset
+		}
+		localConnectionCSVdatasetLine->push_back(layerIndexString);	//LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_ARTIFICIAL_LAYER	
+	
+		layerIndexString = "";
+		if(neuronMap->count(targetNeuronID) != 0)	//verify that targetNeuronID is in neuronList
+		{
+			int neuronIndex = (*neuronMap)[targetNeuronID];
+			vector<string>* localConnectomeNeuron = &((*localConnectomeNeurons)[neuronIndex]);	
+			layerIndexString = (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER];
+		}
+		else
+		{
+			layerIndexString = SHAREDvars.convertIntToString(CORTICAL_LAYER_UNKNOWN);	//TODO: verify this is supported
+			//cerr << "H01indexedCSVdatabaseCalculateNeuronLayerClass::transferLocalConnectomeNeuronLayersToConnectionsLayers warning: targetNeuronID cannot be found; " << targetNeuronID << endl;	//approx 222 non-unique instances of unknown neurons being referenced by localConnectionCSVdataset
+		}
+		localConnectionCSVdatasetLine->push_back(layerIndexString);	//LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_ARTIFICIAL_LAYER		
+	}
+	
+	return result;
+}
+
+#else
 bool H01indexedCSVdatabaseCalculateNeuronLayerClass::readCorticalLayersBoundaryKeypointTable(const string corticalLayersBoundaryKeypointTableFileName, vector<vector<vec>>* corticalLayersKeypoints)
 {
 	bool result = true;
@@ -203,6 +270,7 @@ bool H01indexedCSVdatabaseCalculateNeuronLayerClass::isPointRightOfLine(double A
 	
 	return result;
 }	
+#endif
 
 #endif
 

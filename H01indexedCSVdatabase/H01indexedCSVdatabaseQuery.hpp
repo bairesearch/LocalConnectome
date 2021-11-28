@@ -44,6 +44,7 @@
 #ifdef INDEXED_CSV_DATABASE_QUERY_LAYERS
 #include "H01indexedCSVdatabaseCalculateNeuronLayer.hpp"
 #endif
+#include "H01indexedCSVdatabaseOperations.hpp"
 #include "SHAREDvars.hpp"
 
 #ifdef INDEXED_CSV_DATABASE_QUERY
@@ -77,13 +78,14 @@ public:
 class H01indexedCSVdatabaseQueryClass
 {
 	private: SHAREDvarsClass SHAREDvars;
+	private: H01indexedCSVdatabaseOperationsClass H01indexedCSVdatabaseOperations;
 	#ifdef INDEXED_CSV_DATABASE_QUERY_LAYERS
 	private: H01indexedCSVdatabaseCalculateNeuronLayerClass H01indexedCSVdatabaseCalculateNeuronLayer;
 	#endif
 	
 	public: bool queryIndexedCSVdatabase(const int queryMode, const string indexed_csv_database_folder, const string local_connectome_folder_base);
 		private: bool queryIndexedCSVdatabaseByNeuronDatasetOrListFile(const int queryMode, const string indexed_csv_database_folder, const string local_connectome_folder_base, const string neuronDatasetOrListFileName, const bool neuronListIsDataset, const bool queryPresynapticConnectionNeurons, const bool write, const bool appendToFile, const string neuronListConnectionsFileName, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages);
-			private: bool queryIndexedCSVdatabaseByNeuronList(const int queryMode, const string indexed_csv_database_folder, vector<string>* neuronList, vector<vector<string>>* localConnectomeNeurons, vector<vector<string>>* localConnectomeConnections, const bool queryByPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, ofstream* writeFileObject, string* writeFileString, const bool appendToFile);
+			private: bool queryIndexedCSVdatabaseByNeuronList(const int queryMode, const string indexed_csv_database_folder, vector<string>* neuronList, map<string, int>* neuronMap, vector<vector<string>>* localConnectomeNeurons, vector<vector<string>>* localConnectomeConnections, const bool queryByPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, ofstream* writeFileObject, string* writeFileString, const bool appendToFile);
 				#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS
 				private: void printNumberOfConnections(const bool queryByPresynapticConnectionNeurons, vector<int>* numberConnectionsToLocalConnectomeLayers, vector<int>* numberConnectionsToExternalConnectomeLayers, vector<int>* numberConnectionsToLocalConnectomeExcitatoryLayers, vector<int>* numberConnectionsToExternalConnectomeExcitatoryLayers, vector<int>* numberConnectionsToLocalConnectomeInhibitoryLayers, vector<int>* numberConnectionsToExternalConnectomeInhibitoryLayers, vector<int>* numberOfLocalConnectomeNeuronsLayers, vector<int>* numberOfLocalConnectomeNeuronsExcitatoryLayers, vector<int>* numberOfLocalConnectomeNeuronsInhibitoryLayers);
 				#endif		

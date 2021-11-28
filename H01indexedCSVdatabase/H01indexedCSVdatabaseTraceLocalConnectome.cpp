@@ -35,7 +35,10 @@ bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdata
 		
 	vector<vector<string>> localConnectomeNeurons;
 	vector<vector<string>> localConnectomeConnections;
+	vector<string> neuronList;
+	#ifdef INDEXED_CSV_DATABASE_QUERY_EFFICIENT_STORE_NEURON_IDS_IN_MAP
 	map<string, int> neuronMap;
+	#endif
 	map<string, int> connectionsMap;
 			
 
@@ -60,19 +63,13 @@ bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdata
 	cout << "connectionDatasetFileNameWrite = " << connectionDatasetFileNameWrite << endl;
 
 	int localNeuronCSVdatasetNeuronsSize = 0;
-	SHAREDvars.getLinesFromFileCSV(neuronDatasetFileNameRead, &localConnectomeNeurons, &localNeuronCSVdatasetNeuronsSize, CSV_DELIMITER_CHAR, true);
+	H01indexedCSVdatabaseOperations.readLocalConnectomeNeuronsCSVdataset(connectionDatasetFileNameRead, &localConnectomeNeurons, &localNeuronCSVdatasetNeuronsSize, &neuronList, &neuronMap);
 
 	int localConnectionCSVdatasetConnectionsSize = 0;
-	SHAREDvars.getLinesFromFileCSV(connectionDatasetFileNameRead, &localConnectomeConnections, &localConnectionCSVdatasetConnectionsSize, CSV_DELIMITER_CHAR, true);
+	H01indexedCSVdatabaseOperations.readLocalConnectomeConnectionsCSVdataset(connectionDatasetFileNameRead, &localConnectomeConnections, &localConnectionCSVdatasetConnectionsSize);
 
 	#ifdef LOCAL_CONNECTOME_VISUALISATION_LAYERS
-	//initialise connection/neuron layer indices;
-	//int corticalLayersNumKeypointsMax;	//= 28	//maximum number keypoints (number cols/2)
-	const string corticalLayersBoundaryKeypointTableFileName = CORTICAL_LAYER_BOUNDARY_KEYPOINT_TABLE_FILE_NAME;
-	vector<vector<vec>> corticalLayersKeypoints;
-	H01indexedCSVdatabaseCalculateNeuronLayer.readCorticalLayersBoundaryKeypointTable(corticalLayersBoundaryKeypointTableFileName, &corticalLayersKeypoints);
-	H01indexedCSVdatabaseCalculateNeuronLayer.calculateNeuronLayers(true, &localConnectomeNeurons, &corticalLayersKeypoints);
-	H01indexedCSVdatabaseCalculateNeuronLayer.calculateNeuronLayers(false, &localConnectomeConnections, &corticalLayersKeypoints);
+	H01indexedCSVdatabaseCalculateNeuronLayer.calculateLocalConnectomeLayers(&localConnectomeNeurons, &localConnectomeConnections, &neuronMap, true);
 	#endif
 
 	//add neurons/connections to map for efficient lookup;

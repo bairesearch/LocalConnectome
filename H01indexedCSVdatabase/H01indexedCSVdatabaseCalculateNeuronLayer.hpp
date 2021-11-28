@@ -27,13 +27,18 @@ class H01indexedCSVdatabaseCalculateNeuronLayerClass
 	private: SHAREDvarsClass SHAREDvars;
 	private: H01indexedCSVdatabaseOperationsClass H01indexedCSVdatabaseOperations;
 
-#ifdef INDEXED_CSV_DATABASE_CALCULATE_NEURON_LAYERS
-	public: bool readCorticalLayersBoundaryKeypointTable(const string corticalLayersBoundaryKeypointTableFileName, vector<vector<vec>>* corticalLayersKeypoints);
-	public: bool calculateNeuronLayers(const bool localConnectomeDatasetType, vector<vector<string>>* localConnectionCSVdataset, vector<vector<vec>>* corticalLayersKeypoints);
-		private: int calculateNeuronLayer(int corticalLayersNumLayers, vector<vector<vec>>* corticalLayersKeypoints, double neuronX, double neuronY);
-			private: bool isNeuronInCorticalLayer(int layerIndex, double neuronX, double neuronY, vector<vec>* corticalLayerKeypoints);
-				private: bool isPointRightOfLine(double Ax, double Ay, double Bx, double By, double X, double Y);
-#endif
+	#ifdef INDEXED_CSV_DATABASE_CALCULATE_NEURON_LAYERS
+	public: bool calculateLocalConnectomeLayers(vector<vector<string>>* localConnectomeNeurons, vector<vector<string>>* localConnectomeConnections, map<string, int>* neuronMap, const bool readConnections);
+		#ifdef LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS_LAYERS
+		public: bool transferLocalConnectomeNeuronLayersToConnectionsLayers(vector<vector<string>>* localConnectomeNeurons, vector<vector<string>>* localConnectionCSVdataset, map<string, int>* neuronMap);
+		#else
+		public: bool readCorticalLayersBoundaryKeypointTable(const string corticalLayersBoundaryKeypointTableFileName, vector<vector<vec>>* corticalLayersKeypoints);
+		public: bool calculateNeuronLayers(const bool localConnectomeDatasetType, vector<vector<string>>* localConnectionCSVdataset, vector<vector<vec>>* corticalLayersKeypoints);
+			private: int calculateNeuronLayer(int corticalLayersNumLayers, vector<vector<vec>>* corticalLayersKeypoints, double neuronX, double neuronY);
+				private: bool isNeuronInCorticalLayer(int layerIndex, double neuronX, double neuronY, vector<vec>* corticalLayerKeypoints);
+					private: bool isPointRightOfLine(double Ax, double Ay, double Bx, double By, double X, double Y);
+		#endif
+	#endif
 };
 
 #endif

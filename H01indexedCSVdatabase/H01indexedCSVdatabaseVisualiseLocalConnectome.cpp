@@ -47,28 +47,28 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 	localConnectomeCSVdatabaseFolder = LOCAL_CONNECTOME_DATASET_FOLDER;
 	SHAREDvars.setCurrentDirectory(localConnectomeCSVdatabaseFolder);
 
+	vector<string> neuronList;
+	#ifdef INDEXED_CSV_DATABASE_QUERY_EFFICIENT_STORE_NEURON_IDS_IN_MAP
+	map<string, int> neuronMap;
+	#endif
+	
 	vector<vector<string>> localConnectionCSVdatasetNeurons;
 	int localConnectionCSVdatasetNeuronsSize = 0;
-	SHAREDvars.getLinesFromFileCSV(LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME, &localConnectionCSVdatasetNeurons, &localConnectionCSVdatasetNeuronsSize, CSV_DELIMITER_CHAR, true);
+	H01indexedCSVdatabaseOperations.readLocalConnectomeNeuronsCSVdataset(LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME, &localConnectionCSVdatasetNeurons, &localConnectionCSVdatasetNeuronsSize, &neuronList, &neuronMap);
 	
 	vector<vector<string>> localConnectionCSVdatasetConnections;
 	int localConnectionCSVdatasetConnectionsSize = 0;
 	if(connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
 	{
-		SHAREDvars.getLinesFromFileCSV(LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS, &localConnectionCSVdatasetConnections, &localConnectionCSVdatasetConnectionsSize, CSV_DELIMITER_CHAR, true);
+		H01indexedCSVdatabaseOperations.readLocalConnectomeConnectionsCSVdataset(LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS, &localConnectionCSVdatasetConnections, &localConnectionCSVdatasetConnectionsSize);
 	}
 	else
 	{
-		SHAREDvars.getLinesFromFileCSV(LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES, &localConnectionCSVdatasetConnections, &localConnectionCSVdatasetConnectionsSize, CSV_DELIMITER_CHAR, true);
+		H01indexedCSVdatabaseOperations.readLocalConnectomeConnectionsCSVdataset(LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES, &localConnectionCSVdatasetConnections, &localConnectionCSVdatasetConnectionsSize);
 	}
 
 	#ifdef LOCAL_CONNECTOME_VISUALISATION_LAYERS
-	//int corticalLayersNumKeypointsMax;	//= 28	//maximum number keypoints (number cols/2)
-	const string corticalLayersBoundaryKeypointTableFileName = CORTICAL_LAYER_BOUNDARY_KEYPOINT_TABLE_FILE_NAME;
-	vector<vector<vec>> corticalLayersKeypoints;
-	H01indexedCSVdatabaseCalculateNeuronLayer.readCorticalLayersBoundaryKeypointTable(corticalLayersBoundaryKeypointTableFileName, &corticalLayersKeypoints);
-	H01indexedCSVdatabaseCalculateNeuronLayer.calculateNeuronLayers(true, &localConnectionCSVdatasetNeurons, &corticalLayersKeypoints);
-	H01indexedCSVdatabaseCalculateNeuronLayer.calculateNeuronLayers(false, &localConnectionCSVdatasetConnections, &corticalLayersKeypoints);
+	H01indexedCSVdatabaseCalculateNeuronLayer.calculateLocalConnectomeLayers(&localConnectionCSVdatasetNeurons, &localConnectionCSVdatasetConnections, &neuronMap, true);
 	#endif
 		
 	bool visualiseTrace = false;

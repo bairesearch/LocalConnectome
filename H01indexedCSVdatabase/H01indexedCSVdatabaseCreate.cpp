@@ -84,8 +84,8 @@ bool H01indexedCSVdatabaseCreateClass::createIndexedCSVdatabase(const string avr
 			cout << "currentLineText = " << currentLineText << endl;
 			#endif
 
-			string neuronIDcontents1 = this->findJsonFieldValue(&currentLineText, neuronIDname, false);
-			string neuronIDcontents2 = this->findJsonFieldValue(&currentLineText, neuronIDname, true);
+			string neuronIDcontents1 = this->findJsonFieldValue1(&currentLineText, neuronIDname, false);
+			string neuronIDcontents2 = this->findJsonFieldValue1(&currentLineText, neuronIDname, true);
 			if(((neuronIDcontents1 != "") && (neuronIDcontents2 != "")) && (neuronIDcontents1 != neuronIDcontents2))
 			{
 				/*//alternative;
@@ -95,22 +95,24 @@ bool H01indexedCSVdatabaseCreateClass::createIndexedCSVdatabase(const string avr
 				string synapseTypeContents = currentLineText.substr(synapseTypeIndex, 1);	//1/2
 				*/
 				int synapseTypeNameIndex = CPP_STRING_FIND_RESULT_FAIL_VALUE2;
-				string synapseTypeContents = this->findJsonFieldValue(&currentLineText, synapseTypeName, true, currentLineText.length(), &synapseTypeNameIndex);
+				string synapseTypeContents = this->findJsonFieldValue3(&currentLineText, synapseTypeName, true, currentLineText.length(), &synapseTypeNameIndex);
 				int locationNameStartIndex = currentLineText.find(locationName);
 				int locationObjectContentsStartIndex = locationNameStartIndex + 2;	//eg "location":{	[+ :{]
 				int locationObjectContentsCloseIndex = currentLineText.find(jsonObjectCharacterClose, locationObjectContentsStartIndex);
 				string locationObjectContents = currentLineText.substr(locationObjectContentsStartIndex, locationObjectContentsCloseIndex-locationObjectContentsStartIndex);
-				string locationObjectContentsXcoordinatesContent = this->findJsonFieldValue(&locationObjectContents, locationObjectContentsXcoordinatesName, false);
-				string locationObjectContentsYcoordinatesContent = this->findJsonFieldValue(&locationObjectContents, locationObjectContentsYcoordinatesName, false);
-				string locationObjectContentsZcoordinatesContent = this->findJsonFieldValue(&locationObjectContents, locationObjectContentsZcoordinatesName, false);				
+				string locationObjectContentsXcoordinatesContent = this->findJsonFieldValue1(&locationObjectContents, locationObjectContentsXcoordinatesName, false);
+				string locationObjectContentsYcoordinatesContent = this->findJsonFieldValue1(&locationObjectContents, locationObjectContentsYcoordinatesName, false);
+				string locationObjectContentsZcoordinatesContent = this->findJsonFieldValue1(&locationObjectContents, locationObjectContentsZcoordinatesName, false);				
 		
-				string synapticSiteTypeContents1 = this->findJsonFieldValue(&currentLineText, synapticSiteTypeName, false, 0);
-				string synapticSiteTypeContents2 = this->findJsonFieldValue(&currentLineText, synapticSiteTypeName, true, synapseTypeNameIndex);		
-				string classLabelContents1 = this->findJsonFieldValue(&currentLineText, classLabelName, false, 0);
-				string classLabelContents2 = this->findJsonFieldValue(&currentLineText, classLabelName, true, synapseTypeNameIndex);			
-				string baseNeuronIDcontents1 = this->findJsonFieldValue(&currentLineText, baseNeuronIDname, false, 0);
-				string baseNeuronIDcontents2 = this->findJsonFieldValue(&currentLineText, baseNeuronIDname, true, synapseTypeNameIndex);			
-
+				string synapticSiteTypeContents1 = this->findJsonFieldValue2(&currentLineText, synapticSiteTypeName, false, 0);
+				string synapticSiteTypeContents2 = this->findJsonFieldValue2(&currentLineText, synapticSiteTypeName, true, synapseTypeNameIndex);		
+				string classLabelContents1 = this->findJsonFieldValue2(&currentLineText, classLabelName, false, 0);
+				string classLabelContents2 = this->findJsonFieldValue2(&currentLineText, classLabelName, true, synapseTypeNameIndex);			
+				string baseNeuronIDcontents1 = this->findJsonFieldValue2(&currentLineText, baseNeuronIDname, false, 0);
+				string baseNeuronIDcontents2 = this->findJsonFieldValue2(&currentLineText, baseNeuronIDname, true, synapseTypeNameIndex);			
+				string synapseConfidenceContents = this->findJsonFieldValue2(&currentLineText, confidenceName, false, 0, false, ",");
+				//cout << "synapseConfidenceContents = " << synapseConfidenceContents << endl;
+				
 				string classLabelContentsSmall1 = classLabelContents1.substr(0,1);	//save first character only (A:AXON, D:DENDRITE, C:SOMA, etc)
 				string classLabelContentsSmall2 = classLabelContents2.substr(0,1);	//save first character only (A:AXON, D:DENDRITE, C:SOMA, etc)
 		
@@ -129,6 +131,22 @@ bool H01indexedCSVdatabaseCreateClass::createIndexedCSVdatabase(const string avr
 				csvTextArray[INDEXED_CSV_DATABASE_SYNAPSE_LOCATION_COORDINATE_Y_FIELD_INDEX] = locationObjectContentsYcoordinatesContent;
 				csvTextArray[INDEXED_CSV_DATABASE_SYNAPSE_LOCATION_COORDINATE_Z_FIELD_INDEX] = locationObjectContentsZcoordinatesContent;
 				csvTextArray[INDEXED_CSV_DATABASE_SYNAPSE_TYPE_FIELD_INDEX] = synapseTypeContents;
+				#ifdef INDEXED_CSV_DATABASE_CREATE_RECORD_CONFIDENCES
+				csvTextArray[INDEXED_CSV_DATABASE_SYNAPSE_CONFIDENCE_FIELD_INDEX] = synapseConfidenceContents;				
+				#endif
+				
+				#ifdef DEBUG_INDEXED_CSV_DATABASE_CREATE_INDEX_CONNECTIONS_BY_BASENEURON_ID
+				string neuronIDcontents1index = baseNeuronIDcontents1;
+				string neuronIDcontents2index = baseNeuronIDcontents2;
+				csvTextArray[INDEXED_CSV_DATABASE_PRESYNAPTIC_SITE_NEURON_ID_FIELD_INDEX] = neuronIDcontents1index;
+				csvTextArray[INDEXED_CSV_DATABASE_POSTSYNAPTIC_SITE_NEURON_ID_FIELD_INDEX] = neuronIDcontents2index;
+				csvTextArray[INDEXED_CSV_DATABASE_PRESYNAPTIC_SITE_BASENEURON_ID_FIELD_INDEX] = neuronIDcontents1;
+				csvTextArray[INDEXED_CSV_DATABASE_POSTSYNAPTIC_SITE_BASENEURON_ID_FIELD_INDEX] = neuronIDcontents2;			
+				#else
+				string neuronIDcontents1index = neuronIDcontents1;
+				string neuronIDcontents2index = neuronIDcontents2;				
+				#endif
+				
 				string csvText = "";
 				for(int i=0; i<INDEXED_CSV_DATABASE_NUMBER_FIELDS; i++)
 				{
@@ -147,8 +165,8 @@ bool H01indexedCSVdatabaseCreateClass::createIndexedCSVdatabase(const string avr
 				#endif
 				
 				string rawText = currentLineText + STRING_NEWLINE;	
-				this->addSynapseToCSVdatabase(indexed_csv_database_folder, neuronIDcontents1, &csvText, &rawText, true);
-				this->addSynapseToCSVdatabase(indexed_csv_database_folder, neuronIDcontents2, &csvText, &rawText, false);
+				this->addSynapseToCSVdatabase(indexed_csv_database_folder, neuronIDcontents1index, &csvText, &rawText, true);
+				this->addSynapseToCSVdatabase(indexed_csv_database_folder, neuronIDcontents2index, &csvText, &rawText, false);
 				
 				#ifdef INDEXED_CSV_DATABASE_CREATE_PRINT_STATUS
 				cout << "l = " << l << "\r";
@@ -244,7 +262,7 @@ bool H01indexedCSVdatabaseCreateClass::addSynapseToCSVdatabase(string indexed_cs
 	return result;
 }
 				
-string H01indexedCSVdatabaseCreateClass::findJsonFieldValue(const string* currentLineText, const string jsonFieldName, bool lastInstance)
+string H01indexedCSVdatabaseCreateClass::findJsonFieldValue1(const string* currentLineText, const string jsonFieldName, bool lastInstance, const bool jsonFieldValueStringDelimiter, const string jsonFieldValueEndDelimiter)
 {
 	int searchStartPos = 0;
 	if(lastInstance)
@@ -252,18 +270,28 @@ string H01indexedCSVdatabaseCreateClass::findJsonFieldValue(const string* curren
 		searchStartPos = currentLineText->length();
 	}
 	int jsonFieldNameIndex = CPP_STRING_FIND_RESULT_FAIL_VALUE2;
-	return this->findJsonFieldValue(currentLineText, jsonFieldName, lastInstance, searchStartPos, &jsonFieldNameIndex);
+	return this->findJsonFieldValue3(currentLineText, jsonFieldName, lastInstance, searchStartPos, &jsonFieldNameIndex, jsonFieldValueStringDelimiter, jsonFieldValueEndDelimiter);
 }
-string H01indexedCSVdatabaseCreateClass::findJsonFieldValue(const string* currentLineText, const string jsonFieldName, bool lastInstance, const int searchStartPos)
+string H01indexedCSVdatabaseCreateClass::findJsonFieldValue2(const string* currentLineText, const string jsonFieldName, bool lastInstance, const int searchStartPos, const bool jsonFieldValueStringDelimiter, const string jsonFieldValueEndDelimiter)
 {
 	int jsonFieldNameIndex = CPP_STRING_FIND_RESULT_FAIL_VALUE2;
-	return this->findJsonFieldValue(currentLineText, jsonFieldName, lastInstance, searchStartPos, &jsonFieldNameIndex);
+	return this->findJsonFieldValue3(currentLineText, jsonFieldName, lastInstance, searchStartPos, &jsonFieldNameIndex, jsonFieldValueStringDelimiter, jsonFieldValueEndDelimiter);
 }
-string H01indexedCSVdatabaseCreateClass::findJsonFieldValue(const string* currentLineText, const string jsonFieldName, bool lastInstance, const int searchStartPos, int* jsonFieldNameIndex)
+string H01indexedCSVdatabaseCreateClass::findJsonFieldValue3(const string* currentLineText, const string jsonFieldName, bool lastInstance, const int searchStartPos, int* jsonFieldNameIndex, const bool jsonFieldValueStringDelimiter, const string jsonFieldValueEndDelimiter)
 {
 	string jsonFieldContents = "";
 	
-	int jsonFieldContentsStartRelativeIndex = jsonFieldName.length() + 2;	//eg "neuron_id":"	[+ :"]
+	int jsonFieldContentsStartRelativeIndex;
+	
+	if(jsonFieldValueStringDelimiter)
+	{
+		jsonFieldContentsStartRelativeIndex = jsonFieldName.length() + 2;	//eg "neuron_id":"	[+ :"]
+	
+	}
+	else
+	{
+		jsonFieldContentsStartRelativeIndex = jsonFieldName.length() + 1;	//eg "confidence":	[+ :]	
+	}
 	
 	if(lastInstance)
 	{
@@ -279,7 +307,7 @@ string H01indexedCSVdatabaseCreateClass::findJsonFieldValue(const string* curren
 	{
 		//eg "neuron_id":"51655419168"	//11 characters
 		int jsonFieldContentsStartIndex = *jsonFieldNameIndex + jsonFieldContentsStartRelativeIndex;
-		int jsonFieldContentsEndIndex = currentLineText->find("\"", jsonFieldContentsStartIndex);
+		int jsonFieldContentsEndIndex = currentLineText->find(jsonFieldValueEndDelimiter, jsonFieldContentsStartIndex);
 		jsonFieldContents = currentLineText->substr(jsonFieldContentsStartIndex, jsonFieldContentsEndIndex-jsonFieldContentsStartIndex);
 		#ifdef INDEXED_CSV_DATABASE_CREATE_DEBUG
 		//cout << "jsonFieldContents = " << jsonFieldContents << endl;

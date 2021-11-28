@@ -27,9 +27,9 @@ class H01indexedCSVdatabaseCreateClass
 
 	public: bool createIndexedCSVdatabase(const string avro_json_database_folder, const string indexed_csv_database_folder);
 		private: bool addSynapseToCSVdatabase(const string indexed_csv_database_folder, const string neuronIDcontents, const string* csvText, const string* rawText, const bool indexByPresynapticNeuron);
-		private: string findJsonFieldValue(const string* currentLineText, const string jsonFieldName, bool lastInstance);
-		private: string findJsonFieldValue(const string* currentLineText, const string jsonFieldName, bool lastInstance, const int searchStartPos);
-		private: string findJsonFieldValue(const string* currentLineText, const string jsonFieldName, bool lastInstance, const int searchStartPos, int* jsonFieldNameIndex);
+		private: string findJsonFieldValue1(const string* currentLineText, const string jsonFieldName, bool lastInstance, const bool jsonFieldValueStringDelimiter=true, const string jsonFieldValueEndDelimiter="\"");
+		private: string findJsonFieldValue2(const string* currentLineText, const string jsonFieldName, bool lastInstance, const int searchStartPos, const bool jsonFieldValueStringDelimiter=true, const string jsonFieldValueEndDelimiter="\"");
+		private: string findJsonFieldValue3(const string* currentLineText, const string jsonFieldName, bool lastInstance, const int searchStartPos, int* jsonFieldNameIndex, const bool jsonFieldValueStringDelimiter=true, const string jsonFieldValueEndDelimiter="\"");
 };
 
 #endif
