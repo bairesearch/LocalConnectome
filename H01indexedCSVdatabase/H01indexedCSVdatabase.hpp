@@ -57,22 +57,42 @@ extern string currentDirectory;
 
 
 //configuration:
+#ifdef INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS
+	#define INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS_COUNT_NUMBER_INCOMING_OUTGOING_EXCITATORY_INHIBITORY_SYNAPSES	//added 30 November 2021 
+#endif
 #ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS
-	#define DEBUG_INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_OUTPUT_VERBOSE_LOCALORNONLOCAL	//compare against counts from https://h01-release.storage.googleapis.com/data.html - gs://h01-release/data/20210601/c3/tables/segments/counts000000000NNN.csv.gz	//added 24 November 2021a
+	//#define DEBUG_INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_OUTPUT_VERBOSE_LOCALORNONLOCAL	//compare against counts from https://h01-release.storage.googleapis.com/data.html - gs://h01-release/data/20210601/c3/tables/segments/counts000000000NNN.csv.gz	//added 24 November 2021a
 #endif
 #ifdef INDEXED_CSV_DATABASE_CREATE
 	#define INDEXED_CSV_DATABASE_CREATE_RECORD_CONFIDENCES	//added 26 November 2021a
+	#define INDEXED_CSV_DATABASE_CREATE_CLASS_LABELS_SAVE_VERBATIM //added 30 November 2021	//else save only first character //enabling this makes the compressed indexed CSV database ~10% larger, but provides more robust class label storage
 #endif
 #ifdef INDEXED_CSV_DATABASE_QUERY
 	//#define LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS	//use official somas dataset (https://h01-release.storage.googleapis.com/data.html - gs://h01-release/data/20210601/c3/tables/somas.csv) //added 24 November 2021 
 #endif
 #ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET
+	#ifdef INDEXED_CSV_DATABASE_CREATE_CLASS_LABELS_SAVE_VERBATIM
+		#define INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_RESTRICT_PREPOSTSYNAPTIC_CLASS_LABELS	//added 30 November 2021 
+	#endif
 	//#define INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_VERIFICATION	//verify local connectome connections dataset generation vs existing (e.g. dev/ODS generated) connections datasets
 #endif	
 #ifdef INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME
 	//#define LOCAL_CONNECTOME_VISUALISATION_BACKWARDS_COMPATIBILITY_WITH_ODS_GENERATED_FILES	//temporary for diff comparisons between H01indexedCSVdatabase generated visualisations and ODS generated visualisations (visualisation generation verification)	//slower as uses non-distinct neuron id lists
 #endif
 
+
+#ifndef INDEXED_CSV_DATABASE_CREATE_CLASS_LABELS_SAVE_VERBATIM
+	#define INDEXED_CSV_DATABASE_CREATE_CLASS_LABELS_SAVE_NUMBER_CHARACTERS (1)	//orig: 1 (must set to greater than 1 to not override class labels with same first character; eg AXON/AIS)
+#endif
+
+//valid connection class labels;
+#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_RESTRICT_PREPOSTSYNAPTIC_CLASS_LABELS
+	//valid pre_class_label/post_class_label derived based on prepublishedLocalConnectionsDatasets/localConnectomeConnections-typesFromPresynapticNeurons.csv (ie in_body_cell_connection.csv);
+	#define INDEXED_CSV_DATABASE_PRESYNAPTIC_SITE_CLASSLABEL_VALID_NUM 1
+	#define INDEXED_CSV_DATABASE_POSTSYNAPTIC_SITE_CLASSLABEL_VALID_NUM 3
+	static string indexed_csv_database_presynaptic_site_classlabel_valid[INDEXED_CSV_DATABASE_PRESYNAPTIC_SITE_CLASSLABEL_VALID_NUM] = {"AXON"};	//CHECKTHIS
+	static string indexed_csv_database_postsynaptic_site_classlabel_valid[INDEXED_CSV_DATABASE_POSTSYNAPTIC_SITE_CLASSLABEL_VALID_NUM] = {"DENDRITE", "SOMA", "AIS"};	//CHECKTHIS
+#endif
 
 //official c3 local connectome neuron dataset parameters;
 #ifdef LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS

@@ -62,7 +62,7 @@ bool H01indexedCSVdatabaseCreateClass::createIndexedCSVdatabase(const string avr
 		SHAREDvars.getLinesFromFile(fileToOpenName, &fileLinesList, &numberOfLinesInFile);
 		
 		#ifdef INDEXED_CSV_DATABASE_CREATE_DEBUG
-		numberOfLinesInFile = 1;
+		//numberOfLinesInFile = 1;
 		#endif
 		
 		int firstLineInFile = 0;
@@ -78,14 +78,22 @@ bool H01indexedCSVdatabaseCreateClass::createIndexedCSVdatabase(const string avr
 			string currentLineText = fileLinesList[l];	//eg {"pre_synaptic_site":{"neuron_id":"5472528459","id":"19685462211","centroid":{"x":"461512","y":"196505","z":"256"},"type":"1","bounding_box":{"start":{"x":"461472","y":"196487","z":"240"},"size":{"x":"81","y":"37","z":"32"}},"class_label":"AXON","base_neuron_id":"5472528459"},"post_synaptic_partner":{"neuron_id":"5414315245","id":"19685462210","centroid":{"x":"461511","y":"196494","z":"256"},"type":"2","bounding_box":{"start":{"x":"461472","y":"196474","z":"240"},"size":{"x":"79","y":"40","z":"33"}},"class_label":"DENDRITE","base_neuron_id":"5472528717"},"location":{"x":"461512","y":"196499","z":"256"},"type":"2","confidence":0.95752114057540894,"bounding_box":{"start":{"x":"461472","y":"196474","z":"240"},"size":{"x":"81","y":"50","z":"33"}}}
 
 			#ifndef MAX_SSD_SIZE
-			cout << "l = " << l << endl;
+			//cout << "l = " << l << endl;
 			#endif
 			#ifdef INDEXED_CSV_DATABASE_CREATE_DEBUG
-			cout << "currentLineText = " << currentLineText << endl;
+			//cout << "currentLineText = " << currentLineText << endl;
 			#endif
 
-			string neuronIDcontents1 = this->findJsonFieldValue1(&currentLineText, neuronIDname, false);
-			string neuronIDcontents2 = this->findJsonFieldValue1(&currentLineText, neuronIDname, true);
+			//fixed detection mechanism of neuronIDcontents1/neuronIDcontents2 (ensure found) - 30 November 2021;
+			int neuronIDname1Index = CPP_STRING_FIND_RESULT_FAIL_VALUE2;
+			int neuronIDname2Index = CPP_STRING_FIND_RESULT_FAIL_VALUE2;
+			string neuronIDcontents1 = this->findJsonFieldValue3(&currentLineText, neuronIDname, false, 0, &neuronIDname1Index);
+			string neuronIDcontents2 = "";
+			if(neuronIDcontents1 != "")
+			{
+				neuronIDcontents2 = this->findJsonFieldValue2(&currentLineText, neuronIDname, false, neuronIDname1Index+1, &neuronIDname2Index);
+			}
+			
 			if(((neuronIDcontents1 != "") && (neuronIDcontents2 != "")) && (neuronIDcontents1 != neuronIDcontents2))
 			{
 				/*//alternative;
@@ -96,6 +104,7 @@ bool H01indexedCSVdatabaseCreateClass::createIndexedCSVdatabase(const string avr
 				*/
 				int synapseTypeNameIndex = CPP_STRING_FIND_RESULT_FAIL_VALUE2;
 				string synapseTypeContents = this->findJsonFieldValue3(&currentLineText, synapseTypeName, true, currentLineText.length(), &synapseTypeNameIndex);
+				
 				int locationNameStartIndex = currentLineText.find(locationName);
 				int locationObjectContentsStartIndex = locationNameStartIndex + 2;	//eg "location":{	[+ :{]
 				int locationObjectContentsCloseIndex = currentLineText.find(jsonObjectCharacterClose, locationObjectContentsStartIndex);
@@ -112,10 +121,17 @@ bool H01indexedCSVdatabaseCreateClass::createIndexedCSVdatabase(const string avr
 				string baseNeuronIDcontents2 = this->findJsonFieldValue2(&currentLineText, baseNeuronIDname, true, synapseTypeNameIndex);			
 				string synapseConfidenceContents = this->findJsonFieldValue2(&currentLineText, confidenceName, false, 0, false, ",");
 				//cout << "synapseConfidenceContents = " << synapseConfidenceContents << endl;
-				
-				string classLabelContentsSmall1 = classLabelContents1.substr(0,1);	//save first character only (A:AXON, D:DENDRITE, C:SOMA, etc)
-				string classLabelContentsSmall2 = classLabelContents2.substr(0,1);	//save first character only (A:AXON, D:DENDRITE, C:SOMA, etc)
-		
+
+				//cout << "synapseTypeNameIndex = " << synapseTypeNameIndex << endl;
+						
+				#ifdef INDEXED_CSV_DATABASE_CREATE_CLASS_LABELS_SAVE_VERBATIM
+				string classLabelContentsSmall1 = classLabelContents1;
+				string classLabelContentsSmall2 = classLabelContents2;
+				#else
+				string classLabelContentsSmall1 = classLabelContents1.substr(0,INDEXED_CSV_DATABASE_CREATE_CLASS_LABELS_SAVE_NUMBER_CHARACTERS);	//save first x characters only (A:AXON, U:UNKNOWN, etc)
+				string classLabelContentsSmall2 = classLabelContents2.substr(0,INDEXED_CSV_DATABASE_CREATE_CLASS_LABELS_SAVE_NUMBER_CHARACTERS);	//save first x characters only (A:AXON, D:DENDRITE, C:SOMA, etc)	
+				#endif
+					
 				const string csvDelimiter = CSV_DELIMITER;
 				//string csvText = neuronIDcontents1 + csvDelimiter + neuronIDcontents2 + csvDelimiter + synapticSiteTypeContents1 + csvDelimiter + synapticSiteTypeContents2 + csvDelimiter + classLabelContentsSmall1 + csvDelimiter + classLabelContentsSmall2 + csvDelimiter + baseNeuronIDcontents1 + csvDelimiter + baseNeuronIDcontents2 + csvDelimiter + locationObjectContentsXcoordinatesContent + csvDelimiter + locationObjectContentsYcoordinatesContent + csvDelimiter + locationObjectContentsZcoordinatesContent + csvDelimiter + synapseTypeContents + STRING_NEWLINE;
 				string csvTextArray[INDEXED_CSV_DATABASE_NUMBER_FIELDS];
@@ -161,7 +177,7 @@ bool H01indexedCSVdatabaseCreateClass::createIndexedCSVdatabase(const string avr
 					}
 				}
 				#ifdef INDEXED_CSV_DATABASE_CREATE_DEBUG
-				cout << "csvText = " << csvText << endl;
+				//cout << "csvText = " << csvText << endl;
 				#endif
 				
 				string rawText = currentLineText + STRING_NEWLINE;	
@@ -169,13 +185,17 @@ bool H01indexedCSVdatabaseCreateClass::createIndexedCSVdatabase(const string avr
 				this->addSynapseToCSVdatabase(indexed_csv_database_folder, neuronIDcontents2index, &csvText, &rawText, false);
 				
 				#ifdef INDEXED_CSV_DATABASE_CREATE_PRINT_STATUS
-				cout << "l = " << l << "\r";
+				//cout << "l = " << l << "\r";
 				#endif
 			}
 			else
 			{
 				//ignore synapse where at least one neuron_id is missing (class_label: UNKNOWN)
 			}
+			
+			#ifdef INDEXED_CSV_DATABASE_CREATE_DEBUG
+			cout << endl;
+			#endif
 		}
 			
 		#ifdef INDEXED_CSV_DATABASE_CREATE_PRINT_STATUS
@@ -248,8 +268,8 @@ bool H01indexedCSVdatabaseCreateClass::addSynapseToCSVdatabase(string indexed_cs
 			#ifdef INDEXED_CSV_DATABASE_CREATE_DEBUG
 			//cout << "rawFileName = " << rawFileName << endl;
 			//cout << "rawText = " << *rawText << endl;
-			cout << "csvFileName = " << csvFileName << endl;
-			cout << "csvText = " << *csvText << endl;
+			//cout << "csvFileName = " << csvFileName << endl;
+			//cout << "csvText = " << *csvText << endl;
 			#endif
 		}
 		else
@@ -303,14 +323,14 @@ string H01indexedCSVdatabaseCreateClass::findJsonFieldValue3(const string* curre
 	}
 	//cout << "*jsonFieldNameIndex = " << *jsonFieldNameIndex << endl;
 	
-	if(*jsonFieldNameIndex != CPP_STRING_FIND_RESULT_FAIL_VALUE2)
+	if(*jsonFieldNameIndex != CPP_STRING_FIND_RESULT_FAIL_VALUE)
 	{
 		//eg "neuron_id":"51655419168"	//11 characters
 		int jsonFieldContentsStartIndex = *jsonFieldNameIndex + jsonFieldContentsStartRelativeIndex;
 		int jsonFieldContentsEndIndex = currentLineText->find(jsonFieldValueEndDelimiter, jsonFieldContentsStartIndex);
 		jsonFieldContents = currentLineText->substr(jsonFieldContentsStartIndex, jsonFieldContentsEndIndex-jsonFieldContentsStartIndex);
 		#ifdef INDEXED_CSV_DATABASE_CREATE_DEBUG
-		//cout << "jsonFieldContents = " << jsonFieldContents << endl;
+		cout << jsonFieldContents << " ";
 		#endif
 	}
 	

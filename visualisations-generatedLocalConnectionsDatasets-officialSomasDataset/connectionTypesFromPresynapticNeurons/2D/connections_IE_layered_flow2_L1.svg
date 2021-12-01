@@ -1,0 +1,1423 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with matplotlib (https://matplotlib.org/) -->
+<svg height="4608pt" version="1.1" viewBox="0 0 4608 4608" width="4608pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <metadata>
+  <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2021-06-10T15:35:39.879008</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.3.4, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linecap:butt;stroke-linejoin:round;}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 4608  L 4608 4608  L 4608 0  L 0 0  z "/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 576 3408.48  L 4147.2 3408.48  L 4147.2 1176.48  L 576 1176.48  z "/>
+   </g>
+   <g id="PathCollection_1">
+    <defs>
+     <!-- white [optional] -->
+     <path d="M -0.5 0.5  L 0.5 0.5  L 0.5 -0.5  L -0.5 -0.5  z " id="m51ca76320d" />	#style="stroke:#ffffff;"
+	  <linearGradient id="exciteConnectionLayer1RadialGradient1FlowDirection1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="#00ff00"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer1RadialGradient1FlowDirection1">
+        <!-- purple to magenta --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="#990099"/>
+		<stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer1RadialGradient2FlowDirection1">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff00"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer1RadialGradient2FlowDirection1">
+        <!-- magenta to purple --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="ff0000"/>
+		<stop offset="100%" stop-color="#990099"/>
+      </linearGradient>
+	  <linearGradient id="exciteConnectionLayer1RadialGradient1FlowDirection2">
+        <!-- blue to cyan --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+        <stop offset="0%" stop-color="#0000ff"/>
+        <stop offset="100%" stop-color="#00ffff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer1RadialGradient1FlowDirection2">
+        <!-- orange to red --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+        <stop offset="0%" stop-color="#ff8000"/>
+		<stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer1RadialGradient2FlowDirection2">
+        <!-- cyan to blue --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+        <stop offset="0%" stop-color="#00ffff"/>
+		<stop offset="100%" stop-color="#0000ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer1RadialGradient2FlowDirection2">
+        <!-- red to orange --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+		<stop offset="0%" stop-color="#ff0000"/>        
+		<stop offset="100%" stop-color="#ff8000"/>
+      </linearGradient>
+	  
+      <linearGradient id="inhibitNeuronLayer1Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer1Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer1Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+
+
+	  <linearGradient id="exciteConnectionLayer2RadialGradient1FlowDirection1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="#00ff00"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer2RadialGradient1FlowDirection1">
+        <!-- purple to magenta --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="#990099"/>
+		<stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer2RadialGradient2FlowDirection1">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff00"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer2RadialGradient2FlowDirection1">
+        <!-- magenta to purple --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="ff0000"/>
+		<stop offset="100%" stop-color="#990099"/>
+      </linearGradient>
+	  <linearGradient id="exciteConnectionLayer2RadialGradient1FlowDirection2">
+        <!-- blue to cyan --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+        <stop offset="0%" stop-color="#0000ff"/>
+        <stop offset="100%" stop-color="#00ffff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer2RadialGradient1FlowDirection2">
+        <!-- orange to red --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+        <stop offset="0%" stop-color="#ff8000"/>
+		<stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer2RadialGradient2FlowDirection2">
+        <!-- cyan to blue --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+        <stop offset="0%" stop-color="#00ffff"/>
+		<stop offset="100%" stop-color="#0000ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer2RadialGradient2FlowDirection2">
+        <!-- red to orange --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+		<stop offset="0%" stop-color="#ff0000"/>        
+		<stop offset="100%" stop-color="#ff8000"/>
+      </linearGradient>
+	  
+      <linearGradient id="inhibitNeuronLayer2Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer2Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer2Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+
+
+	  <linearGradient id="exciteConnectionLayer3RadialGradient1FlowDirection1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="#00ff00"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer3RadialGradient1FlowDirection1">
+        <!-- purple to magenta --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="#990099"/>
+		<stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer3RadialGradient2FlowDirection1">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff00"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer3RadialGradient2FlowDirection1">
+        <!-- magenta to purple --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="ff0000"/>
+		<stop offset="100%" stop-color="#990099"/>
+      </linearGradient>
+	  <linearGradient id="exciteConnectionLayer3RadialGradient1FlowDirection2">
+        <!-- blue to cyan --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+        <stop offset="0%" stop-color="#0000ff"/>
+        <stop offset="100%" stop-color="#00ffff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer3RadialGradient1FlowDirection2">
+        <!-- orange to red --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+        <stop offset="0%" stop-color="#ff8000"/>
+		<stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer3RadialGradient2FlowDirection2">
+        <!-- cyan to blue --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+        <stop offset="0%" stop-color="#00ffff"/>
+		<stop offset="100%" stop-color="#0000ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer3RadialGradient2FlowDirection2">
+        <!-- red to orange --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+		<stop offset="0%" stop-color="#ff0000"/>        
+		<stop offset="100%" stop-color="#ff8000"/>
+      </linearGradient>
+	  
+      <linearGradient id="inhibitNeuronLayer3Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer3Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer3Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+
+
+	  <linearGradient id="exciteConnectionLayer4RadialGradient1FlowDirection1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="#00ff00"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer4RadialGradient1FlowDirection1">
+        <!-- purple to magenta --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="#990099"/>
+		<stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer4RadialGradient2FlowDirection1">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff00"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer4RadialGradient2FlowDirection1">
+        <!-- magenta to purple --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="ff0000"/>
+		<stop offset="100%" stop-color="#990099"/>
+      </linearGradient>
+	  <linearGradient id="exciteConnectionLayer4RadialGradient1FlowDirection2">
+        <!-- blue to cyan --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+        <stop offset="0%" stop-color="#0000ff"/>
+        <stop offset="100%" stop-color="#00ffff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer4RadialGradient1FlowDirection2">
+        <!-- orange to red --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+        <stop offset="0%" stop-color="#ff8000"/>
+		<stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer4RadialGradient2FlowDirection2">
+        <!-- cyan to blue --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+        <stop offset="0%" stop-color="#00ffff"/>
+		<stop offset="100%" stop-color="#0000ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer4RadialGradient2FlowDirection2">
+        <!-- red to orange --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+		<stop offset="0%" stop-color="#ff0000"/>        
+		<stop offset="100%" stop-color="#ff8000"/>
+      </linearGradient>
+	  
+      <linearGradient id="inhibitNeuronLayer4Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer4Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer4Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+
+
+	  <linearGradient id="exciteConnectionLayer5RadialGradient1FlowDirection1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="#00ff00"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer5RadialGradient1FlowDirection1">
+        <!-- purple to magenta --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="#990099"/>
+		<stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer5RadialGradient2FlowDirection1">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff00"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer5RadialGradient2FlowDirection1">
+        <!-- magenta to purple --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="ff0000"/>
+		<stop offset="100%" stop-color="#990099"/>
+      </linearGradient>
+	  <linearGradient id="exciteConnectionLayer5RadialGradient1FlowDirection2">
+        <!-- blue to cyan --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+        <stop offset="0%" stop-color="#0000ff"/>
+        <stop offset="100%" stop-color="#00ffff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer5RadialGradient1FlowDirection2">
+        <!-- orange to red --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+        <stop offset="0%" stop-color="#ff8000"/>
+		<stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer5RadialGradient2FlowDirection2">
+        <!-- cyan to blue --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+        <stop offset="0%" stop-color="#00ffff"/>
+		<stop offset="100%" stop-color="#0000ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer5RadialGradient2FlowDirection2">
+        <!-- red to orange --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+		<stop offset="0%" stop-color="#ff0000"/>        
+		<stop offset="100%" stop-color="#ff8000"/>
+      </linearGradient>
+	  
+      <linearGradient id="inhibitNeuronLayer5Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer5Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer5Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+
+
+	  <linearGradient id="exciteConnectionLayer6RadialGradient1FlowDirection1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="#00ff00"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer6RadialGradient1FlowDirection1">
+        <!-- purple to magenta --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="#990099"/>
+		<stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer6RadialGradient2FlowDirection1">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff00"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer6RadialGradient2FlowDirection1">
+        <!-- magenta to purple --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="ff0000"/>
+		<stop offset="100%" stop-color="#990099"/>
+      </linearGradient>
+	  <linearGradient id="exciteConnectionLayer6RadialGradient1FlowDirection2">
+        <!-- blue to cyan --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+        <stop offset="0%" stop-color="#0000ff"/>
+        <stop offset="100%" stop-color="#00ffff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer6RadialGradient1FlowDirection2">
+        <!-- orange to red --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+        <stop offset="0%" stop-color="#ff8000"/>
+		<stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer6RadialGradient2FlowDirection2">
+        <!-- cyan to blue --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+        <stop offset="0%" stop-color="#00ffff"/>
+		<stop offset="100%" stop-color="#0000ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer6RadialGradient2FlowDirection2">
+        <!-- red to orange --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+		<stop offset="0%" stop-color="#ff0000"/>        
+		<stop offset="100%" stop-color="#ff8000"/>
+      </linearGradient>
+	  
+      <linearGradient id="inhibitNeuronLayer6Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer6Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer6Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+
+
+	  <linearGradient id="exciteConnectionLayer7RadialGradient1FlowDirection1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="#00ff00"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer7RadialGradient1FlowDirection1">
+        <!-- purple to magenta --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="#990099"/>
+		<stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer7RadialGradient2FlowDirection1">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff00"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer7RadialGradient2FlowDirection1">
+        <!-- magenta to purple --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
+        <stop offset="0%" stop-color="ff0000"/>
+		<stop offset="100%" stop-color="#990099"/>
+      </linearGradient>
+	  <linearGradient id="exciteConnectionLayer7RadialGradient1FlowDirection2">
+        <!-- blue to cyan --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+        <stop offset="0%" stop-color="#0000ff"/>
+        <stop offset="100%" stop-color="#00ffff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer7RadialGradient1FlowDirection2">
+        <!-- orange to red --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+        <stop offset="0%" stop-color="#ff8000"/>
+		<stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer7RadialGradient2FlowDirection2">
+        <!-- cyan to blue --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+        <stop offset="0%" stop-color="#00ffff"/>
+		<stop offset="100%" stop-color="#0000ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer7RadialGradient2FlowDirection2">
+        <!-- red to orange --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
+		<stop offset="0%" stop-color="#ff0000"/>        
+		<stop offset="100%" stop-color="#ff8000"/>
+      </linearGradient>
+	  
+      <linearGradient id="inhibitNeuronLayer7Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer7Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer7Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+
+
+    </defs>
+    <g clip-path="url(#p545b2f616b)">
+     <!-- neurons with excitatory/inhibitory connections -->
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3476.856' xlink:href='#m51ca76320d' y='1948.3428'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3935.93376' xlink:href='#m51ca76320d' y='2607.62352'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3697.08744' xlink:href='#m51ca76320d' y='1912.52664'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3429.86496' xlink:href='#m51ca76320d' y='1556.49288'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3865.91592' xlink:href='#m51ca76320d' y='2132.13312'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3895.94376' xlink:href='#m51ca76320d' y='2497.452'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3388.31256' xlink:href='#m51ca76320d' y='1625.5584'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3518.05872' xlink:href='#m51ca76320d' y='1747.2768'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3614.55552' xlink:href='#m51ca76320d' y='1714.51104'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3640.88568' xlink:href='#m51ca76320d' y='2206.74144'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3473.60472' xlink:href='#m51ca76320d' y='1693.47072'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3904.96848' xlink:href='#m51ca76320d' y='2099.8584'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3937.54824' xlink:href='#m51ca76320d' y='2162.3172'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3833.85696' xlink:href='#m51ca76320d' y='1846.92072'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3590.15232' xlink:href='#m51ca76320d' y='1745.18616'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3529.22616' xlink:href='#m51ca76320d' y='1814.28144'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3771.34608' xlink:href='#m51ca76320d' y='2124.73032'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3437.67696' xlink:href='#m51ca76320d' y='1951.74288'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3574.85568' xlink:href='#m51ca76320d' y='2012.93688'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3450.45144' xlink:href='#m51ca76320d' y='1693.05408'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3314.85744' xlink:href='#m51ca76320d' y='1540.30344'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3312.42456' xlink:href='#m51ca76320d' y='1647.23856'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3737.63544' xlink:href='#m51ca76320d' y='1840.37352'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3268.65504' xlink:href='#m51ca76320d' y='1532.49888'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3120.39816' xlink:href='#m51ca76320d' y='1590.84336'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3229.37928' xlink:href='#m51ca76320d' y='1601.91408'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3171.82344' xlink:href='#m51ca76320d' y='1661.24808'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3871.23552' xlink:href='#m51ca76320d' y='2386.8564'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4118.86104' xlink:href='#m51ca76320d' y='2378.55336'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4077.49464' xlink:href='#m51ca76320d' y='2705.96544'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3372.74064' xlink:href='#m51ca76320d' y='1536.4644'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3413.97312' xlink:href='#m51ca76320d' y='1798.73928'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3775.66128' xlink:href='#m51ca76320d' y='2333.86872'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3467.47416' xlink:href='#m51ca76320d' y='1979.57592'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3627.9996' xlink:href='#m51ca76320d' y='2073.32736'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3515.21664' xlink:href='#m51ca76320d' y='1803.28512'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3970.91664' xlink:href='#m51ca76320d' y='2594.83416'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3579.32712' xlink:href='#m51ca76320d' y='1814.65344'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3371.03688' xlink:href='#m51ca76320d' y='1867.12032'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3408.19224' xlink:href='#m51ca76320d' y='1914.9744'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3613.22376' xlink:href='#m51ca76320d' y='1814.56416'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3734.08656' xlink:href='#m51ca76320d' y='1730.44752'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3952.22736' xlink:href='#m51ca76320d' y='2313.22272'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3732.84408' xlink:href='#m51ca76320d' y='2048.00904'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3647.80488' xlink:href='#m51ca76320d' y='2159.5272'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3069.37464' xlink:href='#m51ca76320d' y='1517.15016'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3184.01016' xlink:href='#m51ca76320d' y='1600.374'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3570.48096' xlink:href='#m51ca76320d' y='1712.32368'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3303.66024' xlink:href='#m51ca76320d' y='1536.02544'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3586.77456' xlink:href='#m51ca76320d' y='1674.09696'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3692.6904' xlink:href='#m51ca76320d' y='2283.15024'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3555.28104' xlink:href='#m51ca76320d' y='1965.63336'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3461.1576' xlink:href='#m51ca76320d' y='1811.98992'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3618.11184' xlink:href='#m51ca76320d' y='2166.41664'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3481.14888' xlink:href='#m51ca76320d' y='1860.1416'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3627.82848' xlink:href='#m51ca76320d' y='1848.39384'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3219.52872' xlink:href='#m51ca76320d' y='1636.74816'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3523.40064' xlink:href='#m51ca76320d' y='2077.08456'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4070.43408' xlink:href='#m51ca76320d' y='2191.98048'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4017.95976' xlink:href='#m51ca76320d' y='2037.82368'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3314.47056' xlink:href='#m51ca76320d' y='1645.43064'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3394.80768' xlink:href='#m51ca76320d' y='1753.86864'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3928.82112' xlink:href='#m51ca76320d' y='2290.7316'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3667.4688' xlink:href='#m51ca76320d' y='1799.12616'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3673.5324' xlink:href='#m51ca76320d' y='1756.81488'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3637.56744' xlink:href='#m51ca76320d' y='2035.13784'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3517.73136' xlink:href='#m51ca76320d' y='1581.2532'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3339.34992' xlink:href='#m51ca76320d' y='1832.12256'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3688.9332' xlink:href='#m51ca76320d' y='1739.29368'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3500.94672' xlink:href='#m51ca76320d' y='1657.05936'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3273.34224' xlink:href='#m51ca76320d' y='1733.43096'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3435.31104' xlink:href='#m51ca76320d' y='1742.85744'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3745.06056' xlink:href='#m51ca76320d' y='2429.68848'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3750.04536' xlink:href='#m51ca76320d' y='1796.43288'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3576.01632' xlink:href='#m51ca76320d' y='1891.11432'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3831.90024' xlink:href='#m51ca76320d' y='2288.7228'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3128.23248' xlink:href='#m51ca76320d' y='1601.46024'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3751.0944' xlink:href='#m51ca76320d' y='2031.35832'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3973.63968' xlink:href='#m51ca76320d' y='2250.816'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3736.48224' xlink:href='#m51ca76320d' y='2193.77352'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3687.966' xlink:href='#m51ca76320d' y='1964.80008'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3759.37512' xlink:href='#m51ca76320d' y='2161.51368'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3458.79912' xlink:href='#m51ca76320d' y='1744.02552'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3588.29232' xlink:href='#m51ca76320d' y='2122.16352'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3175.7964' xlink:href='#m51ca76320d' y='1539.57432'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3231.84192' xlink:href='#m51ca76320d' y='1723.37952'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3860.08296' xlink:href='#m51ca76320d' y='2009.66328'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4077.24168' xlink:href='#m51ca76320d' y='2571.71064'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3724.22112' xlink:href='#m51ca76320d' y='1763.0868'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4030.9128' xlink:href='#m51ca76320d' y='2468.9568'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3739.32432' xlink:href='#m51ca76320d' y='2238.32424'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3167.30736' xlink:href='#m51ca76320d' y='1500.46968'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3891.73272' xlink:href='#m51ca76320d' y='1926.96024'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4041.35856' xlink:href='#m51ca76320d' y='2783.98128'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3648.65304' xlink:href='#m51ca76320d' y='2125.21392'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3916.4112' xlink:href='#m51ca76320d' y='2073.57288'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3641.25024' xlink:href='#m51ca76320d' y='2122.12632'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3746.50392' xlink:href='#m51ca76320d' y='2139.58056'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3803.86632' xlink:href='#m51ca76320d' y='2547.41904'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3715.9776' xlink:href='#m51ca76320d' y='1897.80288'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3420.81792' xlink:href='#m51ca76320d' y='1803.23304'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3110.04168' xlink:href='#m51ca76320d' y='1610.0088'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3085.0656' xlink:href='#m51ca76320d' y='1567.83888'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3410.14896' xlink:href='#m51ca76320d' y='1827.37584'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3933.7092' xlink:href='#m51ca76320d' y='1896.49344'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3880.94472' xlink:href='#m51ca76320d' y='2125.74216'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3664.84992' xlink:href='#m51ca76320d' y='2000.6088'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3781.36032' xlink:href='#m51ca76320d' y='2480.3772'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3504.06408' xlink:href='#m51ca76320d' y='1583.0016'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3714.80952' xlink:href='#m51ca76320d' y='2274.33384'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3339.50616' xlink:href='#m51ca76320d' y='1590.64248'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3424.69416' xlink:href='#m51ca76320d' y='1686.41016'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3681.10632' xlink:href='#m51ca76320d' y='1851.48888'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3941.12688' xlink:href='#m51ca76320d' y='2668.03632'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3548.47344' xlink:href='#m51ca76320d' y='2079.19008'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3744.138' xlink:href='#m51ca76320d' y='2343.80856'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3266.77272' xlink:href='#m51ca76320d' y='1616.95776'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3256.8552' xlink:href='#m51ca76320d' y='1608.20088'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3249.86904' xlink:href='#m51ca76320d' y='1654.2396'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3146.3712' xlink:href='#m51ca76320d' y='1612.7244'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3699.91464' xlink:href='#m51ca76320d' y='1703.16504'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3824.38584' xlink:href='#m51ca76320d' y='1890.8688'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3521.31' xlink:href='#m51ca76320d' y='2009.26896'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3633.57216' xlink:href='#m51ca76320d' y='1850.25384'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3470.51712' xlink:href='#m51ca76320d' y='1699.43016'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3787.6248' xlink:href='#m51ca76320d' y='1908.95544'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3529.47168' xlink:href='#m51ca76320d' y='1512.23232'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3350.02632' xlink:href='#m51ca76320d' y='1748.40768'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3295.59528' xlink:href='#m51ca76320d' y='1609.62192'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3456.768' xlink:href='#m51ca76320d' y='1730.1648'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3789.0384' xlink:href='#m51ca76320d' y='2138.18184'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3800.83824' xlink:href='#m51ca76320d' y='1939.70496'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3686.68632' xlink:href='#m51ca76320d' y='2224.91736'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3456.61176' xlink:href='#m51ca76320d' y='1550.97984'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3574.18608' xlink:href='#m51ca76320d' y='1717.15224'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3892.1568' xlink:href='#m51ca76320d' y='2465.77992'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3817.92048' xlink:href='#m51ca76320d' y='2227.77432'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3449.18664' xlink:href='#m51ca76320d' y='1692.60024'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3596.20104' xlink:href='#m51ca76320d' y='2103.11712'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3798.81456' xlink:href='#m51ca76320d' y='2013.3312'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3432.59544' xlink:href='#m51ca76320d' y='1859.1372'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3525.8484' xlink:href='#m51ca76320d' y='1984.23336'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4013.32464' xlink:href='#m51ca76320d' y='2179.23576'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3787.95216' xlink:href='#m51ca76320d' y='1809.44544'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3450.54072' xlink:href='#m51ca76320d' y='1889.8644'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3952.6812' xlink:href='#m51ca76320d' y='2237.29008'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3910.67496' xlink:href='#m51ca76320d' y='1988.95032'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3770.178' xlink:href='#m51ca76320d' y='1904.6328'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3363.56712' xlink:href='#m51ca76320d' y='1836.98832'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3332.20752' xlink:href='#m51ca76320d' y='1811.37984'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3372.2496' xlink:href='#m51ca76320d' y='1698.99864'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3423.93528' xlink:href='#m51ca76320d' y='1825.27776'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3435.6756' xlink:href='#m51ca76320d' y='1644.7164'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3959.2284' xlink:href='#m51ca76320d' y='1991.6808'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3484.23648' xlink:href='#m51ca76320d' y='2019.0972'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4021.5384' xlink:href='#m51ca76320d' y='2542.82112'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3527.27688' xlink:href='#m51ca76320d' y='1507.90968'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3684.7296' xlink:href='#m51ca76320d' y='2299.13136'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3216.11376' xlink:href='#m51ca76320d' y='1511.71896'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3648.58608' xlink:href='#m51ca76320d' y='2177.41296'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3238.24032' xlink:href='#m51ca76320d' y='1660.45944'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3362.54784' xlink:href='#m51ca76320d' y='1719.6'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3837.42072' xlink:href='#m51ca76320d' y='2353.57728'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3493.4844' xlink:href='#m51ca76320d' y='1609.10856'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4025.06496' xlink:href='#m51ca76320d' y='2080.84176'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3314.9616' xlink:href='#m51ca76320d' y='1713.18672'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3434.65632' xlink:href='#m51ca76320d' y='1496.31072'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3619.89' xlink:href='#m51ca76320d' y='1878.5928'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3839.75688' xlink:href='#m51ca76320d' y='1985.00712'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3577.64568' xlink:href='#m51ca76320d' y='1743.14016'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3408.16992' xlink:href='#m51ca76320d' y='1653.48072'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3430.19976' xlink:href='#m51ca76320d' y='1531.16712'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3296.20536' xlink:href='#m51ca76320d' y='1673.01816'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3437.39424' xlink:href='#m51ca76320d' y='1828.32816'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3730.83528' xlink:href='#m51ca76320d' y='2377.46712'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3788.05632' xlink:href='#m51ca76320d' y='1740.3948'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3603.95352' xlink:href='#m51ca76320d' y='2059.28064'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3577.1472' xlink:href='#m51ca76320d' y='2057.69592'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3629.84472' xlink:href='#m51ca76320d' y='1640.13336'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3749.77752' xlink:href='#m51ca76320d' y='2409.07968'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3429.47808' xlink:href='#m51ca76320d' y='1913.60544'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4032.74304' xlink:href='#m51ca76320d' y='2251.93944'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3954.14688' xlink:href='#m51ca76320d' y='2432.77608'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3826.08216' xlink:href='#m51ca76320d' y='2125.01304'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3745.55904' xlink:href='#m51ca76320d' y='2168.61888'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='2928.98928' xlink:href='#m51ca76320d' y='1506.47376'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3830.87352' xlink:href='#m51ca76320d' y='1903.24896'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3429.12096' xlink:href='#m51ca76320d' y='1537.62504'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3937.22832' xlink:href='#m51ca76320d' y='2481.9768'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3780.20712' xlink:href='#m51ca76320d' y='2389.9812'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3452.43048' xlink:href='#m51ca76320d' y='1684.49808'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3553.51776' xlink:href='#m51ca76320d' y='2068.71456'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3472.02744' xlink:href='#m51ca76320d' y='1609.13088'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3731.31888' xlink:href='#m51ca76320d' y='1666.90992'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3650.75856' xlink:href='#m51ca76320d' y='1825.50096'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3831.04464' xlink:href='#m51ca76320d' y='2100.05184'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3361.71456' xlink:href='#m51ca76320d' y='1746.16824'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3351.68544' xlink:href='#m51ca76320d' y='1619.30136'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3832.16064' xlink:href='#m51ca76320d' y='2388.1212'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3723.87144' xlink:href='#m51ca76320d' y='2017.36368'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3677.2152' xlink:href='#m51ca76320d' y='1734.46512'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3207.10392' xlink:href='#m51ca76320d' y='1638.63048'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3468.02472' xlink:href='#m51ca76320d' y='1995.69096'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3545.31144' xlink:href='#m51ca76320d' y='1968.25968'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3614.33976' xlink:href='#m51ca76320d' y='2153.2032'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4017.95232' xlink:href='#m51ca76320d' y='2816.63544'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3212.19288' xlink:href='#m51ca76320d' y='1677.02088'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3637.62696' xlink:href='#m51ca76320d' y='1676.47032'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='2963.39928' xlink:href='#m51ca76320d' y='1511.21304'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3651.15288' xlink:href='#m51ca76320d' y='2162.11632'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3489.66024' xlink:href='#m51ca76320d' y='1992.55872'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3801.91704' xlink:href='#m51ca76320d' y='2487.77256'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3226.23216' xlink:href='#m51ca76320d' y='1720.29936'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3690.198' xlink:href='#m51ca76320d' y='2154.74328'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3281.15424' xlink:href='#m51ca76320d' y='1495.5816'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3228.07728' xlink:href='#m51ca76320d' y='1566.21696'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3999.30768' xlink:href='#m51ca76320d' y='2175.35952'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3659.81304' xlink:href='#m51ca76320d' y='2216.56968'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3692.23656' xlink:href='#m51ca76320d' y='1747.13544'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3715.68' xlink:href='#m51ca76320d' y='1808.64192'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3696.45504' xlink:href='#m51ca76320d' y='2268.27024'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3600.14424' xlink:href='#m51ca76320d' y='1966.16904'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3384.96456' xlink:href='#m51ca76320d' y='1547.52024'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3732.72504' xlink:href='#m51ca76320d' y='1788.05544'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3858.87024' xlink:href='#m51ca76320d' y='1987.4028'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3106.25472' xlink:href='#m51ca76320d' y='1546.08432'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3742.93272' xlink:href='#m51ca76320d' y='2010.41472'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3642.11328' xlink:href='#m51ca76320d' y='1991.55432'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4090.74528' xlink:href='#m51ca76320d' y='2503.75368'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3925.62192' xlink:href='#m51ca76320d' y='2032.51152'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3522.0912' xlink:href='#m51ca76320d' y='2034.25992'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3681.2328' xlink:href='#m51ca76320d' y='2104.79112'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3848.60304' xlink:href='#m51ca76320d' y='1927.6224'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3988.63872' xlink:href='#m51ca76320d' y='2324.24136'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3987.99144' xlink:href='#m51ca76320d' y='2476.9548'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3364.7724' xlink:href='#m51ca76320d' y='1512.33648'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3419.3448' xlink:href='#m51ca76320d' y='1855.29072'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3037.08504' xlink:href='#m51ca76320d' y='1537.77384'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3718.12032' xlink:href='#m51ca76320d' y='2272.66728'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3980.5068' xlink:href='#m51ca76320d' y='2050.37496'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3737.9628' xlink:href='#m51ca76320d' y='2324.62824'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3848.46168' xlink:href='#m51ca76320d' y='2044.40808'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3912.54984' xlink:href='#m51ca76320d' y='2156.83392'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3384.13128' xlink:href='#m51ca76320d' y='1851.9204'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3752.15832' xlink:href='#m51ca76320d' y='2427.32256'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3468.30744' xlink:href='#m51ca76320d' y='1826.72856'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3730.19544' xlink:href='#m51ca76320d' y='1946.97384'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4057.19088' xlink:href='#m51ca76320d' y='2248.66584'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3671.0772' xlink:href='#m51ca76320d' y='1798.70952'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4039.878' xlink:href='#m51ca76320d' y='2305.28424'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3719.69016' xlink:href='#m51ca76320d' y='2057.50248'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3621.31848' xlink:href='#m51ca76320d' y='1816.72176'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3571.158' xlink:href='#m51ca76320d' y='2114.26968'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3883.40736' xlink:href='#m51ca76320d' y='2605.2948'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3671.0772' xlink:href='#m51ca76320d' y='2086.07208'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3694.18584' xlink:href='#m51ca76320d' y='2177.0856'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3342.46728' xlink:href='#m51ca76320d' y='1634.95512'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3570.8232' xlink:href='#m51ca76320d' y='2052.53256'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3149.44392' xlink:href='#m51ca76320d' y='1527.00072'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3836.85528' xlink:href='#m51ca76320d' y='2492.06544'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3797.20008' xlink:href='#m51ca76320d' y='2280.09984'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3279.59184' xlink:href='#m51ca76320d' y='1681.77504'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3961.8324' xlink:href='#m51ca76320d' y='2120.2068'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3526.83792' xlink:href='#m51ca76320d' y='1804.57224'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4097.77608' xlink:href='#m51ca76320d' y='2731.64832'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3458.47176' xlink:href='#m51ca76320d' y='1534.06872'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4048.81344' xlink:href='#m51ca76320d' y='2694.29952'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3444.864' xlink:href='#m51ca76320d' y='1880.49'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3236.4696' xlink:href='#m51ca76320d' y='1622.83536'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3831.58776' xlink:href='#m51ca76320d' y='1870.26744'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3726.36384' xlink:href='#m51ca76320d' y='1797.60096'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3442.42368' xlink:href='#m51ca76320d' y='1965.52176'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3966.53448' xlink:href='#m51ca76320d' y='1968.8028'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3591.19392' xlink:href='#m51ca76320d' y='2087.56752'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3151.4676' xlink:href='#m51ca76320d' y='1629.68016'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3595.90344' xlink:href='#m51ca76320d' y='1685.99352'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3653.82384' xlink:href='#m51ca76320d' y='2257.86168'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3608.81928' xlink:href='#m51ca76320d' y='1922.18376'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3603.93864' xlink:href='#m51ca76320d' y='1591.88496'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3089.61888' xlink:href='#m51ca76320d' y='1549.32072'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4102.20288' xlink:href='#m51ca76320d' y='2234.02392'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3036.64608' xlink:href='#m51ca76320d' y='1549.60344'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3515.70768' xlink:href='#m51ca76320d' y='1764.12096'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3572.02848' xlink:href='#m51ca76320d' y='1744.06272'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3156.35568' xlink:href='#m51ca76320d' y='1644.56016'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3810.58464' xlink:href='#m51ca76320d' y='1936.90752'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3634.53192' xlink:href='#m51ca76320d' y='2096.27976'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3869.04816' xlink:href='#m51ca76320d' y='2023.59096'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3354.78792' xlink:href='#m51ca76320d' y='1523.98752'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3208.87464' xlink:href='#m51ca76320d' y='1559.826'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3454.66248' xlink:href='#m51ca76320d' y='1910.71128'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3662.36496' xlink:href='#m51ca76320d' y='1958.2008'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3686.64168' xlink:href='#m51ca76320d' y='2061.36384'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3618.216' xlink:href='#m51ca76320d' y='2223.7716'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3736.5492' xlink:href='#m51ca76320d' y='2129.90112'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3335.60016' xlink:href='#m51ca76320d' y='1583.65632'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3434.46288' xlink:href='#m51ca76320d' y='1858.37088'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3119.17056' xlink:href='#m51ca76320d' y='1546.38192'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3411.62952' xlink:href='#m51ca76320d' y='1611.04296'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3502.31568' xlink:href='#m51ca76320d' y='1849.22712'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3858.08904' xlink:href='#m51ca76320d' y='2053.07568'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3802.15512' xlink:href='#m51ca76320d' y='2505.65088'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3710.68032' xlink:href='#m51ca76320d' y='2331.14568'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3727.13016' xlink:href='#m51ca76320d' y='2349.2844'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3881.19024' xlink:href='#m51ca76320d' y='2011.00248'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3468.43392' xlink:href='#m51ca76320d' y='1536.73224'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3580.18272' xlink:href='#m51ca76320d' y='1664.78208'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3596.68464' xlink:href='#m51ca76320d' y='2161.85592'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3432.45408' xlink:href='#m51ca76320d' y='1804.72104'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3061.39152' xlink:href='#m51ca76320d' y='1509.28608'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3259.91304' xlink:href='#m51ca76320d' y='1749.85104'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3385.50768' xlink:href='#m51ca76320d' y='1523.39976'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3563.43528' xlink:href='#m51ca76320d' y='1746.57'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3039.48816' xlink:href='#m51ca76320d' y='1543.07856'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3536.55456' xlink:href='#m51ca76320d' y='1580.01072'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3583.26288' xlink:href='#m51ca76320d' y='1940.44896'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3860.85672' xlink:href='#m51ca76320d' y='2587.49832'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3003.9324' xlink:href='#m51ca76320d' y='1507.2996'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3104.52864' xlink:href='#m51ca76320d' y='1599.65976'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3485.1516' xlink:href='#m51ca76320d' y='1852.00224'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3697.5636' xlink:href='#m51ca76320d' y='2160.91848'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3415.15608' xlink:href='#m51ca76320d' y='1673.8068'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3585.4428' xlink:href='#m51ca76320d' y='1800.88944'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3863.81784' xlink:href='#m51ca76320d' y='2387.39952'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3873.39312' xlink:href='#m51ca76320d' y='1969.42776'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3093.90432' xlink:href='#m51ca76320d' y='1539.06096'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3649.63512' xlink:href='#m51ca76320d' y='2058.06792'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3727.07808' xlink:href='#m51ca76320d' y='1815.204'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3605.50104' xlink:href='#m51ca76320d' y='2130.76416'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3861.45936' xlink:href='#m51ca76320d' y='1859.89608'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3708.88728' xlink:href='#m51ca76320d' y='2257.87656'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3402.3816' xlink:href='#m51ca76320d' y='1698.76056'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3917.9364' xlink:href='#m51ca76320d' y='2424.13824'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3317.98224' xlink:href='#m51ca76320d' y='1520.38656'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3589.39344' xlink:href='#m51ca76320d' y='1664.61096'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3082.63272' xlink:href='#m51ca76320d' y='1541.09208'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3751.6524' xlink:href='#m51ca76320d' y='2430.62592'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3429.44832' xlink:href='#m51ca76320d' y='1624.38288'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3292.0464' xlink:href='#m51ca76320d' y='1530.16272'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4021.464' xlink:href='#m51ca76320d' y='2904.01824'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3341.32896' xlink:href='#m51ca76320d' y='1725.16512'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4084.0344' xlink:href='#m51ca76320d' y='2459.32944'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3776.38296' xlink:href='#m51ca76320d' y='1983.1992'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3676.45632' xlink:href='#m51ca76320d' y='1739.28624'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3705.33096' xlink:href='#m51ca76320d' y='2189.49552'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3568.75488' xlink:href='#m51ca76320d' y='1860.20856'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3401.42184' xlink:href='#m51ca76320d' y='1700.27088'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3629.86704' xlink:href='#m51ca76320d' y='2200.1868'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4059.78' xlink:href='#m51ca76320d' y='2716.47816'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3452.83968' xlink:href='#m51ca76320d' y='1551.09888'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3455.36184' xlink:href='#m51ca76320d' y='1736.4888'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4055.4276' xlink:href='#m51ca76320d' y='2489.14896'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4000.47576' xlink:href='#m51ca76320d' y='2277.27264'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3626.1024' xlink:href='#m51ca76320d' y='1731.10968'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3341.9316' xlink:href='#m51ca76320d' y='1534.52256'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3212.48304' xlink:href='#m51ca76320d' y='1616.48904'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3210.71976' xlink:href='#m51ca76320d' y='1649.78304'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4110.05208' xlink:href='#m51ca76320d' y='2884.86024'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3475.43496' xlink:href='#m51ca76320d' y='1651.46448'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3852.88848' xlink:href='#m51ca76320d' y='2192.65752'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3557.5056' xlink:href='#m51ca76320d' y='2071.26648'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3458.62056' xlink:href='#m51ca76320d' y='1687.82376'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3674.73768' xlink:href='#m51ca76320d' y='2241.79872'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3542.93064' xlink:href='#m51ca76320d' y='1750.96704'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3988.5048' xlink:href='#m51ca76320d' y='2547.99192'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3606.43104' xlink:href='#m51ca76320d' y='2192.5608'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='2991.57456' xlink:href='#m51ca76320d' y='1522.74504'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3847.0704' xlink:href='#m51ca76320d' y='2556.2652'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3917.16264' xlink:href='#m51ca76320d' y='2241.18864'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3187.22424' xlink:href='#m51ca76320d' y='1650.5196'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4031.68656' xlink:href='#m51ca76320d' y='2133.25656'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3465.86712' xlink:href='#m51ca76320d' y='1632.59664'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4038.55368' xlink:href='#m51ca76320d' y='2091.47352'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3455.45856' xlink:href='#m51ca76320d' y='1880.69832'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3703.53792' xlink:href='#m51ca76320d' y='2000.48976'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3694.31232' xlink:href='#m51ca76320d' y='2182.72512'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3651.87456' xlink:href='#m51ca76320d' y='2020.60008'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3573.88848' xlink:href='#m51ca76320d' y='1622.93208'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3112.21416' xlink:href='#m51ca76320d' y='1524.75384'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3282.53064' xlink:href='#m51ca76320d' y='1715.88744'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3171.45888' xlink:href='#m51ca76320d' y='1611.3852'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3531.30936' xlink:href='#m51ca76320d' y='1672.62384'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4016.41968' xlink:href='#m51ca76320d' y='2283.89424'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3914.87856' xlink:href='#m51ca76320d' y='2365.11672'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4100.04528' xlink:href='#m51ca76320d' y='2662.09176'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3947.00448' xlink:href='#m51ca76320d' y='2604.72192'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3925.73352' xlink:href='#m51ca76320d' y='2430.3804'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3363.62664' xlink:href='#m51ca76320d' y='1834.1388'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3689.80368' xlink:href='#m51ca76320d' y='1875.49776'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3520.21632' xlink:href='#m51ca76320d' y='1745.98968'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3398.6616' xlink:href='#m51ca76320d' y='1709.66016'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3764.80632' xlink:href='#m51ca76320d' y='1938.70056'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3686.98392' xlink:href='#m51ca76320d' y='1802.69736'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3338.9556' xlink:href='#m51ca76320d' y='1774.93128'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3485.40456' xlink:href='#m51ca76320d' y='1814.22936'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3264.39192' xlink:href='#m51ca76320d' y='1595.44872'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3103.0332' xlink:href='#m51ca76320d' y='1565.53248'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3316.81416' xlink:href='#m51ca76320d' y='1783.20456'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3113.2632' xlink:href='#m51ca76320d' y='1604.3172'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3807.73512' xlink:href='#m51ca76320d' y='2118.68904'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3748.2672' xlink:href='#m51ca76320d' y='1736.91288'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3653.41464' xlink:href='#m51ca76320d' y='1575.97824'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3840.70176' xlink:href='#m51ca76320d' y='2005.2588'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3880.11144' xlink:href='#m51ca76320d' y='2645.3964'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3913.38312' xlink:href='#m51ca76320d' y='2313.31944'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3946.9896' xlink:href='#m51ca76320d' y='2260.80792'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3967.9332' xlink:href='#m51ca76320d' y='2342.34288'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3764.8956' xlink:href='#m51ca76320d' y='2376.3288'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3187.2912' xlink:href='#m51ca76320d' y='1493.11896'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3237.12432' xlink:href='#m51ca76320d' y='1721.92128'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3776.7996' xlink:href='#m51ca76320d' y='2386.038'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3482.63688' xlink:href='#m51ca76320d' y='1861.77096'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3534.94752' xlink:href='#m51ca76320d' y='1649.02416'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3693.67248' xlink:href='#m51ca76320d' y='1937.1828'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3820.65096' xlink:href='#m51ca76320d' y='1966.98744'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3503.20104' xlink:href='#m51ca76320d' y='1933.5372'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3592.36944' xlink:href='#m51ca76320d' y='1922.44416'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3043.42392' xlink:href='#m51ca76320d' y='1566.06072'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3460.24248' xlink:href='#m51ca76320d' y='1889.44032'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3931.72272' xlink:href='#m51ca76320d' y='2474.33592'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4082.0256' xlink:href='#m51ca76320d' y='2397.45096'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3587.79384' xlink:href='#m51ca76320d' y='2149.78824'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4061.52096' xlink:href='#m51ca76320d' y='2389.40088'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3262.5096' xlink:href='#m51ca76320d' y='1607.38248'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3690.44352' xlink:href='#m51ca76320d' y='2342.46936'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3911.03952' xlink:href='#m51ca76320d' y='2503.7388'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3632.75376' xlink:href='#m51ca76320d' y='2238.15312'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3009.66864' xlink:href='#m51ca76320d' y='1527.11976'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3635.38008' xlink:href='#m51ca76320d' y='2248.40544'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3269.17584' xlink:href='#m51ca76320d' y='1582.10136'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3660.5496' xlink:href='#m51ca76320d' y='2095.05216'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4002.36552' xlink:href='#m51ca76320d' y='2421.80208'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3914.86368' xlink:href='#m51ca76320d' y='2687.11248'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3772.32072' xlink:href='#m51ca76320d' y='2346.07032'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3698.43408' xlink:href='#m51ca76320d' y='2353.8228'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3880.848' xlink:href='#m51ca76320d' y='2056.87752'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3905.22888' xlink:href='#m51ca76320d' y='2290.63488'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3783.13848' xlink:href='#m51ca76320d' y='2105.93688'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3627.44904' xlink:href='#m51ca76320d' y='1610.63376'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3940.52424' xlink:href='#m51ca76320d' y='2620.8816'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3511.81656' xlink:href='#m51ca76320d' y='1696.9452'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3635.78184' xlink:href='#m51ca76320d' y='1833.99744'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3218.41272' xlink:href='#m51ca76320d' y='1643.6748'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3193.3176' xlink:href='#m51ca76320d' y='1654.78272'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3299.35248' xlink:href='#m51ca76320d' y='1747.872'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3663.88272' xlink:href='#m51ca76320d' y='2259.75888'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4059.66096' xlink:href='#m51ca76320d' y='2509.8396'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3361.2012' xlink:href='#m51ca76320d' y='1646.64336'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3928.88808' xlink:href='#m51ca76320d' y='2229.93936'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3474.59424' xlink:href='#m51ca76320d' y='1984.06968'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3284.44272' xlink:href='#m51ca76320d' y='1573.776'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3449.42472' xlink:href='#m51ca76320d' y='1708.33584'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3352.54848' xlink:href='#m51ca76320d' y='1747.2768'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3053.57952' xlink:href='#m51ca76320d' y='1539.6264'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4015.95096' xlink:href='#m51ca76320d' y='2260.14576'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3597.384' xlink:href='#m51ca76320d' y='2144.45376'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3653.8908' xlink:href='#m51ca76320d' y='1765.58664'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3959.3028' xlink:href='#m51ca76320d' y='1871.38344'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3934.8624' xlink:href='#m51ca76320d' y='2006.05488'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3723.4176' xlink:href='#m51ca76320d' y='1992.4992'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3018.08328' xlink:href='#m51ca76320d' y='1543.39104'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3451.69392' xlink:href='#m51ca76320d' y='1888.674'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3637.3368' xlink:href='#m51ca76320d' y='2198.13336'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3271.11024' xlink:href='#m51ca76320d' y='1653.32448'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3748.12584' xlink:href='#m51ca76320d' y='2268.38184'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3995.58024' xlink:href='#m51ca76320d' y='2499.2376'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3421.6884' xlink:href='#m51ca76320d' y='1544.87904'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3695.406' xlink:href='#m51ca76320d' y='1743.09552'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3518.99616' xlink:href='#m51ca76320d' y='1873.77912'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3577.83168' xlink:href='#m51ca76320d' y='1836.34848'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3477.94968' xlink:href='#m51ca76320d' y='1762.6404'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3898.72632' xlink:href='#m51ca76320d' y='1809.066'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3505.71576' xlink:href='#m51ca76320d' y='1563.65016'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3871.0644' xlink:href='#m51ca76320d' y='2200.7076'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3520.79664' xlink:href='#m51ca76320d' y='1966.58568'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3615.21768' xlink:href='#m51ca76320d' y='2139.05232'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3238.82064' xlink:href='#m51ca76320d' y='1662.8328'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3633.0216' xlink:href='#m51ca76320d' y='2149.20048'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3361.39464' xlink:href='#m51ca76320d' y='1681.21704'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3351.58128' xlink:href='#m51ca76320d' y='1597.48728'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3342.36312' xlink:href='#m51ca76320d' y='1644.73872'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3711.69216' xlink:href='#m51ca76320d' y='2364.84888'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3746.13192' xlink:href='#m51ca76320d' y='2380.48032'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3839.90568' xlink:href='#m51ca76320d' y='2024.92272'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3733.50624' xlink:href='#m51ca76320d' y='2174.20632'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3744.56208' xlink:href='#m51ca76320d' y='1831.63896'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3820.52448' xlink:href='#m51ca76320d' y='2457.11976'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3986.6448' xlink:href='#m51ca76320d' y='1953.02256'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3961.03632' xlink:href='#m51ca76320d' y='2233.68912'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3386.6832' xlink:href='#m51ca76320d' y='1854.91128'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3991.02696' xlink:href='#m51ca76320d' y='2322.39624'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3808.74696' xlink:href='#m51ca76320d' y='2401.5132'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3498.05256' xlink:href='#m51ca76320d' y='1704.1992'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3539.538' xlink:href='#m51ca76320d' y='2034.76584'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3696.30624' xlink:href='#m51ca76320d' y='2258.33784'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3796.34448' xlink:href='#m51ca76320d' y='2221.55448'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3747.72408' xlink:href='#m51ca76320d' y='1941.19296'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3271.0284' xlink:href='#m51ca76320d' y='1693.67904'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3985.84872' xlink:href='#m51ca76320d' y='2790.76656'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4017.26784' xlink:href='#m51ca76320d' y='2047.71888'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3883.88352' xlink:href='#m51ca76320d' y='2296.20744'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3561.53064' xlink:href='#m51ca76320d' y='1950.84264'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3888.91296' xlink:href='#m51ca76320d' y='2711.58264'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3630.32832' xlink:href='#m51ca76320d' y='2242.47576'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3305.38632' xlink:href='#m51ca76320d' y='1749.918'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3498.78912' xlink:href='#m51ca76320d' y='1640.59464'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3852.47184' xlink:href='#m51ca76320d' y='1924.43808'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3379.59288' xlink:href='#m51ca76320d' y='1680.95664'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3680.95008' xlink:href='#m51ca76320d' y='1969.4724'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3728.11224' xlink:href='#m51ca76320d' y='1958.32728'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3327.3864' xlink:href='#m51ca76320d' y='1631.5476'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3345.11592' xlink:href='#m51ca76320d' y='1832.43504'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3088.16064' xlink:href='#m51ca76320d' y='1547.94432'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3556.73184' xlink:href='#m51ca76320d' y='2068.22352'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3529.10712' xlink:href='#m51ca76320d' y='1633.94328'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3654.12144' xlink:href='#m51ca76320d' y='2236.44192'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3646.91208' xlink:href='#m51ca76320d' y='1922.71944'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4045.0488' xlink:href='#m51ca76320d' y='2610.22008'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4020.0504' xlink:href='#m51ca76320d' y='2065.44096'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3981.48144' xlink:href='#m51ca76320d' y='2819.17248'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3948.44784' xlink:href='#m51ca76320d' y='2405.77632'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3593.1804' xlink:href='#m51ca76320d' y='1637.574'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4026.34464' xlink:href='#m51ca76320d' y='2333.96544'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3668.07888' xlink:href='#m51ca76320d' y='2145.71856'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3714.18456' xlink:href='#m51ca76320d' y='2322.9096'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3852.32304' xlink:href='#m51ca76320d' y='2609.20824'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3059.37528' xlink:href='#m51ca76320d' y='1561.2024'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3398.59464' xlink:href='#m51ca76320d' y='1569.3864'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3970.7232' xlink:href='#m51ca76320d' y='2892.89544'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='1402.9932' xlink:href='#m51ca76320d' y='2434.36824'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='2721.07848' xlink:href='#m51ca76320d' y='3175.48152'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3293.97336' xlink:href='#m51ca76320d' y='3088.40376'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='1961.30568' xlink:href='#m51ca76320d' y='2038.50072'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='1819.21656' xlink:href='#m51ca76320d' y='2928.83808'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3490.68696' xlink:href='#m51ca76320d' y='2320.24608'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3523.74288' xlink:href='#m51ca76320d' y='2109.21792'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3507.25584' xlink:href='#m51ca76320d' y='1784.75208'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3502.36776' xlink:href='#m51ca76320d' y='3157.62552'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3071.25696' xlink:href='#m51ca76320d' y='1684.05168'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2704.212' xlink:href='#m51ca76320d' y='1631.30208'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3515.55888' xlink:href='#m51ca76320d' y='2608.40472'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3521.89032' xlink:href='#m51ca76320d' y='2602.70568'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2816.19144' xlink:href='#m51ca76320d' y='2567.80464'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3490.6944' xlink:href='#m51ca76320d' y='2301.8916'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3061.30224' xlink:href='#m51ca76320d' y='1941.126'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2810.59656' xlink:href='#m51ca76320d' y='3103.11264'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3494.99472' xlink:href='#m51ca76320d' y='2935.65312'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2309.83248' xlink:href='#m51ca76320d' y='1872.62592'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3023.96832' xlink:href='#m51ca76320d' y='3082.55592'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3791.20344' xlink:href='#m51ca76320d' y='2996.20728'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2733.51072' xlink:href='#m51ca76320d' y='1718.16408'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='4028.77752' xlink:href='#m51ca76320d' y='2114.1432'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3501.71304' xlink:href='#m51ca76320d' y='1674.97488'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3874.7844' xlink:href='#m51ca76320d' y='2589.69312'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3534.82104' xlink:href='#m51ca76320d' y='1765.54944'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3715.24848' xlink:href='#m51ca76320d' y='2187.60576'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2159.74536' xlink:href='#m51ca76320d' y='1901.78328'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='2746.36704' xlink:href='#m51ca76320d' y='1588.15752'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3500.87976' xlink:href='#m51ca76320d' y='2203.77288'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2240.7' xlink:href='#m51ca76320d' y='2570.08872'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='2993.57592' xlink:href='#m51ca76320d' y='2445.58032'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='2837.66328' xlink:href='#m51ca76320d' y='1607.27088'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3499.86048' xlink:href='#m51ca76320d' y='2016.24768'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='1630.01736' xlink:href='#m51ca76320d' y='2683.51896'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3509.68872' xlink:href='#m51ca76320d' y='2281.45392'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3480.00312' xlink:href='#m51ca76320d' y='2158.76832'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3486.14112' xlink:href='#m51ca76320d' y='2348.43624'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3499.05696' xlink:href='#m51ca76320d' y='2244.29856'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3504.77832' xlink:href='#m51ca76320d' y='2218.33296'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3516.3252' xlink:href='#m51ca76320d' y='2855.79216'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3763.02816' xlink:href='#m51ca76320d' y='3118.96728'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2562.22704' xlink:href='#m51ca76320d' y='1623.30408'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3253.8792' xlink:href='#m51ca76320d' y='3090.36792'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3151.60896' xlink:href='#m51ca76320d' y='1722.74712'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2155.72776' xlink:href='#m51ca76320d' y='1923.61968'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2695.3956' xlink:href='#m51ca76320d' y='1828.99776'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2172.89928' xlink:href='#m51ca76320d' y='1883.0196'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2850.50472' xlink:href='#m51ca76320d' y='1668.85176'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3125.85168' xlink:href='#m51ca76320d' y='1872.73752'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3494.20608' xlink:href='#m51ca76320d' y='2881.1328'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3482.2872' xlink:href='#m51ca76320d' y='2445.69192'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3311.13' xlink:href='#m51ca76320d' y='1982.25432'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3518.4456' xlink:href='#m51ca76320d' y='1637.10528'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3479.1252' xlink:href='#m51ca76320d' y='2701.97016'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3107.0136' xlink:href='#m51ca76320d' y='1662.2004'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3511.72728' xlink:href='#m51ca76320d' y='2878.8636'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2533.6872' xlink:href='#m51ca76320d' y='1568.66472'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3087.97464' xlink:href='#m51ca76320d' y='3135.35016'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3272.91072' xlink:href='#m51ca76320d' y='3044.38128'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3645.95976' xlink:href='#m51ca76320d' y='2970.84432'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2749.16448' xlink:href='#m51ca76320d' y='1932.67416'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3220.20576' xlink:href='#m51ca76320d' y='1961.98032'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3497.18952' xlink:href='#m51ca76320d' y='2341.57656'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3730.19544' xlink:href='#m51ca76320d' y='2998.69968'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2943.57912' xlink:href='#m51ca76320d' y='1683.0324'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2971.3452' xlink:href='#m51ca76320d' y='3144.55344'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3780.0732' xlink:href='#m51ca76320d' y='2990.60496'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3331.218' xlink:href='#m51ca76320d' y='1995.57192'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='2711.71896' xlink:href='#m51ca76320d' y='1577.91264'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3037.41984' xlink:href='#m51ca76320d' y='3084.468'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='2112.56832' xlink:href='#m51ca76320d' y='1727.25576'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2079.64632' xlink:href='#m51ca76320d' y='1963.99656'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3045.46248' xlink:href='#m51ca76320d' y='1683.90288'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3508.83312' xlink:href='#m51ca76320d' y='2650.53744'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3515.78208' xlink:href='#m51ca76320d' y='2472.49824'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3492.49488' xlink:href='#m51ca76320d' y='2229.3888'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='1921.58352' xlink:href='#m51ca76320d' y='2039.05872'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='2094.7272' xlink:href='#m51ca76320d' y='2528.41728'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2864.30592' xlink:href='#m51ca76320d' y='1728.42384'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2922.54624' xlink:href='#m51ca76320d' y='3213.64128'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='1838.3076' xlink:href='#m51ca76320d' y='2124.81216'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3479.09544' xlink:href='#m51ca76320d' y='2259.46128'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='2773.61976' xlink:href='#m51ca76320d' y='2334.15144'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3683.97816' xlink:href='#m51ca76320d' y='3097.32432'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3478.06872' xlink:href='#m51ca76320d' y='2176.974'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3486.32712' xlink:href='#m51ca76320d' y='2325.8484'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2267.86344' xlink:href='#m51ca76320d' y='3228.43944'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3485.7468' xlink:href='#m51ca76320d' y='2258.52384'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3499.176' xlink:href='#m51ca76320d' y='2193.4164'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3473.18808' xlink:href='#m51ca76320d' y='2104.16616'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3515.46216' xlink:href='#m51ca76320d' y='2298.618'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3488.96832' xlink:href='#m51ca76320d' y='2798.76456'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3516.20616' xlink:href='#m51ca76320d' y='2292.20472'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3075.12576' xlink:href='#m51ca76320d' y='3070.16088'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2978.50992' xlink:href='#m51ca76320d' y='1974.46464'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3022.0488' xlink:href='#m51ca76320d' y='1674.35736'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='1922.72928' xlink:href='#m51ca76320d' y='2594.06784'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='2968.59984' xlink:href='#m51ca76320d' y='1685.95632'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2776.98264' xlink:href='#m51ca76320d' y='3135.5808'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='1840.88184' xlink:href='#m51ca76320d' y='2105.364'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3736.9956' xlink:href='#m51ca76320d' y='1653.0492'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='1932.77328' xlink:href='#m51ca76320d' y='2047.13112'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3477.786' xlink:href='#m51ca76320d' y='2197.96224'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3503.66232' xlink:href='#m51ca76320d' y='2397.39888'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3800.39928' xlink:href='#m51ca76320d' y='2941.89528'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3483.35856' xlink:href='#m51ca76320d' y='2131.8876'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2724.5232' xlink:href='#m51ca76320d' y='1557.4452'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3483.84216' xlink:href='#m51ca76320d' y='2643.55128'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3493.16448' xlink:href='#m51ca76320d' y='2317.35936'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='1353.39816' xlink:href='#m51ca76320d' y='2484.92304'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3493.6332' xlink:href='#m51ca76320d' y='2279.72784'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3486.9744' xlink:href='#m51ca76320d' y='2686.4652'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3495.24768' xlink:href='#m51ca76320d' y='2235.63096'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3523.44528' xlink:href='#m51ca76320d' y='2377.90608'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3526.42872' xlink:href='#m51ca76320d' y='1504.53192'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3512.3076' xlink:href='#m51ca76320d' y='2314.97112'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3116.52192' xlink:href='#m51ca76320d' y='3058.90416'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2940.81888' xlink:href='#m51ca76320d' y='3124.44312'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3512.31504' xlink:href='#m51ca76320d' y='2771.11008'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3528.76488' xlink:href='#m51ca76320d' y='2276.61048'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2155.48968' xlink:href='#m51ca76320d' y='1955.82'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='2002.38192' xlink:href='#m51ca76320d' y='1986.09336'/>
+     <use style='fill:url(#exciteNeuronLayer1Color);stroke:url(#exciteNeuronLayer1Color);' x='3487.98624' xlink:href='#m51ca76320d' y='2953.21896'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3004.80288' xlink:href='#m51ca76320d' y='3080.5992'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3917.6016' xlink:href='#m51ca76320d' y='1920.74784'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3480.3156' xlink:href='#m51ca76320d' y='1550.53344'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3884.2332' xlink:href='#m51ca76320d' y='2193.91488'/>
+     <use style='fill:url(#inhibitNeuronLayer1Color);stroke:url(#inhibitNeuronLayer1Color);' x='3295.36464' xlink:href='#m51ca76320d' y='1728.60984'/>
+    </g>
+   </g>
+   <g id="patch_3"><!-- WM to L6 -->
+    <path clip-path="url(#p7604e7ea2a)" d="M 678.541643 5863.093869  C 1147.980931 5863.093869 1598.2564 5676.583663 1930.200104 5344.639959  C 2262.143808 5012.696255 2448.654014 4562.420786 2448.654014 4092.981498  C 2448.654014 3623.542209 2262.143808 3173.26674 1930.200104 2841.323036  C 1598.2564 2509.379332 1147.980931 2322.869126 678.541643 2322.869126  C 209.102354 2322.869126 -241.173115 2509.379332 -573.116819 2841.323036  C -905.060523 3173.26674 -1091.570729 3623.542209 -1091.570729 4092.981498  C -1091.570729 4562.420786 -905.060523 5012.696255 -573.116819 5344.639959  C -241.173115 5676.583663 209.102354 5863.093869 678.541643 5863.093869  z " style="fill:none;stroke:#ffffff;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_4"><!-- L6 to L5 -->
+    <path clip-path="url(#p7604e7ea2a)" d="M 678.541643 6106.755717  C 1212.600808 6106.755717 1724.858191 5894.571762 2102.495049 5516.934904  C 2480.131906 5139.298046 2692.315862 4627.040663 2692.315862 4092.981498  C 2692.315862 3558.922332 2480.131906 3046.664949 2102.495049 2669.028091  C 1724.858191 2291.391234 1212.600808 2079.207278 678.541643 2079.207278  C 144.482477 2079.207278 -367.774906 2291.391234 -745.411764 2669.028091  C -1123.048621 3046.664949 -1335.232577 3558.922332 -1335.232577 4092.981498  C -1335.232577 4627.040663 -1123.048621 5139.298046 -745.411764 5516.934904  C -367.774906 5894.571762 144.482477 6106.755717 678.541643 6106.755717  z " style="fill:none;stroke:#ffffff;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_5"><!-- L5 to L4 -->
+    <path clip-path="url(#p7604e7ea2a)" d="M 1681.849591 4593.517175  C 2012.567509 4593.517175 2329.784601 4462.121553 2563.637484 4228.26867  C 2797.490367 3994.415787 2928.885989 3677.198695 2928.885989 3346.480777  C 2928.885989 3015.762858 2797.490367 2698.545766 2563.637484 2464.692883  C 2329.784601 2230.84 2012.567509 2099.444379 1681.849591 2099.444379  C 1351.131672 2099.444379 1033.91458 2230.84 800.061697 2464.692883  C 566.208814 2698.545766 434.813192 3015.762858 434.813192 3346.480777  C 434.813192 3677.198695 566.208814 3994.415787 800.061697 4228.26867  C 1033.91458 4462.121553 1351.131672 4593.517175 1681.849591 4593.517175  z " style="fill:none;stroke:#ffffff;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_6"><!-- L4 to L3 -->
+    <path clip-path="url(#p7604e7ea2a)" d="M 1681.849591 4847.19639  C 2079.844024 4847.19639 2461.591215 4689.071526 2743.015778 4407.646964  C 3024.44034 4126.222401 3182.565204 3744.47521 3182.565204 3346.480777  C 3182.565204 2948.486344 3024.44034 2566.739152 2743.015778 2285.31459  C 2461.591215 2003.890027 2079.844024 1845.765163 1681.849591 1845.765163  C 1283.855158 1845.765163 902.107966 2003.890027 620.683404 2285.31459  C 339.258841 2566.739152 181.133977 2948.486344 181.133977 3346.480777  C 181.133977 3744.47521 339.258841 4126.222401 620.683404 4407.646964  C 902.107966 4689.071526 1283.855158 4847.19639 1681.849591 4847.19639  z " style="fill:none;stroke:#ffffff;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_7"><!-- L3 to L2 -->
+    <path clip-path="url(#p7604e7ea2a)" d="M 1624.974684 5344.726101  C 2147.742779 5344.726101 2649.170024 5137.028136 3018.822889 4767.375271  C 3388.475754 4397.722406 3596.17372 3896.29516 3596.17372 3373.527065  C 3596.17372 2850.75897 3388.475754 2349.331725 3018.822889 1979.67886  C 2649.170024 1610.025995 2147.742779 1402.328029 1624.974684 1402.328029  C 1102.206589 1402.328029 600.779344 1610.025995 231.126479 1979.67886  C -138.526386 2349.331725 -346.224352 2850.75897 -346.224352 3373.527065  C -346.224352 3896.29516 -138.526386 4397.722406 231.126479 4767.375271  C 600.779344 5137.028136 1102.206589 5344.726101 1624.974684 5344.726101  z " style="fill:none;stroke:#ffffff;stroke-linejoin:miter;"/>
+   </g>
+   <g id="patch_8"><!-- L2 to L1 -->
+    <path clip-path="url(#p7604e7ea2a)" d="M 1624.974684 5626.587033  C 2222.493172 5626.587033 2795.619291 5389.190421 3218.128665 4966.681047  C 3640.63804 4544.171672 3878.034651 3971.045553 3878.034651 3373.527065  C 3878.034651 2776.008578 3640.63804 2202.882459 3218.128665 1780.373084  C 2795.619291 1357.863709 2222.493172 1120.467098 1624.974684 1120.467098  C 1027.456196 1120.467098 454.330077 1357.863709 31.820703 1780.373084  C -390.688672 2202.882459 -628.085283 2776.008578 -628.085283 3373.527065  C -628.085283 3971.045553 -390.688672 4544.171672 31.820703 4966.681047  C 454.330077 5389.190421 1027.456196 5626.587033 1624.974684 5626.587033  z " style="fill:none;stroke:#ffffff;stroke-linejoin:miter;"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path d="M 0 0  L 0 3.5  " id="m5e8b427ffb" style="stroke:#ffffff;stroke-width:0.8;"/>
+      </defs>
+      <g>
+       <use style="fill:#ffffff;stroke:#ffffff;stroke-width:0.8;" x="576" xlink:href="#m5e8b427ffb" y="3408.48"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <!-- 0 -->
+      <g style="fill:#ffffff;" transform="translate(572.81875 3423.078438)scale(0.1 -0.1)">
+       <defs>
+        <path d="M 31.78125 66.40625  Q 24.171875 66.40625 20.328125 58.90625  Q 16.5 51.421875 16.5 36.375  Q 16.5 21.390625 20.328125 13.890625  Q 24.171875 6.390625 31.78125 6.390625  Q 39.453125 6.390625 43.28125 13.890625  Q 47.125 21.390625 47.125 36.375  Q 47.125 51.421875 43.28125 58.90625  Q 39.453125 66.40625 31.78125 66.40625  z M 31.78125 74.21875  Q 44.046875 74.21875 50.515625 64.515625  Q 56.984375 54.828125 56.984375 36.375  Q 56.984375 17.96875 50.515625 8.265625  Q 44.046875 -1.421875 31.78125 -1.421875  Q 19.53125 -1.421875 13.0625 8.265625  Q 6.59375 17.96875 6.59375 36.375  Q 6.59375 54.828125 13.0625 64.515625  Q 19.53125 74.21875 31.78125 74.21875  z " id="DejaVuSans-48"/>
+       </defs>
+       <use xlink:href="#DejaVuSans-48"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use style="fill:#ffffff;stroke:#ffffff;stroke-width:0.8;" x="1320" xlink:href="#m5e8b427ffb" y="3408.48"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <!-- 100000 -->
+      <g style="fill:#ffffff;" transform="translate(1300.9125 3423.078438)scale(0.1 -0.1)">
+       <defs>
+        <path d="M 12.40625 8.296875  L 28.515625 8.296875  L 28.515625 63.921875  L 10.984375 60.40625  L 10.984375 69.390625  L 28.421875 72.90625  L 38.28125 72.90625  L 38.28125 8.296875  L 54.390625 8.296875  L 54.390625 0  L 12.40625 0  z " id="DejaVuSans-49"/>
+       </defs>
+       <use xlink:href="#DejaVuSans-49"/>
+       <use x="63.623047" xlink:href="#DejaVuSans-48"/>
+       <use x="127.246094" xlink:href="#DejaVuSans-48"/>
+       <use x="190.869141" xlink:href="#DejaVuSans-48"/>
+       <use x="254.492188" xlink:href="#DejaVuSans-48"/>
+       <use x="318.115234" xlink:href="#DejaVuSans-48"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use style="fill:#ffffff;stroke:#ffffff;stroke-width:0.8;" x="2064" xlink:href="#m5e8b427ffb" y="3408.48"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <!-- 200000 -->
+      <g style="fill:#ffffff;" transform="translate(2044.9125 3423.078438)scale(0.1 -0.1)">
+       <defs>
+        <path d="M 19.1875 8.296875  L 53.609375 8.296875  L 53.609375 0  L 7.328125 0  L 7.328125 8.296875  Q 12.9375 14.109375 22.625 23.890625  Q 32.328125 33.6875 34.8125 36.53125  Q 39.546875 41.84375 41.421875 45.53125  Q 43.3125 49.21875 43.3125 52.78125  Q 43.3125 58.59375 39.234375 62.25  Q 35.15625 65.921875 28.609375 65.921875  Q 23.96875 65.921875 18.8125 64.3125  Q 13.671875 62.703125 7.8125 59.421875  L 7.8125 69.390625  Q 13.765625 71.78125 18.9375 73  Q 24.125 74.21875 28.421875 74.21875  Q 39.75 74.21875 46.484375 68.546875  Q 53.21875 62.890625 53.21875 53.421875  Q 53.21875 48.921875 51.53125 44.890625  Q 49.859375 40.875 45.40625 35.40625  Q 44.1875 33.984375 37.640625 27.21875  Q 31.109375 20.453125 19.1875 8.296875  z " id="DejaVuSans-50"/>
+       </defs>
+       <use xlink:href="#DejaVuSans-50"/>
+       <use x="63.623047" xlink:href="#DejaVuSans-48"/>
+       <use x="127.246094" xlink:href="#DejaVuSans-48"/>
+       <use x="190.869141" xlink:href="#DejaVuSans-48"/>
+       <use x="254.492188" xlink:href="#DejaVuSans-48"/>
+       <use x="318.115234" xlink:href="#DejaVuSans-48"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use style="fill:#ffffff;stroke:#ffffff;stroke-width:0.8;" x="2808" xlink:href="#m5e8b427ffb" y="3408.48"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <!-- 300000 -->
+      <g style="fill:#ffffff;" transform="translate(2788.9125 3423.078438)scale(0.1 -0.1)">
+       <defs>
+        <path d="M 40.578125 39.3125  Q 47.65625 37.796875 51.625 33  Q 55.609375 28.21875 55.609375 21.1875  Q 55.609375 10.40625 48.1875 4.484375  Q 40.765625 -1.421875 27.09375 -1.421875  Q 22.515625 -1.421875 17.65625 -0.515625  Q 12.796875 0.390625 7.625 2.203125  L 7.625 11.71875  Q 11.71875 9.328125 16.59375 8.109375  Q 21.484375 6.890625 26.8125 6.890625  Q 36.078125 6.890625 40.9375 10.546875  Q 45.796875 14.203125 45.796875 21.1875  Q 45.796875 27.640625 41.28125 31.265625  Q 36.765625 34.90625 28.71875 34.90625  L 20.21875 34.90625  L 20.21875 43.015625  L 29.109375 43.015625  Q 36.375 43.015625 40.234375 45.921875  Q 44.09375 48.828125 44.09375 54.296875  Q 44.09375 59.90625 40.109375 62.90625  Q 36.140625 65.921875 28.71875 65.921875  Q 24.65625 65.921875 20.015625 65.03125  Q 15.375 64.15625 9.8125 62.3125  L 9.8125 71.09375  Q 15.4375 72.65625 20.34375 73.4375  Q 25.25 74.21875 29.59375 74.21875  Q 40.828125 74.21875 47.359375 69.109375  Q 53.90625 64.015625 53.90625 55.328125  Q 53.90625 49.265625 50.4375 45.09375  Q 46.96875 40.921875 40.578125 39.3125  z " id="DejaVuSans-51"/>
+       </defs>
+       <use xlink:href="#DejaVuSans-51"/>
+       <use x="63.623047" xlink:href="#DejaVuSans-48"/>
+       <use x="127.246094" xlink:href="#DejaVuSans-48"/>
+       <use x="190.869141" xlink:href="#DejaVuSans-48"/>
+       <use x="254.492188" xlink:href="#DejaVuSans-48"/>
+       <use x="318.115234" xlink:href="#DejaVuSans-48"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use style="fill:#ffffff;stroke:#ffffff;stroke-width:0.8;" x="3552" xlink:href="#m5e8b427ffb" y="3408.48"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <!-- 400000 -->
+      <g style="fill:#ffffff;" transform="translate(3532.9125 3423.078438)scale(0.1 -0.1)">
+       <defs>
+        <path d="M 37.796875 64.3125  L 12.890625 25.390625  L 37.796875 25.390625  z M 35.203125 72.90625  L 47.609375 72.90625  L 47.609375 25.390625  L 58.015625 25.390625  L 58.015625 17.1875  L 47.609375 17.1875  L 47.609375 0  L 37.796875 0  L 37.796875 17.1875  L 4.890625 17.1875  L 4.890625 26.703125  z " id="DejaVuSans-52"/>
+       </defs>
+       <use xlink:href="#DejaVuSans-52"/>
+       <use x="63.623047" xlink:href="#DejaVuSans-48"/>
+       <use x="127.246094" xlink:href="#DejaVuSans-48"/>
+       <use x="190.869141" xlink:href="#DejaVuSans-48"/>
+       <use x="254.492188" xlink:href="#DejaVuSans-48"/>
+       <use x="318.115234" xlink:href="#DejaVuSans-48"/>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_6">
+      <defs>
+       <path d="M 0 0  L -3.5 0  " id="me3e4c555e7" style="stroke:#ffffff;stroke-width:0.8;"/>
+      </defs>
+      <g>
+       <use style="fill:#ffffff;stroke:#ffffff;stroke-width:0.8;" x="576" xlink:href="#me3e4c555e7" y="3408.48"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <!-- −300000 -->
+      <g style="fill:#ffffff;" transform="translate(522.445312 3412.279219)scale(0.1 -0.1)">
+       <defs>
+        <path d="M 10.59375 35.5  L 73.1875 35.5  L 73.1875 27.203125  L 10.59375 27.203125  z " id="DejaVuSans-8722"/>
+       </defs>
+       <use xlink:href="#DejaVuSans-8722"/>
+       <use x="83.789062" xlink:href="#DejaVuSans-51"/>
+       <use x="147.412109" xlink:href="#DejaVuSans-48"/>
+       <use x="211.035156" xlink:href="#DejaVuSans-48"/>
+       <use x="274.658203" xlink:href="#DejaVuSans-48"/>
+       <use x="338.28125" xlink:href="#DejaVuSans-48"/>
+       <use x="401.904297" xlink:href="#DejaVuSans-48"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_7">
+      <g>
+       <use style="fill:#ffffff;stroke:#ffffff;stroke-width:0.8;" x="576" xlink:href="#me3e4c555e7" y="3036.48"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <!-- −250000 -->
+      <g style="fill:#ffffff;" transform="translate(522.445312 3040.279219)scale(0.1 -0.1)">
+       <defs>
+        <path d="M 10.796875 72.90625  L 49.515625 72.90625  L 49.515625 64.59375  L 19.828125 64.59375  L 19.828125 46.734375  Q 21.96875 47.46875 24.109375 47.828125  Q 26.265625 48.1875 28.421875 48.1875  Q 40.625 48.1875 47.75 41.5  Q 54.890625 34.8125 54.890625 23.390625  Q 54.890625 11.625 47.5625 5.09375  Q 40.234375 -1.421875 26.90625 -1.421875  Q 22.3125 -1.421875 17.546875 -0.640625  Q 12.796875 0.140625 7.71875 1.703125  L 7.71875 11.625  Q 12.109375 9.234375 16.796875 8.0625  Q 21.484375 6.890625 26.703125 6.890625  Q 35.15625 6.890625 40.078125 11.328125  Q 45.015625 15.765625 45.015625 23.390625  Q 45.015625 31 40.078125 35.4375  Q 35.15625 39.890625 26.703125 39.890625  Q 22.75 39.890625 18.8125 39.015625  Q 14.890625 38.140625 10.796875 36.28125  z " id="DejaVuSans-53"/>
+       </defs>
+       <use xlink:href="#DejaVuSans-8722"/>
+       <use x="83.789062" xlink:href="#DejaVuSans-50"/>
+       <use x="147.412109" xlink:href="#DejaVuSans-53"/>
+       <use x="211.035156" xlink:href="#DejaVuSans-48"/>
+       <use x="274.658203" xlink:href="#DejaVuSans-48"/>
+       <use x="338.28125" xlink:href="#DejaVuSans-48"/>
+       <use x="401.904297" xlink:href="#DejaVuSans-48"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_8">
+      <g>
+       <use style="fill:#ffffff;stroke:#ffffff;stroke-width:0.8;" x="576" xlink:href="#me3e4c555e7" y="2664.48"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <!-- −200000 -->
+      <g style="fill:#ffffff;" transform="translate(522.445312 2668.279219)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-8722"/>
+       <use x="83.789062" xlink:href="#DejaVuSans-50"/>
+       <use x="147.412109" xlink:href="#DejaVuSans-48"/>
+       <use x="211.035156" xlink:href="#DejaVuSans-48"/>
+       <use x="274.658203" xlink:href="#DejaVuSans-48"/>
+       <use x="338.28125" xlink:href="#DejaVuSans-48"/>
+       <use x="401.904297" xlink:href="#DejaVuSans-48"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_9">
+      <g>
+       <use style="fill:#ffffff;stroke:#ffffff;stroke-width:0.8;" x="576" xlink:href="#me3e4c555e7" y="2292.48"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <!-- −150000 -->
+      <g style="fill:#ffffff;" transform="translate(522.445312 2296.279219)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-8722"/>
+       <use x="83.789062" xlink:href="#DejaVuSans-49"/>
+       <use x="147.412109" xlink:href="#DejaVuSans-53"/>
+       <use x="211.035156" xlink:href="#DejaVuSans-48"/>
+       <use x="274.658203" xlink:href="#DejaVuSans-48"/>
+       <use x="338.28125" xlink:href="#DejaVuSans-48"/>
+       <use x="401.904297" xlink:href="#DejaVuSans-48"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_10">
+      <g>
+       <use style="fill:#ffffff;stroke:#ffffff;stroke-width:0.8;" x="576" xlink:href="#me3e4c555e7" y="1920.48"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <!-- −100000 -->
+      <g style="fill:#ffffff;" transform="translate(522.445312 1924.279219)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-8722"/>
+       <use x="83.789062" xlink:href="#DejaVuSans-49"/>
+       <use x="147.412109" xlink:href="#DejaVuSans-48"/>
+       <use x="211.035156" xlink:href="#DejaVuSans-48"/>
+       <use x="274.658203" xlink:href="#DejaVuSans-48"/>
+       <use x="338.28125" xlink:href="#DejaVuSans-48"/>
+       <use x="401.904297" xlink:href="#DejaVuSans-48"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_11">
+      <g>
+       <use style="fill:#ffffff;stroke:#ffffff;stroke-width:0.8;" x="576" xlink:href="#me3e4c555e7" y="1548.48"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <!-- −50000 -->
+      <g style="fill:#ffffff;" transform="translate(528.807812 1552.279219)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-8722"/>
+       <use x="83.789062" xlink:href="#DejaVuSans-53"/>
+       <use x="147.412109" xlink:href="#DejaVuSans-48"/>
+       <use x="211.035156" xlink:href="#DejaVuSans-48"/>
+       <use x="274.658203" xlink:href="#DejaVuSans-48"/>
+       <use x="338.28125" xlink:href="#DejaVuSans-48"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_12">
+      <g>
+       <use style="fill:#ffffff;stroke:#ffffff;stroke-width:0.8;" x="576" xlink:href="#me3e4c555e7" y="1176.48"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <!-- 0 -->
+      <g style="fill:#ffffff;" transform="translate(562.6375 1180.279219)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-48"/>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="LineCollection_1">
+   	<!-- excitatory/inhibitory connections -->
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3476.856 1948.3428  L 3158.02968 2214.88824  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3171.82344 1661.24808  L 3173.72064 1796.44032  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient2FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3745.06056 2429.68848  L 3565.6152 2596.962  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3128.23248 1601.46024  L 3078.63744 1669.68504  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3648.65304 2125.21392  L 3237.23592 2157.36216  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3548.47344 2079.19008  L 3395.00112 2261.99832  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3146.3712 1612.7244  L 3047.15136 1644.68664  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3332.20752 1811.37984  L 3132.78576 2051.3868  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3332.20752 1811.37984  L 2958.30288 2240.028  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3332.20752 1811.37984  L 2996.81976 2036.8416  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3332.20752 1811.37984  L 3352.54848 1747.2768  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient2FlowDirection2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3332.20752 1811.37984  L 2996.81976 2036.8416  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3332.20752 1811.37984  L 3035.37384 2035.19736  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3332.20752 1811.37984  L 3050.38776 2174.31792  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3332.20752 1811.37984  L 3299.35248 1747.872  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3332.20752 1811.37984  L 2955.84768 1921.51416  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3332.20752 1811.37984  L 3227.85408 1991.1972  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3332.20752 1811.37984  L 3155.13552 2107.46952  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3684.7296 2299.13136  L 3548.27256 2434.74024  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3684.7296 2299.13136  L 3419.87304 2403.76752  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3684.7296 2299.13136  L 3518.43072 2359.22424  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3684.7296 2299.13136  L 3373.32096 2560.37208  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3614.33976 2153.2032  L 3510.84936 2189.40624  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3419.3448 1855.29072  L 3241.40232 2076.72744  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3419.3448 1855.29072  L 3303.34776 2021.87976  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3571.158 2114.26968  L 3440.83896 2088.69096  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3694.18584 2177.0856  L 3470.65848 2359.28376  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 4097.77608 2731.64832  L 4077.49464 2705.96544  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3444.864 1880.49  L 3384.1536 1976.54784  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3727.13016 2349.2844  L 3531.4656 2503.83552  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3727.13016 2349.2844  L 3085.85424 2656.98792  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3485.1516 1852.00224  L 3325.58592 1967.14368  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3082.63272 1541.09208  L 2909.72712 1781.82816  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3082.63272 1541.09208  L 2863.62888 1740.74448  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3082.63272 1541.09208  L 2916.08832 1817.6964  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3705.33096 2189.49552  L 3512.54568 2404.42968  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3455.36184 1736.4888  L 3515.70768 1764.12096  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient2FlowDirection2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3557.5056 2071.26648  L 3342.32592 2339.6496  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3606.43104 2192.5608  L 3521.1984 2314.2792  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 2991.57456 1522.74504  L 2767.8984 1884.1728  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3282.53064 1715.88744  L 3155.46288 1767.03744  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3482.63688 1861.77096  L 3418.68264 2124.09048  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3693.67248 1937.1828  L 3619.89 1878.5928  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3820.65096 1966.98744  L 3869.04816 2023.59096  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient2FlowDirection2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3503.20104 1933.5372  L 3055.72968 2185.17288  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3503.20104 1933.5372  L 3463.3896 2219.72424  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3503.20104 1933.5372  L 3337.21464 2212.48512  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3587.79384 2149.78824  L 3633.0216 2149.20048  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient2FlowDirection2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3587.79384 2149.78824  L 3426.51696 2273.38896  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3587.79384 2149.78824  L 3426.51696 2273.38896  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3587.79384 2149.78824  L 3321.53112 2426.78688  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3587.79384 2149.78824  L 3422.87136 2404.25112  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 3587.79384 2149.78824  L 3495.26256 2237.88528  ' style='fill:none;stroke:url(#inhibitConnectionLayer1RadialGradient1FlowDirection1);stroke-opacity:0.75;stroke-width:0.25;'/>
+   </g>
+   <g id="line2d_13">
+    <path clip-path="url(#p545b2f616b)" d="M 1085.22336 3351.22176  L 1074.99336 2731.37304  L 2646.0312 1532.84112  L 3417.73032 1500.46968  L 3752.60472 1683.7392  L 3798.4872 2384.23008  L 3792.92952 2970.5244  L 1085.22336 3351.22176  " style="fill:none;stroke:#ffffff;stroke-linecap:square;stroke-width:1.5;"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 576 3408.48  L 576 1176.48  " style="fill:none;stroke:#ffffff;stroke-linecap:square;stroke-linejoin:miter;stroke-width:0.8;"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 4147.2 3408.48  L 4147.2 1176.48  " style="fill:none;stroke:#ffffff;stroke-linecap:square;stroke-linejoin:miter;stroke-width:0.8;"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 576 3408.48  L 4147.2 3408.48  " style="fill:none;stroke:#ffffff;stroke-linecap:square;stroke-linejoin:miter;stroke-width:0.8;"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 576 1176.48  L 4147.2 1176.48  " style="fill:none;stroke:#ffffff;stroke-linecap:square;stroke-linejoin:miter;stroke-width:0.8;"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p545b2f616b">
+   <rect height="2232" width="3571.2" x="576" y="1176.48"/>
+  </clipPath>
+  <clipPath id="p7604e7ea2a">
+   <path d="M 1085.22336 3351.22176  L 1074.99336 2731.37304  L 2646.0312 1532.84112  L 3417.73032 1500.46968  L 3752.60472 1683.7392  L 3798.4872 2384.23008  L 3792.92952 2970.5244  z "/>
+  </clipPath>
+ </defs>
+</svg>

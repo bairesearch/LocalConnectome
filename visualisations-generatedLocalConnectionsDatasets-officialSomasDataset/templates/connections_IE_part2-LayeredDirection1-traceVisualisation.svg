@@ -1,0 +1,456 @@
+      <linearGradient id="inhibitNeuronLayer1Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer2Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer3Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer4Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer5Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer6Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer7Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer1Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer2Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer3Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer4Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer5Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer6Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer7Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer1Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer2Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer3Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer4Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer5Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer6Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer7Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+	  
+	  
+      <linearGradient id="inhibitConnectionLayer1RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+		<stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer2RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+		<stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer3RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+		<stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer4RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+		<stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer5RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+		<stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer6RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+		<stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer7RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+		<stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer1RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+		<stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer2RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+		<stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer3RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+		<stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer4RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+		<stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer5RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+		<stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer6RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+		<stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer7RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+		<stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer1RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+		<stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer2RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+		<stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer3RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+		<stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer4RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+		<stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer5RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+		<stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer6RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+		<stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer7RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+		<stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer1RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+		<stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer2RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+		<stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer3RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+		<stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer4RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+		<stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer5RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+		<stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer6RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+		<stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer7RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+		<stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>	 
+
+
+
+
+      <linearGradient id="traceActiveinhibitNeuronLayer1Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="traceActiveinhibitNeuronLayer2Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="traceActiveinhibitNeuronLayer3Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="traceActiveinhibitNeuronLayer4Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="traceActiveinhibitNeuronLayer5Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="traceActiveinhibitNeuronLayer6Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="traceActiveinhibitNeuronLayer7Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="traceActiveexciteNeuronLayer1Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="traceActiveexciteNeuronLayer2Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="traceActiveexciteNeuronLayer3Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="traceActiveexciteNeuronLayer4Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="traceActiveexciteNeuronLayer5Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="traceActiveexciteNeuronLayer6Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="traceActiveexciteNeuronLayer7Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="traceActiveunknownNeuronLayer1Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="traceActiveunknownNeuronLayer2Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="traceActiveunknownNeuronLayer3Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="traceActiveunknownNeuronLayer4Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="traceActiveunknownNeuronLayer5Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="traceActiveunknownNeuronLayer6Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="traceActiveunknownNeuronLayer7Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+	  
+	  
+      <linearGradient id="traceActiveinhibitConnectionLayer1RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+		<stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="traceActiveinhibitConnectionLayer2RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+		<stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="traceActiveinhibitConnectionLayer3RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+		<stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="traceActiveinhibitConnectionLayer4RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+		<stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="traceActiveinhibitConnectionLayer5RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+		<stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="traceActiveinhibitConnectionLayer6RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+		<stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="traceActiveinhibitConnectionLayer7RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+		<stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="traceActiveexciteConnectionLayer1RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+		<stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="traceActiveexciteConnectionLayer2RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+		<stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="traceActiveexciteConnectionLayer3RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+		<stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="traceActiveexciteConnectionLayer4RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+		<stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="traceActiveexciteConnectionLayer5RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+		<stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="traceActiveexciteConnectionLayer6RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+		<stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="traceActiveexciteConnectionLayer7RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+		<stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="traceActiveinhibitConnectionLayer1RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+		<stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="traceActiveinhibitConnectionLayer2RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+		<stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="traceActiveinhibitConnectionLayer3RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+		<stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="traceActiveinhibitConnectionLayer4RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+		<stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="traceActiveinhibitConnectionLayer5RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+		<stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="traceActiveinhibitConnectionLayer6RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+		<stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="traceActiveinhibitConnectionLayer7RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+		<stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="traceActiveexciteConnectionLayer1RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+		<stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="traceActiveexciteConnectionLayer2RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+		<stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="traceActiveexciteConnectionLayer3RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+		<stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="traceActiveexciteConnectionLayer4RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+		<stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="traceActiveexciteConnectionLayer5RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+		<stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="traceActiveexciteConnectionLayer6RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+		<stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="traceActiveexciteConnectionLayer7RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+		<stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>	 

@@ -159,17 +159,21 @@ int main(const int argc, const char** argv)
 	#ifdef INDEXED_CSV_DATABASE_CREATE
 	if(executionMode == EXECUTION_MODE_INDEXED_CSV_DATABASE_CREATE)
 	{	
+		#ifndef INDEXED_CSV_DATABASE_CREATE_DEBUG
 		char userAnswer;
 		cout << "The user has indicated they wish to create an indexed CSV database. This will take approximately 6 hours to generate, and will overwrite any existing indexed CSV database. Are you sure you wish to continue? (y/n)" << endl;
     	cin >> userAnswer;	
 		if(userAnswer == 'y')
 		{
+		#endif
 			H01indexedCSVdatabaseCreateClass().createIndexedCSVdatabase(avro_json_database_folder, indexed_csv_database_folder);
+		#ifndef INDEXED_CSV_DATABASE_CREATE_DEBUG
 		}
 		else
 		{
 			exit(EXIT_ERROR);
 		}
+		#endif
 	}
 	#endif
 	#ifdef INDEXED_CSV_DATABASE_QUERY
