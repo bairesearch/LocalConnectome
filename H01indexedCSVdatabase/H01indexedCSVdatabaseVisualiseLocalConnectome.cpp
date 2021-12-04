@@ -144,7 +144,7 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 		cout << "local_connectome_visualisation_filename_layered_direction_flow_number_coloursets = " << local_connectome_visualisation_filename_layered_direction_flow_number_coloursets << endl;
 		#endif
 	}
-		
+			
 	//generate visualisations;
 	#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_EMULATE_PUBLICATION_INFORMATION_FLOW_THROUGH_THE_H01_NETWORK
 	int coloursetIndex = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_EMULATE_PUBLICATION_INFORMATION_FLOW_THROUGH_THE_H01_NETWORK_DIRECTION_COLOURSET_INDEX;
@@ -205,7 +205,7 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectomeGenerateContent(const string local_connectome_folder_base, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, const bool generate2Dvisualisation, vector<vector<string>>* localConnectionCSVdatasetNeurons, vector<vector<string>>* localConnectionCSVdatasetConnections, const string local_connectome_visualisation_filename_base, const int coloursetNumber, const bool visualiseLayers, const bool visualiseDirection, const bool visualiseFlow, const bool visualiseLayersSpecific, const int layerIndexVisualise, const bool visualiseTrace, const int traceIterationIndex)
 {
 	bool result = true;
-		
+				
 	//neuron data;
 	string localConnectomeVisualisationContentsPart4 = "";
 	if(generate2Dvisualisation)
@@ -221,8 +221,7 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 	for(int i=0;i<localConnectionCSVdatasetNeurons->size(); i++)
 	{
 		vector<string> localConnectionCSVdatasetNeuron = (*localConnectionCSVdatasetNeurons)[i];
-		//cout << "localConnectionCSVdatasetNeurons: i = " << i << endl;
-	
+		
 		bool passLayerVisualisationChecks = true;
 
 		string neuronTypeStringSVG = ""; 

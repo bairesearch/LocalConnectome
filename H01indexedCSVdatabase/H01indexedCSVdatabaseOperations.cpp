@@ -128,5 +128,19 @@ bool H01indexedCSVdatabaseOperationsClass::readLocalConnectomeNeuronsCSVdataset(
 bool H01indexedCSVdatabaseOperationsClass::readLocalConnectomeConnectionsCSVdataset(const string LocalConnectomeCSVdatasetFileName, vector<vector<string>>* localConnectomeConnectionsCSVdataset, int* localConnectomeConnectionsCSVdatasetSize)
 {
 	SHAREDvars.getLinesFromFileCSV(LocalConnectomeCSVdatasetFileName, localConnectomeConnectionsCSVdataset, localConnectomeConnectionsCSVdatasetSize, CSV_DELIMITER_CHAR, true);
+	
+	/*
+	for(int i=0;i<localConnectomeConnectionsCSVdataset->size(); i++)
+	{
+		vector<string> localConnectionCSVdatasetNeuron = (*localConnectomeConnectionsCSVdataset)[i];
+			
+		cout << "localConnectionCSVdatasetNeuron: i = " << i << endl;
+		for(int j=0;j<localConnectionCSVdatasetNeuron.size(); j++)
+		{
+			string cell = localConnectionCSVdatasetNeuron[j];
+			cout << "cell = " << cell << endl;			
+		}
+	}
+	*/		
 }
 

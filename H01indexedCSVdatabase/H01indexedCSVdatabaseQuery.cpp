@@ -1025,7 +1025,7 @@ bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByConnectionDataset
 		cout << "connectionDatasetFileNameWrite = " << connectionDatasetFileNameWrite << endl;
 
 		int localConnectionCSVdatasetConnectionsSize = 0;
-		SHAREDvars.getLinesFromFileCSV(connectionDatasetFileNameRead, localConnectomeConnections, &localConnectionCSVdatasetConnectionsSize, CSV_DELIMITER_CHAR, true);
+		H01indexedCSVdatabaseOperations.readLocalConnectomeConnectionsCSVdataset(connectionDatasetFileNameRead, localConnectomeConnections, &localConnectionCSVdatasetConnectionsSize);
 	}
 	
 	for(int i=0; i<localConnectomeConnections->size(); i++)

@@ -63,7 +63,7 @@ bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdata
 	cout << "connectionDatasetFileNameWrite = " << connectionDatasetFileNameWrite << endl;
 
 	int localNeuronCSVdatasetNeuronsSize = 0;
-	H01indexedCSVdatabaseOperations.readLocalConnectomeNeuronsCSVdataset(connectionDatasetFileNameRead, &localConnectomeNeurons, &localNeuronCSVdatasetNeuronsSize, &neuronList, &neuronMap);
+	H01indexedCSVdatabaseOperations.readLocalConnectomeNeuronsCSVdataset(neuronDatasetFileNameRead, &localConnectomeNeurons, &localNeuronCSVdatasetNeuronsSize, &neuronList, &neuronMap);
 
 	int localConnectionCSVdatasetConnectionsSize = 0;
 	H01indexedCSVdatabaseOperations.readLocalConnectomeConnectionsCSVdataset(connectionDatasetFileNameRead, &localConnectomeConnections, &localConnectionCSVdatasetConnectionsSize);
@@ -88,7 +88,7 @@ bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdata
 		connectionsMap[connectionTargetNeuronID] = i;
 	}
 	*/
-
+		
 	//initialise connection/neuron trace highlight values;
 	for(int i=0; i<localConnectomeNeurons.size(); i++)
 	{
@@ -111,7 +111,6 @@ bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdata
 	
 	int traceIterationIndex = 0;
 	this->traceLocalConnectomeCSVdataset(local_connectome_folder_base, &localConnectomeNeurons, &localConnectomeConnections, &neuronMap, &connectionsMap, queryPresynapticConnectionNeurons, connectionDatasetWrite, appendToFile, traceIterationIndex, connectionDatasetFileNameWrite, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, LAYER_ENFORCEMENT_TRUE, INDEXED_CSV_DATABASE_TRACE_START_LAYER_INDEX);
-
 
 	return result;
 }
@@ -259,7 +258,7 @@ bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdata
 		#endif
 	}
 	#endif
-					
+				
 	//perform trace: highlight neurons/connections;
 	int traceIterationIndexSub = 0;
 	#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_SUB
@@ -553,8 +552,8 @@ bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdata
 		#ifdef LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES_STILL_REQUIRING_COMPLETION
 		}
 		#endif
-	}
-	
+	}	
+		
 	bool visualiseTrace = true;
 	int traceIterationIndexVisualisation = traceIterationIndex*traceIterationIndexSubMax + traceIterationIndexSub;
 	

@@ -607,13 +607,23 @@ extern string currentDirectory;
 		#endif
 	#endif
 	#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE (7)	//dynamically pregenerated once and saved for efficiency
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE_HIGHLIGHT1 (8)	//dynamically pregenerated once and saved for efficiency
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE_HIGHLIGHT2 (9)	//dynamically pregenerated once and saved for efficiency
-		//#ifdef INDEXED_CSV_DATABASE_TRACE_VISUALISATION_SIMULATION
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_ACTIVATION_LEVEL_POSITIVE (10)	//dynamically pregenerated once and saved for efficiency
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_ACTIVATION_LEVEL_NEGATIVE (11)	//dynamically pregenerated once and saved for efficiency
-		//#endif
+		#ifdef LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS_LAYERS
+			#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE (13)	//dynamically pregenerated once and saved for efficiency
+			#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE_HIGHLIGHT1 (14)	//dynamically pregenerated once and saved for efficiency
+			#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE_HIGHLIGHT2 (15)	//dynamically pregenerated once and saved for efficiency
+			//#ifdef INDEXED_CSV_DATABASE_TRACE_VISUALISATION_SIMULATION
+			#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_ACTIVATION_LEVEL_POSITIVE (16)	//dynamically pregenerated once and saved for efficiency
+			#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_ACTIVATION_LEVEL_NEGATIVE (17)	//dynamically pregenerated once and saved for efficiency
+			//#endif		
+		#else
+			#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE (7)	//dynamically pregenerated once and saved for efficiency
+			#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE_HIGHLIGHT1 (8)	//dynamically pregenerated once and saved for efficiency
+			#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE_HIGHLIGHT2 (9)	//dynamically pregenerated once and saved for efficiency
+			//#ifdef INDEXED_CSV_DATABASE_TRACE_VISUALISATION_SIMULATION
+			#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_ACTIVATION_LEVEL_POSITIVE (10)	//dynamically pregenerated once and saved for efficiency
+			#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_ACTIVATION_LEVEL_NEGATIVE (11)	//dynamically pregenerated once and saved for efficiency
+			//#endif
+		#endif
 		#define INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_VALUE_INACTIVE (0)
 		#define INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_VALUE_SOURCE (1)
 		#define INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_NEURON_TRACE_VALUE_TARGET (2)
