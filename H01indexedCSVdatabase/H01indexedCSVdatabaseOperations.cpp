@@ -127,8 +127,23 @@ bool H01indexedCSVdatabaseOperationsClass::readLocalConnectomeNeuronsCSVdataset(
 
 bool H01indexedCSVdatabaseOperationsClass::readLocalConnectomeConnectionsCSVdataset(const string LocalConnectomeCSVdatasetFileName, vector<vector<string>>* localConnectomeConnectionsCSVdataset, int* localConnectomeConnectionsCSVdatasetSize)
 {
+	return readLocalConnectomeConnectionsCSVdataset(LocalConnectomeCSVdatasetFileName, localConnectomeConnectionsCSVdataset, localConnectomeConnectionsCSVdatasetSize, false, NULL);
+}
+bool H01indexedCSVdatabaseOperationsClass::readLocalConnectomeConnectionsCSVdataset(const string LocalConnectomeCSVdatasetFileName, vector<vector<string>>* localConnectomeConnectionsCSVdataset, int* localConnectomeConnectionsCSVdatasetSize, bool buildConnectionsMap, map<string, int>* connectionsMap)
+{
 	SHAREDvars.getLinesFromFileCSV(LocalConnectomeCSVdatasetFileName, localConnectomeConnectionsCSVdataset, localConnectomeConnectionsCSVdatasetSize, CSV_DELIMITER_CHAR, true);
-	
+
+	if(buildConnectionsMap)
+	{
+		for(int i=0; i < localConnectomeConnectionsCSVdataset->size(); i++)
+		{
+			vector<string>* localConnectomeConnection = &((*localConnectomeConnectionsCSVdataset)[i]);
+			string connectionsMapKey = (*localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_ID] + (*localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_ID];
+			//cout << "connectionsMapKey to insert = " << connectionsMapKey << endl;
+    		(*connectionsMap)[connectionsMapKey] = i;
+		}
+	}
+		
 	/*
 	for(int i=0;i<localConnectomeConnectionsCSVdataset->size(); i++)
 	{

@@ -57,6 +57,11 @@ extern string currentDirectory;
 
 
 //configuration:
+#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS
+	#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS //print connections for CONNECTION_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS where local presynaptic neuron is available (not just CONNECTION_TYPES_DERIVED_FROM_EM_IMAGES)	//added 7 December 2021
+		//note excitationType will be LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN if presynaptic neuron is not in local connectome (so numberConnectionsExternalConnectomeExcitatory+numberConnectionsExternalConnectomeInhibitory != numberConnectionsExternalConnectome)
+	#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL	//independently count the connections within the local connectome connections dataset	//compare local connectome counts against counts from https://www.biorxiv.org/content/10.1101/2021.05.29.446289v3/v4 Supplementary Table 5. Summary of Machine Learning-identified connections	//added 7 December 2021
+#endif
 #ifdef INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS
 	#define INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS_COUNT_NUMBER_INCOMING_OUTGOING_EXCITATORY_INHIBITORY_SYNAPSES	//added 30 November 2021 
 #endif
@@ -83,6 +88,15 @@ extern string currentDirectory;
 
 #ifndef INDEXED_CSV_DATABASE_CREATE_CLASS_LABELS_SAVE_VERBATIM
 	#define INDEXED_CSV_DATABASE_CREATE_CLASS_LABELS_SAVE_NUMBER_CHARACTERS (1)	//orig: 1 (must set to greater than 1 to not override class labels with same first character; eg AXON/AIS)
+#endif
+
+//count connections local;
+#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL
+	#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL_ONLY_COUNT_OUTGOING	//only count connections from preSynaptic to postSynaptic neuron (as internal connectome connection matrices are identical)
+	#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL_NUMBER_EXCITATORY_INHIBITORY_NEURONS	//count number excitatory/inhibitory neurons also	//disable to simplify/separate local connectome connection counts
+	#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL_NUMBER_EXCITATORY_INHIBITORY_CONNECTIONS	//disable to simplify/separate local connectome connection counts
+	#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL_BY_LAYER
+	#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL_BY_EXCITATION_TYPE
 #endif
 
 //valid connection class labels;
@@ -201,7 +215,7 @@ extern string currentDirectory;
 	#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_UNCLASSIFIED_NEURON "UNCLASSIFIED_NEURON"
 	#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_SPINY_ATYPICAL "SPINY_ATYPICAL"	
 #endif
-//#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_UNKNOWN "UNKNOWN"	//not used in current local connectome dataset (localConnectomeNeurons.csv)
+#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_UNKNOWN "UNKNOWN"	//not used in current local connectome dataset (localConnectomeNeurons.csv); for internal/intermediary processing only
 	
 #define LOCAL_CONNECTOME_DATASET_NEURONS_HEADER "id,x,y,z,type,excitation_type"
 #define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_ID (0)	//C3 database neuron_id
@@ -421,6 +435,7 @@ extern string currentDirectory;
 		//see above
 
 		#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PROPORTION_LOCAL_VS_NONLOCAL_CONNECTIONS	//original functionality
+		
 		#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_NUMBER_EXCITATORY_INHIBITORY_NEURONS
 		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_NUMBER_EXCITATORY_INHIBITORY_NEURONS
 			#define INDEXED_CSV_DATABASE_QUERY_READ_DATASET_LOCAL_CONNECTOME_NEURONS
