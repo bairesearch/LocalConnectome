@@ -1,0 +1,91 @@
+      <linearGradient id="exciteConnectionRadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionRadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionRadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionRadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronColor">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#FECCCF "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronColor">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ADD9A8 "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronColor">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+
+
+
+      <linearGradient id="traceActiveexciteConnectionRadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="traceActiveinhibitConnectionRadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="traceActiveexciteConnectionRadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="traceActiveinhibitConnectionRadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="traceActiveinhibitNeuronColor">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#FECCCF "/>
+      </linearGradient>
+      <linearGradient id="traceActiveexciteNeuronColor">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ADD9A8 "/>
+      </linearGradient>
+      <linearGradient id="traceActiveunknownNeuronColor">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+	  
+	  
+
+      <linearGradient id="traceActiveMarkexciteConnectionRadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="traceActiveMarkinhibitConnectionRadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="traceActiveMarkexciteConnectionRadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="traceActiveMarkinhibitConnectionRadialGradient2">
+         <!-- red -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="traceActiveMarkinhibitNeuronColor">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="traceActiveMarkexciteNeuronColor">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="traceActiveMarkunknownNeuronColor">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+	  
