@@ -1,7 +1,7 @@
 /*******************************************************************************
  *
  * File Name: H01indexedCSVdatabaseVisualiseLocalConnectome.cpp
- * Author: Richard Bruce Baxter - Copyright (c) 2021 Baxter AI (baxterai.com)
+ * Author: Richard Bruce Baxter - Copyright (c) 2021-2022 Baxter AI (baxterai.com)
  * License: MIT License
  * Project: H01LocalConnectome
  * Requirements: see H01indexedCSVdatabase.hpp
@@ -671,6 +671,17 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 				connectionTypeStringSVG = connectionTypeStringSVGprepend + connectionTypeStringSVG;
 			}
 			#endif
+
+			/*
+			//temp; only display interneuron connections;
+			string posttype = localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_TYPE];
+			//cout << "posttype = " << posttype << endl;
+			if(posttype == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_TYPE_PYRAMIDAL)
+			{
+				passLayerVisualisationChecks = false;
+			}
+			*/
+
 
 			#ifdef LOCAL_CONNECTOME_VISUALISATION_LAYERS
 			int layerIndex = INT_DEFAULT_VALUE;

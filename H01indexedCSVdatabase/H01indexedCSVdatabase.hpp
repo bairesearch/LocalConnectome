@@ -1,7 +1,7 @@
 /*******************************************************************************
  *
  * File Name: H01indexedCSVdatabase.hpp
- * Author: Richard Bruce Baxter - Copyright (c) 2021 Baxter AI (baxterai.com)
+ * Author: Richard Bruce Baxter - Copyright (c) 2021-2022 Baxter AI (baxterai.com)
  * License: MIT License
  * Project: H01LocalConnectome
  * Requirements: BAI SHARED C++ library, Eigen 3 C++ library
@@ -31,7 +31,8 @@ extern string currentDirectory;
 	#define INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET	//mode 3 (automatically generate localConnectomeConnections-typesFromPresynapticNeurons.csv/localConnectomeConnections-typesFromEMimages.csv from localConnectomeNeurons.csv and H01 indexed CSV database)
 	#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS	//mode 4 (lookup indexed CSV database by neuron ID, count/infer proportion of incoming/outgoing excitatory/inhibitory target connections to local vs distal neurons)
 	#define INDEXED_CSV_DATABASE_QUERY_COMPLETE_LOCAL_CONNECTOME_CONNECTIONS_DATASET	//mode 5 (lookup indexed CSV database by pre/post synaptic connection neuron ID, and identify connection with post/pre synaptic X/Y coordinates (if type=UNKNOWN), add post/pre synaptic neuron ID, Z coordinates, and type to connection dataset)
-	#define INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS	//mode 6 (crawl indexed CSV database by pre/post synaptic connection neuron ID, and count number of unique axons/dendrites as specified by neuron ID - not explicitly connected to local connectome)
+	#define INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS	//mode 6 (crawl indexed CSV database by pre/post synaptic connection neuron ID, and count number of unique axons/dendrites as specified by neuron ID - not explicitly connected to local connectome)	//incomplete
+	#define INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL	//mode 7 (extrapolate z region same size as x/y)	//uses INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS code	//incomplete
 #endif
 
 #define EXECUTION_MODE_INDEXED_CSV_DATABASE_CREATE 1
@@ -45,6 +46,7 @@ extern string currentDirectory;
 	#define QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS 4
 	#define QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COMPLETE_LOCAL_CONNECTOME_CONNECTIONS_DATASET 5
 	#define QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS 6
+	#define QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL 7
 #endif
 #define EXECUTION_MODE_DEFAULT (EXECUTION_MODE_INDEXED_CSV_DATABASE_QUERY) 
 #define QUERY_MODE_DEFAULT (QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS)
@@ -58,9 +60,8 @@ extern string currentDirectory;
 
 //configuration:
 #ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS
-	#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS //print connections for CONNECTION_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS where local presynaptic neuron is available (not just CONNECTION_TYPES_DERIVED_FROM_EM_IMAGES)	//added 7 December 2021
-		//note excitationType will be LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN if presynaptic neuron is not in local connectome (so numberConnectionsExternalConnectomeExcitatory+numberConnectionsExternalConnectomeInhibitory != numberConnectionsExternalConnectome)
-	#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL	//independently count the connections within the local connectome connections dataset	//compare local connectome counts against counts from https://www.biorxiv.org/content/10.1101/2021.05.29.446289v3/v4 Supplementary Table 5. Summary of Machine Learning-identified connections	//added 7 December 2021
+	#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL	//independently count the connections within the local connectome connections dataset (layer to layer matrix)	//compare local connectome counts against counts from https://www.biorxiv.org/content/10.1101/2021.05.29.446289v3/v4 Supplementary Table 5. Summary of Machine Learning-identified connections	//added 7 December 2021
+	//#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_DISTANCES	//print distances between neuron somas and their connections at each layer - used to identify INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL lateral distance probability of connection functions
 #endif
 #ifdef INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS
 	#define INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS_COUNT_NUMBER_INCOMING_OUTGOING_EXCITATORY_INHIBITORY_SYNAPSES	//added 30 November 2021 
@@ -173,6 +174,12 @@ extern string currentDirectory;
 	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES_STILL_REQUIRING_COMPLETION	//once completion function has been successfully executed on localConnectomeConnections-typesFromEMimages.csv (with the necessary C3 neurons dataset), this can be disabled
 	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES_USEALLVALUESAVAILABLEFROMINBODYCELLCONNECTION "localConnectomeConnections-typesFromEMimages-useAllValuesAvailableFromInBodyCellConnection.csv"
 	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES_UNKNOWN_NEURON_ID "0"
+#endif
+
+#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL
+	#define LOCAL_CONNECTOME_DATASET_LARGER_MODEL_NEURONS_FILENAME "localConnectomeNeuronsLargeModel.csv"
+	#define LOCAL_CONNECTOME_DATASET_LARGER_MODEL_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS "localConnectomeConnectionsLargeModel-typesFromPresynapticNeurons.csv"
+	#define LOCAL_CONNECTOME_DATASET_LARGER_MODEL_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES "localConnectomeConnectionsLargeModel-typesFromEMimages.csv"
 #endif
 
 	
@@ -427,14 +434,27 @@ extern string currentDirectory;
 		#define INDEXED_CSV_DATABASE_QUERY_OUTPUT	//mandatory
 		
 	#endif
-	
+
+	//mode INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL parameters:
+	#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL
+				
+		//input:
+		//see above
+		
+		#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS
+
+	#endif	
+		
 	//mode INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS parameters:
 	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS
 				
 		//input:
 		//see above
 
-		#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PROPORTION_LOCAL_VS_NONLOCAL_CONNECTIONS	//original functionality
+		#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS //print connections for CONNECTION_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS where local presynaptic neuron is available (not just CONNECTION_TYPES_DERIVED_FROM_EM_IMAGES)	//added 7 December 2021
+			//note excitationType will be LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN if presynaptic neuron is not in local connectome (so numberConnectionsExternalConnectomeExcitatory+numberConnectionsExternalConnectomeInhibitory != numberConnectionsExternalConnectome)
+		
+		#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PROPORTION_LOCAL_VS_NONLOCAL_CONNECTIONS	//original functionality	//mandatory
 		
 		#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_NUMBER_EXCITATORY_INHIBITORY_NEURONS
 		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_NUMBER_EXCITATORY_INHIBITORY_NEURONS
@@ -469,7 +489,6 @@ extern string currentDirectory;
 	#ifdef INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS
 		#define INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS_COUNT_NUMBER_UNIQUE_AXONS_DENDRITES
 	#endif	
-	
 	
 	
 	#ifndef INDEXED_CSV_DATABASE_QUERY_WRITE_CURRENT_FOLDER
