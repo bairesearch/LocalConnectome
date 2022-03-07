@@ -260,16 +260,19 @@ bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronDatasetOrLi
 	#endif
 	
 	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL
-	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL_ONLY_COUNT_OUTGOING
-	if(!queryPresynapticConnectionNeurons)	//only count connections from preSynaptic to postSynaptic neuron
+	if(queryMode == QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS)
 	{
-	#endif
-		bool queryByPresynapticConnectionNeurons = !queryPresynapticConnectionNeurons;
-		cout << "\n\nINDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL:" << endl;
-		countConnectionsLocal(&neuronList, &neuronMap, &localConnectomeNeurons, &localConnectomeConnections, queryByPresynapticConnectionNeurons, connectionTypesDerivedFromPresynapticNeuronsOrEMimages);
-	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL_ONLY_COUNT_OUTGOING
+		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL_ONLY_COUNT_OUTGOING
+		if(!queryPresynapticConnectionNeurons)	//only count connections from preSynaptic to postSynaptic neuron
+		{
+		#endif
+			bool queryByPresynapticConnectionNeurons = !queryPresynapticConnectionNeurons;
+			cout << "\n\nINDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL:" << endl;
+			countConnectionsLocal(&neuronList, &neuronMap, &localConnectomeNeurons, &localConnectomeConnections, queryByPresynapticConnectionNeurons, connectionTypesDerivedFromPresynapticNeuronsOrEMimages);
+		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL_ONLY_COUNT_OUTGOING
+		}
+		#endif
 	}
-	#endif
 	#endif
 		
 	const string csvDelimiter = CSV_DELIMITER;
