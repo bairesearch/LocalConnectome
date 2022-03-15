@@ -1,10 +1,10 @@
 /*******************************************************************************
  *
  * File Name: SHAREDvars.hpp
- * Author: Richard Bruce Baxter - Copyright (c) 2005-2021 Baxter AI (baxterai.com)
+ * Author: Richard Bruce Baxter - Copyright (c) 2005-2022 Baxter AI (baxterai.com)
  * License: MIT License
  * Project: Generic Construct Functions
- * Project Version: 3p4a 07-August-2021
+ * Project Version: 3p5a 14-March-2022
  * /
  *******************************************************************************/
 
@@ -152,7 +152,7 @@ class SHAREDvarsClass
 	public: bool isCapitalised(const string text);
 	
 	public: void printTime(const string startString, const string endString);
-	
+
 	public: void getLinesFromFileCSV(const string fileName, vector<vector<string>>* CSVdatasetFile, int* CSVdatasetFileSize, const char delimiter, const bool expectFirstLineHeader);
 
 

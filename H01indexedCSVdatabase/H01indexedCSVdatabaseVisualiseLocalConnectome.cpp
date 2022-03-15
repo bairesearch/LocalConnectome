@@ -38,53 +38,46 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 	bool result = true;
 	
 	cout << "connectionTypesDerivedFromPresynapticNeuronsOrEMimages = " << connectionTypesDerivedFromPresynapticNeuronsOrEMimages << endl;
-	
-	#ifdef LOCAL_CONNECTOME_FOLDER_BASE_USE_RELATIVE_FOLDER
-	SHAREDvars.setCurrentDirectory(currentDirectory);
-	#endif
-	string localConnectomeCSVdatabaseFolder = LOCAL_CONNECTOME_FOLDER_BASE;
-	SHAREDvars.setCurrentDirectory(localConnectomeCSVdatabaseFolder);
-	localConnectomeCSVdatabaseFolder = LOCAL_CONNECTOME_DATASET_FOLDER;
-	SHAREDvars.setCurrentDirectory(localConnectomeCSVdatabaseFolder);
 
-	vector<string> neuronList;
-	#ifdef INDEXED_CSV_DATABASE_QUERY_EFFICIENT_STORE_NEURON_IDS_IN_MAP
-	map<string, int> neuronMap;
-	#endif
-	
-	vector<vector<string>> localConnectionCSVdatasetNeurons;
-	int localConnectionCSVdatasetNeuronsSize = 0;
-	H01indexedCSVdatabaseOperations.readLocalConnectomeNeuronsCSVdataset(LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME, &localConnectionCSVdatasetNeurons, &localConnectionCSVdatasetNeuronsSize, &neuronList, &neuronMap);
-	
-	vector<vector<string>> localConnectionCSVdatasetConnections;
-	int localConnectionCSVdatasetConnectionsSize = 0;
+	string neuronDatasetOrListFileName = LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME;
+	string neuronListConnectionsFileName;
 	if(connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
 	{
-		H01indexedCSVdatabaseOperations.readLocalConnectomeConnectionsCSVdataset(LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS, &localConnectionCSVdatasetConnections, &localConnectionCSVdatasetConnectionsSize);
+		neuronListConnectionsFileName = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS;
 	}
 	else
 	{
-		H01indexedCSVdatabaseOperations.readLocalConnectomeConnectionsCSVdataset(LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES, &localConnectionCSVdatasetConnections, &localConnectionCSVdatasetConnectionsSize);
+		neuronListConnectionsFileName = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES;
 	}
-
-	#ifdef LOCAL_CONNECTOME_VISUALISATION_LAYERS
-	H01indexedCSVdatabaseCalculateNeuronLayer.calculateLocalConnectomeLayers(&localConnectionCSVdatasetNeurons, &localConnectionCSVdatasetConnections, &neuronMap, true);
-	#endif
+	bool readConnections = true;
+	bool buildConnectionsMap = false;
+	bool readLayers = true; 
+	bool readLayersConnections = true;
+			
+	vector<string> neuronList;
+	map<string, int> neuronMap;
+	vector<vector<string>> localConnectomeCSVdatasetNeurons;	
+	vector<vector<string>> localConnectomeCSVdatasetConnections;
+	map<string, int> connectionsMap;	
+	if(!H01indexedCSVdatabaseCalculateNeuronLayer.readLocalNeuronsAndConnections(local_connectome_folder_base, neuronDatasetOrListFileName, true, &neuronList, &neuronMap, &localConnectomeCSVdatasetNeurons, readConnections, neuronListConnectionsFileName, &localConnectomeCSVdatasetConnections, buildConnectionsMap, &connectionsMap, readLayers, readLayersConnections))
+	{
+		result = false;
+	}
 		
 	bool visualiseTrace = false;
 	int traceIterationIndexNOTUSED = INT_DEFAULT_VALUE;
 	
 	#ifdef LOCAL_CONNECTOME_VISUALISATION_2D_SVG
-	this->visualiseLocalConnectomeCSVdataset(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, true, &localConnectionCSVdatasetNeurons, &localConnectionCSVdatasetConnections, visualiseTrace, traceIterationIndexNOTUSED);
+	this->visualiseLocalConnectomeCSVdataset(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, true, &localConnectomeCSVdatasetNeurons, &localConnectomeCSVdatasetConnections, visualiseTrace, traceIterationIndexNOTUSED);
 	#endif
 	#ifdef LOCAL_CONNECTOME_VISUALISATION_3D_LDR
-	this->visualiseLocalConnectomeCSVdataset(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, false, &localConnectionCSVdatasetNeurons, &localConnectionCSVdatasetConnections, visualiseTrace, traceIterationIndexNOTUSED);
+	this->visualiseLocalConnectomeCSVdataset(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, false, &localConnectomeCSVdatasetNeurons, &localConnectomeCSVdatasetConnections, visualiseTrace, traceIterationIndexNOTUSED);
 	#endif
 
 	return result;
 }
 
-bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectomeCSVdataset(const string local_connectome_folder_base, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, const bool generate2Dvisualisation, vector<vector<string>>* localConnectionCSVdatasetNeurons, vector<vector<string>>* localConnectionCSVdatasetConnections, const bool visualiseTrace, const int traceIterationIndex)
+bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectomeCSVdataset(const string local_connectome_folder_base, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, const bool generate2Dvisualisation, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, const bool visualiseTrace, const int traceIterationIndex)
 {
 	bool result = true;
 	
@@ -149,17 +142,17 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 	#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_EMULATE_PUBLICATION_INFORMATION_FLOW_THROUGH_THE_H01_NETWORK
 	int coloursetIndex = INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_EMULATE_PUBLICATION_INFORMATION_FLOW_THROUGH_THE_H01_NETWORK_DIRECTION_COLOURSET_INDEX;
 	string local_connectome_visualisation_filename_base = string(LOCAL_CONNECTOME_VISUALISATION_FILENAME_COLOURSET_PREPEND) + local_connectome_visualisation_filename_direction + SHAREDvars.convertIntToString(coloursetIndex);
-	this->visualiseLocalConnectomeGenerateContent(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, generate2Dvisualisation, localConnectionCSVdatasetNeurons, localConnectionCSVdatasetConnections, local_connectome_visualisation_filename_base, coloursetIndex, false, true, false, false, INT_DEFAULT_VALUE, visualiseTrace, traceIterationIndex);
+	this->visualiseLocalConnectomeGenerateContent(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, generate2Dvisualisation, localConnectomeCSVdatasetNeurons, localConnectomeCSVdatasetConnections, local_connectome_visualisation_filename_base, coloursetIndex, false, true, false, false, INT_DEFAULT_VALUE, visualiseTrace, traceIterationIndex);
 	#else
 	for(int coloursetIndex=1; coloursetIndex<=local_connectome_visualisation_filename_direction_number_coloursets; coloursetIndex++)
 	{
 		string local_connectome_visualisation_filename_base = string(LOCAL_CONNECTOME_VISUALISATION_FILENAME_COLOURSET_PREPEND) + local_connectome_visualisation_filename_direction + SHAREDvars.convertIntToString(coloursetIndex);
-		this->visualiseLocalConnectomeGenerateContent(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, generate2Dvisualisation, localConnectionCSVdatasetNeurons, localConnectionCSVdatasetConnections, local_connectome_visualisation_filename_base, coloursetIndex, false, true, false, false, INT_DEFAULT_VALUE, visualiseTrace, traceIterationIndex);
+		this->visualiseLocalConnectomeGenerateContent(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, generate2Dvisualisation, localConnectomeCSVdatasetNeurons, localConnectomeCSVdatasetConnections, local_connectome_visualisation_filename_base, coloursetIndex, false, true, false, false, INT_DEFAULT_VALUE, visualiseTrace, traceIterationIndex);
 	}
 	for(int coloursetIndex=1; coloursetIndex<=local_connectome_visualisation_filename_direction_flow_number_coloursets; coloursetIndex++)
 	{
 		string local_connectome_visualisation_filename_base = string(LOCAL_CONNECTOME_VISUALISATION_FILENAME_COLOURSET_PREPEND) + local_connectome_visualisation_filename_direction_flow + SHAREDvars.convertIntToString(coloursetIndex);
-		this->visualiseLocalConnectomeGenerateContent(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, generate2Dvisualisation, localConnectionCSVdatasetNeurons, localConnectionCSVdatasetConnections, local_connectome_visualisation_filename_base, coloursetIndex, false, true, true, false, INT_DEFAULT_VALUE, visualiseTrace, traceIterationIndex);
+		this->visualiseLocalConnectomeGenerateContent(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, generate2Dvisualisation, localConnectomeCSVdatasetNeurons, localConnectomeCSVdatasetConnections, local_connectome_visualisation_filename_base, coloursetIndex, false, true, true, false, INT_DEFAULT_VALUE, visualiseTrace, traceIterationIndex);
 	}
 	#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME
 	if(!visualiseTrace)	//visualiseTrace coloursets not (yet) defined
@@ -170,12 +163,12 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 		for(int coloursetIndex=1; coloursetIndex<=local_connectome_visualisation_filename_layered_direction_number_coloursets; coloursetIndex++)
 		{
 			string local_connectome_visualisation_filename_base = string(LOCAL_CONNECTOME_VISUALISATION_FILENAME_COLOURSET_PREPEND) + local_connectome_visualisation_filename_layered_direction + SHAREDvars.convertIntToString(coloursetIndex);
-			this->visualiseLocalConnectomeGenerateContent(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, generate2Dvisualisation, localConnectionCSVdatasetNeurons, localConnectionCSVdatasetConnections, local_connectome_visualisation_filename_base, coloursetIndex, true, true, false, false, INT_DEFAULT_VALUE, visualiseTrace, traceIterationIndex);
+			this->visualiseLocalConnectomeGenerateContent(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, generate2Dvisualisation, localConnectomeCSVdatasetNeurons, localConnectomeCSVdatasetConnections, local_connectome_visualisation_filename_base, coloursetIndex, true, true, false, false, INT_DEFAULT_VALUE, visualiseTrace, traceIterationIndex);
 		}
 		for(int coloursetIndex=1; coloursetIndex<=local_connectome_visualisation_filename_layered_direction_flow_number_coloursets; coloursetIndex++)
 		{
 			string local_connectome_visualisation_filename_base = string(LOCAL_CONNECTOME_VISUALISATION_FILENAME_COLOURSET_PREPEND) + local_connectome_visualisation_filename_layered_direction_flow + SHAREDvars.convertIntToString(coloursetIndex);
-			this->visualiseLocalConnectomeGenerateContent(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, generate2Dvisualisation, localConnectionCSVdatasetNeurons, localConnectionCSVdatasetConnections, local_connectome_visualisation_filename_base, coloursetIndex, true, true, true, false, INT_DEFAULT_VALUE, visualiseTrace, traceIterationIndex);
+			this->visualiseLocalConnectomeGenerateContent(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, generate2Dvisualisation, localConnectomeCSVdatasetNeurons, localConnectomeCSVdatasetConnections, local_connectome_visualisation_filename_base, coloursetIndex, true, true, true, false, INT_DEFAULT_VALUE, visualiseTrace, traceIterationIndex);
 		}
 		//generate visualisations (specific layers; LX);
 		cout << "generate visualisations (layered - specific layers; LX);" << endl;
@@ -185,12 +178,12 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 			for(int coloursetIndex=1; coloursetIndex<=local_connectome_visualisation_filename_layered_direction_number_coloursets; coloursetIndex++)
 			{
 				string local_connectome_visualisation_filename_base = string(LOCAL_CONNECTOME_VISUALISATION_FILENAME_COLOURSET_PREPEND) + local_connectome_visualisation_filename_layered_direction + SHAREDvars.convertIntToString(coloursetIndex) + LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_LAYERED_SPECIFIC_LAYER + SHAREDvars.convertIntToString(layerIndex);
-				this->visualiseLocalConnectomeGenerateContent(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, generate2Dvisualisation, localConnectionCSVdatasetNeurons, localConnectionCSVdatasetConnections, local_connectome_visualisation_filename_base, coloursetIndex, true, true, false, true, layerIndex, visualiseTrace, traceIterationIndex);
+				this->visualiseLocalConnectomeGenerateContent(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, generate2Dvisualisation, localConnectomeCSVdatasetNeurons, localConnectomeCSVdatasetConnections, local_connectome_visualisation_filename_base, coloursetIndex, true, true, false, true, layerIndex, visualiseTrace, traceIterationIndex);
 			}
 			for(int coloursetIndex=1; coloursetIndex<=local_connectome_visualisation_filename_layered_direction_flow_number_coloursets; coloursetIndex++)
 			{
 				string local_connectome_visualisation_filename_base = string(LOCAL_CONNECTOME_VISUALISATION_FILENAME_COLOURSET_PREPEND) + local_connectome_visualisation_filename_layered_direction_flow+ SHAREDvars.convertIntToString(coloursetIndex) + LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_LAYERED_SPECIFIC_LAYER + SHAREDvars.convertIntToString(layerIndex);
-				this->visualiseLocalConnectomeGenerateContent(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, generate2Dvisualisation, localConnectionCSVdatasetNeurons, localConnectionCSVdatasetConnections, local_connectome_visualisation_filename_base, coloursetIndex, true, true, true, true, layerIndex, visualiseTrace, traceIterationIndex);
+				this->visualiseLocalConnectomeGenerateContent(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, generate2Dvisualisation, localConnectomeCSVdatasetNeurons, localConnectomeCSVdatasetConnections, local_connectome_visualisation_filename_base, coloursetIndex, true, true, true, true, layerIndex, visualiseTrace, traceIterationIndex);
 			}		
 		}
 		#endif
@@ -202,7 +195,7 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 	return result;
 }
 
-bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectomeGenerateContent(const string local_connectome_folder_base, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, const bool generate2Dvisualisation, vector<vector<string>>* localConnectionCSVdatasetNeurons, vector<vector<string>>* localConnectionCSVdatasetConnections, const string local_connectome_visualisation_filename_base, const int coloursetNumber, const bool visualiseLayers, const bool visualiseDirection, const bool visualiseFlow, const bool visualiseLayersSpecific, const int layerIndexVisualise, const bool visualiseTrace, const int traceIterationIndex)
+bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectomeGenerateContent(const string local_connectome_folder_base, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, const bool generate2Dvisualisation, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, const string local_connectome_visualisation_filename_base, const int coloursetNumber, const bool visualiseLayers, const bool visualiseDirection, const bool visualiseFlow, const bool visualiseLayersSpecific, const int layerIndexVisualise, const bool visualiseTrace, const int traceIterationIndex)
 {
 	bool result = true;
 				
@@ -218,9 +211,9 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 		localConnectomeVisualisationContentsPart4 = localConnectomeVisualisationContentsPart4 + LOCAL_CONNECTOME_VISUALISATION_NEURONS_LDR_HEADER_TEXT + STRING_NEWLINE;
 	}
 	#endif
-	for(int i=0;i<localConnectionCSVdatasetNeurons->size(); i++)
+	for(int i=0;i<localConnectomeCSVdatasetNeurons->size(); i++)
 	{
-		vector<string> localConnectionCSVdatasetNeuron = (*localConnectionCSVdatasetNeurons)[i];
+		vector<string> localConnectionCSVdatasetNeuron = (*localConnectomeCSVdatasetNeurons)[i];
 		
 		bool passLayerVisualisationChecks = true;
 
@@ -496,11 +489,11 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 		localConnectomeVisualisationContentsPart6 = localConnectomeVisualisationContentsPart6 + LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_LDR_HEADER_TEXT + STRING_NEWLINE;
 	}
 	#endif
-	for(int i=0;i<localConnectionCSVdatasetConnections->size(); i++)
+	for(int i=0;i<localConnectomeCSVdatasetConnections->size(); i++)
 	{
-		//cout << "localConnectionCSVdatasetConnections: i = " << i << endl;
+		//cout << "localConnectomeCSVdatasetConnections: i = " << i << endl;
 
-		vector<string> localConnectionCSVdatasetConnection = (*localConnectionCSVdatasetConnections)[i];
+		vector<string> localConnectionCSVdatasetConnection = (*localConnectomeCSVdatasetConnections)[i];
 
 
 		#ifdef LOCAL_CONNECTOME_VISUALISATION_3D

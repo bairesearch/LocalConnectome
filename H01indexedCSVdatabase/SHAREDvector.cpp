@@ -1,10 +1,10 @@
 /*******************************************************************************
  *
  * File Name: SHAREDvector.cpp
- * Author: Richard Bruce Baxter - Copyright (c) 2005-2021 Baxter AI (baxterai.com)
+ * Author: Richard Bruce Baxter - Copyright (c) 2005-2022 Baxter AI (baxterai.com)
  * License: MIT License
  * Project: Generic Construct Functions
- * Project Version: 3p4a 07-August-2021
+ * Project Version: 3p5a 14-March-2022
  * /
  *******************************************************************************/
 
@@ -313,7 +313,7 @@ void SHAREDvectorClass::createScaleMatrix2D(mat* matrix, double scaleFactor)
 
 }
 
-void SHAREDvectorClass::multiplyVectorByMatrix(vec* vecNew, vec* vecToMultiply, mat* matrix)
+void SHAREDvectorClass::multiplyVectorByMatrix(vec* vecNew, const vec* vecToMultiply, const mat* matrix)
 {
 	vecNew->x = matrix->a.x*vecToMultiply->x + matrix->b.x*vecToMultiply->y +  matrix->c.x*vecToMultiply->z;
 	vecNew->y = matrix->a.y*vecToMultiply->x + matrix->b.y*vecToMultiply->y +  matrix->c.y*vecToMultiply->z;
@@ -536,7 +536,7 @@ void SHAREDvectorClass::copyMatricies(mat* matNew, const mat* matToCopy)
 	copyVectors(&(matNew->c), &(matToCopy->c));
 }
 
-void SHAREDvectorClass::multiplyMatricies(mat* matNew, mat* mat1, mat* mat2)
+void SHAREDvectorClass::multiplyMatricies(mat* matNew, const mat* mat1, const mat* mat2)
 {
 	matNew->a.x = mat1->a.x*mat2->a.x + mat1->b.x*mat2->a.y +  mat1->c.x*mat2->a.z;
 	matNew->b.x = mat1->a.x*mat2->b.x + mat1->b.x*mat2->b.y +  mat1->c.x*mat2->b.z;
@@ -552,7 +552,7 @@ void SHAREDvectorClass::multiplyMatricies(mat* matNew, mat* mat1, mat* mat2)
 }
 
 
-void SHAREDvectorClass::subtractVectors(vec* vecNew, vec* a, vec* b)
+void SHAREDvectorClass::subtractVectors(vec* vecNew, const vec* a, const vec* b)
 {
 
 	vecNew->x = a->x - b->x;
@@ -560,7 +560,7 @@ void SHAREDvectorClass::subtractVectors(vec* vecNew, vec* a, vec* b)
 	vecNew->z = a->z - b->z;
 }
 
-void SHAREDvectorClass::addVectors(vec* vecNew, vec* a, vec* b)
+void SHAREDvectorClass::addVectors(vec* vecNew, const vec* a, const vec* b)
 {
 
 	vecNew->x = a->x + b->x;
@@ -1106,5 +1106,87 @@ bool SHAREDvectorClass::twoPointsAreTheSame2Drelaxed(const double x1, const doub
 }
 
 #endif
+
+
+
+double SHAREDvectorClass::calculateAngleSigned(const vec* vec1, const vec* vec2)
+{    
+	/*
+	//postcondition: calculates interior/exterior angle between -PI and +PI, and correct sign is applied if line1 and line2 face opposite directions (ie exterior angle)
+	//if V2 rotated to the right of V1, then angleRadians is positive (else negative)
+	https://stackoverflow.com/questions/2663570/how-to-calculate-both-positive-and-negative-angle-between-two-lines
+	https://www.euclideanspace.com/maths/algebra/vectors/angleBetween/issues/index.htm
+	*/
+	
+	vec line1Start = {0.0, 0.0, 0.0};
+	vec line2Start = {0.0, 0.0, 0.0};
+	vec line1End = *vec1;
+    vec line2End = *vec2;
+	double a = line1End.x - line1Start.x;
+    double b = line1End.y - line1Start.y;
+    double c = line2End.x - line2Start.x;
+    double d = line2End.y - line2Start.y;
+    double atanA = atan2(a, b);
+    double atanB = atan2(c, d);
+	double angleRadians = atanA - atanB;
+	
+	if(angleRadians > PI)
+	{
+		angleRadians = angleRadians - (2.0*PI);	
+	}
+	else if(angleRadians < -PI)
+	{
+		angleRadians = angleRadians + (2.0*PI);
+	}
+	
+	return angleRadians;
+}
+
+double SHAREDvectorClass::calculateInteriorAngle(const vec* vec1, const vec* vec2)
+{
+	double interiorAngle = acos(dotProduct(vec1, vec2) / (findMagnitudeOfVector(vec1)* findMagnitudeOfVector(vec2)));	//radians
+	return interiorAngle;
+}
+
+double SHAREDvectorClass::calculateRotationSign(const vec* vec1, const vec* vec2)
+{
+	bool rotationSign = false;
+	double crossProduct = calculateCrossProduct2D(vec1, vec2);
+	if(rotationSign > 0.0)
+	{
+		rotationSign = true;	//CHECKTHIS
+	}
+	else
+	{
+		rotationSign = false;
+	}
+	return rotationSign;
+}
+
+double SHAREDvectorClass::calculateCrossProduct2D(const vec* vec1, const vec* vec2)
+{
+	double crossProduct =  vec1->x*vec2->y - vec2->x*vec1->y;
+	return crossProduct;
+}
+
+void SHAREDvectorClass::performVectorXYswitch(vec* vec1, vec* vec2)
+{
+	vec vecTemp;
+	vecTemp.x = vec1->x;
+	vecTemp.y = vec1->y;
+	vec1->x = vec2->x;
+	vec1->y = vec2->y;
+	vec2->x = vecTemp.x;
+	vec2->y = vecTemp.y;
+}
+
+void SHAREDvectorClass::calculatePointGivenAngleAndMagnitude(vec* vecNew, const double angleRadians, const double magnitude)
+{
+	vecNew->x = magnitude * sin(angleRadians);
+	vecNew->y = magnitude * cos(angleRadians);
+	vecNew->z = 0.0;	
+}
+
+
 
 

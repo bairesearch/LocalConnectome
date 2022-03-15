@@ -59,6 +59,21 @@ extern string currentDirectory;
 
 
 //configuration:
+#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL
+	#define INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL_NORMALISE_LOCAL_CONNECTIVITY	//generate higher accuracy model by measuring neuron position relative to precise cortical map
+	#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL_NORMALISE_LOCAL_CONNECTIVITY
+		//neural connectivity model will be aligned to localised/average cortical positive flow direction (rather than using default H01 C3 Synaptic connections database/H01 indexed CSV database x/y coordinates system)
+			//this enables a more accurate spatial cortical connectivity model (that is independent of the curvature of the observed H01 cortical sheet)
+		#define INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL_NORMALISE_LOCAL_CONNECTIVITY_USE_LAYER_BOUNDS	//neural spatial connectivity model aligned to localised cortical positive flow direction (based on precise position of source neuron in cortical map)
+		//#define INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL_NORMALISE_LOCAL_CONNECTIVITY_USE_FLOW_VECTOR	//neural spatial connectivity model aligned to average cortical positive flow direction	//less accurate
+	#endif
+	//#define INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL_TYPE_CURVED_CORTEX_SIMPLE_Z_EXTRAPOLATION	//option 1 //copy data in z direction for x iterations	//NOT YET IMPLEMENTED
+	//#define INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL_TYPE_FLAT_CORTEX	//option 2	//cannot use existing 2D/3D graph templates to visualise model	//NOT YET IMPLEMENTED
+	//#define INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL_TYPE_CURVED_CORTEX	//option 3	//NOT YET IMPLEMENTED
+	#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL_TYPE_SIMPLE_Z_EXTRAPOLATION
+		#define INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL_TYPE_CURVED_CORTEX_SIMPLE_Z_EXTRAPOLATION_MULTIPLIER (10)	//number of copies of mapped cortical slice to add in z direction
+	#endif
+#endif
 #ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS
 	#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL	//independently count the connections within the local connectome connections dataset (layer to layer matrix)	//compare local connectome counts against counts from https://www.biorxiv.org/content/10.1101/2021.05.29.446289v3/v4 Supplementary Table 5. Summary of Machine Learning-identified connections	//added 7 December 2021
 	//#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_DISTANCES	//print distances between neuron somas and their connections at each layer - used to identify INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL lateral distance probability of connection functions
@@ -175,11 +190,10 @@ extern string currentDirectory;
 	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES_USEALLVALUESAVAILABLEFROMINBODYCELLCONNECTION "localConnectomeConnections-typesFromEMimages-useAllValuesAvailableFromInBodyCellConnection.csv"
 	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES_UNKNOWN_NEURON_ID "0"
 #endif
-
 #ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL
-	#define LOCAL_CONNECTOME_DATASET_LARGER_MODEL_NEURONS_FILENAME "localConnectomeNeuronsLargeModel.csv"
-	#define LOCAL_CONNECTOME_DATASET_LARGER_MODEL_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS "localConnectomeConnectionsLargeModel-typesFromPresynapticNeurons.csv"
-	#define LOCAL_CONNECTOME_DATASET_LARGER_MODEL_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES "localConnectomeConnectionsLargeModel-typesFromEMimages.csv"
+	#define LOCAL_CONNECTOME_DATASET_LARGE_MODEL_NEURONS_FILENAME "localConnectomeNeuronsLargeModel.csv"
+	#define LOCAL_CONNECTOME_DATASET_LARGE_MODEL_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS "localConnectomeConnectionsLargeModel-typesFromPresynapticNeurons.csv"
+	#define LOCAL_CONNECTOME_DATASET_LARGE_MODEL_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES "localConnectomeConnectionsLargeModel-typesFromEMimages.csv"
 #endif
 
 	
@@ -635,9 +649,14 @@ extern string currentDirectory;
 		#define LOCAL_CONNECTOME_VISUALISATION_NEURONS_COLOUR_UNKNOWNNEURON_LAYER7 (SHARED_COLOUR_WHITE)
 		*/
 	#endif
-	#ifdef LOCAL_CONNECTOME_VISUALISATION_LAYERS
+	#ifdef INDEXED_CSV_DATABASE_CALCULATE_NEURON_LAYERS
 		#ifndef LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS_LAYERS
 			#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER (6)	//dynamically pregenerated once and saved for efficiency
+		#endif
+		#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL_NORMALISE_LOCAL_CONNECTIVITY
+			//data storage not currently compatible with INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME execution; 
+			#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER_SURFACE_NORM_X (7)
+			#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER_SURFACE_NORM_Y (8)
 		#endif
 	#endif
 	#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME
@@ -649,6 +668,10 @@ extern string currentDirectory;
 			#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_ACTIVATION_LEVEL_POSITIVE (16)	//dynamically pregenerated once and saved for efficiency
 			#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_ACTIVATION_LEVEL_NEGATIVE (17)	//dynamically pregenerated once and saved for efficiency
 			//#endif		
+			#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL_NORMALISE_LOCAL_CONNECTIVITY
+				#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER_SURFACE_NORM_X (18)
+				#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER_SURFACE_NORM_Y (19)			
+			#endif
 		#else
 			#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE (7)	//dynamically pregenerated once and saved for efficiency
 			#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_TRACE_HIGHLIGHT1 (8)	//dynamically pregenerated once and saved for efficiency
@@ -748,7 +771,9 @@ extern string currentDirectory;
 
 //mode INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME parameters:
 #ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME
-		
+
+	#define INDEXED_CSV_DATABASE_QUERY_EFFICIENT_STORE_NEURON_IDS_IN_MAP	//required
+			
 	#define INDEXED_CSV_DATABASE_TRACE_VISUALISATION_VIDEO
 	#ifdef INDEXED_CSV_DATABASE_TRACE_VISUALISATION_VIDEO
 		#define INDEXED_CSV_DATABASE_TRACE_VISUALISATION_VIDEO_CROP	//removes cortical layers border such that when output images are cropped border is not cut through

@@ -20,25 +20,39 @@
 #include "H01indexedCSVdatabase.hpp"
 #include "H01indexedCSVdatabaseOperations.hpp"
 #include "SHAREDvars.hpp"
+#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL
+#include "SHAREDvector.hpp"
+#endif
 
 
 class H01indexedCSVdatabaseCalculateNeuronLayerClass
 {
 	private: SHAREDvarsClass SHAREDvars;
+	#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL
+	private: SHAREDvectorClass SHAREDvector;
+	#endif
 	private: H01indexedCSVdatabaseOperationsClass H01indexedCSVdatabaseOperations;
 
-	#ifdef INDEXED_CSV_DATABASE_CALCULATE_NEURON_LAYERS
-	public: bool calculateLocalConnectomeLayers(vector<vector<string>>* localConnectomeNeurons, vector<vector<string>>* localConnectomeConnections, map<string, int>* neuronMap, const bool readConnections);
-		#ifdef LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS_LAYERS
-		public: bool transferLocalConnectomeNeuronLayersToConnectionsLayers(vector<vector<string>>* localConnectomeNeurons, vector<vector<string>>* localConnectionCSVdataset, map<string, int>* neuronMap);
-		#else
-		public: bool readCorticalLayersBoundaryKeypointTable(const string corticalLayersBoundaryKeypointTableFileName, vector<vector<vec>>* corticalLayersKeypoints);
-		public: bool calculateNeuronLayers(const bool localConnectomeDatasetType, vector<vector<string>>* localConnectionCSVdataset, vector<vector<vec>>* corticalLayersKeypoints);
-			private: int calculateNeuronLayer(int corticalLayersNumLayers, vector<vector<vec>>* corticalLayersKeypoints, double neuronX, double neuronY);
-				private: bool isNeuronInCorticalLayer(int layerIndex, double neuronX, double neuronY, vector<vec>* corticalLayerKeypoints);
-					private: bool isPointRightOfLine(double Ax, double Ay, double Bx, double By, double X, double Y);
+	public: bool readLocalNeuronsAndConnections(const string local_connectome_folder_base, const string neuronDatasetOrListFileName, const bool neuronListIsDataset, vector<string>* neuronList, map<string, int>* neuronMap, vector<vector<string>>* localConnectomeCSVdatasetNeurons, const bool readConnections, const string neuronListConnectionsFileName, vector<vector<string>>* localConnectomeCSVdatasetConnections, const bool buildConnectionsMap, map<string, int>* connectionsMap, const bool readLayers, const bool readLayersConnections);
+		
+		#ifdef INDEXED_CSV_DATABASE_CALCULATE_NEURON_LAYERS
+		public: bool calculateLocalConnectomeLayers(vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, map<string, int>* neuronMap, const bool readConnections);
+			#ifdef LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS_LAYERS
+			private: bool transferLocalConnectomeNeuronLayersToConnectionsLayers(vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectionCSVdataset, map<string, int>* neuronMap);
+			#endif
+			//#ifndef LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS_LAYERS
+			private: bool readCorticalLayersBoundaryKeypointTable(const string corticalLayersBoundaryKeypointTableFileName, vector<vector<vec>>* corticalLayersKeypoints);
+			private: bool calculateNeuronLayers(const bool localConnectomeDatasetType, vector<vector<string>>* localConnectionCSVdataset, vector<vector<vec>>* corticalLayersKeypoints);
+				private: int calculateNeuronLayer(const int corticalLayersNumLayers, vector<vector<vec>>* corticalLayersKeypoints, const vec* neuronPos, vec* layerSurfaceNormVector);
+					private: bool isNeuronInCorticalLayer(const int layerIndex, const vec* neuronPos, vector<vec>* corticalLayerKeypoints, const bool rightOfLine, vec* layerSurfaceNormVector);
+						private: bool isPointRightOrLeftOfLine(const double Ax, const double Ay, const double Bx, const double By, const double X, const double Y, const bool rightOfLine);
+			//#endif
+		#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL_NORMALISE_LOCAL_CONNECTIVITY
+		public: bool calculateLocalConnectomeNeuronLayerSurfaceNorms(vector<vector<string>>* localConnectomeCSVdatasetNeurons, map<string, int>* neuronMap);
+			private: bool calculateNeuronLayerSurfaceNorms(vector<vector<string>>* localConnectionCSVdataset, vector<vector<vec>>* corticalLayersKeypoints);
+				private: int calculateNeuronLayerSurfaceNorm(int corticalLayersNumLayers, vector<vector<vec>>* corticalLayersKeypoints, const vec* neuronPos, vec* layerSurfaceNormVector);
 		#endif
-	#endif
+		#endif
 };
 
 #endif

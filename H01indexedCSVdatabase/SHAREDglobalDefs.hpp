@@ -1,10 +1,11 @@
 /*******************************************************************************
  *
  * File Name: SHAREDglobalDefs.hpp
- * Author: Richard Bruce Baxter - Copyright (c) 2005-2021 Baxter AI (baxterai.com)
+ * Author: Richard Bruce Baxter - Copyright (c) 2005-2022 Baxter AI (baxterai.com)
  * License: MIT License
  * Project: Generic Construct Functions
- * Project Version: 3p4a 07-August-2021
+ * Project Version: 3p5a 14-March-2022
+ * License: 
  * Description: Generic Construct Functions: shared global definitions (configure to compile different BAI projects)
  * /
  *******************************************************************************/
@@ -18,6 +19,37 @@ class SHAREDglobalDefsClass
 {
 };
 
+	/**********
+	SOURCE PROJECT VARIABLES;
+	***********/
+
+	//current/active projects;
+//#define COMPILE_NLCI		//QTcreator NLCI.pro -> NLCI.exe
+//#define COMPILE_GIAI		//QTcreator GIAI.pro -> GIAI.exe
+//#define COMPILE_CF		//compileCF.bat -> CF.exe
+//#define COMPILE_NLC		//makefile.NLC -> NLC.exe
+#define COMPILE_SANI		//makefile.SANI -> SANI.exe
+//#define COMPILE_GIA		//makefile.GIA -> GIA.exe
+//#define COMPILE_GIA_WITH_ANN	//makefile.GIAwithANN -> GIA.exe
+//#define COMPILE_LRP_GENERATE_POS_TAGGER_DATABASE		//makefile.LRPgeneratePOStaggerDatabase -> LRPgeneratePOStaggerDatabase.exe
+//#define COMPILE_LRP_WITH_ANN_GENERATE_POS_TAGGER_DATABASE	//makefile.LRPwithANNgeneratePOStaggerDatabase -> LRPgeneratePOStaggerDatabase.exe
+//#define COMPILE_ATOR		//makefile.ATOR -> ATOR.exe
+//#define COMPILE_CS		//makefile.CS -> CS.exe
+//#define COMPILE_RT		//makefile.RT -> RT.exe
+//#define COMPILE_ANN_WITH_RT	//makefile.ANNwithRT -> ANN.exe
+//#define COMPILE_ANN		//makefile.ANN -> ANN.exe
+
+//#define COMPILE_OLC		//compileOLC.bat -> OLC.exe
+//#define COMPILE_LRRC	//makefile.LRRC -> LRRC.exe
+//#define COMPILE_UNREAL_PROJECT
+
+	//inactive tests;
+//#define COMPILE_LRRC_WITH_ANN
+//#define COMPILE_TH_ANN_WITH_LRRC
+//#define COMPILE_LRP_WITH_SANI_MASS_INPUT	//makefile.LRPwithSANImassInput -> LRPexecuteSANImassInput.exe
+
+
+
 
 	/**********
 	OS DEPENDENT VARIABLES;
@@ -30,6 +62,121 @@ class SHAREDglobalDefsClass
 	#include <cstdint>
 #endif
 
+#define SQL_MYSQL_VERSION_5_7_PLUS
+
+	/**********
+	COMPILATION TYPE DEPENDENT VARIABLES;
+	***********/
+
+#ifdef COMPILE_UNREAL_PROJECT
+	#define USE_UNREAL
+	#define USE_RT
+	#ifdef LINUX
+		#define DEFAULT_PARTS_DIRECTORY_FULL_PATH "/usr/share/local/LDRAW/PARTS/"
+		#define DEFAULT_PARTS_PRIMITIVES_DIRECTORY_FULL_PATH "/usr/share/local/LDRAW/P/"
+	#else
+		#define DEFAULT_PARTS_DIRECTORY_FULL_PATH "D:/Program Files (x86)/LDraw/PARTS/parts/"
+		#define DEFAULT_PARTS_PRIMITIVES_DIRECTORY_FULL_PATH "D:/Program Files (x86)/LDraw/PARTS/p/"
+	#endif
+#endif
+
+#ifdef COMPILE_CF
+	#define USE_CF
+#endif
+
+#ifdef COMPILE_NLCI
+	#define USE_NLCI
+	#define USE_NLC
+	#define USE_GIA
+	#define USE_SANI	//required for GIA_POS_REL_TRANSLATOR
+	#define USE_LRP
+#endif
+
+#ifdef COMPILE_GIAI
+	#define USE_GIAI
+	#define USE_GIA
+	#define USE_SANI	//required for GIA_POS_REL_TRANSLATOR
+	#define USE_LRP
+#endif
+
+#ifdef COMPILE_NLC
+	#define USE_NLC
+	#define USE_GIA
+	#define USE_SANI	//required for GIA_POS_REL_TRANSLATOR
+	#define USE_LRP
+#endif
+
+#ifdef COMPILE_SANI
+	#define USE_SANI
+	#define USE_ANN
+	#define USE_RT
+	#define USE_LRP
+#endif
+#ifdef COMPILE_GIA_WITH_ANN
+	#define COMPILE_GIA
+	#define USE_ANN
+#endif
+#ifdef COMPILE_GIA
+	#define USE_GIA
+	#define USE_SANI	//required for GIA_POS_REL_TRANSLATOR
+	#define USE_LRP
+#endif
+#ifdef COMPILE_LRP_WITH_ANN_GENERATE_POS_TAGGER_DATABASE
+	#define COMPILE_LRP_GENERATE_POS_TAGGER_DATABASE
+	//#define USE_GIA
+	#define USE_ANN
+	#define USE_RT
+#endif
+#ifdef COMPILE_LRP_GENERATE_POS_TAGGER_DATABASE
+	#define USE_LRP
+	//#define USE_GIA
+#endif
+#ifdef USE_GIA
+	#define USE_RT
+#endif
+
+#ifdef COMPILE_CS
+	#define USE_CS
+#endif
+#ifdef USE_CS
+	#define USE_RT
+#endif
+
+#ifdef COMPILE_ATOR
+	#define USE_ATOR
+#endif
+#ifdef USE_ATOR
+	#define USE_RT
+#endif
+
+
+#ifdef COMPILE_ANN_WITH_RT
+	#define COMPILE_ANN
+	#define USE_RT
+#endif
+#ifdef COMPILE_ANN
+	#define USE_ANN
+#endif
+
+#ifdef COMPILE_RT
+	#define USE_RT
+#endif
+
+
+#ifdef COMPILE_LRRC
+	#define USE_LRRC
+#endif
+#ifdef COMPILE_LRRC_WITH_ANN
+	#define USE_LRRC
+	#define USE_ANN
+	#define USE_RT
+#endif
+#ifdef COMPILE_TH_ANN_WITH_LRRC
+	#define USE_LRRC
+	#define USE_ANN
+	#define TH_USE_ANN_TEST_HARNESS
+	#define USE_RT
+#endif
 
 
 #include <iostream>
@@ -89,7 +236,7 @@ using namespace std;
 #define CHAR_GREATER_THAN '>'
 #define CHAR_LESS_THAN '<'
 #define CHAR_PLUS '+'
-#define CHAR_EXCLAMATION_HIGHLIGHT2 '!'
+#define CHAR_EXCLAMATION_MARK '!'
 #define CHAR_AMPERSAND '&'
 #define CHAR_TILDA '~'
 #define CHAR_FOLDER_DELIMITER '/'
@@ -159,6 +306,8 @@ extern string outputFolder;
 #define SHARED_COLOUR_LIGHT_ORANGE (125)
 #define SHARED_COLOUR_LIGHT_PURPLE (31)
 #define SHARED_COLOUR_LIGHT_AQUA (118)
+
+
 
 #endif
 

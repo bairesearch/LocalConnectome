@@ -45,9 +45,7 @@
 #define HEADER_H01indexedCSVdatabaseQuery
 
 #include "H01indexedCSVdatabase.hpp"
-#ifdef INDEXED_CSV_DATABASE_QUERY_LAYERS
-#include "H01indexedCSVdatabaseCalculateNeuronLayer.hpp"
-#endif
+#include "H01indexedCSVdatabaseCalculateNeuronLayer.hpp"	//now used universally for local connectome i/o wrapper - not just by INDEXED_CSV_DATABASE_QUERY_LAYERS
 #include "H01indexedCSVdatabaseOperations.hpp"
 #include "SHAREDvars.hpp"
 #ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL
@@ -116,25 +114,28 @@ class H01indexedCSVdatabaseQueryClass
 	private: SHAREDvectorClass SHAREDvector;
 	#endif
 	private: H01indexedCSVdatabaseOperationsClass H01indexedCSVdatabaseOperations;
-	#ifdef INDEXED_CSV_DATABASE_QUERY_LAYERS
 	private: H01indexedCSVdatabaseCalculateNeuronLayerClass H01indexedCSVdatabaseCalculateNeuronLayer;
-	#endif
 	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS
 	private: vector<H01connectivityModelClass>* generateNumberOfConnectionsLayers();
 	private: vector<vector<H01connectivityModelClass>>* generateNumberOfConnectionsLayersLayers();
-	private: void incrementNumberOfConnections(GaussianQuad* gaussianQuad, vec* posSource, vec* posTarget);
+	private: void incrementNumberOfConnections(GaussianQuad* gaussianQuad, const vec* posSource, const vec* posTarget, const vec* sourceNeuronCorticalFlowVector);
 	#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL
-		private: void incrementGaussianQuad(GaussianQuad* gaussianQuad, vec* posSource, vec* posTarget);
+		private: void incrementGaussianQuad(GaussianQuad* gaussianQuad, const vec* posSource, const vec* posTarget, const vec* sourceNeuronCorticalFlowVector);
 	private: void averageGaussianQuad(GaussianQuad* gaussianQuad);
 	#endif
 	#endif
+	#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL	
+	public: double calculateInteriorAngle(vec* vec1, vec* vec2);	//should be moved to SHAREDvector
+	#endif
+
+
 	public: bool queryIndexedCSVdatabase(const int queryMode, const string indexed_csv_database_folder, const string local_connectome_folder_base);
 		#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL
 		private: bool generateLargeModelNeuronsAndConnectionsWrapper(const int queryMode, const string indexed_csv_database_folder, const string local_connectome_folder_base, const string neuronDatasetOrListFileName, const bool neuronListIsDataset, const bool write, const bool appendToFile, const string neuronListConnectionsFileName, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, vector<H01connectivityModelClass>* numberOfConnectionsLayersIncoming, vector<H01connectivityModelClass>* numberOfConnectionsLayersOutgoing);
 		#endif
 		private: bool queryIndexedCSVdatabaseByNeuronDatasetOrListFile(const int queryMode, const string indexed_csv_database_folder, const string local_connectome_folder_base, const string neuronDatasetOrListFileName, const bool neuronListIsDataset, const bool queryPresynapticConnectionNeurons, const bool write, const bool appendToFile, const string neuronListConnectionsFileName, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, vector<H01connectivityModelClass>* connectivityModelLayers = NULL);
-			private: bool readLocalNeuronsAndConnections(const int queryMode, const string indexed_csv_database_folder, const string local_connectome_folder_base, const string neuronDatasetOrListFileName, const bool neuronListIsDataset, const bool write, const string neuronListConnectionsFileName, vector<string>* neuronList, map<string, int>* neuronMap, vector<vector<string>>* localConnectomeNeurons, vector<vector<string>>* localConnectomeConnections, map<string, int>* connectionsMap);
-			private: bool queryIndexedCSVdatabaseByNeuronList(const int queryMode, const string indexed_csv_database_folder, vector<string>* neuronList, map<string, int>* neuronMap, vector<vector<string>>* localConnectomeNeurons, vector<vector<string>>* localConnectomeConnections, map<string, int>* connectionsMap, const bool queryByPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, ofstream* writeFileObject, string* writeFileString, const bool appendToFile, vector<H01connectivityModelClass>* connectivityModelLayers = NULL);
+			private: bool readLocalNeuronsAndConnections(const int queryMode, const string indexed_csv_database_folder, const string local_connectome_folder_base, const string neuronDatasetOrListFileName, const bool neuronListIsDataset, const bool write, const string neuronListConnectionsFileName, vector<string>* neuronList, map<string, int>* neuronMap, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, map<string, int>* connectionsMap);
+			private: bool queryIndexedCSVdatabaseByNeuronList(const int queryMode, const string indexed_csv_database_folder, vector<string>* neuronList, map<string, int>* neuronMap, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, map<string, int>* connectionsMap, const bool queryByPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, ofstream* writeFileObject, string* writeFileString, const bool appendToFile, vector<H01connectivityModelClass>* connectivityModelLayers = NULL);
 				#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL
 				private: void generateLargeModelNeuronsAndConnectionsLayers(constEffective vector<H01connectivityModelClass>* connectivityModelLayersIncomingLayers, constEffective vector<H01connectivityModelClass>* connectivityModelLayersOutgoingLayers, const bool countLocalConnectomeNeurons, const bool countInternalConnectomeConnections, const bool countExternalConnectomeConnections);
 					private: void generateLargeModelNeuronsAndConnections(const H01connectivityModelClass* connectivityModelLayersIncoming, const H01connectivityModelClass* connectivityModelLayersOutgoing, const bool countLocalConnectomeNeurons, const bool countInternalConnectomeConnections, const bool countExternalConnectomeConnections);
@@ -144,13 +145,13 @@ class H01indexedCSVdatabaseQueryClass
 				private: void printNumberOfConnectionsLayers(const bool queryByPresynapticConnectionNeurons, constEffective vector<H01connectivityModelClass>* connectivityModelLayers, const bool countLocalConnectomeNeurons, const bool countInternalConnectomeConnections, const bool countExternalConnectomeConnections);
 					private: void printNumberOfConnections(const bool queryByPresynapticConnectionNeurons, const H01connectivityModelClass* connectivityModel, const bool countLocalConnectomeNeurons, const bool countInternalConnectomeConnections, const bool countExternalConnectomeConnections);
 				#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL
-				private: bool countConnectionsLocal(vector<string>* neuronList, map<string, int>* neuronMap, vector<vector<string>>* localConnectomeNeurons, vector<vector<string>>* localConnectomeConnections, const bool queryPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages);
+				private: bool countConnectionsLocal(const int queryMode, vector<string>* neuronList, map<string, int>* neuronMap, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, const bool queryPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages);
 				#endif			
 				#endif		
 
 		#ifdef INDEXED_CSV_DATABASE_QUERY_COMPLETE_LOCAL_CONNECTOME_CONNECTIONS_DATASET
-		private: bool queryIndexedCSVdatabaseByConnectionDatasetFile(const int queryMode, const string indexed_csv_database_folder, const string local_connectome_folder_base, const bool connectionDatasetRead, const string connectionDatasetFileNameRead, vector<vector<string>>* localConnectomeConnections, const bool queryPresynapticConnectionNeurons, const bool connectionDatasetWrite, const bool appendToFile, const string connectionDatasetFileNameWrite, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages);
-			private: bool queryIndexedCSVdatabaseByConnectionNeuronList(const int queryMode, const string indexed_csv_database_folder, vector<string>* neuronList, vector<vector<string>>* localConnectomeConnections, const bool queryByPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, const bool connectionDatasetWrite, ofstream* writeFileObject, string* writeFileString);
+		private: bool queryIndexedCSVdatabaseByConnectionDatasetFile(const int queryMode, const string indexed_csv_database_folder, const string local_connectome_folder_base, const bool connectionDatasetRead, const string connectionDatasetFileNameRead, vector<vector<string>>* localConnectomeCSVdatasetConnections, const bool queryPresynapticConnectionNeurons, const bool connectionDatasetWrite, const bool appendToFile, const string connectionDatasetFileNameWrite, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages);
+			private: bool queryIndexedCSVdatabaseByConnectionNeuronList(const int queryMode, const string indexed_csv_database_folder, vector<string>* neuronList, vector<vector<string>>* localConnectomeCSVdatasetConnections, const bool queryByPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, const bool connectionDatasetWrite, ofstream* writeFileObject, string* writeFileString);
 		#endif
 				private: bool queryIndexedCSVdatabaseByNeuronID(const string indexed_csv_database_folder, const string neuronID, const bool queryByPresynapticConnectionNeurons, vector<vector<string>>* neuronConnectionList);
 					private: bool convertCSVlineToVector(const string* csvLineText, vector<string>* csvLineVector);

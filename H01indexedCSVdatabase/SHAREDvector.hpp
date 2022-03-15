@@ -1,10 +1,10 @@
 /*******************************************************************************
  *
  * File Name: SHAREDvector.hpp
- * Author: Richard Bruce Baxter - Copyright (c) 2005-2021 Baxter AI (baxterai.com)
+ * Author: Richard Bruce Baxter - Copyright (c) 2005-2022 Baxter AI (baxterai.com)
  * License: MIT License
  * Project: Generic Construct Functions
- * Project Version: 3p4a 07-August-2021
+ * Project Version: 3p5a 14-March-2022
  * /
  *******************************************************************************/
 
@@ -113,12 +113,12 @@ class SHAREDvectorClass
 	public: bool compareMatricies(const mat* matA, const mat* matB);
 	public: void copyVectors(vec* vecNew, const vec* vecToCopy);
 	public: void copyMatricies(mat* matNew, const mat* matToCopy);
-	public: void multiplyVectorByMatrix(vec* vecNew, vec* vecToMultiply, mat* matrix);
+	public: void multiplyVectorByMatrix(vec* vecNew, const vec* vecToMultiply, const mat* matrix);
 
 	//semi shared
-	public: void multiplyMatricies(mat* matNew, mat* mat1, mat* mat2);
-	public: void subtractVectors(vec* vecNew, vec* a, vec* b);
-	public: void addVectors(vec* vecNew, vec* a, vec* b);
+	public: void multiplyMatricies(mat* matNew, const mat* mat1, const mat* mat2);
+	public: void subtractVectors(vec* vecNew, const vec* a, const vec* b);
+	public: void addVectors(vec* vecNew, const vec* a, const vec* b);
 	public: void multiplyVectorByScalar(vec* vec, double scalar);
 	public: void createIdentityMatrix(mat* matrix);
 
@@ -142,8 +142,7 @@ class SHAREDvectorClass
 
 
 
-	//From OLCoperations.h
-
+	//From OLCoperations.h;
 	public: void find2DintersectionPoint(double ax, double ay, double bx, double by, const double cx, const double cy, const double dx, const double dy, double* intersectionX, double* intersectionY, bool* interceptionFound, bool* interceptionPointFound);	//NB an interception may be a line and not a point
 		private: double calcDistanceBetweenTwoPoints2D(const double x1, const double y1, const double x2, const double y2);
 		private: bool solve2DlineEquationWithTwoPoints(double x1, double y1, const double x2, const double y2, double* m, double* i);
@@ -158,6 +157,16 @@ class SHAREDvectorClass
 	private: bool determineIfPointLiesOnAKnownLine2Drelaxed(const double m1, const double i1, const double x3, const double y3);
 	private: bool twoPointsAreTheSame2Drelaxed(const double x1, const double y1, const double x2, const double y2);
 	#endif
+	
+	
+	//From H01indexedCSVdatabase;
+	public: double calculateAngleSigned(const vec* vec1, const vec* vec2);
+	public: double calculateInteriorAngle(const vec* vec1, const vec* vec2);
+	public: double calculateRotationSign(const vec* vec1, const vec* vec2);
+	public: double calculateCrossProduct2D(const vec* vec1, const vec* vec2);
+	public: void performVectorXYswitch(vec* vec1, vec* vec2);
+	public: void calculatePointGivenAngleAndMagnitude(vec* vecNew, const double angleRadians, const double magnitude);
+		
 
 };
 
