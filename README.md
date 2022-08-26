@@ -191,7 +191,7 @@ Current local connectome visualisations for connectionTypesDerivedFromEMimages/c
 \- 2D SVG colour sets can be changed by modifying the visualisations/templates/connections_IE_part2-\*.svg file <"linearGradient"> tags.\
 \- 2D SVG colour sets can be added/removed by modifying H01indexedCSVdatabase.hpp: LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_\*_NUMBER_COLOURSETS and adding/removing visualisations/templates/connections_IE_part2-\*X.svg.
 
-*3D (SVG)*
+*3D (LDR)*
 - connections_IE1.ldr - connections coloured by excitatory/inhibitory type; neurons coloured by cell type.
 - connections_IE2.ldr - connections coloured by excitatory/inhibitory type; neurons coloured by cell type.
 - connections_IE_flow1.ldr - connections coloured by excitatory/inhibitory type and flow direction (through the cortical layers); neurons coloured by cell type.
