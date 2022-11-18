@@ -18,7 +18,7 @@ Source datasets are from the H01 Release of the Petascale Reconstruction of the 
 **C3 Synaptic connections database** - export of synaptic connections in Apache Avro/Json format (connection types derived from EM images, pre-post synaptic directionality encoded):
 - gs://h01-release/data/20210601/c3/synapses/exported/json (https://h01-release.storage.googleapis.com/data.html)
 
-**Local connectome connections dataset [intermediary]** as provided by Dr Yuelong Wu of the The Lichtman laboratory (includes cell centroids and cell types, pre-post synaptic directionality encoded):
+**Local connectome connections dataset [intermediary]** as provided by Dr Yuelong Wu of The Lichtman laboratory (includes cell centroids and cell types, pre-post synaptic directionality encoded):
 - in_body_cell_connection.csv
 
 **Local connectome somas dataset** available from the bioRxiv v4 release of the H01 paper (includes cell centroids and cell types):
