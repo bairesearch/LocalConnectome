@@ -97,11 +97,19 @@ public:
 	int numberOfLocalConnectomeNeuronsInhibitory;
 	//model synapse connections from soma as 4 independent half gaussians; in +x,-x,+y,-y directions 
 	GaussianQuad neuronModelConnectionsLocalConnectome;
-	GaussianQuad neuronModelConnectionsExternalConnectome;
 	GaussianQuad neuronModelConnectionsLocalConnectomeExcitatory;
-	GaussianQuad neuronModelConnectionsExternalConnectomeExcitatory;
 	GaussianQuad neuronModelConnectionsLocalConnectomeInhibitory;
+	GaussianQuad neuronModelConnectionsExternalConnectome;
+	GaussianQuad neuronModelConnectionsExternalConnectomeExcitatory;
 	GaussianQuad neuronModelConnectionsExternalConnectomeInhibitory;
+	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURSIVE
+	GaussianQuad neuronModelConnectionsLocalConnectomeRecursive;		//or numberOfLocalConnectomeConnectionsRecursive
+	GaussianQuad neuronModelConnectionsLocalConnectomeExcitatoryRecursive;		//or numberOfLocalConnectomeConnectionsExcitatoryRecursive
+	GaussianQuad neuronModelConnectionsLocalConnectomeInhibitoryRecursive;		//or numberOfLocalConnectomeConnectionsInhibitoryRecursive
+	GaussianQuad neuronModelConnectionsExternalConnectomeRecursive;		//or numberOfExternalConnectomeConnectionsRecursive
+	GaussianQuad neuronModelConnectionsExternalConnectomeExcitatoryRecursive;		//or numberOfExternalConnectomeConnectionsExcitatoryRecursive
+	GaussianQuad neuronModelConnectionsExternalConnectomeInhibitoryRecursive;		//or numberOfExternalConnectomeConnectionsInhibitoryRecursive
+	#endif
 };
 
 #endif
@@ -142,8 +150,8 @@ class H01indexedCSVdatabaseQueryClass
 				#endif
 				#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS
 				private: double getZNormalisationFactor();
-				private: void printNumberOfConnectionsLayers(const bool queryByPresynapticConnectionNeurons, constEffective vector<H01connectivityModelClass>* connectivityModelLayers, const bool countLocalConnectomeNeurons, const bool countInternalConnectomeConnections, const bool countExternalConnectomeConnections);
-					private: void printNumberOfConnections(const bool queryByPresynapticConnectionNeurons, const H01connectivityModelClass* connectivityModel, const bool countLocalConnectomeNeurons, const bool countInternalConnectomeConnections, const bool countExternalConnectomeConnections);
+				private: void printNumberOfConnectionsLayers(const bool queryByPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, constEffective vector<H01connectivityModelClass>* connectivityModelLayers, const bool countLocalConnectomeNeurons, const bool countInternalConnectomeConnections, const bool countExternalConnectomeConnections);
+					private: void printNumberOfConnections(const bool queryByPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, const H01connectivityModelClass* connectivityModel, const bool countLocalConnectomeNeurons, const bool countInternalConnectomeConnections, const bool countExternalConnectomeConnections);
 				#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL
 				private: bool countConnectionsLocal(const int queryMode, vector<string>* neuronList, map<string, int>* neuronMap, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, const bool queryPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages);
 				#endif			

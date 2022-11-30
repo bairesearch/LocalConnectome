@@ -75,14 +75,13 @@ extern string currentDirectory;
 	#endif
 #endif
 #ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS
-	#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL	//independently count the connections within the local connectome connections dataset (layer to layer matrix)	//compare local connectome counts against counts from https://www.biorxiv.org/content/10.1101/2021.05.29.446289v3/v4 Supplementary Table 5. Summary of Machine Learning-identified connections	//added 7 December 2021
+	//#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURSIVE	//optional //measure recursive connectivity of neurons (axon to dendrite)
+	//#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL	//optional //independently count the connections within the local connectome connections dataset (layer to layer matrix)	//compare local connectome counts against counts from https://www.biorxiv.org/content/10.1101/2021.05.29.446289v3/v4 Supplementary Table 5. Summary of Machine Learning-identified connections	//added 7 December 2021
+	//#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_OUTPUT_VERBOSE_LOCALORNONLOCAL	//optional	//print number excitatory/inhibitory neurons for each source neuronID	//compare against counts from https://h01-release.storage.googleapis.com/data.html - gs://h01-release/data/20210601/c3/tables/segments/counts000000000NNN.csv.gz	//added 24 November 2021a
 	//#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_DISTANCES	//print distances between neuron somas and their connections at each layer - used to identify INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL lateral distance probability of connection functions
 #endif
 #ifdef INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS
 	#define INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS_COUNT_NUMBER_INCOMING_OUTGOING_EXCITATORY_INHIBITORY_SYNAPSES	//added 30 November 2021 
-#endif
-#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS
-	//#define DEBUG_INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_OUTPUT_VERBOSE_LOCALORNONLOCAL	//compare against counts from https://h01-release.storage.googleapis.com/data.html - gs://h01-release/data/20210601/c3/tables/segments/counts000000000NNN.csv.gz	//added 24 November 2021a
 #endif
 #ifdef INDEXED_CSV_DATABASE_CREATE
 	#define INDEXED_CSV_DATABASE_CREATE_RECORD_CONFIDENCES	//added 26 November 2021a
@@ -472,6 +471,7 @@ extern string currentDirectory;
 		
 		#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_NUMBER_EXCITATORY_INHIBITORY_NEURONS
 		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_NUMBER_EXCITATORY_INHIBITORY_NEURONS
+			#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PER_NEURON
 			#define INDEXED_CSV_DATABASE_QUERY_READ_DATASET_LOCAL_CONNECTOME_NEURONS
 		#endif
 		
