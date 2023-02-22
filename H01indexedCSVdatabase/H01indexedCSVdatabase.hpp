@@ -6,7 +6,17 @@
  * Project: H01LocalConnectome
  * Requirements: BAI SHARED C++ library, Eigen 3 C++ library
  * Compilation: ./compileH01indexedCSVdatabase.sh
- * Usage: ./H01indexedCSVdatabase.exe
+ * Usage:
+ * 	./H01indexedCSVdatabase.exe -mode 1 -avro_json_database_folder "/media/user/large/h01data/data/exported/json" -indexed_csv_database_folder "/media/user/ssddata/indexed"
+ * 	./H01indexedCSVdatabase.exe -mode 2 -query 1 -indexed_csv_database_folder "/media/user/ssddata/indexed"
+ * 	./H01indexedCSVdatabase.exe -mode 2 -query 2 -indexed_csv_database_folder "/media/user/ssddata/indexed"
+ * 	./H01indexedCSVdatabase.exe -mode 2 -query 3 -indexed_csv_database_folder "/media/user/ssddata/indexed"
+ * 	./H01indexedCSVdatabase.exe -mode 2 -query 4 -indexed_csv_database_folder "/media/user/ssddata/indexed"
+ * 	./H01indexedCSVdatabase.exe -mode 2 -query 5 -indexed_csv_database_folder "/media/user/ssddata/indexed"
+ * 	./H01indexedCSVdatabase.exe -mode 2 -query 6 -indexed_csv_database_folder "/media/user/ssddata/indexed"
+ * 	./H01indexedCSVdatabase.exe -mode 2 -query 7 -indexed_csv_database_folder "/media/user/ssddata/indexed"
+ * 	./H01indexedCSVdatabase.exe -mode 3
+ * 	./H01indexedCSVdatabase.exe -mode 4
  * Description: H01 indexed CSV database (global defs)
  * Comments:
  * /
@@ -77,6 +87,10 @@ extern string currentDirectory;
 #ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS
 	//#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURSIVE	//optional //measure recursive connectivity of neurons (axon to dendrite)
 	//#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL	//optional //independently count the connections within the local connectome connections dataset (layer to layer matrix)	//compare local connectome counts against counts from https://www.biorxiv.org/content/10.1101/2021.05.29.446289v3/v4 Supplementary Table 5. Summary of Machine Learning-identified connections	//added 7 December 2021
+	#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURRENT	//optional //measure immediate recurrent connectivity of neurons (a -> b -> a)
+	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURRENT
+		#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURRENT_NUMBER_ITERATIONS (2)	//#default
+	#endif
 	//#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_OUTPUT_VERBOSE_LOCALORNONLOCAL	//optional	//print number excitatory/inhibitory neurons for each source neuronID	//compare against counts from https://h01-release.storage.googleapis.com/data.html - gs://h01-release/data/20210601/c3/tables/segments/counts000000000NNN.csv.gz	//added 24 November 2021a
 	//#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_DISTANCES	//print distances between neuron somas and their connections at each layer - used to identify INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL lateral distance probability of connection functions
 #endif

@@ -95,6 +95,10 @@ public:
 	int numberOfLocalConnectomeNeurons;
 	int numberOfLocalConnectomeNeuronsExcitatory;
 	int numberOfLocalConnectomeNeuronsInhibitory;
+	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_OUTPUT_VERBOSE_LOCALORNONLOCAL
+	int numberConnectionsLocalOrNonLocalConnectomeExcitatory;
+	int numberConnectionsLocalOrNonLocalConnectomeInhibitory;
+	#endif
 	//model synapse connections from soma as 4 independent half gaussians; in +x,-x,+y,-y directions 
 	GaussianQuad neuronModelConnectionsLocalConnectome;
 	GaussianQuad neuronModelConnectionsLocalConnectomeExcitatory;
@@ -109,6 +113,14 @@ public:
 	GaussianQuad neuronModelConnectionsExternalConnectomeRecursive;		//or numberOfExternalConnectomeConnectionsRecursive
 	GaussianQuad neuronModelConnectionsExternalConnectomeExcitatoryRecursive;		//or numberOfExternalConnectomeConnectionsExcitatoryRecursive
 	GaussianQuad neuronModelConnectionsExternalConnectomeInhibitoryRecursive;		//or numberOfExternalConnectomeConnectionsInhibitoryRecursive
+	#endif
+	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURRENT
+	GaussianQuad neuronModelConnectionsLocalConnectomeRecurrent;		//or numberOfLocalConnectomeConnectionsRecurrent
+	GaussianQuad neuronModelConnectionsLocalConnectomeExcitatoryRecurrent;		//or numberOfLocalConnectomeConnectionsExcitatoryRecurrent
+	GaussianQuad neuronModelConnectionsLocalConnectomeInhibitoryRecurrent;		//or numberOfLocalConnectomeConnectionsInhibitoryRecurrent
+	GaussianQuad neuronModelConnectionsExternalConnectomeRecurrent;		//or numberOfExternalConnectomeConnectionsRecurrent
+	GaussianQuad neuronModelConnectionsExternalConnectomeExcitatoryRecurrent;		//or numberOfExternalConnectomeConnectionsExcitatoryRecurrent
+	GaussianQuad neuronModelConnectionsExternalConnectomeInhibitoryRecurrent;		//or numberOfExternalConnectomeConnectionsInhibitoryRecurrent
 	#endif
 };
 
@@ -142,8 +154,31 @@ class H01indexedCSVdatabaseQueryClass
 		private: bool generateLargeModelNeuronsAndConnectionsWrapper(const int queryMode, const string indexed_csv_database_folder, const string local_connectome_folder_base, const string neuronDatasetOrListFileName, const bool neuronListIsDataset, const bool write, const bool appendToFile, const string neuronListConnectionsFileName, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, vector<H01connectivityModelClass>* numberOfConnectionsLayersIncoming, vector<H01connectivityModelClass>* numberOfConnectionsLayersOutgoing);
 		#endif
 		private: bool queryIndexedCSVdatabaseByNeuronDatasetOrListFile(const int queryMode, const string indexed_csv_database_folder, const string local_connectome_folder_base, const string neuronDatasetOrListFileName, const bool neuronListIsDataset, const bool queryPresynapticConnectionNeurons, const bool write, const bool appendToFile, const string neuronListConnectionsFileName, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, vector<H01connectivityModelClass>* connectivityModelLayers = NULL);
-			private: bool readLocalNeuronsAndConnections(const int queryMode, const string indexed_csv_database_folder, const string local_connectome_folder_base, const string neuronDatasetOrListFileName, const bool neuronListIsDataset, const bool write, const string neuronListConnectionsFileName, vector<string>* neuronList, map<string, int>* neuronMap, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, map<string, int>* connectionsMap);
+			#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING	
+			private: void performIncomingAxonMapping(ofstream* writeFileObject, string* writeFileString);
+			#endif
 			private: bool queryIndexedCSVdatabaseByNeuronList(const int queryMode, const string indexed_csv_database_folder, vector<string>* neuronList, map<string, int>* neuronMap, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, map<string, int>* connectionsMap, const bool queryByPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, ofstream* writeFileObject, string* writeFileString, const bool appendToFile, vector<H01connectivityModelClass>* connectivityModelLayers = NULL);
+				#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS
+				#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_NUMBER_EXCITATORY_INHIBITORY_NEURONS
+				private: void countConnectionsNumberInhibitoryExcitatoryNeurons(vector<string>* localConnectomeNeuron, vector<H01connectivityModelClass>* connectivityModelLayers);
+				#endif
+				#endif
+				#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING	
+				private: void performIncomingAxonMappingRead(map<string, int>* neuronMap, const string sourceNeuronID, const string targetNeuronID, const string connectionType, const string locationObjectContentsXcoordinatesContent, const string locationObjectContentsYcoordinatesContent, const string locationObjectContentsZcoordinatesContent);
+				#endif					
+				#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET
+				private: void generateLocalConnectomeConnectionsDataset(vector<string> csvLineVector, map<string, int>* neuronMap, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<string>* localConnectomeNeuron, const string sourceNeuronID, const string targetNeuronID, const int connectionTypeInt, const bool queryByPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, ofstream* writeFileObject, string* writeFileString);
+				#endif
+				#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS
+				private: void countConnections(const int queryMode, map<string, int>* neuronMap, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<string>* localConnectomeNeuron, vector<H01connectivityModelClass>* connectivityModelLayers, const string sourceNeuronID, const string targetNeuronID, const int connectionTypeInt, const bool queryByPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages);
+				#endif
+				#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURRENT
+				private: void countRecurrentConnectionsLocal(const int queryMode, vector<string>* neuronList, map<string, int>* neuronMap, map<string, int>* connectionsMap, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, const bool queryPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, vector<H01connectivityModelClass>* connectivityModelLayers);
+				private: bool countRecurrentConnections(const string indexed_csv_database_folder, map<string, int>* neuronMap, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<string>* localConnectomeNeuron, const string neuronID, const string targetNeuronID, const int connectionTypeInt, const bool queryByPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, vector<H01connectivityModelClass>* connectivityModelLayers);
+					private: void addRecurrentConnection(const bool excitationTypeConnection, const int localConnectomeNeuronLayer, const bool preAndPostSynapticNeuronAreInLocalConnectome, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, vector<H01connectivityModelClass>* connectivityModelLayers);
+				#endif
+					private: int calculateConnectionExcitationType1(const int connectionTypeInt, vector<string>* localConnectomeNeuronSource, vector<string>* localConnectomeNeuronTarget, const bool queryByPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages);
+						private: int calculateConnectionExcitationType2(const int connectionTypeInt, const string presynapticNeuronType, const bool queryByPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages);	
 				#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL
 				private: void generateLargeModelNeuronsAndConnectionsLayers(constEffective vector<H01connectivityModelClass>* connectivityModelLayersIncomingLayers, constEffective vector<H01connectivityModelClass>* connectivityModelLayersOutgoingLayers, const bool countLocalConnectomeNeurons, const bool countInternalConnectomeConnections, const bool countExternalConnectomeConnections);
 					private: void generateLargeModelNeuronsAndConnections(const H01connectivityModelClass* connectivityModelLayersIncoming, const H01connectivityModelClass* connectivityModelLayersOutgoing, const bool countLocalConnectomeNeurons, const bool countInternalConnectomeConnections, const bool countExternalConnectomeConnections);
@@ -155,8 +190,9 @@ class H01indexedCSVdatabaseQueryClass
 				#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL
 				private: bool countConnectionsLocal(const int queryMode, vector<string>* neuronList, map<string, int>* neuronMap, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, const bool queryPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages);
 				#endif			
-				#endif		
+				#endif
 
+					
 		#ifdef INDEXED_CSV_DATABASE_QUERY_COMPLETE_LOCAL_CONNECTOME_CONNECTIONS_DATASET
 		private: bool queryIndexedCSVdatabaseByConnectionDatasetFile(const int queryMode, const string indexed_csv_database_folder, const string local_connectome_folder_base, const bool connectionDatasetRead, const string connectionDatasetFileNameRead, vector<vector<string>>* localConnectomeCSVdatasetConnections, const bool queryPresynapticConnectionNeurons, const bool connectionDatasetWrite, const bool appendToFile, const string connectionDatasetFileNameWrite, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages);
 			private: bool queryIndexedCSVdatabaseByConnectionNeuronList(const int queryMode, const string indexed_csv_database_folder, vector<string>* neuronList, vector<vector<string>>* localConnectomeCSVdatasetConnections, const bool queryByPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, const bool connectionDatasetWrite, ofstream* writeFileObject, string* writeFileString);
@@ -176,3 +212,4 @@ class H01indexedCSVdatabaseQueryClass
 #endif
 
 #endif
+

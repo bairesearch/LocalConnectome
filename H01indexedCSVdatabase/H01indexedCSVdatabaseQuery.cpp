@@ -93,6 +93,10 @@ H01connectivityModelClass::H01connectivityModelClass(void)
 	numberOfLocalConnectomeNeurons = 0;
 	numberOfLocalConnectomeNeuronsExcitatory = 0;
 	numberOfLocalConnectomeNeuronsInhibitory = 0;
+	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_OUTPUT_VERBOSE_LOCALORNONLOCAL
+	numberConnectionsLocalOrNonLocalConnectomeExcitatory = 0;
+	numberConnectionsLocalOrNonLocalConnectomeInhibitory = 0;
+	#endif
 	initialiseGaussianQuad(&neuronModelConnectionsLocalConnectome);
 	initialiseGaussianQuad(&neuronModelConnectionsLocalConnectomeExcitatory);
 	initialiseGaussianQuad(&neuronModelConnectionsLocalConnectomeInhibitory);
@@ -106,6 +110,14 @@ H01connectivityModelClass::H01connectivityModelClass(void)
 	initialiseGaussianQuad(&neuronModelConnectionsExternalConnectomeRecursive);
 	initialiseGaussianQuad(&neuronModelConnectionsExternalConnectomeExcitatoryRecursive);
 	initialiseGaussianQuad(&neuronModelConnectionsExternalConnectomeInhibitoryRecursive);
+	#endif
+	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURRENT
+	initialiseGaussianQuad(&neuronModelConnectionsLocalConnectomeRecurrent);
+	initialiseGaussianQuad(&neuronModelConnectionsLocalConnectomeExcitatoryRecurrent);
+	initialiseGaussianQuad(&neuronModelConnectionsLocalConnectomeInhibitoryRecurrent);
+	initialiseGaussianQuad(&neuronModelConnectionsExternalConnectomeRecurrent);
+	initialiseGaussianQuad(&neuronModelConnectionsExternalConnectomeExcitatoryRecurrent);
+	initialiseGaussianQuad(&neuronModelConnectionsExternalConnectomeInhibitoryRecurrent);
 	#endif
 }
 H01connectivityModelClass::~H01connectivityModelClass(void)
@@ -254,20 +266,20 @@ bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabase(const int queryMod
 		cout << "INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_OUTPUT_VERBOSE_LOCALORNONLOCAL print format: neuronID num_excitatory_connections num_inhibitory_connections" << endl;
 		#endif
 		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS
-		cout << "CONNECTION_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS:" << endl;
+		cout << "\n\nCONNECTION_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS:" << endl;
 		vector<H01connectivityModelClass>* connectivityModelLayersIncoming = generateNumberOfConnectionsLayers();
 		vector<H01connectivityModelClass>* connectivityModelLayersOutgoing = generateNumberOfConnectionsLayers();
-		cout << "QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS: QUERY_PRESYNAPTIC_CONNECTION_NEURONS (QUERY_BY_POSTSYNAPTIC_CONNECTION_NEURONS) - count incoming connections" << endl;
+		cout << "\nQUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS: QUERY_PRESYNAPTIC_CONNECTION_NEURONS (QUERY_BY_POSTSYNAPTIC_CONNECTION_NEURONS) - count incoming connections" << endl;
 		this->queryIndexedCSVdatabaseByNeuronDatasetOrListFile(queryMode, indexed_csv_database_folder, local_connectome_folder_base, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME, INDEXED_CSV_DATABASE_QUERY_PREFER_DATASET_LOCAL_CONNECTOME_NEURONS_VALUE, QUERY_PRESYNAPTIC_CONNECTION_NEURONS, WRITE_FILE_FALSE, APPEND_FILE_FALSE, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS, CONNECTION_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS, connectivityModelLayersIncoming);	//count incoming connections
-		cout << "QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS: QUERY_POSTSYNAPTIC_CONNECTION_NEURONS (QUERY_BY_PRESYNAPTIC_CONNECTION_NEURONS) - count outgoing connections" << endl;		
+		cout << "\nQUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS: QUERY_POSTSYNAPTIC_CONNECTION_NEURONS (QUERY_BY_PRESYNAPTIC_CONNECTION_NEURONS) - count outgoing connections" << endl;		
 		this->queryIndexedCSVdatabaseByNeuronDatasetOrListFile(queryMode, indexed_csv_database_folder, local_connectome_folder_base, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME, INDEXED_CSV_DATABASE_QUERY_PREFER_DATASET_LOCAL_CONNECTOME_NEURONS_VALUE, QUERY_POSTSYNAPTIC_CONNECTION_NEURONS, WRITE_FILE_FALSE, APPEND_FILE_FALSE, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS, CONNECTION_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS, connectivityModelLayersOutgoing);	//count outgoing connections
 		#endif
-		cout << "CONNECTION_TYPES_DERIVED_FROM_EM_IMAGES:" << endl;
+		cout << "\n\nCONNECTION_TYPES_DERIVED_FROM_EM_IMAGES:" << endl;
 		connectivityModelLayersIncoming = generateNumberOfConnectionsLayers();
 		connectivityModelLayersOutgoing = generateNumberOfConnectionsLayers();
-		cout << "QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS: QUERY_PRESYNAPTIC_CONNECTION_NEURONS (QUERY_BY_POSTSYNAPTIC_CONNECTION_NEURONS) - count incoming connections" << endl;
+		cout << "\nQUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS: QUERY_PRESYNAPTIC_CONNECTION_NEURONS (QUERY_BY_POSTSYNAPTIC_CONNECTION_NEURONS) - count incoming connections" << endl;
 		this->queryIndexedCSVdatabaseByNeuronDatasetOrListFile(queryMode, indexed_csv_database_folder, local_connectome_folder_base, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME, INDEXED_CSV_DATABASE_QUERY_PREFER_DATASET_LOCAL_CONNECTOME_NEURONS_VALUE, QUERY_PRESYNAPTIC_CONNECTION_NEURONS, WRITE_FILE_FALSE, APPEND_FILE_FALSE, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES, CONNECTION_TYPES_DERIVED_FROM_EM_IMAGES, connectivityModelLayersIncoming);	//count incoming connections
-		cout << "QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS: QUERY_POSTSYNAPTIC_CONNECTION_NEURONS (QUERY_BY_PRESYNAPTIC_CONNECTION_NEURONS) - count outgoing connections" << endl;		
+		cout << "\nQUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS: QUERY_POSTSYNAPTIC_CONNECTION_NEURONS (QUERY_BY_PRESYNAPTIC_CONNECTION_NEURONS) - count outgoing connections" << endl;		
 		this->queryIndexedCSVdatabaseByNeuronDatasetOrListFile(queryMode, indexed_csv_database_folder, local_connectome_folder_base, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME, INDEXED_CSV_DATABASE_QUERY_PREFER_DATASET_LOCAL_CONNECTOME_NEURONS_VALUE, QUERY_POSTSYNAPTIC_CONNECTION_NEURONS, WRITE_FILE_FALSE, APPEND_FILE_FALSE, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES, CONNECTION_TYPES_DERIVED_FROM_EM_IMAGES, connectivityModelLayersOutgoing);	//count outgoing connections
 	}
 	#endif
@@ -290,9 +302,9 @@ bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabase(const int queryMod
 	else if(queryMode == QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS)
 	{
 		cout << "executing INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS: it will take a long time (approximately 30 minutes) to crawl the indexed CSV database" << endl;
-		cout << "INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS: QUERY_PRESYNAPTIC_CONNECTION_NEURONS (QUERY_BY_PRESYNAPTIC_CONNECTION_NEURONS) - count incoming connections" << endl;
+		cout << "\nINDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS: QUERY_PRESYNAPTIC_CONNECTION_NEURONS (QUERY_BY_PRESYNAPTIC_CONNECTION_NEURONS) - count incoming connections" << endl;
 		this->crawlIndexedCSVdatabase(queryMode, indexed_csv_database_folder, QUERY_PRESYNAPTIC_CONNECTION_NEURONS);	//count unique incoming neurons (axons) not explicitly in local connectome 
-		cout << "INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS: QUERY_POSTSYNAPTIC_CONNECTION_NEURONS (QUERY_BY_POSTSYNAPTIC_CONNECTION_NEURONS) - count outgoing connections" << endl;		
+		cout << "\nINDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS: QUERY_POSTSYNAPTIC_CONNECTION_NEURONS (QUERY_BY_POSTSYNAPTIC_CONNECTION_NEURONS) - count outgoing connections" << endl;		
 		this->crawlIndexedCSVdatabase(queryMode, indexed_csv_database_folder, QUERY_POSTSYNAPTIC_CONNECTION_NEURONS);	//count unique outgoing neurons (dendrites) not explicitly in local connectome
 	}
 	#endif
@@ -304,24 +316,24 @@ bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabase(const int queryMod
 		cout << "INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_OUTPUT_VERBOSE_LOCALORNONLOCAL print format: neuronID num_excitatory_connections num_inhibitory_connections" << endl;
 		#endif
 		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS
-		cout << "CONNECTION_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS:" << endl;
+		cout << "\n\nCONNECTION_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS:" << endl;
 		vector<H01connectivityModelClass>* connectivityModelLayersIncoming = generateNumberOfConnectionsLayers();
 		vector<H01connectivityModelClass>* connectivityModelLayersOutgoing = generateNumberOfConnectionsLayers();
-		cout << "INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL: QUERY_PRESYNAPTIC_CONNECTION_NEURONS (QUERY_BY_POSTSYNAPTIC_CONNECTION_NEURONS) - count incoming connections" << endl;
+		cout << "\nINDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL: QUERY_PRESYNAPTIC_CONNECTION_NEURONS (QUERY_BY_POSTSYNAPTIC_CONNECTION_NEURONS) - count incoming connections" << endl;
 		this->queryIndexedCSVdatabaseByNeuronDatasetOrListFile(queryMode, indexed_csv_database_folder, local_connectome_folder_base, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME, INDEXED_CSV_DATABASE_QUERY_PREFER_DATASET_LOCAL_CONNECTOME_NEURONS_VALUE, QUERY_PRESYNAPTIC_CONNECTION_NEURONS, WRITE_FILE_FALSE, APPEND_FILE_FALSE, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS, CONNECTION_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS, connectivityModelLayersIncoming);	//count incoming connections
-		cout << "INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL: QUERY_POSTSYNAPTIC_CONNECTION_NEURONS (QUERY_BY_PRESYNAPTIC_CONNECTION_NEURONS) - count outgoing connections" << endl;		
+		cout << "\nINDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL: QUERY_POSTSYNAPTIC_CONNECTION_NEURONS (QUERY_BY_PRESYNAPTIC_CONNECTION_NEURONS) - count outgoing connections" << endl;		
 		this->queryIndexedCSVdatabaseByNeuronDatasetOrListFile(queryMode, indexed_csv_database_folder, local_connectome_folder_base, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME, INDEXED_CSV_DATABASE_QUERY_PREFER_DATASET_LOCAL_CONNECTOME_NEURONS_VALUE, QUERY_POSTSYNAPTIC_CONNECTION_NEURONS, WRITE_FILE_FALSE, APPEND_FILE_FALSE, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS, CONNECTION_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS, connectivityModelLayersOutgoing);	//count outgoing connections
-		cout << "INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL" << endl;
+		cout << "\nINDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL" << endl;
 		this->generateLargeModelNeuronsAndConnectionsWrapper(queryMode, indexed_csv_database_folder, local_connectome_folder_base, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME, INDEXED_CSV_DATABASE_QUERY_PREFER_DATASET_LOCAL_CONNECTOME_NEURONS_VALUE, WRITE_FILE_TRUE, APPEND_FILE_FALSE, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS, CONNECTION_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS, connectivityModelLayersIncoming, connectivityModelLayersOutgoing);	//generate large model
 		#endif
-		cout << "CONNECTION_TYPES_DERIVED_FROM_EM_IMAGES:" << endl;
+		cout << "\n\nCONNECTION_TYPES_DERIVED_FROM_EM_IMAGES:" << endl;
 		connectivityModelLayersIncoming = generateNumberOfConnectionsLayers();
 		connectivityModelLayersOutgoing = generateNumberOfConnectionsLayers();
-		cout << "INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL: QUERY_PRESYNAPTIC_CONNECTION_NEURONS (QUERY_BY_POSTSYNAPTIC_CONNECTION_NEURONS) - count incoming connections" << endl;
+		cout << "\nINDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL: QUERY_PRESYNAPTIC_CONNECTION_NEURONS (QUERY_BY_POSTSYNAPTIC_CONNECTION_NEURONS) - count incoming connections" << endl;
 		this->queryIndexedCSVdatabaseByNeuronDatasetOrListFile(queryMode, indexed_csv_database_folder, local_connectome_folder_base, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME, INDEXED_CSV_DATABASE_QUERY_PREFER_DATASET_LOCAL_CONNECTOME_NEURONS_VALUE, QUERY_PRESYNAPTIC_CONNECTION_NEURONS, WRITE_FILE_FALSE, APPEND_FILE_FALSE, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES, CONNECTION_TYPES_DERIVED_FROM_EM_IMAGES, connectivityModelLayersIncoming);	//count incoming connections
-		cout << "INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL: QUERY_POSTSYNAPTIC_CONNECTION_NEURONS (QUERY_BY_PRESYNAPTIC_CONNECTION_NEURONS) - count outgoing connections" << endl;		
+		cout << "\nINDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL: QUERY_POSTSYNAPTIC_CONNECTION_NEURONS (QUERY_BY_PRESYNAPTIC_CONNECTION_NEURONS) - count outgoing connections" << endl;		
 		this->queryIndexedCSVdatabaseByNeuronDatasetOrListFile(queryMode, indexed_csv_database_folder, local_connectome_folder_base, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME, INDEXED_CSV_DATABASE_QUERY_PREFER_DATASET_LOCAL_CONNECTOME_NEURONS_VALUE, QUERY_POSTSYNAPTIC_CONNECTION_NEURONS, WRITE_FILE_FALSE, APPEND_FILE_FALSE, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES, CONNECTION_TYPES_DERIVED_FROM_EM_IMAGES, connectivityModelLayersOutgoing);	//count outgoing connections
-		cout << "INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL" << endl;
+		cout << "\nINDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL" << endl;
 		this->generateLargeModelNeuronsAndConnectionsWrapper(queryMode, indexed_csv_database_folder, local_connectome_folder_base, INDEXED_CSV_DATABASE_QUERY_NEURON_LIST_DISTINCT_FILE_NAME, INDEXED_CSV_DATABASE_QUERY_PREFER_DATASET_LOCAL_CONNECTOME_NEURONS_VALUE, WRITE_FILE_TRUE, APPEND_FILE_FALSE, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES, CONNECTION_TYPES_DERIVED_FROM_EM_IMAGES, connectivityModelLayersIncoming, connectivityModelLayersOutgoing);	//generate large model
 	}
 	#endif
@@ -425,6 +437,13 @@ bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronDatasetOrLi
 	//read connections?;
 	bool readConnections = false;
 	bool buildConnectionsMap = false;
+	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURRENT
+	if(queryMode == QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS)
+	{
+		readConnections = true;
+		buildConnectionsMap = true;
+	}
+	#endif
 	#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_VERIFICATION
 	if(queryMode == QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET)
 	{
@@ -494,6 +513,12 @@ bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronDatasetOrLi
 		#endif
 	}
 	#endif
+	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURRENT
+	if(queryMode == QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS)
+	{
+		countRecurrentConnectionsLocal(queryMode, &neuronList, &neuronMap, &connectionsMap, &localConnectomeCSVdatasetNeurons, &localConnectomeCSVdatasetConnections, queryPresynapticConnectionNeurons, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, connectivityModelLayers);
+	}
+	#endif
 		
 	const string csvDelimiter = CSV_DELIMITER;
 	#ifdef INDEXED_CSV_DATABASE_QUERY_WRITE_CURRENT_FOLDER
@@ -545,140 +570,7 @@ bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronDatasetOrLi
 	#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING	
 	if(queryMode == QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING)
 	{
-    	map<long,vector<H01indexedCSVdatabaseQueryObject>>::iterator it;
-		for(it = neuronConnectionMap.begin(); it != neuronConnectionMap.end(); it++)
-		{
-			long connectionNeuronID = it->first;
-			vector<H01indexedCSVdatabaseQueryObject>* neuronVector = &(it->second);
-			#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_2D_POLY_REGRESSION
-			vector<double> x;
-			vector<double> y;
-			//vector<double> z;
-			#endif
-			#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_3D_LINEAR_REGRESSION
-			vector<Eigen::Vector3d> xyz;
-			#endif
-
-			if(neuronVector->size() >= INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_MIN_NUM_POINTS_REQUIRED)
-			{
-				#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_EST_TYPE_BY_AVERAGE_SYNAPSE_TYPE
-				double totalSynapseType = 0.0;
-				#endif
-
-				for(int i=0; i<neuronVector->size(); i++)
-				{
-					H01indexedCSVdatabaseQueryObject* queryObject = &((*neuronVector)[i]);
-					cout << "x = " << queryObject->locationObjectContentsXcoordinates << ", y = " << queryObject->locationObjectContentsYcoordinates << ", z = " << queryObject->locationObjectContentsZcoordinates << endl;
-					double xCoord = (double)(queryObject->locationObjectContentsXcoordinates) * AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_X;
-					double yCoord = (double)(queryObject->locationObjectContentsYcoordinates) * AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_Y;
-					double zCoord = (double)(queryObject->locationObjectContentsZcoordinates) * AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_Z;
-					#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_2D_POLY_REGRESSION
-					x.push_back(xCoord);
-					y.push_back(yCoord);
-					//z.push_back(zCoord);	//not yet modelled/plotted
-					#endif
-					#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_3D_LINEAR_REGRESSION
-					std::vector<double> vec = {xCoord, yCoord, zCoord};
-					Eigen::Vector3d vec3D(vec.data());
-					//Eigen::Vector3d vec3D(xCoord, yCoord, zCoord);
-					xyz.push_back(vec3D);
-					#endif
-					#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_EST_TYPE_BY_AVERAGE_SYNAPSE_TYPE
-					totalSynapseType = totalSynapseType + queryObject->type;
-					#endif
-				}
-
-				int estSynapseType = 0;
-				#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_EST_TYPE_BY_AVERAGE_SYNAPSE_TYPE
-				double averageSynapseType = totalSynapseType/(neuronVector->size());
-				estSynapseType = round(averageSynapseType);	//1: inhibitory, 2: exitatory
-				#endif
-
-				#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_CONNECTION_TYPE_REQUIRED
-				if(estSynapseType == INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_CONNECTION_TYPE)
-				{
-				#endif
-
-					#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_2D_POLY_REGRESSION
-					PolynomialRegression<double> polyreg;
-					vector<double> coeffs;
-					const int order = 2;
-					polyreg.fitIt(x, y, order, coeffs);
-					#endif
-					#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_3D_LINEAR_REGRESSION
-					std::pair<Eigen::Vector3d, Eigen::Vector3d> line3D = best_line_from_points<Eigen::Vector3d>(xyz);
-					#endif
-
-					#ifdef INDEXED_CSV_DATABASE_QUERY_OUTPUT_INCOMING_AXON_MAPPING
-					H01indexedCSVdatabaseAlgorithmsFit polyFit;
-					polyFit.connectionNeuronID = connectionNeuronID;
-					#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_EST_TYPE_BY_AVERAGE_SYNAPSE_TYPE
-					polyFit.estSynapseType = estSynapseType;
-					#endif
-					#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_2D_POLY_REGRESSION
-					polyFit.a = coeffs[0];
-					polyFit.b = coeffs[1];
-					polyFit.c = coeffs[2];
-					#endif
-					#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_3D_LINEAR_REGRESSION
-					polyFit.origin.x = line3D.first[0];
-					polyFit.origin.y = line3D.first[1];
-					polyFit.origin.z = line3D.first[2];
-					polyFit.axis.x = line3D.second[0];
-					polyFit.axis.y = line3D.second[1];
-					polyFit.axis.z = line3D.second[2];
-					#endif
-					neuronConnectionPolyFitVector.push_back(polyFit);
-					const string doubleFormat = "%0.9f";
-					#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_2D_POLY_REGRESSION
-					string neuronConnectionString = SHAREDvars.convertLongToString(polyFit.connectionNeuronID) + csvDelimiter + SHAREDvars.convertIntToString(polyFit.estSynapseType) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.a, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.b, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.c, doubleFormat) + STRING_NEWLINE;
-					#endif
-					#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_3D_LINEAR_REGRESSION
-					#ifdef INDEXED_CSV_DATABASE_QUERY_OUTPUT_INCOMING_AXON_MAPPING_LDR
-					//2 <colour> x1 y1 z1 x2 y2 z2 - https://www.ldraw.org/article/218.html
-					string ldrDelimiter = LDR_DELIMITER;
-					int ldrawColor = 0;
-					if(polyFit.estSynapseType == AVRO_JSON_DATABASE_EXCITATORY_SYNAPSE_TYPE)
-					{
-						ldrawColor = INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_CONNECTION_TYPE_EXCITATORY_COLOUR;
-					}
-					else if(polyFit.estSynapseType == AVRO_JSON_DATABASE_INHIBITORY_SYNAPSE_TYPE)
-					{
-						ldrawColor = INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_CONNECTION_TYPE_INHIBITORY_COLOUR;
-					}
-					else
-					{
-						cerr << "bool queryIndexedCSVdatabaseByNeuronDatasetOrListFile unknown polyFit.estSynapseType; " << polyFit.estSynapseType << endl;
-						exit(EXIT_ERROR);
-					}
-					vec plot3DpointStart;
-					plot3DpointStart.x = polyFit.origin.x - polyFit.axis.x * (AVRO_JSON_DATABASE_COORDINATES_RANGE_X/2);
-					plot3DpointStart.y = polyFit.origin.y - polyFit.axis.y * (AVRO_JSON_DATABASE_COORDINATES_RANGE_Y/2);
-					plot3DpointStart.z = polyFit.origin.z - polyFit.axis.z * (AVRO_JSON_DATABASE_COORDINATES_RANGE_Z/2);
-					vec plot3DpointEnd;
-					plot3DpointEnd.x = polyFit.origin.x + polyFit.axis.x * (AVRO_JSON_DATABASE_COORDINATES_RANGE_X/2);
-					plot3DpointEnd.y = polyFit.origin.y + polyFit.axis.y * (AVRO_JSON_DATABASE_COORDINATES_RANGE_Y/2);
-					plot3DpointEnd.z = polyFit.origin.z + polyFit.axis.z * (AVRO_JSON_DATABASE_COORDINATES_RANGE_Z/2);
-					string neuronConnectionString = SHAREDvars.convertIntToString(LDR_REFERENCE_TYPE_LINE) + ldrDelimiter + SHAREDvars.convertIntToString(ldrawColor) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointStart.x, doubleFormat) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointStart.y, doubleFormat) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointStart.z, doubleFormat) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointEnd.x, doubleFormat) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointEnd.y, doubleFormat) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointEnd.z, doubleFormat) + STRING_NEWLINE;	
-					#else
-					string neuronConnectionString = SHAREDvars.convertLongToString(polyFit.connectionNeuronID) + csvDelimiter + SHAREDvars.convertIntToString(polyFit.estSynapseType) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.origin.x, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.origin.y, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.origin.z, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.axis.x, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.axis.y, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.axis.z, doubleFormat) + STRING_NEWLINE;
-					#endif
-					#endif
-					#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_FILE_OBJECT
-					SHAREDvars.writeStringToFileObject(neuronConnectionString, &writeFileObject);
-					#else
-					this->appendStringBufferToPreallocatedString(writeFileString, neuronConnectionString);
-					//writeFileString = writeFileString + neuronConnectionString	//inefficient
-					#endif
-					#else
-					cout << "INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING: queryIndexedCSVdatabaseByNeuronDatasetOrListFile(): connectionNeuronID = " << connectionNeuronID << ", estSynapseType = " << estSynapseType << ", poly fit; a = " << coeffs[0] << ", b = " << coeffs[1] << ", c = " << coeffs[2] << endl;			
-					#endif
-
-				#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_CONNECTION_TYPE_REQUIRED
-				}
-				#endif
-			}
-		}
+		performIncomingAxonMapping(&writeFileObject, &writeFileString);
 	}
 	#endif
 
@@ -701,10 +593,149 @@ bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronDatasetOrLi
 	return result;
 }
 
+#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING	
+void H01indexedCSVdatabaseQueryClass::performIncomingAxonMapping(ofstream* writeFileObject, string* writeFileString)
+{
+    map<long,vector<H01indexedCSVdatabaseQueryObject>>::iterator it;
+	for(it = neuronConnectionMap.begin(); it != neuronConnectionMap.end(); it++)
+	{
+		long connectionNeuronID = it->first;
+		vector<H01indexedCSVdatabaseQueryObject>* neuronVector = &(it->second);
+		#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_2D_POLY_REGRESSION
+		vector<double> x;
+		vector<double> y;
+		//vector<double> z;
+		#endif
+		#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_3D_LINEAR_REGRESSION
+		vector<Eigen::Vector3d> xyz;
+		#endif
+
+		if(neuronVector->size() >= INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_MIN_NUM_POINTS_REQUIRED)
+		{
+			#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_EST_TYPE_BY_AVERAGE_SYNAPSE_TYPE
+			double totalSynapseType = 0.0;
+			#endif
+
+			for(int i=0; i<neuronVector->size(); i++)
+			{
+				H01indexedCSVdatabaseQueryObject* queryObject = &((*neuronVector)[i]);
+				cout << "x = " << queryObject->locationObjectContentsXcoordinates << ", y = " << queryObject->locationObjectContentsYcoordinates << ", z = " << queryObject->locationObjectContentsZcoordinates << endl;
+				double xCoord = (double)(queryObject->locationObjectContentsXcoordinates) * AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_X;
+				double yCoord = (double)(queryObject->locationObjectContentsYcoordinates) * AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_Y;
+				double zCoord = (double)(queryObject->locationObjectContentsZcoordinates) * AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_Z;
+				#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_2D_POLY_REGRESSION
+				x.push_back(xCoord);
+				y.push_back(yCoord);
+				//z.push_back(zCoord);	//not yet modelled/plotted
+				#endif
+				#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_3D_LINEAR_REGRESSION
+				std::vector<double> vec = {xCoord, yCoord, zCoord};
+				Eigen::Vector3d vec3D(vec.data());
+				//Eigen::Vector3d vec3D(xCoord, yCoord, zCoord);
+				xyz.push_back(vec3D);
+				#endif
+				#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_EST_TYPE_BY_AVERAGE_SYNAPSE_TYPE
+				totalSynapseType = totalSynapseType + queryObject->type;
+				#endif
+			}
+
+			int estSynapseType = 0;
+			#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_EST_TYPE_BY_AVERAGE_SYNAPSE_TYPE
+			double averageSynapseType = totalSynapseType/(neuronVector->size());
+			estSynapseType = round(averageSynapseType);	//1: inhibitory, 2: exitatory
+			#endif
+
+			#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_CONNECTION_TYPE_REQUIRED
+			if(estSynapseType == INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_CONNECTION_TYPE)
+			{
+			#endif
+
+				#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_2D_POLY_REGRESSION
+				PolynomialRegression<double> polyreg;
+				vector<double> coeffs;
+				const int order = 2;
+				polyreg.fitIt(x, y, order, coeffs);
+				#endif
+				#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_3D_LINEAR_REGRESSION
+				std::pair<Eigen::Vector3d, Eigen::Vector3d> line3D = best_line_from_points<Eigen::Vector3d>(xyz);
+				#endif
+
+				#ifdef INDEXED_CSV_DATABASE_QUERY_OUTPUT_INCOMING_AXON_MAPPING
+				H01indexedCSVdatabaseAlgorithmsFit polyFit;
+				polyFit.connectionNeuronID = connectionNeuronID;
+				#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_EST_TYPE_BY_AVERAGE_SYNAPSE_TYPE
+				polyFit.estSynapseType = estSynapseType;
+				#endif
+				#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_2D_POLY_REGRESSION
+				polyFit.a = coeffs[0];
+				polyFit.b = coeffs[1];
+				polyFit.c = coeffs[2];
+				#endif
+				#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_3D_LINEAR_REGRESSION
+				polyFit.origin.x = line3D.first[0];
+				polyFit.origin.y = line3D.first[1];
+				polyFit.origin.z = line3D.first[2];
+				polyFit.axis.x = line3D.second[0];
+				polyFit.axis.y = line3D.second[1];
+				polyFit.axis.z = line3D.second[2];
+				#endif
+				neuronConnectionPolyFitVector.push_back(polyFit);
+				const string doubleFormat = "%0.9f";
+				#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_2D_POLY_REGRESSION
+				string neuronConnectionString = SHAREDvars.convertLongToString(polyFit.connectionNeuronID) + csvDelimiter + SHAREDvars.convertIntToString(polyFit.estSynapseType) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.a, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.b, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.c, doubleFormat) + STRING_NEWLINE;
+				#endif
+				#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_3D_LINEAR_REGRESSION
+				#ifdef INDEXED_CSV_DATABASE_QUERY_OUTPUT_INCOMING_AXON_MAPPING_LDR
+				//2 <colour> x1 y1 z1 x2 y2 z2 - https://www.ldraw.org/article/218.html
+				string ldrDelimiter = LDR_DELIMITER;
+				int ldrawColor = 0;
+				if(polyFit.estSynapseType == AVRO_JSON_DATABASE_EXCITATORY_SYNAPSE_TYPE)
+				{
+					ldrawColor = INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_CONNECTION_TYPE_EXCITATORY_COLOUR;
+				}
+				else if(polyFit.estSynapseType == AVRO_JSON_DATABASE_INHIBITORY_SYNAPSE_TYPE)
+				{
+					ldrawColor = INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_CONNECTION_TYPE_INHIBITORY_COLOUR;
+				}
+				else
+				{
+					cerr << "bool queryIndexedCSVdatabaseByNeuronDatasetOrListFile unknown polyFit.estSynapseType; " << polyFit.estSynapseType << endl;
+					exit(EXIT_ERROR);
+				}
+				vec plot3DpointStart;
+				plot3DpointStart.x = polyFit.origin.x - polyFit.axis.x * (AVRO_JSON_DATABASE_COORDINATES_RANGE_X/2);
+				plot3DpointStart.y = polyFit.origin.y - polyFit.axis.y * (AVRO_JSON_DATABASE_COORDINATES_RANGE_Y/2);
+				plot3DpointStart.z = polyFit.origin.z - polyFit.axis.z * (AVRO_JSON_DATABASE_COORDINATES_RANGE_Z/2);
+				vec plot3DpointEnd;
+				plot3DpointEnd.x = polyFit.origin.x + polyFit.axis.x * (AVRO_JSON_DATABASE_COORDINATES_RANGE_X/2);
+				plot3DpointEnd.y = polyFit.origin.y + polyFit.axis.y * (AVRO_JSON_DATABASE_COORDINATES_RANGE_Y/2);
+				plot3DpointEnd.z = polyFit.origin.z + polyFit.axis.z * (AVRO_JSON_DATABASE_COORDINATES_RANGE_Z/2);
+				string neuronConnectionString = SHAREDvars.convertIntToString(LDR_REFERENCE_TYPE_LINE) + ldrDelimiter + SHAREDvars.convertIntToString(ldrawColor) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointStart.x, doubleFormat) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointStart.y, doubleFormat) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointStart.z, doubleFormat) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointEnd.x, doubleFormat) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointEnd.y, doubleFormat) + ldrDelimiter + SHAREDvars.convertDoubleToString(plot3DpointEnd.z, doubleFormat) + STRING_NEWLINE;	
+				#else
+				string neuronConnectionString = SHAREDvars.convertLongToString(polyFit.connectionNeuronID) + csvDelimiter + SHAREDvars.convertIntToString(polyFit.estSynapseType) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.origin.x, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.origin.y, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.origin.z, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.axis.x, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.axis.y, doubleFormat) + csvDelimiter + SHAREDvars.convertDoubleToString(polyFit.axis.z, doubleFormat) + STRING_NEWLINE;
+				#endif
+				#endif
+				#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_FILE_OBJECT
+				SHAREDvars.writeStringToFileObject(neuronConnectionString, writeFileObject);
+				#else
+				this->appendStringBufferToPreallocatedString(writeFileString, neuronConnectionString);
+				//writeFileString = writeFileString + neuronConnectionString	//inefficient
+				#endif
+				#else
+				cout << "INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING: queryIndexedCSVdatabaseByNeuronDatasetOrListFile(): connectionNeuronID = " << connectionNeuronID << ", estSynapseType = " << estSynapseType << ", poly fit; a = " << coeffs[0] << ", b = " << coeffs[1] << ", c = " << coeffs[2] << endl;			
+				#endif
+
+			#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_CONNECTION_TYPE_REQUIRED
+			}
+			#endif
+		}
+	}
+}
+#endif
+	
 bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronList(const int queryMode, const string indexed_csv_database_folder, vector<string>* neuronList, map<string, int>* neuronMap, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, map<string, int>* connectionsMap, const bool queryByPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, ofstream* writeFileObject, string* writeFileString, const bool appendToFile, vector<H01connectivityModelClass>* connectivityModelLayers)
 {
 	bool result = true;
-	
 	
 	#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET
 	if(queryMode == QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET)
@@ -736,50 +767,11 @@ bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronList(const 
 			vector<string>* localConnectomeNeuron = &((*localConnectomeCSVdatasetNeurons)[neuronIndex]);
 			#endif
 
-			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_OUTPUT_VERBOSE_LOCALORNONLOCAL
-			int numberConnectionsLocalConnectomeExcitatoryCurrent = 0;	
-			int numberConnectionsLocalConnectomeInhibitoryCurrent = 0;
-			#endif
-
 			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS
 			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_NUMBER_EXCITATORY_INHIBITORY_NEURONS
 			if((queryMode == QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS) || (queryMode == QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL))
 			{
-				#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
-				int localConnectomeNeuronLayer = SHAREDvars.convertStringToInt((*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER]);
-				#endif
-
-				(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].numberOfLocalConnectomeNeurons++;	//(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].numberOfLocalConnectomeNeurons = (*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].numberOfLocalConnectomeNeurons+1;
-				#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
-				(*connectivityModelLayers)[localConnectomeNeuronLayer].numberOfLocalConnectomeNeurons++;
-				#endif
-
-				//int excitationType;
-				string sourceNeuronType = "";
-				sourceNeuronType = (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
-
-				//count outgoing or incoming connections (depending on queryByPresynapticConnectionNeurons or !queryByPresynapticConnectionNeurons):
-				if(sourceNeuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_PYRAMIDAL)
-				{
-					(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].numberOfLocalConnectomeNeuronsExcitatory++;
-					#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
-					(*connectivityModelLayers)[localConnectomeNeuronLayer].numberOfLocalConnectomeNeuronsExcitatory++;
-					#endif
-					//excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY;
-				}
-				else if(sourceNeuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_INTERNEURON)
-				{
-					(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].numberOfLocalConnectomeNeuronsInhibitory++;
-					#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
-					(*connectivityModelLayers)[localConnectomeNeuronLayer].numberOfLocalConnectomeNeuronsInhibitory++;
-					#endif
-					//excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY;
-				}
-				else
-				{
-					//excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN;
-					cerr << "H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronList warning, source neuron type unknown, sourceNeuronType = " << sourceNeuronType << endl;
-				}
+				countConnectionsNumberInhibitoryExcitatoryNeurons(localConnectomeNeuron, connectivityModelLayers);
 			}
 			#endif
 			#endif
@@ -853,422 +845,36 @@ bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronList(const 
 					}
 					#endif		
 
-
 					#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING	
 					if(queryMode == QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING)
 					{
-						string neuronConnectionString = targetNeuronID + csvDelimiter + connectionType + csvDelimiter + locationObjectContentsXcoordinatesContent + csvDelimiter + locationObjectContentsYcoordinatesContent + csvDelimiter + locationObjectContentsZcoordinatesContent;		
-						#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_NON_LOCAL_NEURONS_REQUIRED
-						//if(!std::count(neuronList.begin(), neuronList.end(), connectionNeuronID))	//verify that connectionNeuronID is not in neuronList
-						if(neuronMap->count(targetNeuronID) == 0)	//verify that targetNeuronID is not in neuronList
-						{
-						#endif
-							long targetNeuronIDindex = SHAREDvars.convertStringToLong(targetNeuronID);
-							long sourceNeuronIDIndex = SHAREDvars.convertStringToLong(sourceNeuronID);
-
-							//H01indexedCSVdatabaseQueryObject* queryObject = new H01indexedCSVdatabaseQueryObject();
-							H01indexedCSVdatabaseQueryObject queryObject;
-							queryObject.neuronID = sourceNeuronIDIndex;
-							queryObject.type = SHAREDvars.convertStringToInt(connectionType);
-							queryObject.locationObjectContentsXcoordinates = SHAREDvars.convertStringToInt(locationObjectContentsXcoordinatesContent);
-							queryObject.locationObjectContentsYcoordinates = SHAREDvars.convertStringToInt(locationObjectContentsYcoordinatesContent);
-							queryObject.locationObjectContentsZcoordinates = SHAREDvars.convertStringToInt(locationObjectContentsZcoordinatesContent);
-							vector<H01indexedCSVdatabaseQueryObject>* neuronIDvector;
-							if(neuronConnectionMap.count(targetNeuronIDindex) != 0)
-							{
-								neuronIDvector = &(neuronConnectionMap.at(targetNeuronIDindex));
-							}
-							else
-							{
-								vector<H01indexedCSVdatabaseQueryObject> innerVectorNewObject; 
-								neuronIDvector = &innerVectorNewObject;
-								neuronConnectionMap.insert(std::pair<long, vector<H01indexedCSVdatabaseQueryObject>>(targetNeuronIDindex, innerVectorNewObject)); 
-							}
-							neuronIDvector->push_back(queryObject); 
-						#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_NON_LOCAL_NEURONS_REQUIRED
-						}
-						#endif
-					}
+						performIncomingAxonMappingRead(neuronMap, sourceNeuronID, targetNeuronID, connectionType, locationObjectContentsXcoordinatesContent, locationObjectContentsYcoordinatesContent, locationObjectContentsZcoordinatesContent);
+					}	
 					#endif
-
 
 					#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET
 					if(queryMode == QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET)
 					{
-						#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_RESTRICT_PREPOSTSYNAPTIC_CLASS_LABELS
-						string classLabelContentsSmall1 = csvLineVector[INDEXED_CSV_DATABASE_PRESYNAPTIC_SITE_CLASSLABEL_FIELD_INDEX];
-						string classLabelContentsSmall2 = csvLineVector[INDEXED_CSV_DATABASE_POSTSYNAPTIC_SITE_CLASSLABEL_FIELD_INDEX];
-						if(SHAREDvars.textInTextArray(classLabelContentsSmall1, indexed_csv_database_presynaptic_site_classlabel_valid, INDEXED_CSV_DATABASE_PRESYNAPTIC_SITE_CLASSLABEL_VALID_NUM) && SHAREDvars.textInTextArray(classLabelContentsSmall2, indexed_csv_database_postsynaptic_site_classlabel_valid, INDEXED_CSV_DATABASE_POSTSYNAPTIC_SITE_CLASSLABEL_VALID_NUM))
-						{
-						#endif
-							#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_LOCAL_NEURONS_REQUIRED		
-							//verify that targetNeuronID centroid/soma is also in local connectome;
-							if(neuronMap->count(targetNeuronID) != 0)	//verify that targetNeuronID is in neuronList
-							{
-							#endif
-								string neuronConnectionString = "";
-
-								int neuronIndexTarget = (*neuronMap)[targetNeuronID];
-								vector<string>* localConnectomeNeuronTarget = &((*localConnectomeCSVdatasetNeurons)[neuronIndexTarget]);
-
-								int excitationType;
-								if(connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
-								{
-									string presynapticNeuronType = "";
-									if(queryByPresynapticConnectionNeurons)
-									{
-										presynapticNeuronType = (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
-									}
-									else
-									{
-										presynapticNeuronType = (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
-									}
-									if(presynapticNeuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_PYRAMIDAL)
-									{
-										excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY;
-									}
-									else if(presynapticNeuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_INTERNEURON)
-									{
-										excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY;
-									}
-									else
-									{
-										excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN;
-										cerr << "H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronList warning, source neuron type unknown, presynapticNeuronType = " << presynapticNeuronType << endl;
-									}
-								}
-								else
-								{
-									if(connectionTypeInt == AVRO_JSON_DATABASE_EXCITATORY_SYNAPSE_TYPE)
-									{
-										excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY;
-									}
-									else if(connectionTypeInt == AVRO_JSON_DATABASE_INHIBITORY_SYNAPSE_TYPE)
-									{
-										excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY;
-									}
-									else
-									{
-										excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN;
-										cerr << "H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronList warning, connection type unknown, connectionType = " << connectionType << endl;
-									}
-								}
-
-								int numberOfSynapses = 1;
-								#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_VERIFICATION
-								string pre_id; 
-								string post_id;
-								#endif
-								//pre_id, pre_x, pre_y, pre_z, pre_type, post_id, post_x, post_y, post_z, post_type, post_class_label, syn_num, excitation_type
-								string postClassLabel = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_CLASS_LABEL_UNKNOWN;
-								#ifdef INDEXED_CSV_DATABASE_CREATE_CLASS_LABELS_SAVE_VERBATIM
-								postClassLabel = csvLineVector[INDEXED_CSV_DATABASE_POSTSYNAPTIC_SITE_CLASSLABEL_FIELD_INDEX];
-								#endif
-								if(queryByPresynapticConnectionNeurons)
-								{
-									#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_VERIFICATION
-									pre_id = sourceNeuronID;
-									post_id = targetNeuronID;
-									#endif
-									neuronConnectionString = 
-									sourceNeuronID + CSV_DELIMITER + (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X] + CSV_DELIMITER + (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y] + CSV_DELIMITER + (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Z] + CSV_DELIMITER + (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE] + CSV_DELIMITER + 
-									targetNeuronID + CSV_DELIMITER + (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X] + CSV_DELIMITER + (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y] + CSV_DELIMITER + (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Z] + CSV_DELIMITER + (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE] + CSV_DELIMITER + 
-									postClassLabel + CSV_DELIMITER + SHAREDvars.convertIntToString(numberOfSynapses) + CSV_DELIMITER + SHAREDvars.convertIntToString(excitationType) + STRING_NEWLINE;
-								}
-								else
-								{
-									#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_VERIFICATION
-									pre_id = targetNeuronID;
-									post_id = sourceNeuronID;
-									#endif
-									neuronConnectionString = 
-									targetNeuronID + CSV_DELIMITER + (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X] + CSV_DELIMITER + (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y] + CSV_DELIMITER + (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Z] + CSV_DELIMITER + (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE] + CSV_DELIMITER + 
-									sourceNeuronID + CSV_DELIMITER + (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X] + CSV_DELIMITER + (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y] + CSV_DELIMITER + (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Z] + CSV_DELIMITER + (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE] + CSV_DELIMITER + 
-									postClassLabel + CSV_DELIMITER + SHAREDvars.convertIntToString(numberOfSynapses) + CSV_DELIMITER + SHAREDvars.convertIntToString(excitationType) + STRING_NEWLINE;		
-								}
-
-								#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_VERIFICATION
-								string connectionsMapKey = pre_id + post_id;
-								//cout << "connectionsMapKey to find = " << connectionsMapKey << endl;
-								if(connectionsMap.count(connectionsMapKey) == 0)	//verify that connectionsMapKey is found in existing (dev/ODS generated) connections dataset
-								{
-									cout << "INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_VERIFICATION warning: generated connection not found in existing (dev/ODS generated) connections dataset; pre_id post_id = " << pre_id << " " << post_id << endl;
-								}
-								else
-								{
-									//cout << "INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_VERIFICATION: generated connection found in existing (dev/ODS generated) connections dataset; pre_id post_id = " << pre_id << " " << post_id << endl;
-								}
-								#endif
-
-								#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_FILE_OBJECT
-								SHAREDvars.writeStringToFileObject(neuronConnectionString, writeFileObject);
-								#else
-								this->appendStringBufferToPreallocatedString(writeFileString, neuronConnectionString);
-								//writeFileString = writeFileString + neuronConnectionString	//inefficient
-								#endif
-
-							#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_LOCAL_NEURONS_REQUIRED		
-							}
-							#endif
-						#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_RESTRICT_PREPOSTSYNAPTIC_CLASS_LABELS
-						}
-						#endif
+						generateLocalConnectomeConnectionsDataset(csvLineVector, neuronMap, localConnectomeCSVdatasetNeurons, localConnectomeNeuron, sourceNeuronID, targetNeuronID, connectionTypeInt, queryByPresynapticConnectionNeurons, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, writeFileObject, writeFileString);
 					}
 					#endif	
 
 					#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS
 					if((queryMode == QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS) || (queryMode == QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL))
 					{
-						#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
-						int localConnectomeNeuronLayer = SHAREDvars.convertStringToInt((*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER]);
-						#endif
-				
-						vector<string>* localConnectomeNeuronTarget = NULL;
-						if(neuronMap->count(targetNeuronID) != 0)	//verify that targetNeuronID is in neuronList
-						{
-							int neuronIndexTarget = (*neuronMap)[targetNeuronID];
-							localConnectomeNeuronTarget = &((*localConnectomeCSVdatasetNeurons)[neuronIndexTarget]);
-						}
-												
-						int excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN;
-						#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS
-						if(connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
-						{
-							string presynapticNeuronType = LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_UNKNOWN;
-							if(queryByPresynapticConnectionNeurons)
-							{
-								presynapticNeuronType = (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
-							}
-							else
-							{
-								//verify that targetNeuronID centroid/soma is also in local connectome;
-								if(localConnectomeNeuronTarget != NULL)	//verify that targetNeuronID is in neuronList
-								{
-									presynapticNeuronType = (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
-								}
-								else
-								{
-									presynapticNeuronType = LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_UNKNOWN;	//excitationType will be LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN if presynaptic neuron is not in local connectome
-								}
-							}
-							//cout << "presynapticNeuronType = " << presynapticNeuronType << endl;
-							
-							if(presynapticNeuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_PYRAMIDAL)
-							{
-								excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY;
-							}
-							else if(presynapticNeuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_INTERNEURON)
-							{
-								excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY;
-							}
-							else
-							{
-								excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN;	//excitationType will be LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN if presynaptic neuron is not in local connectome 
-							}
-						}
-						else
-						{
-						#endif
-							if(connectionTypeInt == AVRO_JSON_DATABASE_EXCITATORY_SYNAPSE_TYPE)
-							{
-								excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY;
-							}
-							else if(connectionTypeInt == AVRO_JSON_DATABASE_INHIBITORY_SYNAPSE_TYPE)
-							{
-								excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY;
-							}
-							else
-							{
-								excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN;
-								cerr << "H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronList warning, connection type unknown, connectionType = " << connectionType << endl;
-							}
-						#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS
-						}
-						#endif
-	
-						vec posSource;
-						vec posTarget; 
-						vec* posTargetPointer = &posTarget;
-						#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL
-						posSource.x = SHAREDvars.convertStringToInt((*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X]);
-						posSource.y = SHAREDvars.convertStringToInt((*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y]);
-						posSource.z = SHAREDvars.convertStringToInt((*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Z]);
-						if(localConnectomeNeuronTarget != NULL)
-						{//verify that targetNeuronID centroid/soma is also in local connectome;
-							posTarget.x = SHAREDvars.convertStringToInt((*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X]);
-							posTarget.y = SHAREDvars.convertStringToInt((*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y]);
-							posTarget.z = SHAREDvars.convertStringToInt((*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Z]);
-							#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_DISTANCES
-							//double distance = SHAREDvector.calculateTheDistanceBetweenTwoPointsXYOnly(&posSource, &posTarget); 	//or calculateTheDistanceBetweenTwoPoints
-							vec vectorSourceToTarget;
-							vectorSourceToTarget.x = posTarget.x - posSource.x;
-							vectorSourceToTarget.y = posTarget.y - posSource.y;
-							cout << "vectorSourceToTarget.x = " << vectorSourceToTarget.x << endl;
-							cout << "vectorSourceToTarget.y = " << vectorSourceToTarget.y << endl;
-							#endif	
-						}
-						else
-						{
-							posTargetPointer = NULL;	//tell incrementNumberOfConnections that targetNeuronID centroid/soma is not in local connectome
-						}				
-						#endif
-						vec sourceNeuronCorticalFlowVector;
-						#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL_NORMALISE_LOCAL_CONNECTIVITY
-						if(queryMode == QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL)
-						{
-							sourceNeuronCorticalFlowVector.x = SHAREDvars.convertStringToInt((*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER_SURFACE_NORM_X]);
-							sourceNeuronCorticalFlowVector.y = SHAREDvars.convertStringToInt((*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER_SURFACE_NORM_Y]);
-						}
-						#endif
-
-						bool preAndPostSynapticNeuronAreInLocalConnectome = false;	
-						if(neuronMap->count(targetNeuronID) != 0)	//verify that targetNeuronID is in neuronList
-						{
-							preAndPostSynapticNeuronAreInLocalConnectome = true;	//sourceNeuronID and targetNeuronID are in local connectome 
-						}
-						if(preAndPostSynapticNeuronAreInLocalConnectome)
-						{
-							incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsLocalConnectome, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
-							#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
-							incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsLocalConnectome, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
-							#endif	
-						
-							#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURSIVE
-							if(sourceNeuronID == targetNeuronID)
-							{
-								cout << "(sourceNeuronID == targetNeuronID)" << endl;
-								exit(EXIT_ERROR);
-								incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsLocalConnectomeRecursive, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
-								#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
-								incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsLocalConnectomeRecursive, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
-								#endif	
-							}
-							#endif	
-												
-							if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY)
-							{
-								incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsLocalConnectomeExcitatory, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
-								#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
-								incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsLocalConnectomeExcitatory, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
-								#endif
-								#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_OUTPUT_VERBOSE_LOCALORNONLOCAL
-								numberConnectionsLocalConnectomeExcitatoryCurrent++;
-								#endif
-								
-								#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURSIVE
-								if(sourceNeuronID == targetNeuronID)
-								{
-									cout << "(sourceNeuronID == targetNeuronID)" << endl;
-									exit(EXIT_ERROR);
-									incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsLocalConnectomeExcitatoryRecursive, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
-									#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
-									incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsLocalConnectomeExcitatoryRecursive, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
-									#endif
-								}
-								#endif
-							}
-							else if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY)
-							{
-								incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsLocalConnectomeInhibitory, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
-								#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
-								incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsLocalConnectomeInhibitory, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
-								#endif
-								#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_OUTPUT_VERBOSE_LOCALORNONLOCAL
-								numberConnectionsLocalConnectomeInhibitoryCurrent++;
-								#endif
-								
-								#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURSIVE
-								if(sourceNeuronID == targetNeuronID)
-								{
-									cout << "(sourceNeuronID == targetNeuronID)" << endl;
-									exit(EXIT_ERROR);
-									incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsLocalConnectomeInhibitoryRecursive, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
-									#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
-									incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsLocalConnectomeInhibitoryRecursive, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
-									#endif
-								}
-								#endif
-							}
-							else
-							{
-								cerr << "H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronList warning, connection type unknown, connectionType = " << connectionType << endl;
-							}
-						}
-						else
-						{
-							incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsExternalConnectome, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
-							#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
-							incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsExternalConnectome, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
-							#endif
-							
-							#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURSIVE
-							if(sourceNeuronID == targetNeuronID)
-							{
-								cout << "(sourceNeuronID == targetNeuronID)" << endl;
-								exit(EXIT_ERROR);
-								incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsExternalConnectomeRecursive, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
-								#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
-								incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsExternalConnectomeRecursive, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
-								#endif	
-							}
-							#endif	
-														
-							if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY)
-							{
-								incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsExternalConnectomeExcitatory, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
-								#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
-								incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsExternalConnectomeExcitatory, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
-								#endif
-								#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_OUTPUT_VERBOSE_LOCALORNONLOCAL
-								numberConnectionsLocalConnectomeExcitatoryCurrent++;
-								#endif
-								
-								#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURSIVE
-								if(sourceNeuronID == targetNeuronID)
-								{
-									cout << "(sourceNeuronID == targetNeuronID)" << endl;
-									exit(EXIT_ERROR);
-									incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsExternalConnectomeExcitatoryRecursive, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
-									#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
-									incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsExternalConnectomeExcitatoryRecursive, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
-									#endif
-								}
-								#endif
-							}
-							else if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY)
-							{
-								incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsExternalConnectomeInhibitory, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
-								#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
-								incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsExternalConnectomeInhibitory, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
-								#endif
-								#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_OUTPUT_VERBOSE_LOCALORNONLOCAL
-								numberConnectionsLocalConnectomeInhibitoryCurrent++;
-								#endif
-								
-								#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURSIVE
-								if(sourceNeuronID == targetNeuronID)
-								{
-									cout << "(sourceNeuronID == targetNeuronID)" << endl;
-									exit(EXIT_ERROR);
-									incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsExternalConnectomeInhibitoryRecursive, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
-									#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
-									incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsExternalConnectomeInhibitoryRecursive, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
-									#endif
-								}
-								#endif
-							}
-							else
-							{
-								#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS
-								//excitationType will be LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN if presynaptic neuron is not in local connectome (so numberConnectionsExternalConnectomeExcitatory+numberConnectionsExternalConnectomeInhibitory != numberConnectionsExternalConnectome)
-								#else
-								cerr << "H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronList warning, connection type unknown, connectionType = " << connectionType << endl;
-								exit(EXIT_ERROR);
-								#endif
-							}
-						}
+						countConnections(queryMode, neuronMap, localConnectomeCSVdatasetNeurons, localConnectomeNeuron, connectivityModelLayers, sourceNeuronID, targetNeuronID,  connectionTypeInt, queryByPresynapticConnectionNeurons, connectionTypesDerivedFromPresynapticNeuronsOrEMimages);
 					}
 					#endif
+					
+					/*
+					#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURRENT
+					if(queryMode == QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS)
+					{
+						countRecurrentConnections(indexed_csv_database_folder, neuronMap, localConnectomeCSVdatasetNeurons, localConnectomeNeuron, neuronID, targetNeuronID, connectionTypeInt, queryByPresynapticConnectionNeurons, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, connectivityModelLayers);
+					}
+					#endif
+					*/
+					
 				#ifdef INDEXED_CSV_DATABASE_QUERY_CONFIDENCE_THRESHOLD_REQUIRED
 				}
 				#endif
@@ -1284,7 +890,7 @@ bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronList(const 
 			if(queryMode == QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS)
 			{
 				#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_OUTPUT_VERBOSE_LOCALORNONLOCAL
-				cout << neuronID << " " << numberConnectionsLocalConnectomeExcitatoryCurrent << " " << numberConnectionsLocalConnectomeInhibitoryCurrent << endl;
+				cout << neuronID << " " << (*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].numberConnectionsLocalOrNonLocalConnectomeExcitatory << " " << (*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].numberConnectionsLocalOrNonLocalConnectomeInhibitory << endl;
 				#endif
 			}
 			#endif	
@@ -1343,6 +949,698 @@ bool H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronList(const 
 	return result;
 }
 
+#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS
+#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_NUMBER_EXCITATORY_INHIBITORY_NEURONS
+void H01indexedCSVdatabaseQueryClass::countConnectionsNumberInhibitoryExcitatoryNeurons(vector<string>* localConnectomeNeuron, vector<H01connectivityModelClass>* connectivityModelLayers)
+{
+	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+	int localConnectomeNeuronLayer = SHAREDvars.convertStringToInt((*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER]);
+	#endif
+
+	(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].numberOfLocalConnectomeNeurons++;	//(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].numberOfLocalConnectomeNeurons = (*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].numberOfLocalConnectomeNeurons+1;
+	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+	(*connectivityModelLayers)[localConnectomeNeuronLayer].numberOfLocalConnectomeNeurons++;
+	#endif
+
+	//int excitationType;
+	string sourceNeuronType = "";
+	sourceNeuronType = (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
+
+	//count outgoing or incoming connections (depending on queryByPresynapticConnectionNeurons or !queryByPresynapticConnectionNeurons):
+	if(sourceNeuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_PYRAMIDAL)
+	{
+		(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].numberOfLocalConnectomeNeuronsExcitatory++;
+		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+		(*connectivityModelLayers)[localConnectomeNeuronLayer].numberOfLocalConnectomeNeuronsExcitatory++;
+		#endif
+		//excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY;
+	}
+	else if(sourceNeuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_INTERNEURON)
+	{
+		(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].numberOfLocalConnectomeNeuronsInhibitory++;
+		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+		(*connectivityModelLayers)[localConnectomeNeuronLayer].numberOfLocalConnectomeNeuronsInhibitory++;
+		#endif
+		//excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY;
+	}
+	else
+	{
+		//excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN;
+		cerr << "H01indexedCSVdatabaseQueryClass::queryIndexedCSVdatabaseByNeuronList warning, source neuron type unknown, sourceNeuronType = " << sourceNeuronType << endl;
+	}
+}
+#endif
+#endif
+
+#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING	
+void H01indexedCSVdatabaseQueryClass::performIncomingAxonMappingRead(map<string, int>* neuronMap, const string sourceNeuronID, const string targetNeuronID, const string connectionType, const string locationObjectContentsXcoordinatesContent, const string locationObjectContentsYcoordinatesContent, const string locationObjectContentsZcoordinatesContent)
+{
+	const string csvDelimiter = CSV_DELIMITER;
+
+	string neuronConnectionString = targetNeuronID + csvDelimiter + connectionType + csvDelimiter + locationObjectContentsXcoordinatesContent + csvDelimiter + locationObjectContentsYcoordinatesContent + csvDelimiter + locationObjectContentsZcoordinatesContent;		
+	#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_NON_LOCAL_NEURONS_REQUIRED
+	//if(!std::count(neuronList.begin(), neuronList.end(), connectionNeuronID))	//verify that connectionNeuronID is not in neuronList
+	if(neuronMap->count(targetNeuronID) == 0)	//verify that targetNeuronID is not in neuronList
+	{
+	#endif
+		long targetNeuronIDindex = SHAREDvars.convertStringToLong(targetNeuronID);
+		long sourceNeuronIDIndex = SHAREDvars.convertStringToLong(sourceNeuronID);
+
+		//H01indexedCSVdatabaseQueryObject* queryObject = new H01indexedCSVdatabaseQueryObject();
+		H01indexedCSVdatabaseQueryObject queryObject;
+		queryObject.neuronID = sourceNeuronIDIndex;
+		queryObject.type = SHAREDvars.convertStringToInt(connectionType);
+		queryObject.locationObjectContentsXcoordinates = SHAREDvars.convertStringToInt(locationObjectContentsXcoordinatesContent);
+		queryObject.locationObjectContentsYcoordinates = SHAREDvars.convertStringToInt(locationObjectContentsYcoordinatesContent);
+		queryObject.locationObjectContentsZcoordinates = SHAREDvars.convertStringToInt(locationObjectContentsZcoordinatesContent);
+		vector<H01indexedCSVdatabaseQueryObject>* neuronIDvector;
+		if(neuronConnectionMap.count(targetNeuronIDindex) != 0)
+		{
+			neuronIDvector = &(neuronConnectionMap.at(targetNeuronIDindex));
+		}
+		else
+		{
+			vector<H01indexedCSVdatabaseQueryObject> innerVectorNewObject; 
+			neuronIDvector = &innerVectorNewObject;
+			neuronConnectionMap.insert(std::pair<long, vector<H01indexedCSVdatabaseQueryObject>>(targetNeuronIDindex, innerVectorNewObject)); 
+		}
+		neuronIDvector->push_back(queryObject); 
+	#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_NON_LOCAL_NEURONS_REQUIRED
+	}
+	#endif
+}
+#endif
+					
+#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET
+void H01indexedCSVdatabaseQueryClass::generateLocalConnectomeConnectionsDataset(vector<string> csvLineVector, map<string, int>* neuronMap, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<string>* localConnectomeNeuron, const string sourceNeuronID, const string targetNeuronID, const int connectionTypeInt, const bool queryByPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, ofstream* writeFileObject, string* writeFileString)
+{
+	#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_RESTRICT_PREPOSTSYNAPTIC_CLASS_LABELS
+	string classLabelContentsSmall1 = csvLineVector[INDEXED_CSV_DATABASE_PRESYNAPTIC_SITE_CLASSLABEL_FIELD_INDEX];
+	string classLabelContentsSmall2 = csvLineVector[INDEXED_CSV_DATABASE_POSTSYNAPTIC_SITE_CLASSLABEL_FIELD_INDEX];
+	if(SHAREDvars.textInTextArray(classLabelContentsSmall1, indexed_csv_database_presynaptic_site_classlabel_valid, INDEXED_CSV_DATABASE_PRESYNAPTIC_SITE_CLASSLABEL_VALID_NUM) && SHAREDvars.textInTextArray(classLabelContentsSmall2, indexed_csv_database_postsynaptic_site_classlabel_valid, INDEXED_CSV_DATABASE_POSTSYNAPTIC_SITE_CLASSLABEL_VALID_NUM))
+	{
+	#endif
+		#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_LOCAL_NEURONS_REQUIRED		
+		//verify that targetNeuronID centroid/soma is also in local connectome;
+		bool targetNeuronIsInLocalConnectome = false;
+		if(neuronMap->count(targetNeuronID) != 0)	//verify that targetNeuronID is in neuronList
+		{
+			targetNeuronIsInLocalConnectome = true;
+		}
+		if(targetNeuronIsInLocalConnectome)
+		{
+		#endif
+			string neuronConnectionString = "";
+
+			int neuronIndexTarget = (*neuronMap)[targetNeuronID];
+			vector<string>* localConnectomeNeuronTarget = &((*localConnectomeCSVdatasetNeurons)[neuronIndexTarget]);
+
+			string presynapticNeuronType = "";
+			if(connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
+			{
+				if(queryByPresynapticConnectionNeurons)
+				{
+					presynapticNeuronType = (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
+				}
+				else
+				{
+					presynapticNeuronType = (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
+				}
+			}
+			int excitationType = calculateConnectionExcitationType2(connectionTypeInt, presynapticNeuronType, queryByPresynapticConnectionNeurons, connectionTypesDerivedFromPresynapticNeuronsOrEMimages);
+		
+			int numberOfSynapses = 1;
+			#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_VERIFICATION
+			string pre_id; 
+			string post_id;
+			#endif
+			//pre_id, pre_x, pre_y, pre_z, pre_type, post_id, post_x, post_y, post_z, post_type, post_class_label, syn_num, excitation_type
+			string postClassLabel = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_CLASS_LABEL_UNKNOWN;
+			#ifdef INDEXED_CSV_DATABASE_CREATE_CLASS_LABELS_SAVE_VERBATIM
+			postClassLabel = csvLineVector[INDEXED_CSV_DATABASE_POSTSYNAPTIC_SITE_CLASSLABEL_FIELD_INDEX];
+			#endif
+			if(queryByPresynapticConnectionNeurons)
+			{
+				#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_VERIFICATION
+				pre_id = sourceNeuronID;
+				post_id = targetNeuronID;
+				#endif
+				neuronConnectionString = 
+				sourceNeuronID + CSV_DELIMITER + (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X] + CSV_DELIMITER + (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y] + CSV_DELIMITER + (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Z] + CSV_DELIMITER + (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE] + CSV_DELIMITER + 
+				targetNeuronID + CSV_DELIMITER + (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X] + CSV_DELIMITER + (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y] + CSV_DELIMITER + (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Z] + CSV_DELIMITER + (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE] + CSV_DELIMITER + 
+				postClassLabel + CSV_DELIMITER + SHAREDvars.convertIntToString(numberOfSynapses) + CSV_DELIMITER + SHAREDvars.convertIntToString(excitationType) + STRING_NEWLINE;
+			}
+			else
+			{
+				#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_VERIFICATION
+				pre_id = targetNeuronID;
+				post_id = sourceNeuronID;
+				#endif
+				neuronConnectionString = 
+				targetNeuronID + CSV_DELIMITER + (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X] + CSV_DELIMITER + (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y] + CSV_DELIMITER + (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Z] + CSV_DELIMITER + (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE] + CSV_DELIMITER + 
+				sourceNeuronID + CSV_DELIMITER + (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X] + CSV_DELIMITER + (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y] + CSV_DELIMITER + (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Z] + CSV_DELIMITER + (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE] + CSV_DELIMITER + 
+				postClassLabel + CSV_DELIMITER + SHAREDvars.convertIntToString(numberOfSynapses) + CSV_DELIMITER + SHAREDvars.convertIntToString(excitationType) + STRING_NEWLINE;		
+			}
+
+			#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_VERIFICATION
+			string connectionsMapKey = pre_id + post_id;
+			//cout << "connectionsMapKey to find = " << connectionsMapKey << endl;
+			if(connectionsMap.count(connectionsMapKey) == 0)	//verify that connectionsMapKey is found in existing (dev/ODS generated) connections dataset
+			{
+				cout << "INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_VERIFICATION warning: generated connection not found in existing (dev/ODS generated) connections dataset; pre_id post_id = " << pre_id << " " << post_id << endl;
+			}
+			else
+			{
+				//cout << "INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_VERIFICATION: generated connection found in existing (dev/ODS generated) connections dataset; pre_id post_id = " << pre_id << " " << post_id << endl;
+			}
+			#endif
+
+			#ifdef INDEXED_CSV_DATABASE_QUERY_READ_WRITE_TO_FILE_OBJECT
+			SHAREDvars.writeStringToFileObject(neuronConnectionString, writeFileObject);
+			#else
+			this->appendStringBufferToPreallocatedString(writeFileString, neuronConnectionString);
+			//writeFileString = writeFileString + neuronConnectionString	//inefficient
+			#endif
+
+		#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_LOCAL_NEURONS_REQUIRED		
+		}
+		#endif
+	#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_RESTRICT_PREPOSTSYNAPTIC_CLASS_LABELS
+	}
+	#endif
+}
+#endif
+
+
+
+#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS
+void H01indexedCSVdatabaseQueryClass::countConnections(const int queryMode, map<string, int>* neuronMap, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<string>* localConnectomeNeuron, vector<H01connectivityModelClass>* connectivityModelLayers, const string sourceNeuronID, const string targetNeuronID, const int connectionTypeInt, const bool queryByPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
+{
+	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+	int localConnectomeNeuronLayer = SHAREDvars.convertStringToInt((*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER]);
+	#endif
+
+	bool targetNeuronIsInLocalConnectome = false;
+	vector<string>* localConnectomeNeuronTarget = NULL;
+	if(neuronMap->count(targetNeuronID) != 0)	//verify that targetNeuronID is in neuronList
+	{
+		targetNeuronIsInLocalConnectome = true;
+		int neuronIndexTarget = (*neuronMap)[targetNeuronID];
+		localConnectomeNeuronTarget = &((*localConnectomeCSVdatasetNeurons)[neuronIndexTarget]);
+	}
+
+	int excitationType = calculateConnectionExcitationType1(connectionTypeInt, localConnectomeNeuron, localConnectomeNeuronTarget, queryByPresynapticConnectionNeurons, connectionTypesDerivedFromPresynapticNeuronsOrEMimages);
+
+	vec posSource;
+	vec posTarget; 
+	vec* posTargetPointer = &posTarget;
+	#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL
+	posSource.x = SHAREDvars.convertStringToInt((*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X]);
+	posSource.y = SHAREDvars.convertStringToInt((*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y]);
+	posSource.z = SHAREDvars.convertStringToInt((*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Z]);
+	if(targetNeuronIsInLocalConnectome)
+	{//verify that targetNeuronID centroid/soma is also in local connectome;
+		posTarget.x = SHAREDvars.convertStringToInt((*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X]);
+		posTarget.y = SHAREDvars.convertStringToInt((*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y]);
+		posTarget.z = SHAREDvars.convertStringToInt((*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Z]);
+		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_DISTANCES
+		//double distance = SHAREDvector.calculateTheDistanceBetweenTwoPointsXYOnly(&posSource, &posTarget); 	//or calculateTheDistanceBetweenTwoPoints
+		vec vectorSourceToTarget;
+		vectorSourceToTarget.x = posTarget.x - posSource.x;
+		vectorSourceToTarget.y = posTarget.y - posSource.y;
+		cout << "vectorSourceToTarget.x = " << vectorSourceToTarget.x << endl;
+		cout << "vectorSourceToTarget.y = " << vectorSourceToTarget.y << endl;
+		#endif	
+	}
+	else
+	{
+		posTargetPointer = NULL;	//tell incrementNumberOfConnections that targetNeuronID centroid/soma is not in local connectome
+	}				
+	#endif
+	vec sourceNeuronCorticalFlowVector;
+	#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL_NORMALISE_LOCAL_CONNECTIVITY
+	if(queryMode == QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL)
+	{
+		sourceNeuronCorticalFlowVector.x = SHAREDvars.convertStringToInt((*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER_SURFACE_NORM_X]);
+		sourceNeuronCorticalFlowVector.y = SHAREDvars.convertStringToInt((*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER_SURFACE_NORM_Y]);
+	}
+	#endif
+
+	bool preAndPostSynapticNeuronAreInLocalConnectome = false;	
+	if(neuronMap->count(targetNeuronID) != 0)	//verify that targetNeuronID is in neuronList
+	{
+		preAndPostSynapticNeuronAreInLocalConnectome = true;	//sourceNeuronID and targetNeuronID are in local connectome 
+	}
+	if(preAndPostSynapticNeuronAreInLocalConnectome)
+	{
+		incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsLocalConnectome, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
+		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+		incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsLocalConnectome, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
+		#endif	
+
+		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURSIVE
+		if(sourceNeuronID == targetNeuronID)
+		{
+			cout << "(sourceNeuronID == targetNeuronID)" << endl;
+			exit(EXIT_ERROR);
+			incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsLocalConnectomeRecursive, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+			incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsLocalConnectomeRecursive, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
+			#endif	
+		}
+		#endif	
+
+		if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY)
+		{
+			incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsLocalConnectomeExcitatory, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+			incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsLocalConnectomeExcitatory, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
+			#endif
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_OUTPUT_VERBOSE_LOCALORNONLOCAL
+			(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].numberConnectionsLocalOrNonLocalConnectomeExcitatory++;
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+			(*connectivityModelLayers)[localConnectomeNeuronLayer].numberConnectionsLocalOrNonLocalConnectomeExcitatory++;
+			#endif
+			#endif
+
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURSIVE
+			if(sourceNeuronID == targetNeuronID)
+			{
+				cout << "(sourceNeuronID == targetNeuronID)" << endl;
+				exit(EXIT_ERROR);
+				incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsLocalConnectomeExcitatoryRecursive, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
+				#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+				incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsLocalConnectomeExcitatoryRecursive, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
+				#endif
+			}
+			#endif
+		}
+		else if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY)
+		{
+			incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsLocalConnectomeInhibitory, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+			incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsLocalConnectomeInhibitory, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
+			#endif
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_OUTPUT_VERBOSE_LOCALORNONLOCAL
+			(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].numberConnectionsLocalOrNonLocalConnectomeInhibitory++;
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+			(*connectivityModelLayers)[localConnectomeNeuronLayer].numberConnectionsLocalOrNonLocalConnectomeInhibitory++;
+			#endif
+			#endif
+
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURSIVE
+			if(sourceNeuronID == targetNeuronID)
+			{
+				cout << "(sourceNeuronID == targetNeuronID)" << endl;
+				exit(EXIT_ERROR);
+				incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsLocalConnectomeInhibitoryRecursive, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
+				#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+				incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsLocalConnectomeInhibitoryRecursive, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
+				#endif
+			}
+			#endif
+		}
+		else
+		{
+			cerr << "H01indexedCSVdatabaseQueryClass::countConnections warning (preAndPostSynapticNeuronAreInLocalConnectome), excitationType type unknown, excitationType = " << excitationType << endl;
+		}
+	}
+	else
+	{
+		incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsExternalConnectome, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
+		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+		incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsExternalConnectome, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
+		#endif
+
+		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURSIVE
+		if(sourceNeuronID == targetNeuronID)
+		{
+			cout << "(sourceNeuronID == targetNeuronID)" << endl;
+			exit(EXIT_ERROR);
+			incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsExternalConnectomeRecursive, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+			incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsExternalConnectomeRecursive, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
+			#endif	
+		}
+		#endif	
+
+		if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY)
+		{
+			incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsExternalConnectomeExcitatory, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+			incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsExternalConnectomeExcitatory, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
+			#endif
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_OUTPUT_VERBOSE_LOCALORNONLOCAL
+			(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].numberConnectionsLocalOrNonLocalConnectomeExcitatory++;
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+			(*connectivityModelLayers)[localConnectomeNeuronLayer].numberConnectionsLocalOrNonLocalConnectomeExcitatory++;
+			#endif
+			#endif
+
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURSIVE
+			if(sourceNeuronID == targetNeuronID)
+			{
+				cout << "(sourceNeuronID == targetNeuronID)" << endl;
+				exit(EXIT_ERROR);
+				incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsExternalConnectomeExcitatoryRecursive, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
+				#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+				incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsExternalConnectomeExcitatoryRecursive, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
+				#endif
+			}
+			#endif
+		}
+		else if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY)
+		{
+			incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsExternalConnectomeInhibitory, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+			incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsExternalConnectomeInhibitory, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
+			#endif
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_OUTPUT_VERBOSE_LOCALORNONLOCAL
+			(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].numberConnectionsLocalOrNonLocalConnectomeInhibitory++;
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+			(*connectivityModelLayers)[localConnectomeNeuronLayer].numberConnectionsLocalOrNonLocalConnectomeInhibitory++;
+			#endif
+			#endif
+
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURSIVE
+			if(sourceNeuronID == targetNeuronID)
+			{
+				cout << "(sourceNeuronID == targetNeuronID)" << endl;
+				exit(EXIT_ERROR);
+				incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsExternalConnectomeInhibitoryRecursive, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
+				#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+				incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsExternalConnectomeInhibitoryRecursive, &posSource, posTargetPointer, &sourceNeuronCorticalFlowVector);
+				#endif
+			}
+			#endif
+		}
+		else
+		{
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS
+			//excitationType will be LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN if presynaptic neuron is not in local connectome (so numberConnectionsExternalConnectomeExcitatory+numberConnectionsExternalConnectomeInhibitory != numberConnectionsExternalConnectome)
+			#else
+			cerr << "H01indexedCSVdatabaseQueryClass::countConnections warning (!preAndPostSynapticNeuronAreInLocalConnectome), excitationType type unknown, excitationType = " << excitationType << endl;
+			exit(EXIT_ERROR);
+			#endif
+		}
+	}
+}
+#endif
+
+#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURRENT
+void H01indexedCSVdatabaseQueryClass::countRecurrentConnectionsLocal(const int queryMode, vector<string>* neuronList, map<string, int>* neuronMap, map<string, int>* connectionsMap, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, const bool queryPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, vector<H01connectivityModelClass>* connectivityModelLayers)
+{
+	bool queryByPresynapticConnectionNeurons = !queryPresynapticConnectionNeurons;
+	//if queryByPresynapticConnectionNeurons, calculate excitation type based on localConnectomeNeuronSource (else based on localConnectomeNeuronTarget)
+
+	for(int i=0;i<localConnectomeCSVdatasetConnections->size(); i++)
+	{
+		//cout << "localConnectomeCSVdatasetConnections: i = " << i << endl;
+		vector<string> localConnectomeConnection = (*localConnectomeCSVdatasetConnections)[i];
+
+		string sourceNeuronID = "";
+		string targetNeuronID = "";
+		int excitationType;
+		string sourceNeuronType = "";
+		if(queryByPresynapticConnectionNeurons)
+		{
+			sourceNeuronType = (localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_TYPE];
+			sourceNeuronID = (localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_ID];
+			targetNeuronID = (localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_ID];
+		}
+		else
+		{
+			sourceNeuronType = (localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_TYPE];
+			sourceNeuronID = (localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_ID];
+			targetNeuronID = (localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_ID];
+		}
+
+		bool foundRecurrentConnection = false;
+		string connectionsMapKey;
+		if(queryByPresynapticConnectionNeurons)
+		{
+			connectionsMapKey = targetNeuronID + sourceNeuronID;	//find recurrent connection part 2 from target back to source
+		}
+		else
+		{
+			connectionsMapKey = sourceNeuronID + targetNeuronID;	//find recurrent connection part 1 from source to target	//CHECKTHIS - connectionsMap is always defined from pre_id to post_id
+		}
+		if(connectionsMap->count(connectionsMapKey) != 0)	//verify that connectionsMapKey is found
+		{
+			foundRecurrentConnection = true;
+		}
+		if(foundRecurrentConnection)
+		{
+			int neuronIndexSource = (*neuronMap)[sourceNeuronID];
+			vector<string>* localConnectomeNeuronSource = &((*localConnectomeCSVdatasetNeurons)[neuronIndexSource]);
+			int neuronIndexTarget = (*neuronMap)[targetNeuronID];
+			vector<string>* localConnectomeNeuronTarget = &((*localConnectomeCSVdatasetNeurons)[neuronIndexTarget]);
+
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS
+			if(connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
+			{
+				string presynapticNeuronType = LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_UNKNOWN;
+				if(queryByPresynapticConnectionNeurons)
+				{
+					presynapticNeuronType = (*localConnectomeNeuronSource)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
+				}
+				else
+				{
+					presynapticNeuronType = (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
+				}
+				//cout << "presynapticNeuronType = " << presynapticNeuronType << endl;
+
+				if(presynapticNeuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_PYRAMIDAL)
+				{
+					excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY;
+				}
+				else if(presynapticNeuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_INTERNEURON)
+				{
+					excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY;
+				}
+				else
+				{
+					cerr << "H01indexedCSVdatabaseQueryClass::countConnectionsLocal error: presynapticNeuronType unknown" << endl;
+					exit(EXIT_ERROR);
+				}
+			}
+			else
+			{
+			#endif
+				excitationType = SHAREDvars.convertStringToInt((localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE]);
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS
+			}
+			#endif
+
+			int localConnectomeNeuronLayer;
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+			localConnectomeNeuronLayer = SHAREDvars.convertStringToInt((*localConnectomeNeuronSource)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER]);
+			#endif
+
+			foundRecurrentConnection = true;
+			bool preAndPostSynapticNeuronAreInLocalConnectome = true;
+			addRecurrentConnection(excitationType, localConnectomeNeuronLayer, preAndPostSynapticNeuronAreInLocalConnectome, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, connectivityModelLayers);
+		}
+	}
+}
+
+
+
+bool H01indexedCSVdatabaseQueryClass::countRecurrentConnections(const string indexed_csv_database_folder, map<string, int>* neuronMap, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<string>* localConnectomeNeuronSource, const string sourceNeuronID, const string targetNeuronID, const int connectionTypeInt, const bool queryByPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, vector<H01connectivityModelClass>* connectivityModelLayers)
+{
+	bool foundRecurrentConnection = false;
+	
+	int localConnectomeNeuronLayer;
+	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+	localConnectomeNeuronLayer = SHAREDvars.convertStringToInt((*localConnectomeNeuronSource)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER]);
+	#endif
+	
+	bool preAndPostSynapticNeuronAreInLocalConnectome = false;
+	vector<string>* localConnectomeNeuronTarget = NULL;
+	if(neuronMap->count(targetNeuronID) != 0)	//verify that targetNeuronID is in neuronList
+	{
+		preAndPostSynapticNeuronAreInLocalConnectome = true;	//sourceNeuronID and targetNeuronID are in local connectome 
+		int neuronIndexTarget = (*neuronMap)[targetNeuronID];
+		localConnectomeNeuronTarget = &((*localConnectomeCSVdatasetNeurons)[neuronIndexTarget]);
+	}
+	
+	//if(preAndPostSynapticNeuronAreInLocalConnectome)	//use optimised countRecurrentConnectionsLocal method instead
+	//{//only consider recurrent connections in local connectome (required for execution performance)
+	
+		int excitationTypeConnection1 = calculateConnectionExcitationType1(connectionTypeInt, localConnectomeNeuronSource, localConnectomeNeuronTarget, queryByPresynapticConnectionNeurons, connectionTypesDerivedFromPresynapticNeuronsOrEMimages);
+		//classify excitation by excitationTypeConnection1 (will therefore depend on queryByPresynapticConnectionNeurons)
+
+		bool queryByPresynapticConnectionNeurons2 = !queryByPresynapticConnectionNeurons;
+		
+		vector<vector<string>> neuronConnectionList;
+		if(queryIndexedCSVdatabaseByNeuronID(indexed_csv_database_folder, targetNeuronID, queryByPresynapticConnectionNeurons2, &neuronConnectionList))
+		{	
+			for(int connectionIndex=0; connectionIndex<neuronConnectionList.size(); connectionIndex++)
+			{				 
+				vector<string> csvLineVector2 = neuronConnectionList[connectionIndex];
+
+				string sourceNeuronID2 = "";
+				string targetNeuronID2 = "";
+				if(queryByPresynapticConnectionNeurons2)
+				{
+					sourceNeuronID2 = csvLineVector2[INDEXED_CSV_DATABASE_PRESYNAPTIC_SITE_NEURON_ID_FIELD_INDEX];
+					targetNeuronID2 = csvLineVector2[INDEXED_CSV_DATABASE_POSTSYNAPTIC_SITE_NEURON_ID_FIELD_INDEX];
+				}
+				else
+				{
+					sourceNeuronID2 = csvLineVector2[INDEXED_CSV_DATABASE_POSTSYNAPTIC_SITE_NEURON_ID_FIELD_INDEX];
+					targetNeuronID2 = csvLineVector2[INDEXED_CSV_DATABASE_PRESYNAPTIC_SITE_NEURON_ID_FIELD_INDEX];	
+				}
+
+				if(sourceNeuronID == targetNeuronID2)
+				{
+					foundRecurrentConnection = true;
+					connectionIndex = neuronConnectionList.size();	//stop finding recurrent connections
+				}
+			}
+		}
+		
+		if(foundRecurrentConnection)
+		{
+			addRecurrentConnection(excitationTypeConnection1, localConnectomeNeuronLayer, preAndPostSynapticNeuronAreInLocalConnectome, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, connectivityModelLayers);
+		}
+					
+	//}
+	
+	return foundRecurrentConnection;
+}
+
+void H01indexedCSVdatabaseQueryClass::addRecurrentConnection(const bool excitationTypeConnection, const int localConnectomeNeuronLayer, const bool preAndPostSynapticNeuronAreInLocalConnectome, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, vector<H01connectivityModelClass>* connectivityModelLayers)
+{	
+	vec posSource;	//not used for recurrent connections
+	vec posTarget; 	//not used for recurrent connections
+	vec sourceNeuronCorticalFlowVector;	//not used for recurrent connections
+
+	if(preAndPostSynapticNeuronAreInLocalConnectome)
+	{
+		incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsLocalConnectomeRecurrent, &posSource, &posTarget, &sourceNeuronCorticalFlowVector);
+		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+		incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsLocalConnectomeRecurrent, &posSource, &posTarget, &sourceNeuronCorticalFlowVector);
+		#endif
+		if(excitationTypeConnection)
+		{
+			incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsLocalConnectomeExcitatoryRecurrent, &posSource, &posTarget, &sourceNeuronCorticalFlowVector);
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+			incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsLocalConnectomeExcitatoryRecurrent, &posSource, &posTarget, &sourceNeuronCorticalFlowVector);
+			#endif
+		}
+		else
+		{
+			incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsLocalConnectomeInhibitoryRecurrent, &posSource, &posTarget, &sourceNeuronCorticalFlowVector);	
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+			incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsLocalConnectomeInhibitoryRecurrent, &posSource, &posTarget, &sourceNeuronCorticalFlowVector);
+			#endif
+		}
+	}
+	else
+	{
+		incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsExternalConnectomeRecurrent, &posSource, &posTarget, &sourceNeuronCorticalFlowVector);
+		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+		incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsExternalConnectomeRecurrent, &posSource, &posTarget, &sourceNeuronCorticalFlowVector);
+		#endif
+		if(excitationTypeConnection)
+		{
+			incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsExternalConnectomeExcitatoryRecurrent, &posSource, &posTarget, &sourceNeuronCorticalFlowVector);
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+			incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsExternalConnectomeExcitatoryRecurrent, &posSource, &posTarget, &sourceNeuronCorticalFlowVector);
+			#endif
+		}
+		else
+		{
+			incrementNumberOfConnections(&(*connectivityModelLayers)[LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL].neuronModelConnectionsExternalConnectomeInhibitoryRecurrent, &posSource, &posTarget, &sourceNeuronCorticalFlowVector);	
+			#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
+			incrementNumberOfConnections(&(*connectivityModelLayers)[localConnectomeNeuronLayer].neuronModelConnectionsExternalConnectomeInhibitoryRecurrent, &posSource, &posTarget, &sourceNeuronCorticalFlowVector);
+			#endif
+		}
+	}
+}
+#endif
+
+int H01indexedCSVdatabaseQueryClass::calculateConnectionExcitationType1(const int connectionTypeInt, vector<string>* localConnectomeNeuronSource, vector<string>* localConnectomeNeuronTarget, const bool queryByPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
+{	
+	string presynapticNeuronType;
+	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS
+	if(connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
+	{
+		presynapticNeuronType = LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_UNKNOWN;
+		if(queryByPresynapticConnectionNeurons)
+		{
+			//verify that sourceNeuronID centroid/soma is in local connectome (eg check required for countRecurrentConnections);
+			if(localConnectomeNeuronSource != NULL)	//verify that sourceNeuronID is in neuronList	//sourceNeuronIsInLocalConnectome
+			{
+				presynapticNeuronType = (*localConnectomeNeuronSource)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
+			}
+			else
+			{
+				presynapticNeuronType = LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_UNKNOWN;
+			}
+		}
+		else
+		{
+			//verify that targetNeuronID centroid/soma is also in local connectome;
+			if(localConnectomeNeuronTarget != NULL)	//verify that targetNeuronID is in neuronList	//targetNeuronIsInLocalConnectome
+			{
+				presynapticNeuronType = (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
+			}
+			else
+			{
+				presynapticNeuronType = LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_UNKNOWN;	//excitationType will be LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN if presynaptic neuron is not in local connectome
+			}
+		}
+	}
+	#endif
+	int excitationType = calculateConnectionExcitationType2(connectionTypeInt, presynapticNeuronType, queryByPresynapticConnectionNeurons, connectionTypesDerivedFromPresynapticNeuronsOrEMimages);
+	return excitationType;
+}
+
+int H01indexedCSVdatabaseQueryClass::calculateConnectionExcitationType2(const int connectionTypeInt, const string presynapticNeuronType, const bool queryByPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
+{	
+	int excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN;
+	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS
+	if(connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
+	{
+		if(presynapticNeuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_PYRAMIDAL)
+		{
+			excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY;
+		}
+		else if(presynapticNeuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_INTERNEURON)
+		{
+			excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY;
+		}
+		else
+		{
+			excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN;	//excitationType will be LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN if presynaptic neuron is not in local connectome 
+		}
+	}
+	else
+	{
+	#endif
+		if(connectionTypeInt == AVRO_JSON_DATABASE_EXCITATORY_SYNAPSE_TYPE)
+		{
+			excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY;
+		}
+		else if(connectionTypeInt == AVRO_JSON_DATABASE_INHIBITORY_SYNAPSE_TYPE)
+		{
+			excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY;
+		}
+		else
+		{
+			excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN;
+			cerr << "H01indexedCSVdatabaseQueryClass::calculateConnectionExcitationType2 warning, connection type unknown, connectionType = " << connectionTypeInt << endl;
+		}
+	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS
+	}
+	#endif
+	return excitationType;
+}
+
+		
+		
 #ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL
 void H01indexedCSVdatabaseQueryClass::generateLargeModelNeuronsAndConnectionsLayers(constEffective vector<H01connectivityModelClass>* connectivityModelLayersIncomingLayers, constEffective vector<H01connectivityModelClass>* connectivityModelLayersOutgoingLayers, const bool countLocalConnectomeNeurons, const bool countInternalConnectomeConnections, const bool countExternalConnectomeConnections)
 {
@@ -1478,6 +1776,12 @@ void H01indexedCSVdatabaseQueryClass::printNumberOfConnections(const bool queryB
 		cout << "\tnumberConnectionsLocalConnectomeExcitatoryRecursive = " << connectivityModel->neuronModelConnectionsLocalConnectomeExcitatoryRecursive.numberConnections << endl;
 		cout << "\tnumberConnectionsLocalConnectomeInhibitoryRecursive = " << connectivityModel->neuronModelConnectionsLocalConnectomeInhibitoryRecursive.numberConnections << endl;
 		#endif
+		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURRENT
+		cout << "\INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURRENT:" << endl;
+		cout << "\tnumberConnectionsLocalConnectomeRecurrent = " << connectivityModel->neuronModelConnectionsLocalConnectomeRecurrent.numberConnections << endl;
+		cout << "\tnumberConnectionsLocalConnectomeExcitatoryRecurrent = " << connectivityModel->neuronModelConnectionsLocalConnectomeExcitatoryRecurrent.numberConnections << endl;
+		cout << "\tnumberConnectionsLocalConnectomeInhibitoryRecurrent = " << connectivityModel->neuronModelConnectionsLocalConnectomeInhibitoryRecurrent.numberConnections << endl;
+		#endif
 	}
 	if(countExternalConnectomeConnections)
 	{
@@ -1510,6 +1814,20 @@ void H01indexedCSVdatabaseQueryClass::printNumberOfConnections(const bool queryB
 		{
 			cout << "\tnumberConnectionsExternalConnectomeExcitatoryRecursive = " << connectivityModel->neuronModelConnectionsExternalConnectomeExcitatoryRecursive.numberConnections << endl;
 			cout << "\tnumberConnectionsExternalConnectomeInhibitoryRecursive = " << connectivityModel->neuronModelConnectionsExternalConnectomeInhibitoryRecursive.numberConnections << endl;
+		}
+		#endif
+		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURRENT
+		cout << "\INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURRENT:" << endl;
+		cout << "\tnumberConnectionsExternalConnectomeRecurrent = " << connectivityModel->neuronModelConnectionsExternalConnectomeRecurrent.numberConnections << endl;
+		if(connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
+		{
+			cout << "\tnumberConnectionsExternalConnectomeExcitatoryRecurrent = " << "unknown [connectionTypesDerivedFromPresynapticNeuronsOrEMimages: externalConnectome neuron excitationType dependent value]" << endl;
+			cout << "\tnumberConnectionsExternalConnectomeInhibitoryRecurrent = " << "unknown [connectionTypesDerivedFromPresynapticNeuronsOrEMimages: externalConnectome neuron excitationType dependent value]" << endl;
+		}
+		else
+		{
+			cout << "\tnumberConnectionsExternalConnectomeExcitatoryRecurrent = " << connectivityModel->neuronModelConnectionsExternalConnectomeExcitatoryRecurrent.numberConnections << endl;
+			cout << "\tnumberConnectionsExternalConnectomeInhibitoryRecurrent = " << connectivityModel->neuronModelConnectionsExternalConnectomeInhibitoryRecurrent.numberConnections << endl;
 		}
 		#endif
 		
