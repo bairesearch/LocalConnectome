@@ -85,12 +85,9 @@ extern string currentDirectory;
 	#endif
 #endif
 #ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS
+	#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURRENT	//optional //measure immediate recurrent connectivity of neurons (a -> b -> a)
 	//#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURSIVE	//optional //measure recursive connectivity of neurons (axon to dendrite)
 	//#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL	//optional //independently count the connections within the local connectome connections dataset (layer to layer matrix)	//compare local connectome counts against counts from https://www.biorxiv.org/content/10.1101/2021.05.29.446289v3/v4 Supplementary Table 5. Summary of Machine Learning-identified connections	//added 7 December 2021
-	#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURRENT	//optional //measure immediate recurrent connectivity of neurons (a -> b -> a)
-	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURRENT
-		#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURRENT_NUMBER_ITERATIONS (2)	//#default
-	#endif
 	//#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_OUTPUT_VERBOSE_LOCALORNONLOCAL	//optional	//print number excitatory/inhibitory neurons for each source neuronID	//compare against counts from https://h01-release.storage.googleapis.com/data.html - gs://h01-release/data/20210601/c3/tables/segments/counts000000000NNN.csv.gz	//added 24 November 2021a
 	//#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_DISTANCES	//print distances between neuron somas and their connections at each layer - used to identify INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL lateral distance probability of connection functions
 #endif
@@ -119,6 +116,12 @@ extern string currentDirectory;
 	#define INDEXED_CSV_DATABASE_CREATE_CLASS_LABELS_SAVE_NUMBER_CHARACTERS (1)	//orig: 1 (must set to greater than 1 to not override class labels with same first character; eg AXON/AIS)
 #endif
 
+#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURRENT
+	#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURRENT_NEURONS	//also count number of neurons with recurrent connections
+	#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURRENT_NUMBER_ITERATIONS (2)	//#default: 2 (forward/backward) //FUTURE: trace recurrent connections across multiple iterations (>2)
+	//#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_RECURRENT_NEURONS_NONLOCAL	//not used; do not calculate nonlocal connections because a) requires high computational power and b) all neuron_id with both incoming and outgoing connections will have soma in the local connectome
+#endif
+	
 //count connections local;
 #ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL
 	#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL_ONLY_COUNT_OUTGOING	//only count connections from preSynaptic to postSynaptic neuron (as internal connectome connection matrices are identical)
