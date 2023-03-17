@@ -159,7 +159,7 @@ class SHAREDvectorClass
 	#endif
 	
 	
-	//From H01indexedCSVdatabase;
+	//From H01indexedCSVdatabaseGlobalDefs;
 	public: double calculateAngleSigned(const vec* vec1, const vec* vec2);
 	public: double calculateInteriorAngle(const vec* vec1, const vec* vec2);
 	public: double calculateRotationSign(const vec* vec1, const vec* vec2);

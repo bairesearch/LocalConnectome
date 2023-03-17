@@ -1,12 +1,12 @@
 /*******************************************************************************
  *
  * File Name: H01indexedCSVdatabaseTraceLocalConnectome.cpp
- * Author: Richard Bruce Baxter - Copyright (c) 2021-2022 Baxter AI (baxterai.com)
+ * Author: Richard Bruce Baxter - Copyright (c) 2021-2023 Baxter AI (baxterai.com)
  * License: MIT License
  * Project: H01LocalConnectome
- * Requirements: see H01indexedCSVdatabase.hpp
- * Compilation: see H01indexedCSVdatabase.hpp
- * Usage: see H01indexedCSVdatabase.hpp
+ * Requirements: see H01indexedCSVdatabaseGlobalDefs.hpp
+ * Compilation: see H01indexedCSVdatabaseGlobalDefs.hpp
+ * Usage: see H01indexedCSVdatabaseGlobalDefs.hpp
  * Description: H01 indexed CSV database trace local connectome - traces local connectome dataset (saving visualisation)
  * Input: localConnectomeNeurons.csv / localConnectomeConnectionsX.csv
  * Output Format: SVG (2D) / LDR (3D) [multiple files for video construction]
@@ -22,9 +22,12 @@ int traceIterationIndexSubMax = 0;
 
 bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdataset(const string local_connectome_folder_base)
 {
+	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS
 	this->traceLocalConnectomeCSVdatasetFile(local_connectome_folder_base, READ_FILE_TRUE, LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS, QUERY_POSTSYNAPTIC_CONNECTION_NEURONS, WRITE_FILE_TRUE, APPEND_FILE_FALSE, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS, CONNECTION_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS);
-
+	#endif
+	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_EM_IMAGES
 	this->traceLocalConnectomeCSVdatasetFile(local_connectome_folder_base, READ_FILE_TRUE, LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES, QUERY_POSTSYNAPTIC_CONNECTION_NEURONS, WRITE_FILE_TRUE, APPEND_FILE_FALSE, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES, CONNECTION_TYPES_DERIVED_FROM_EM_IMAGES);
+	#endif
 }
 
 

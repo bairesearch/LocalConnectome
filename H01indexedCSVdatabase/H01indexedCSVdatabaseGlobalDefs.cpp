@@ -1,7 +1,7 @@
 /*******************************************************************************
  *
- * File Name: H01indexedCSVdatabase.cpp
- * Author: Richard Bruce Baxter - Copyright (c) 2021-2022 Baxter AI (baxterai.com)
+ * File Name: H01indexedCSVdatabaseGlobalDefs.cpp
+ * Author: Richard Bruce Baxter - Copyright (c) 2021-2023 Baxter AI (baxterai.com)
  * License: MIT License
  * Project: H01LocalConnectome
  * Requirements: BAI SHARED C++ library, Eigen 3 C++ library
@@ -12,6 +12,6 @@
  * /
  *******************************************************************************/
 
-#include "H01indexedCSVdatabase.hpp"
+#include "H01indexedCSVdatabaseGlobalDefs.hpp"
 
 string currentDirectory;

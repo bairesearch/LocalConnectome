@@ -1,12 +1,12 @@
 /*******************************************************************************
  *
  * File Name: H01indexedCSVdatabaseTraceLocalConnectome.hpp
- * Author: Richard Bruce Baxter - Copyright (c) 2021-2022 Baxter AI (baxterai.com)
+ * Author: Richard Bruce Baxter - Copyright (c) 2021-2023 Baxter AI (baxterai.com)
  * License: MIT License
  * Project: H01LocalConnectome
- * Requirements: see H01indexedCSVdatabase.hpp
- * Compilation: see H01indexedCSVdatabase.hpp
- * Usage: see H01indexedCSVdatabase.hpp
+ * Requirements: see H01indexedCSVdatabaseGlobalDefs.hpp
+ * Compilation: see H01indexedCSVdatabaseGlobalDefs.hpp
+ * Usage: see H01indexedCSVdatabaseGlobalDefs.hpp
  * Description: H01 indexed CSV database trace local connectome - traces local connectome dataset (saving visualisation)
  * Input: localConnectomeNeurons.csv / localConnectomeConnectionsX.csv
  * Output Format: SVG (2D) / LDR (3D) [multiple files for video construction]
@@ -18,7 +18,7 @@
 #ifndef HEADER_H01indexedCSVdatabaseTraceLocalConnectome
 #define HEADER_H01indexedCSVdatabaseTraceLocalConnectome
 
-#include "H01indexedCSVdatabase.hpp"
+#include "H01indexedCSVdatabaseGlobalDefs.hpp"
 #include "H01indexedCSVdatabaseVisualiseLocalConnectome.hpp"
 #include "H01indexedCSVdatabaseCalculateNeuronLayer.hpp"
 #include "H01indexedCSVdatabaseOperations.hpp"

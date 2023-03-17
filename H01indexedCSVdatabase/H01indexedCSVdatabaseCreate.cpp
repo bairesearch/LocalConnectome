@@ -1,12 +1,12 @@
 /*******************************************************************************
  *
  * File Name: H01indexedCSVdatabaseCreate.cpp
- * Author: Richard Bruce Baxter - Copyright (c) 2021-2022 Baxter AI (baxterai.com)
+ * Author: Richard Bruce Baxter - Copyright (c) 2021-2023 Baxter AI (baxterai.com)
  * License: MIT License
  * Project: H01LocalConnectome
- * Requirements: see H01indexedCSVdatabase.hpp
- * Compilation: see H01indexedCSVdatabase.hpp
- * Usage: see H01indexedCSVdatabase.hpp
+ * Requirements: see H01indexedCSVdatabaseGlobalDefs.hpp
+ * Compilation: see H01indexedCSVdatabaseGlobalDefs.hpp
+ * Usage: see H01indexedCSVdatabaseGlobalDefs.hpp
  * Description: H01 indexed CSV database create - convert C3 Synaptic connections Avro Json To indexed CSV database (indexed by pre/postsynaptic neuron ID)
  * Input: C3 Synaptic connections database (gs://h01-release/data/20210601/c3/synapses/exported/json)
  * Output Format: ssddata/indexed/123/csvPreSynapticNeuronID123456.csv - presynapticSiteNeuronID, postsynapticSiteNeuronID, presynapticSiteType, postsynapticSiteType, presynapticSiteClassLabel, postsynapticSiteClassLabel, presynapticSiteBaseNeuronID, postsynapticSiteBaseNeuronID, synapseLocationXcoordinates, synapseLocationYcoordinates, synapseLocationZcoordinates, synapseType

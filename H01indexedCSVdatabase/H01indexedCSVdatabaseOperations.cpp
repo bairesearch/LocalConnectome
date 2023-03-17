@@ -1,12 +1,12 @@
 /*******************************************************************************
  *
  * File Name: H01indexedCSVdatabaseOperations.cpp
- * Author: Richard Bruce Baxter - Copyright (c) 2021-2022 Baxter AI (baxterai.com)
+ * Author: Richard Bruce Baxter - Copyright (c) 2021-2023 Baxter AI (baxterai.com)
  * License: MIT License
  * Project: H01LocalConnectome
- * Requirements: see H01indexedCSVdatabase.hpp
- * Compilation: see H01indexedCSVdatabase.hpp
- * Usage: see H01indexedCSVdatabase.hpp
+ * Requirements: see H01indexedCSVdatabaseGlobalDefs.hpp
+ * Compilation: see H01indexedCSVdatabaseGlobalDefs.hpp
+ * Usage: see H01indexedCSVdatabaseGlobalDefs.hpp
  * Description: H01 indexed CSV database operations
  * Comments:
  * /
@@ -34,11 +34,10 @@ bool H01indexedCSVdatabaseOperationsClass::readLocalConnectomeNeuronsCSVdataset(
 {
 	SHAREDvars.getLinesFromFileCSV(LocalConnectomeCSVdatasetFileName, localConnectomeNeuronsCSVdataset, localConnectomeNeuronsCSVdatasetSize, CSV_DELIMITER_CHAR, true);
 	
-	#ifdef LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS	
+	#ifdef LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS_EXPECT_STRING_DELIMITERS
 	for(int i=0; i<localConnectomeNeuronsCSVdataset->size(); i++)
 	{
 		vector<string>* localConnectomeNeuron = &((*localConnectomeNeuronsCSVdataset)[i]);
-		#ifdef LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS_EXPECT_STRING_DELIMITERS
 		//reformat string cells;
 		for(int j=0; j<localConnectomeNeuron->size(); j++)
 		{
@@ -51,13 +50,18 @@ bool H01indexedCSVdatabaseOperationsClass::readLocalConnectomeNeuronsCSVdataset(
 			}
 			(*localConnectomeNeuron)[j] = cellFormatted;
 		}
-		#endif
-		#ifdef LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS_LAYERS
+	}
+	#endif
+	#ifdef LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_LAYERS
+	for(int i=0; i<localConnectomeNeuronsCSVdataset->size(); i++)
+	{
+		vector<string>* localConnectomeNeuron = &((*localConnectomeNeuronsCSVdataset)[i]);
 		//reformat layer cells;
 		string layerString = (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER];
+		#ifdef LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_LAYERS_STRING
 		int layerIndex = INT_DEFAULT_VALUE;	
 		//cout << "layerString = " << layerString << endl;
-		if(SHAREDvars.textInTextArray(layerString, C3somasLayerNames, CORTICAL_LAYER_NUMBER_OF_LAYERS, &layerIndex))
+		if(SHAREDvars.textInTextArray(layerString, somasLayerNames, CORTICAL_LAYER_NUMBER_OF_LAYERS, &layerIndex))
 		{
 			layerIndex++;
 		}
@@ -65,11 +69,14 @@ bool H01indexedCSVdatabaseOperationsClass::readLocalConnectomeNeuronsCSVdataset(
 		{
 			//"unclassified", "NULL"
 			layerIndex = 0;
-			//cerr << "LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS_LAYERS: H01indexedCSVdatabaseOperationsClass::readLocalConnectomeNeuronsCSVdataset error: !textInTextArray, layerIndex name unknown; layerString = " << layerString << endl;
+			//cerr << "LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_LAYERS: H01indexedCSVdatabaseOperationsClass::readLocalConnectomeNeuronsCSVdataset error: !textInTextArray, layerIndex name unknown; layerString = " << layerString << endl;
 		}
 		//cout << "layerIndex = " << layerIndex << endl;
-		(*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER] = SHAREDvars.convertIntToString(layerIndex);
+		#else
+		int layerIndex = SHAREDvars.convertStringToInt(layerString);
 		#endif
+		(*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER] = SHAREDvars.convertIntToString(layerIndex);
+		
 		string neuronType = (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
 		string neuronExcitationTypeString = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN);
 		if(neuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_PYRAMIDAL)
@@ -88,7 +95,8 @@ bool H01indexedCSVdatabaseOperationsClass::readLocalConnectomeNeuronsCSVdataset(
 		//cout << "neuronExcitationTypeString = " << neuronExcitationTypeString << endl;
 		localConnectomeNeuron->push_back(neuronExcitationTypeString);	//LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE	
 	}
-	#ifdef LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS_IGNORE_ADDITIONAL_NEURON_TYPES
+	#endif
+	#ifdef LOCAL_CONNECTOME_DATASET_NEURONS_IGNORE_ADDITIONAL_NEURON_TYPES
 	for(int i=0; i<localConnectomeNeuronsCSVdataset->size(); i++)
 	{	
 		vector<string>* localConnectomeNeuron = &((*localConnectomeNeuronsCSVdataset)[i]);
@@ -101,7 +109,6 @@ bool H01indexedCSVdatabaseOperationsClass::readLocalConnectomeNeuronsCSVdataset(
 			i--;
 		}
 	}
-	#endif
 	#endif
 
 	for(int i=0; i<localConnectomeNeuronsCSVdataset->size(); i++)
@@ -142,21 +149,64 @@ bool H01indexedCSVdatabaseOperationsClass::readLocalConnectomeConnectionsCSVdata
 			//cout << "connectionsMapKey to insert = " << connectionsMapKey << endl;
     		(*connectionsMap)[connectionsMapKey] = i;
 		}
-	}
-		
-	/*
-	for(int i=0;i<localConnectomeConnectionsCSVdataset->size(); i++)
-	{
-		vector<string> localConnectionCSVdatasetNeuron = (*localConnectomeConnectionsCSVdataset)[i];
-			
-		cout << "localConnectionCSVdatasetNeuron: i = " << i << endl;
-		for(int j=0;j<localConnectionCSVdatasetNeuron.size(); j++)
-		{
-			string cell = localConnectionCSVdatasetNeuron[j];
-			cout << "cell = " << cell << endl;			
-		}
-	}
-	*/		
+	}	
+}
+
+void H01indexedCSVdatabaseOperationsClass::prepareLocalConnectomeDatasetRead(const string local_connectome_folder_base)
+{
+	#ifdef INDEXED_CSV_DATABASE_QUERY_READ_CURRENT_FOLDER
+	const string indexedCSVdatabaseQueryInputFolder = currentDirectory;	
+	SHAREDvars.setCurrentDirectory(indexedCSVdatabaseQueryInputFolder);
+	cout << "indexedCSVdatabaseQueryInputFolder = " << indexedCSVdatabaseQueryInputFolder << endl;
+	#else
+	prepareLocalConnectomeDatasetReadCustom(local_connectome_folder_base, LOCAL_CONNECTOME_DATASET_FOLDER);
+	#endif
+}
+
+void H01indexedCSVdatabaseOperationsClass::prepareLocalConnectomeDatasetReadCustom(const string local_connectome_folder_base, const string folderName)
+{
+	#ifdef LOCAL_CONNECTOME_FOLDER_BASE_USE_RELATIVE_FOLDER
+	SHAREDvars.setCurrentDirectory(currentDirectory);
+	#endif
+	string localConnectomeCSVdatasetFolder = local_connectome_folder_base;
+	SHAREDvars.setCurrentDirectory(localConnectomeCSVdatasetFolder);
+	localConnectomeCSVdatasetFolder = folderName;
+	SHAREDvars.setCurrentDirectory(localConnectomeCSVdatasetFolder);
 }
 
 
+ofstream H01indexedCSVdatabaseOperationsClass::prepareLocalConnectomeDatasetWrite(const bool write, const bool appendToFile, const string datasetFileNameWrite)
+{
+	#ifdef INDEXED_CSV_DATABASE_QUERY_WRITE_CURRENT_FOLDER
+	const string indexedCSVdatabaseQueryOutputFolder = currentDirectory;	
+	#else
+	const string indexedCSVdatabaseQueryOutputFolder = INDEXED_CSV_DATABASE_QUERY_OUTPUT_FOLDER;
+	#endif
+	
+	ofstream writeFileObject;
+	
+	ios_base::openmode writeMode;
+	if(appendToFile)
+	{
+		writeMode = ofstream::app;
+	}
+	else
+	{
+		writeMode = ofstream::out; 
+	}
+	if(write)
+	{
+		SHAREDvars.setCurrentDirectory(indexedCSVdatabaseQueryOutputFolder);
+		writeFileObject.open(datasetFileNameWrite.c_str(), writeMode);
+	}
+	
+	return writeFileObject;
+}
+
+void H01indexedCSVdatabaseOperationsClass::finaliseLocalConnectomeDatasetWrite(const bool write, ofstream* writeFileObject)
+{
+	#ifdef INDEXED_CSV_DATABASE_QUERY_OUTPUT
+	writeFileObject->close();
+	#endif
+}
+	

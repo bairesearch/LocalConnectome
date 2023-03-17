@@ -1,12 +1,12 @@
 /*******************************************************************************
  *
  * File Name: H01indexedCSVdatabaseCalculateNeuronLayer.cpp
- * Author: Richard Bruce Baxter - Copyright (c) 2021-2022 Baxter AI (baxterai.com)
+ * Author: Richard Bruce Baxter - Copyright (c) 2021-2023 Baxter AI (baxterai.com)
  * License: MIT License
  * Project: H01LocalConnectome
- * Requirements: see H01indexedCSVdatabase.hpp
- * Compilation: see H01indexedCSVdatabase.hpp
- * Usage: see H01indexedCSVdatabase.hpp
+ * Requirements: see H01indexedCSVdatabaseGlobalDefs.hpp
+ * Compilation: see H01indexedCSVdatabaseGlobalDefs.hpp
+ * Usage: see H01indexedCSVdatabaseGlobalDefs.hpp
  * Description: H01 indexed CSV database calculate neuron layer
  * Input: corticalLayersBoundaryKeypoints.csv
  * Output Format: vector<vector<vec>> corticalLayersKeypoints
@@ -16,6 +16,78 @@
 
 #include "H01indexedCSVdatabaseCalculateNeuronLayer.hpp"
 
+void initialiseGaussianQuad(GaussianQuad* gaussianQuad)
+{
+	gaussianQuad->numberConnections = 0;
+	initialiseQuad(&(gaussianQuad->mean));
+	initialiseQuad(&(gaussianQuad->variance));
+	initialiseQuad(&(gaussianQuad->count));
+}
+void initialiseQuad(Quad* q)
+{
+	q->xPos = 0.0;
+	q->yPos = 0.0;
+	q->xNeg = 0.0;
+	q->yNeg = 0.0;
+}
+	
+//#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS
+H01connectivityModelClass::H01connectivityModelClass(void)
+{
+	numberOfLocalConnectomeNeurons = 0;
+	numberOfLocalConnectomeNeuronsExcitatory = 0;
+	numberOfLocalConnectomeNeuronsInhibitory = 0;
+	#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURRENT_NEURONS
+	numberOfNeuronsWithRecurrentConnections = 0;
+	numberOfNeuronsWithRecurrentConnectionsExcitatory = 0;
+	numberOfNeuronsWithRecurrentConnectionsInhibitory = 0;
+	#endif
+	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_OUTPUT_VERBOSE_LOCALORNONLOCAL
+	numberConnectionsLocalOrNonLocalConnectomeExcitatory = 0;
+	numberConnectionsLocalOrNonLocalConnectomeInhibitory = 0;
+	#endif
+	initialiseGaussianQuad(&neuronModelConnectionsLocalConnectome);
+	initialiseGaussianQuad(&neuronModelConnectionsLocalConnectomeExcitatory);
+	initialiseGaussianQuad(&neuronModelConnectionsLocalConnectomeInhibitory);
+	initialiseGaussianQuad(&neuronModelConnectionsExternalConnectome);
+	initialiseGaussianQuad(&neuronModelConnectionsExternalConnectomeExcitatory);
+	initialiseGaussianQuad(&neuronModelConnectionsExternalConnectomeInhibitory);
+	#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURSIVE
+	initialiseGaussianQuad(&neuronModelConnectionsLocalConnectomeRecursive);
+	initialiseGaussianQuad(&neuronModelConnectionsLocalConnectomeExcitatoryRecursive);
+	initialiseGaussianQuad(&neuronModelConnectionsLocalConnectomeInhibitoryRecursive);
+	#endif
+	#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURRENT
+	initialiseGaussianQuad(&neuronModelConnectionsLocalConnectomeRecurrent);
+	initialiseGaussianQuad(&neuronModelConnectionsLocalConnectomeExcitatoryRecurrent);
+	initialiseGaussianQuad(&neuronModelConnectionsLocalConnectomeInhibitoryRecurrent);
+	#endif
+}
+H01connectivityModelClass::~H01connectivityModelClass(void)
+{
+}
+vector<H01connectivityModelClass>* H01indexedCSVdatabaseCalculateNeuronLayerClass::generateNumberOfConnectionsLayers()
+{
+	vector<H01connectivityModelClass>* numberConnectionsLayers = new vector<H01connectivityModelClass>(CORTICAL_LAYER_NUMBER_OF_LAYERS+1);
+	return numberConnectionsLayers;
+}
+vector<vector<H01connectivityModelClass>>* H01indexedCSVdatabaseCalculateNeuronLayerClass::generateNumberOfConnectionsLayersLayers()
+{
+	vector<vector<H01connectivityModelClass>>* numberConnectionsLayersLayers = new vector<vector<H01connectivityModelClass>>(CORTICAL_LAYER_NUMBER_OF_LAYERS+1, vector<H01connectivityModelClass>(CORTICAL_LAYER_NUMBER_OF_LAYERS+1));
+	return numberConnectionsLayersLayers;
+}
+//#endif
+	
+double H01indexedCSVdatabaseCalculateNeuronLayerClass::getZNormalisationFactor()
+{
+	#ifdef INDEXED_CSV_DATABASE_H01
+	double normalisationFactorZ = double(AVRO_JSON_DATABASE_COORDINATES_RANGE_X*AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_X + AVRO_JSON_DATABASE_COORDINATES_RANGE_Y*AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_Y)/2.0 / (AVRO_JSON_DATABASE_COORDINATES_RANGE_Z*AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_Z);
+	#elif defined INDEXED_CSV_DATABASE_LDC
+	double normalisationFactorZ = 1.0;	//CHECKTHIS
+	#endif
+	return normalisationFactorZ;
+}
+	
 bool H01indexedCSVdatabaseCalculateNeuronLayerClass::readLocalNeuronsAndConnections(const string local_connectome_folder_base, const string neuronDatasetOrListFileName, const bool neuronListIsDataset, vector<string>* neuronList, map<string, int>* neuronMap, vector<vector<string>>* localConnectomeCSVdatasetNeurons, const bool readConnections, const string neuronListConnectionsFileName, vector<vector<string>>* localConnectomeCSVdatasetConnections, const bool buildConnectionsMap, map<string, int>* connectionsMap, const bool readLayers, const bool readLayersConnections)
 {
 	bool result = true;
@@ -24,19 +96,7 @@ bool H01indexedCSVdatabaseCalculateNeuronLayerClass::readLocalNeuronsAndConnecti
 	cout << "neuronListConnectionsFileName = " << neuronListConnectionsFileName << endl;
 		
 	//read neurons;
-	#ifdef INDEXED_CSV_DATABASE_QUERY_READ_CURRENT_FOLDER
-	const string indexedCSVdatabaseQueryInputFolder = currentDirectory;	
-	SHAREDvars.setCurrentDirectory(indexedCSVdatabaseQueryInputFolder);
-	cout << "indexedCSVdatabaseQueryInputFolder = " << indexedCSVdatabaseQueryInputFolder << endl;
-	#else
-	#ifdef LOCAL_CONNECTOME_FOLDER_BASE_USE_RELATIVE_FOLDER
-	SHAREDvars.setCurrentDirectory(currentDirectory);
-	#endif
-	string localConnectomeCSVdatasetFolder = local_connectome_folder_base;
-	SHAREDvars.setCurrentDirectory(localConnectomeCSVdatasetFolder);
-	localConnectomeCSVdatasetFolder = LOCAL_CONNECTOME_DATASET_FOLDER;
-	SHAREDvars.setCurrentDirectory(localConnectomeCSVdatasetFolder);
-	#endif
+	H01indexedCSVdatabaseOperations.prepareLocalConnectomeDatasetRead(local_connectome_folder_base);
 
 	int neuronListFileLength = 0;
 	
@@ -60,6 +120,13 @@ bool H01indexedCSVdatabaseCalculateNeuronLayerClass::readLocalNeuronsAndConnecti
 		int localConnectionCSVdatasetConnectionsSize = 0;
 		H01indexedCSVdatabaseOperations.readLocalConnectomeConnectionsCSVdataset(neuronListConnectionsFileName, localConnectomeCSVdatasetConnections, &localConnectionCSVdatasetConnectionsSize, buildConnectionsMap, connectionsMap);
 	}
+	
+	#ifdef INDEXED_CSV_DATABASE_QUERY_READ_DATASET_LOCAL_CONNECTOME_CONNECTIONS_DYNAMICALLY_GENERATE_REDUNDANT_FIELDS
+	if(readConnections)
+	{
+		dynamicallyGenerateLocalConnectomeConnectionsRedundantFields(localConnectomeCSVdatasetNeurons, localConnectomeCSVdatasetConnections, neuronMap);
+	}
+	#endif
 
 	//read layers;
 	#ifdef INDEXED_CSV_DATABASE_CALCULATE_NEURON_LAYERS
@@ -72,12 +139,72 @@ bool H01indexedCSVdatabaseCalculateNeuronLayerClass::readLocalNeuronsAndConnecti
 	return result;
 }
 
+#ifdef INDEXED_CSV_DATABASE_QUERY_READ_DATASET_LOCAL_CONNECTOME_CONNECTIONS_DYNAMICALLY_GENERATE_REDUNDANT_FIELDS
+//preconditions: does not support INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_EM_IMAGES
+bool H01indexedCSVdatabaseCalculateNeuronLayerClass::dynamicallyGenerateLocalConnectomeConnectionsRedundantFields(vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, map<string, int>* neuronMap)
+{
+	for(int i=0; i<localConnectomeCSVdatasetConnections->size(); i++)
+	{
+		vector<string>* localConnectionCSVdatasetLine = &((*localConnectomeCSVdatasetConnections)[i]);
+		string sourceNeuronID = (*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_ID];
+		string targetNeuronID = (*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_ID];	
+		
+		string excitationType = "";	
+		if(neuronMap->count(sourceNeuronID) != 0)	//verify that sourceNeuronID is in neuronList
+		{
+			int neuronIndex = (*neuronMap)[sourceNeuronID];
+			vector<string>* localConnectomeNeuron = &((*localConnectomeCSVdatasetNeurons)[neuronIndex]);	
+			vec pos;
+			string posx = (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X];
+			string posy = (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y];
+			string posz = (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Z];
+			string neuronType = (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];	//C3 database neuron classification (PYRAMIDAL, INTERNEURON)
+			
+			excitationType = (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE];	//(exitatory/inhibitory)
+			
+			localConnectionCSVdatasetLine->push_back(posx);	//LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_X	
+			localConnectionCSVdatasetLine->push_back(posy);	//LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Y	
+			localConnectionCSVdatasetLine->push_back(posz);	//LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Z	
+			localConnectionCSVdatasetLine->push_back(neuronType);	//LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_TYPE	
+		}
+		else
+		{
+			cerr << "H01indexedCSVdatabaseCalculateNeuronLayerClass::dynamicallyGenerateLocalConnectomeConnectionsRedundantFields warning: sourceNeuronID cannot be found; " << sourceNeuronID << endl;
+			exit(EXIT_ERROR);
+		}
+		
+		if(neuronMap->count(targetNeuronID) != 0)	//verify that sourceNeuronID is in neuronList
+		{
+			int neuronIndex = (*neuronMap)[targetNeuronID];
+			vector<string>* localConnectomeNeuron = &((*localConnectomeCSVdatasetNeurons)[neuronIndex]);	
+			vec pos;
+			string posx = (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X];
+			string posy = (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y];
+			string posz = (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Z];
+			string neuronType = (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];	//C3 database neuron classification (PYRAMIDAL, INTERNEURON)
+			
+			localConnectionCSVdatasetLine->push_back(posx);	//LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_X	
+			localConnectionCSVdatasetLine->push_back(posy);	//LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Y	
+			localConnectionCSVdatasetLine->push_back(posz);	//LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Z	
+			localConnectionCSVdatasetLine->push_back(neuronType);	//LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_TYPE	
+		}
+		else
+		{
+			cerr << "H01indexedCSVdatabaseCalculateNeuronLayerClass::dynamicallyGenerateLocalConnectomeConnectionsRedundantFields warning: sourceNeuronID cannot be found; " << sourceNeuronID << endl;
+			exit(EXIT_ERROR);
+		}
+		
+		localConnectionCSVdatasetLine->push_back(excitationType);	//LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE	
+	}
+}
+#endif
+
 
 #ifdef INDEXED_CSV_DATABASE_CALCULATE_NEURON_LAYERS
 
 bool H01indexedCSVdatabaseCalculateNeuronLayerClass::calculateLocalConnectomeLayers(vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, map<string, int>* neuronMap, const bool readConnections)
 {
-	#ifdef LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS_LAYERS
+	#ifdef LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_LAYERS
 	if(readConnections)
 	{
 		transferLocalConnectomeNeuronLayersToConnectionsLayers(localConnectomeCSVdatasetNeurons, localConnectomeCSVdatasetConnections, neuronMap);
@@ -96,15 +223,15 @@ bool H01indexedCSVdatabaseCalculateNeuronLayerClass::calculateLocalConnectomeLay
 	#endif
 }
 		
-#ifdef LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS_LAYERS
-bool H01indexedCSVdatabaseCalculateNeuronLayerClass::transferLocalConnectomeNeuronLayersToConnectionsLayers(vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectionCSVdataset, map<string, int>* neuronMap)
+#ifdef LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_LAYERS
+bool H01indexedCSVdatabaseCalculateNeuronLayerClass::transferLocalConnectomeNeuronLayersToConnectionsLayers(vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, map<string, int>* neuronMap)
 {
 	bool result = true;
 	int corticalLayersNumLayers = CORTICAL_LAYER_NUMBER_OF_LAYERS;
 	
-	for(int i=0; i<localConnectionCSVdataset->size(); i++)
+	for(int i=0; i<localConnectomeCSVdatasetConnections->size(); i++)
 	{
-		vector<string>* localConnectionCSVdatasetLine = &((*localConnectionCSVdataset)[i]);
+		vector<string>* localConnectionCSVdatasetLine = &((*localConnectomeCSVdatasetConnections)[i]);
 		string sourceNeuronID = (*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_ID];
 		string targetNeuronID = (*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_ID];	
 		
@@ -117,8 +244,14 @@ bool H01indexedCSVdatabaseCalculateNeuronLayerClass::transferLocalConnectomeNeur
 		}
 		else
 		{
+			#ifdef LOCAL_CONNECTOME_VISUALISATION_BACKWARDS_COMPATIBILITY_WITH_ODS_GENERATED_FILES	//CHECKTHIS
+			//assume before executing generatedLocalConnectionsDatasets:INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET (on indexed csv database and local connectome neurons list) or prepublishedLocalConnectionsDatasets:INDEXED_CSV_DATABASE_QUERY_COMPLETE_LOCAL_CONNECTOME_CONNECTIONS_DATASET (on ods generated datasets)
 			layerIndexString = SHAREDvars.convertIntToString(CORTICAL_LAYER_UNKNOWN);	//TODO: verify this is supported
-			//cerr << "H01indexedCSVdatabaseCalculateNeuronLayerClass::transferLocalConnectomeNeuronLayersToConnectionsLayers warning: sourceNeuronID cannot be found; " << sourceNeuronID << endl;	//approx 222 non-unique instances of unknown neurons being referenced by localConnectionCSVdataset
+			//cerr << "H01indexedCSVdatabaseCalculateNeuronLayerClass::transferLocalConnectomeNeuronLayersToConnectionsLayers warning: sourceNeuronID cannot be found; " << sourceNeuronID << endl;	//approx 222 non-unique instances of unknown neurons being referenced by localConnectomeCSVdatasetConnections
+			#else
+			cerr << "H01indexedCSVdatabaseCalculateNeuronLayerClass::transferLocalConnectomeNeuronLayersToConnectionsLayers warning: sourceNeuronID cannot be found; " << sourceNeuronID << endl;
+			exit(EXIT_ERROR);
+			#endif
 		}
 		localConnectionCSVdatasetLine->push_back(layerIndexString);	//LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_ARTIFICIAL_LAYER	
 	
@@ -131,8 +264,14 @@ bool H01indexedCSVdatabaseCalculateNeuronLayerClass::transferLocalConnectomeNeur
 		}
 		else
 		{
+			#ifdef LOCAL_CONNECTOME_VISUALISATION_BACKWARDS_COMPATIBILITY_WITH_ODS_GENERATED_FILES	//CHECKTHIS
+			//assume before executing generatedLocalConnectionsDatasets:INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET (on indexed csv database and local connectome neurons list) or prepublishedLocalConnectionsDatasets:INDEXED_CSV_DATABASE_QUERY_COMPLETE_LOCAL_CONNECTOME_CONNECTIONS_DATASET (on ods generated datasets)
 			layerIndexString = SHAREDvars.convertIntToString(CORTICAL_LAYER_UNKNOWN);	//TODO: verify this is supported
-			//cerr << "H01indexedCSVdatabaseCalculateNeuronLayerClass::transferLocalConnectomeNeuronLayersToConnectionsLayers warning: targetNeuronID cannot be found; " << targetNeuronID << endl;	//approx 222 non-unique instances of unknown neurons being referenced by localConnectionCSVdataset
+			//cerr << "H01indexedCSVdatabaseCalculateNeuronLayerClass::transferLocalConnectomeNeuronLayersToConnectionsLayers warning: targetNeuronID cannot be found; " << targetNeuronID << endl;	//approx 222 non-unique instances of unknown neurons being referenced by localConnectomeCSVdatasetConnections
+			#else
+			cerr << "H01indexedCSVdatabaseCalculateNeuronLayerClass::transferLocalConnectomeNeuronLayersToConnectionsLayers warning: targetNeuronID cannot be found; " << targetNeuronID << endl;
+			exit(EXIT_ERROR);
+			#endif
 		}
 		localConnectionCSVdatasetLine->push_back(layerIndexString);	//LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_ARTIFICIAL_LAYER		
 	}
@@ -167,14 +306,14 @@ bool H01indexedCSVdatabaseCalculateNeuronLayerClass::readCorticalLayersBoundaryK
 	return result;	
 }
 
-bool H01indexedCSVdatabaseCalculateNeuronLayerClass::calculateNeuronLayers(const bool localConnectomeDatasetType, vector<vector<string>>* localConnectionCSVdataset, vector<vector<vec>>* corticalLayersKeypoints)
+bool H01indexedCSVdatabaseCalculateNeuronLayerClass::calculateNeuronLayers(const bool localConnectomeDatasetType, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<vec>>* corticalLayersKeypoints)
 {
 	bool result = true;
 	int corticalLayersNumLayers = CORTICAL_LAYER_NUMBER_OF_LAYERS;
 	
-	for(int i=0; i<localConnectionCSVdataset->size(); i++)
+	for(int i=0; i<localConnectomeCSVdatasetNeurons->size(); i++)
 	{
-		vector<string>* localConnectionCSVdatasetLine = &((*localConnectionCSVdataset)[i]);
+		vector<string>* localConnectionCSVdatasetLine = &((*localConnectomeCSVdatasetNeurons)[i]);
 		
 		if(localConnectomeDatasetType)	//localConnectomeCSVdatasetNeurons
 		{
@@ -309,7 +448,7 @@ bool H01indexedCSVdatabaseCalculateNeuronLayerClass::isNeuronInCorticalLayer(con
 	
 	double pointRightOrLeftOfLine = this->isPointRightOrLeftOfLine(nearest1CorticalLayerKeypoint.x, nearest1CorticalLayerKeypoint.y, nearest2CorticalLayerKeypoint.x, nearest2CorticalLayerKeypoint.y, neuronPos->x, neuronPos->y, rightOfLine);
 
-	#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL_NORMALISE_LOCAL_CONNECTIVITY_USE_LAYER_BOUNDS
+	#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LARGE_MODEL_NORMALISE_LOCAL_CONNECTIVITY_USE_LAYER_BOUNDS
 	//SHAREDvector should have an operation for x y z avg
 	vec nearestCorticalLayerKeypointAvg;
 	nearestCorticalLayerKeypointAvg.x = (nearest1CorticalLayerKeypoint.x + nearest2CorticalLayerKeypoint.x)/2.0;
@@ -363,7 +502,7 @@ bool H01indexedCSVdatabaseCalculateNeuronLayerClass::isPointRightOrLeftOfLine(co
 	return result;
 }	
 
-#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL_NORMALISE_LOCAL_CONNECTIVITY
+#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LARGE_MODEL_NORMALISE_LOCAL_CONNECTIVITY
 bool H01indexedCSVdatabaseCalculateNeuronLayerClass::calculateLocalConnectomeNeuronLayerSurfaceNorms(vector<vector<string>>* localConnectomeCSVdatasetNeurons, map<string, int>* neuronMap)
 {
 	//initialise connection/neuron layer indices;
@@ -374,14 +513,14 @@ bool H01indexedCSVdatabaseCalculateNeuronLayerClass::calculateLocalConnectomeNeu
 	calculateNeuronLayerSurfaceNorms(localConnectomeCSVdatasetNeurons, &corticalLayersKeypoints);
 }
 
-bool H01indexedCSVdatabaseCalculateNeuronLayerClass::calculateNeuronLayerSurfaceNorms(vector<vector<string>>* localConnectionCSVdataset, vector<vector<vec>>* corticalLayersKeypoints)
+bool H01indexedCSVdatabaseCalculateNeuronLayerClass::calculateNeuronLayerSurfaceNorms(vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<vec>>* corticalLayersKeypoints)
 {
 	bool result = true;
 	int corticalLayersNumLayers = CORTICAL_LAYER_NUMBER_OF_LAYERS;
 	
-	for(int i=0; i<localConnectionCSVdataset->size(); i++)
+	for(int i=0; i<localConnectomeCSVdatasetNeurons->size(); i++)
 	{
-		vector<string>* localConnectionCSVdatasetLine = &((*localConnectionCSVdataset)[i]);
+		vector<string>* localConnectionCSVdatasetLine = &((*localConnectomeCSVdatasetNeurons)[i]);
 
 		double neuronX = H01indexedCSVdatabaseOperations.calibrateCoordinateX(SHAREDvars.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X]));
 		double neuronY = H01indexedCSVdatabaseOperations.calibrateCoordinateY(SHAREDvars.convertStringToDouble((*localConnectionCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y]));
@@ -389,9 +528,9 @@ bool H01indexedCSVdatabaseCalculateNeuronLayerClass::calculateNeuronLayerSurface
 		//cout << "neuronY = " << neuronY << endl;
 		vec neuronPos = {neuronX, neuronY, 0.0};
 		vec layerSurfaceNormVector = {0.0, 0.0, 0.0};
-		#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL_NORMALISE_LOCAL_CONNECTIVITY_USE_LAYER_BOUNDS
+		#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LARGE_MODEL_NORMALISE_LOCAL_CONNECTIVITY_USE_LAYER_BOUNDS
 		int layerIndexNOTUSED = this->calculateNeuronLayer(corticalLayersNumLayers, corticalLayersKeypoints, &neuronPos, &layerSurfaceNormVector);
-		#elif defined INDEXED_CSV_DATABASE_QUERY_GENERATE_LARGE_MODEL_NORMALISE_LOCAL_CONNECTIVITY_USE_FLOW_VECTOR
+		#elif defined INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LARGE_MODEL_NORMALISE_LOCAL_CONNECTIVITY_USE_FLOW_VECTOR
 		vec corticalPositiveFlowVector = {LOCAL_CONNECTOME_VISUALISATION_POSITIVE_FLOW_VECTOR_X, LOCAL_CONNECTOME_VISUALISATION_POSITIVE_FLOW_VECTOR_Y, 0.0};
 		SHAREDvector.subtractVectors(&layerSurfaceNormVector, &corticalPositiveFlowVector, &neuronPos);	//SHAREDvector.addVectors(&layerSurfaceNormVector, &neuronPos, &corticalPositiveFlowVector);
 		#endif

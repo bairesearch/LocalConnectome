@@ -1,12 +1,12 @@
 /*******************************************************************************
  *
  * File Name: H01indexedCSVdatabaseOperations.hpp
- * Author: Richard Bruce Baxter - Copyright (c) 2021-2022 Baxter AI (baxterai.com)
+ * Author: Richard Bruce Baxter - Copyright (c) 2021-2023 Baxter AI (baxterai.com)
  * License: MIT License
  * Project: H01LocalConnectome
- * Requirements: see H01indexedCSVdatabase.hpp
- * Compilation: see H01indexedCSVdatabase.hpp
- * Usage: see H01indexedCSVdatabase.hpp
+ * Requirements: see H01indexedCSVdatabaseGlobalDefs.hpp
+ * Compilation: see H01indexedCSVdatabaseGlobalDefs.hpp
+ * Usage: see H01indexedCSVdatabaseGlobalDefs.hpp
  * Description: H01 indexed CSV database operations
  * Comments:
  * /
@@ -15,7 +15,7 @@
 #ifndef HEADER_H01indexedCSVdatabaseOperations
 #define HEADER_H01indexedCSVdatabaseOperations
 
-#include "H01indexedCSVdatabase.hpp"
+#include "H01indexedCSVdatabaseGlobalDefs.hpp"
 #include "SHAREDvars.hpp"
 
 class H01indexedCSVdatabaseOperationsClass
@@ -29,6 +29,11 @@ class H01indexedCSVdatabaseOperationsClass
 	public: bool readLocalConnectomeNeuronsCSVdataset(const string LocalConnectomeCSVdatasetFileName, vector<vector<string>>* localConnectomeNeuronsCSVdataset, int* localConnectomeNeuronsCSVdatasetSize, vector<string>* neuronList, map<string, int>* neuronMap);
 	public: bool readLocalConnectomeConnectionsCSVdataset(const string LocalConnectomeCSVdatasetFileName, vector<vector<string>>* localConnectomeConnectionsCSVdataset, int* localConnectomeConnectionsCSVdatasetSize);
 		public: bool readLocalConnectomeConnectionsCSVdataset(const string LocalConnectomeCSVdatasetFileName, vector<vector<string>>* localConnectomeConnectionsCSVdataset, int* localConnectomeConnectionsCSVdatasetSize, bool buildConnectionsMap, map<string, int>* connectionsMap);
+
+	public: void prepareLocalConnectomeDatasetRead(const string local_connectome_folder_base);
+		public: void prepareLocalConnectomeDatasetReadCustom(const string local_connectome_folder_base, const string folderName);
+	public: ofstream prepareLocalConnectomeDatasetWrite(const bool write, const bool appendToFile, const string datasetFileNameWrite);
+	public: void finaliseLocalConnectomeDatasetWrite(const bool write, ofstream* writeFileObject);
 
 };
 
