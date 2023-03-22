@@ -28,6 +28,9 @@
 #ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME
 #include "H01indexedCSVdatabaseReadLocalConnectome.hpp"
 #endif
+#ifdef INDEXED_CSV_DATABASE_PREPROCESS
+#include "H01indexedCSVdatabasePreprocess.hpp"
+#endif
 #include "SHAREDvars.hpp"
 
 
@@ -53,8 +56,8 @@
 
 	static char infomessage[] = "Information regarding execution/query modes:"
 	"\n"
-	"\nexecution mode 1 - INDEXED_CSV_DATABASE_CREATE - converts Avro Json C3 Synaptic connections database to indexed CSV database (indexed by pre/postsynaptic neuron ID)"
-	"\nexecution mode 2 - INDEXED_CSV_DATABASE_QUERY - queries indexed CSV database, based on local connectome neuron id list"
+	"\nexecution mode 1 - INDEXED_CSV_DATABASE_CREATE - converts H01 Avro Json C3 Synaptic connections database to indexed CSV database (indexed by pre/postsynaptic neuron ID)"
+	"\nexecution mode 2 - INDEXED_CSV_DATABASE_QUERY - queries H01 indexed CSV database, based on local connectome neuron id list"
 	"\nexecution mode 3 - INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME - visualises local connectome datasets"
 	"\nexecution mode 4 - INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME - traces local connectome dataset (saving visualisation)"
 	"\nexecution mode 5 - INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME - read local connectome dataset"
@@ -112,14 +115,16 @@
 	"\n";
 #elif defined INDEXED_CSV_DATABASE_LDC
 	static string executionModesArray[EXECUTION_MODES_TOTAL] = {"visualise:INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME","trace:INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME","read:INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME"};
-	static string readModesArray[READ_MODES_TOTAL] = {"count:READ_MODE_INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS","convert:READ_MODE_INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_FROM_MATRIX"};
+	static string readModesArray[READ_MODES_TOTAL] = {"count:READ_MODE_INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS"};
+	static string preprocessModesArray[PREPROCESS_MODES_TOTAL] = {"connections:PREPROCESS_MODE_INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_FROM_MATRIX","neurons:PREPROCESS_MODE_INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_NEURONS_DATASET_FROM_SKELETONS"};
 
 	static char errmessage[] = "Usage:  H01indexedCSVdatabase.exe [options]"
 	"\n"
 	"\n\twhere options are any of the following (see documentation)"
 	"\n"
-	"\n\t-mode [int]                             : execution mode (3: visualise, 4: trace, 5: read  (def: 5) [required]"
-	"\n\t-read [int]                            : read mode (1: count, 3: convert (def: 1) [required for mode:read]"
+	"\n\t-mode [int]                             : execution mode (3: visualise, 4: trace, 5: read, 6: preprocess  (def: 5) [required]"
+	"\n\t-read [int]                             : read mode (1: count (def: 1) [required for mode:read]"
+	"\n\t-preprocess [int]                       : preprocess mode (1: connections, 2: neurons (def: 1) [required for mode:preprocess]"
 	"\n"
 	"\n\t-local_connectome_folder_base [string]  : H01 local connectome base folder containing \"datasets\" and \"visualisations\" (def: ../)"
 	"\n"
@@ -130,9 +135,12 @@
 	"\nexecution mode 3 - INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME - visualises local connectome datasets"
 	"\nexecution mode 4 - INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME - traces local connectome dataset (saving visualisation)"
 	"\nexecution mode 5 - INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME - read local connectome dataset"
+	"\nexecution mode 6 - INDEXED_CSV_DATABASE_PREPROCESS - preprocess LDC dataset"
 	"\n"
 	"\nread mode 1 - INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS - count excitatory/inhibitory connections"
-	"\nread mode 3 - INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_FROM_MATRIX - automatically generate localConnectomeConnections-typesFromPresynapticNeurons.csv from connections matrix"
+	"\n"
+	"\npreprocess mode 1 - INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_FROM_MATRIX - automatically generate localConnectomeConnections-typesFromPresynapticNeurons.csv from Supplementary Material connections matrix"
+	"\npreprocess mode 2 - INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_NEURONS_DATASET_FROM_SKELETONS - automatically generate localConnectomeNeurons.csv from Catmaid skeletons and Supplementary Material files"
 	"\n"
 	"\nexecution mode 3 - INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME - visualises local connectome datasets"
 	"\n * Input: localConnectomeNeurons.csv / localConnectomeConnectionsX.csv"
@@ -145,10 +153,16 @@
 	"\nexecution mode 5 - INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME - read local connectome dataset"
 	"\n * Input: "
 	"\n *   1 INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS: localConnectomeNeurons.csv - id, x, y, z, type, excitation_type | somas.csv - soma_id, base_seg_id, c2_rep_strict, c2_rep_manual, c3_rep_strict, c3_rep_manual, proofread_104_rep, x, y, z, celltype, layer, localConnectomeConnections-typesFromPresynapticNeurons/typesFromEMimages.csv - pre_id, pre_x, pre_y, pre_z, pre_type, post_id, post_x, post_y, post_z, post_type, post_class_label, syn_num, excitation_type"
-	"\n *   3 INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_FROM_MATRIX: aa_connectivity_matrix.csv/ad_connectivity_matrix.csv/da_connectivity_matrix.csv/dd_connectivity_matrix.csv"
 	"\n * Output:"
 	"\n *   1 INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS: N/A"
-	"\n *   3 INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_FROM_MATRIX: localConnectomeConnections-typesFromPresynapticNeurons.csv - pre_id, post_id, pre_class_label, post_class_label, syn_num"
+	"\n"
+	"\nexecution mode 6 - INDEXED_CSV_DATABASE_PREPROCESS - preprocess datasets"
+	"\n * Input: "
+	"\n *   1 INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_FROM_MATRIX: aa_connectivity_matrix.csv/ad_connectivity_matrix.csv/da_connectivity_matrix.csv/dd_connectivity_matrix.csv"
+	"\n *   2 INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_NEURONS_DATASET_FROM_SKELETONS: skeleton[SKID].swc, science.add9330_data_s2.csv/science.add9330_data_s3.csv/science.add9330_data_s4.csv, inputs.csv"
+	"\n * Output:"
+	"\n *   1 INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_FROM_MATRIX: localConnectomeConnections-typesFromPresynapticNeurons.csv - pre_id, post_id, pre_class_label, post_class_label, syn_num"
+	"\n *   2 INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_NEURONS_DATASET_FROM_SKELETONS: localConnectomeNeurons.csv - id, x, y, z, type, excitation_type"
 	"\n";
 #endif
 
@@ -160,8 +174,15 @@ int main(const int argc, const char** argv)
 	bool passInputReq = true;
 
 	int executionMode = EXECUTION_MODE_DEFAULT;
+	#ifdef INDEXED_CSV_DATABASE_QUERY
 	int queryMode = QUERY_MODE_DEFAULT;
+	#endif
+	#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME
 	int readMode = READ_MODE_DEFAULT;
+	#endif
+	#ifdef INDEXED_CSV_DATABASE_PREPROCESS
+	int preprocessMode = PREPROCESS_MODE_DEFAULT;
+	#endif
 
 	#ifdef INDEXED_CSV_DATABASE_CREATE
 	string avro_json_database_folder = AVRO_JSON_DATABASE_FOLDER;
@@ -177,6 +198,7 @@ int main(const int argc, const char** argv)
 	{
 		passInputReq = false;
 	}
+	
 	#ifdef INDEXED_CSV_DATABASE_QUERY
 	if(SHAREDvarsClass().argumentExists(argc, argv, "-query"))
 	{
@@ -198,6 +220,19 @@ int main(const int argc, const char** argv)
 	else
 	{
 		if(executionMode == EXECUTION_MODE_INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME)
+		{
+			passInputReq = false;
+		}
+	}
+	#endif
+	#ifdef INDEXED_CSV_DATABASE_PREPROCESS
+	if(SHAREDvarsClass().argumentExists(argc, argv, "-preprocess"))
+	{
+		preprocessMode = SHAREDvarsClass().getFloatArgument(argc, argv, "-preprocess");
+	}
+	else
+	{
+		if(executionMode == EXECUTION_MODE_INDEXED_CSV_DATABASE_PREPROCESS)
 		{
 			passInputReq = false;
 		}
@@ -283,6 +318,12 @@ int main(const int argc, const char** argv)
 	else if(executionMode == EXECUTION_MODE_INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME)
 	{
 		H01indexedCSVdatabaseReadLocalConnectomeClass().readLocalConnectome(readMode, local_connectome_folder_base);
+	}
+	#endif
+	#ifdef INDEXED_CSV_DATABASE_PREPROCESS
+	else if(executionMode == EXECUTION_MODE_INDEXED_CSV_DATABASE_PREPROCESS)
+	{
+		H01indexedCSVdatabasePreprocessClass().preprocess(preprocessMode, local_connectome_folder_base);
 	}
 	#endif
 	else

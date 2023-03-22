@@ -168,16 +168,6 @@ bool H01indexedCSVdatabaseReadLocalConnectomeClass::readLocalConnectome(const in
 		#endif
 	}
 	#endif
-	#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_FROM_MATRIX
-	else if(readMode == READ_MODE_INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_FROM_MATRIX)
-	{
-		string neuronListConnectionsFileNameNA = "";
-		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_OUTPUT_VERBOSE_LOCALORNONLOCAL
-		cout << "INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_OUTPUT_VERBOSE_LOCALORNONLOCAL print format: neuronID num_excitatory_connections num_inhibitory_connections" << endl;
-		#endif
-		generateLocalConnectomeConnectionsDatasetFromMatrix(local_connectome_folder_base, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS);
-	}
-	#endif
 	else
 	{
 		cerr << "H01indexedCSVdatabaseReadLocalConnectomeClass::queryIndexedCSVdatabase error: readMode unknown: " << readMode << endl;
@@ -186,89 +176,6 @@ bool H01indexedCSVdatabaseReadLocalConnectomeClass::readLocalConnectome(const in
 	
 	return result;
 }
-
-#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_FROM_MATRIX
-void H01indexedCSVdatabaseReadLocalConnectomeClass::generateLocalConnectomeConnectionsDatasetFromMatrix(const string local_connectome_folder_base, const string connectionDatasetFileNameWrite)
-{
-	ofstream writeFileObject = H01indexedCSVdatabaseOperations.prepareLocalConnectomeDatasetWrite(true, false, connectionDatasetFileNameWrite);
-
-	H01indexedCSVdatabaseOperations.prepareLocalConnectomeDatasetRead(local_connectome_folder_base);
-	
-	string neuronConnectionsFileHeader = string(LOCAL_CONNECTOME_DATASET_CONNECTIONS_HEADER) + STRING_NEWLINE;
-	SHAREDvars.writeStringToFileObject(neuronConnectionsFileHeader, &writeFileObject);
-
-	for(int matrixFileIndex=0; matrixFileIndex<LOCAL_CONNECTOME_CONNECTIONS_MATRIX_NUMBER_OF_FILES; matrixFileIndex++)
-	{
-		cout << "matrixFileIndex = " << matrixFileIndex << endl;
-		string matrixFileName = localConnectomeConnectionsMatrixFileNames[matrixFileIndex];
-		string matrixFilePreClassLabel = localConnectomeConnectionsMatrixSynapsePreClassLabel[matrixFileIndex];
-		string matrixFilePostClassLabel = localConnectomeConnectionsMatrixSynapsePostClassLabel[matrixFileIndex];
-		convertConnectionsListMatrixFile(local_connectome_folder_base, matrixFileName, matrixFilePreClassLabel, matrixFilePostClassLabel, &writeFileObject);
-	} 
-	
-	H01indexedCSVdatabaseOperations.finaliseLocalConnectomeDatasetWrite(true, &writeFileObject);
-}
-
-void H01indexedCSVdatabaseReadLocalConnectomeClass::convertConnectionsListMatrixFile(const string local_connectome_folder_base, const string matrixFileName, const string matrixFilePreClassLabel, const string matrixFilePostClassLabel, ofstream* writeFileObject)
-{	
-	//matrix format: Row neurons are presynaptic, while column neurons are postsynaptic, first row/column contain neuronID (skid)
-		
-	int matrixFileSize = 0;
-	vector<vector<string>> matrixFileData;
-	bool expectFirstLineHeader = false;
-	SHAREDvars.getLinesFromFileCSV(matrixFileName, &matrixFileData, &matrixFileSize, CSV_DELIMITER_CHAR, expectFirstLineHeader);
-	int numberOfNeurons = matrixFileSize-1;	//ignore header
-	
-	cout << "matrixFileName = " << matrixFileName << endl;
-	cout << "numberOfNeurons = " << numberOfNeurons << endl;
-	
-	vector<string> neuronIDlist = matrixFileData[0];	//skid
-	neuronIDlist.erase(neuronIDlist.begin());
-	/*
-	vector<string> matrixFileHeader = matrixFileData[0];
-	vector<string> neuronIDlist;
-	for(int neuronIndex=1; neuronIndex<matrixFileSize; neuronIndex++)
-	{
-		string neuronID = matrixFileHeader[neuronIndex];	//skid
-		neuronIDlist.push_back(neuronID);
-	}
-	*/
-		
-	for(int sourceNeuronIndex=0; sourceNeuronIndex<numberOfNeurons; sourceNeuronIndex++)
-	{
-		vector<string> matrixFileDataRow = matrixFileData[sourceNeuronIndex+1];
-		for(int targetNeuronIndex=0; targetNeuronIndex<numberOfNeurons; targetNeuronIndex++)
-		{
-			string matrixFileDataCell = matrixFileDataRow[targetNeuronIndex+1];
-			int connectionNumberOfSynapsesInt = int(SHAREDvars.convertStringToFloat(matrixFileDataCell));
-			if(connectionNumberOfSynapsesInt > 0)
-			{
-				string connectionNumberOfSynapses = SHAREDvars.convertIntToString(connectionNumberOfSynapsesInt);
-
-				string connectionsSourceNeuronID = neuronIDlist[sourceNeuronIndex];
-				string connectionsTargetNeuronID = neuronIDlist[targetNeuronIndex];
-
-				string neuronConnectionString = 
-				connectionsSourceNeuronID + CSV_DELIMITER + 
-				connectionsTargetNeuronID + CSV_DELIMITER +  
-				matrixFilePreClassLabel + CSV_DELIMITER + matrixFilePostClassLabel + CSV_DELIMITER + connectionNumberOfSynapses + STRING_NEWLINE;
-				/*
-				string neuronConnectionString = 
-				connectionsSourceNeuronID + CSV_DELIMITER + SHAREDvars.convertIntToString(connectionsSourceNeuronCoordinates.x) + CSV_DELIMITER + SHAREDvars.convertIntToString(connectionsSourceNeuronCoordinates.y) + CSV_DELIMITER + SHAREDvars.convertIntToString(connectionsSourceNeuronCoordinates.z) + CSV_DELIMITER + connectionsSourceNeuronType + CSV_DELIMITER + 
-				connectionsTargetNeuronID + CSV_DELIMITER + SHAREDvars.convertIntToString(connectionsTargetNeuronCoordinates.x) + CSV_DELIMITER + SHAREDvars.convertIntToString(connectionsTargetNeuronCoordinates.y) + CSV_DELIMITER + SHAREDvars.convertIntToString(connectionsTargetNeuronCoordinates.z) + CSV_DELIMITER + connectionsTargetNeuronType + CSV_DELIMITER + 
-				matrixFileClassLabel + CSV_DELIMITER + connectionNumberOfSynapses + CSV_DELIMITER + SHAREDvars.convertIntToString(connectionExcitationType) + STRING_NEWLINE;
-				*/
-
-				//cout << "neuronConnectionString = " << neuronConnectionString << endl;
-
-				SHAREDvars.writeStringToFileObject(neuronConnectionString, writeFileObject);
-			}
-		}
-	}
-}
-
-
-#endif
 
 bool H01indexedCSVdatabaseReadLocalConnectomeClass::readLocalConnectomeByNeuronDatasetOrListFile(const int readMode, const string local_connectome_folder_base, const string neuronDatasetOrListFileName, const bool neuronListIsDataset, const bool queryPresynapticConnectionNeurons, const string neuronListConnectionsFileName, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, vector<H01connectivityModelClass>* connectivityModelLayers)
 {

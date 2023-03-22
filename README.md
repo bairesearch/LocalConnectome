@@ -73,18 +73,20 @@ where options are any of the following (see documentation)
 
 -mode [int]                             : execution mode (1: create, 2: query, 3: visualise, 4: trace, 5: read (def: 2) [required]
 -query [int]                            : query mode (1: extract, 2: map, 3: generate, 4: count, 5: complete, 6: crawl, 7:extrapolate (def: 4) [required for mode:query]
--read [int]                             : read mode (1: count, 2: extrapolate, 3:convert (def: 1) [required for mode:read]"
+-read [int]                             : read mode (1: count, 2: extrapolate (def: 1) [required for mode:read]
+-preprocess [int]                       : preprocess mode (1: connections, 2: neurons (def: 1) [required for mode:preprocess]
 
 -avro_json_database_folder [string]     : H01 C3 Synaptic connections database json folder (def: /media/user/large/h01data/data/exported/json)
 -indexed_csv_database_folder [string]   : H01 indexed csv database folder (def: /media/user/ssddata/indexed)
 -local_connectome_folder_base [string]  : H01 local connectome base folder containing "datasets" and "visualisations" (def: ../)
 
 
-execution mode 1 - INDEXED_CSV_DATABASE_CREATE - converts Avro Json C3 Synaptic connections database to indexed CSV database (indexed by pre/postsynaptic neuron ID)
-execution mode 2 - INDEXED_CSV_DATABASE_QUERY - queries indexed CSV database, based on local connectome neuron id list
+execution mode 1 - INDEXED_CSV_DATABASE_CREATE - converts H01 Avro Json C3 Synaptic connections database to indexed CSV database (indexed by pre/postsynaptic neuron ID)
+execution mode 2 - INDEXED_CSV_DATABASE_QUERY - queries H01 indexed CSV database, based on local connectome neuron id list
 execution mode 3 - INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME - visualises local connectome datasets
 execution mode 4 - INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME - traces local connectome dataset (saving visualisation)
 execution mode 5 - INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME - read local connectome dataset
+execution mode 6 - INDEXED_CSV_DATABASE_PREPROCESS - preprocess LDC dataset
 
 query mode 1 - INDEXED_CSV_DATABASE_QUERY_EXTRACT_INCOMING_OUTGOING_CONNECTIONS - lookup indexed CSV database by neuron ID, and find incoming/outgoing target connections, and write them to file
 query mode 2 - INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING - lookup indexed CSV database by neuron ID, find incoming target connections, and generate visualisation
@@ -95,8 +97,9 @@ query mode 6 - INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS - crawl indexed CSV 
 
 read mode 1 - INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS - count excitatory/inhibitory connections
 read mode 2 - INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LARGE_MODEL - generate large artificial cortical model; extrapolate z region same size as x/y [incomplete]
-read mode 3 - INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_FROM_MATRIX - automatically generate localConnectomeConnections-typesFromPresynapticNeurons.csv from connections matrix"
 
+preprocess mode 1 - INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_FROM_MATRIX - automatically generate localConnectomeConnections-typesFromPresynapticNeurons.csv from Supplementary Material connections matrix
+preprocess mode 2 - INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_NEURONS_DATASET_FROM_SKELETONS - automatically generate localConnectomeNeurons.csv from Catmaid skeletons and Supplementary Material files
 ```
 
 ### Usage examples
@@ -113,11 +116,13 @@ read mode 3 - INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LOCAL_CONNECTO
 ./H01indexedCSVdatabase.exe -mode 4
 ./H01indexedCSVdatabase.exe -mode 5 -read 1 -indexed_csv_database_folder "/media/user/ssddata/indexed"
 ./H01indexedCSVdatabase.exe -mode 5 -read 2 -indexed_csv_database_folder "/media/user/ssddata/indexed"
-./H01indexedCSVdatabase.exe -mode 5 -read 3 -indexed_csv_database_folder "/media/user/ssddata/indexed"
+./H01indexedCSVdatabase.exe -mode 6 -preprocess 1 -indexed_csv_database_folder "/media/user/ssddata/indexed"
+./H01indexedCSVdatabase.exe -mode 6 -preprocess 2 -indexed_csv_database_folder "/media/user/ssddata/indexed"
 ```
 
 ### Development notes
 
+ * INDEXED_CSV_DATABASE_H01/INDEXED_CSV_DATABASE_LDC - dataset selection
  * INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_LOCAL - independently count the connections within the local connectome connections dataset (layer to layer matrix): compare local connectome counts against counts from https://www.biorxiv.org/content/10.1101/2021.05.29.446289v3/v4 Supplementary Table 5. Summary of Machine Learning-identified connections
  * LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS: use official somas dataset (https://h01-release.storage.googleapis.com/data.html - gs://h01-release/data/20210601/c3/tables/somas.csv)
  * INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME: For backwards compatibility with dev ODS generated visualisations, enable LOCAL_CONNECTOME_VISUALISATION_BACKWARDS_COMPATIBILITY_WITH_ODS_GENERATED_FILES
@@ -186,17 +191,25 @@ H01indexedCSVdatabaseTraceLocalConnectome.cpp/.hpp (execution mode 4: INDEXED_CS
 H01indexedCSVdatabaseReadLocalConnectome.cpp/.hpp (execution mode 5: INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME):
 
  * Description: H01 indexed CSV database read local connectome - read local connectome dataset
- * Input: "
-     * INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS: localConnectomeNeurons.csv - id, x, y, z, type, excitation_type | somas.csv - soma_id, base_seg_id, c2_rep_strict, c2_rep_manual, c3_rep_strict, c3_rep_manual, proofread_104_rep, x, y, z, celltype, layer, localConnectomeConnections-typesFromPresynapticNeurons/typesFromEMimages.csv - pre_id, pre_x, pre_y, pre_z, pre_type, post_id, post_x, post_y, post_z, post_type, post_class_label, syn_num, excitation_type"
-     * INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LARGE_MODEL: localConnectomeNeurons.csv - id, x, y, z, type, excitation_type | somas.csv - soma_id, base_seg_id, c2_rep_strict, c2_rep_manual, c3_rep_strict, c3_rep_manual, proofread_104_rep, x, y, z, celltype, layer, localConnectomeConnections-typesFromPresynapticNeurons/typesFromEMimages.csv - pre_id, pre_x, pre_y, pre_z, pre_type, post_id, post_x, post_y, post_z, post_type, post_class_label, syn_num, excitation_type"
-     * INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_FROM_MATRIX: aa_connectivity_matrix.csv/ad_connectivity_matrix.csv/da_connectivity_matrix.csv/dd_connectivity_matrix.csv"
- * Output:"
-     * INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS: N/A"
-     * INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LARGE_MODEL: localConnectomeConnectionsLargeModel-typesFromPresynapticNeurons/typesFromEMimages.csv - pre_id, pre_x, pre_y, pre_z, pre_type, post_id, post_x, post_y, post_z, post_type, post_class_label, syn_num, excitation_type; localConnectomeNeuronsLargeModel.csv - id, x, y, z, type, excitation_type"
-     * INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_FROM_MATRIX: localConnectomeConnections-typesFromPresynapticNeurons.csv - pre_id, post_id, pre_class_label, post_class_label, syn_num"
+ * Input: 
+     * INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS: localConnectomeNeurons.csv - id, x, y, z, type, excitation_type | somas.csv - soma_id, base_seg_id, c2_rep_strict, c2_rep_manual, c3_rep_strict, c3_rep_manual, proofread_104_rep, x, y, z, celltype, layer, localConnectomeConnections-typesFromPresynapticNeurons/typesFromEMimages.csv - pre_id, pre_x, pre_y, pre_z, pre_type, post_id, post_x, post_y, post_z, post_type, post_class_label, syn_num, excitation_type
+     * INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LARGE_MODEL: localConnectomeNeurons.csv - id, x, y, z, type, excitation_type | somas.csv - soma_id, base_seg_id, c2_rep_strict, c2_rep_manual, c3_rep_strict, c3_rep_manual, proofread_104_rep, x, y, z, celltype, layer, localConnectomeConnections-typesFromPresynapticNeurons/typesFromEMimages.csv - pre_id, pre_x, pre_y, pre_z, pre_type, post_id, post_x, post_y, post_z, post_type, post_class_label, syn_num, excitation_type
+ * Output:
+     * INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS: N/A
+     * INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LARGE_MODEL: localConnectomeConnectionsLargeModel-typesFromPresynapticNeurons/typesFromEMimages.csv - pre_id, pre_x, pre_y, pre_z, pre_type, post_id, post_x, post_y, post_z, post_type, post_class_label, syn_num, excitation_type; localConnectomeNeuronsLargeModel.csv - id, x, y, z, type, excitation_type
+
+H01indexedCSVdatabaseReadLocalConnectome.cpp/.hpp (execution mode 6: INDEXED_CSV_DATABASE_PREPROCESS):
+
+ * Description: H01 indexed CSV database read local connectome - read local connectome dataset
+ * Input: 
+     * INDEXED_CSV_DATABASE_PREPROCESS_LOCAL_CONNECTOME_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_FROM_MATRIX: aa_connectivity_matrix.csv/ad_connectivity_matrix.csv/da_connectivity_matrix.csv/dd_connectivity_matrix.csv
+     * INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_NEURONS_DATASET_FROM_SKELETONS: skeleton[SKID].swc, science.add9330_data_s2.csv/science.add9330_data_s3.csv/science.add9330_data_s4.csv, inputs.csv
+ * Output:
+     * INDEXED_CSV_DATABASE_PREPROCESS_LOCAL_CONNECTOME_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_FROM_MATRIX: localConnectomeConnections-typesFromPresynapticNeurons.csv - pre_id, post_id, pre_class_label, post_class_label, syn_num
+     * INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_NEURONS_DATASET_FROM_SKELETONS: localConnectomeNeurons.csv - id, x, y, z, type, excitation_type
 
 
- 
+
 H01 local connectome visualisations
 -----------------------------------
 
