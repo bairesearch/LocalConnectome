@@ -88,7 +88,9 @@ class H01indexedCSVdatabaseCalculateNeuronLayerClass
 		private: bool dynamicallyGenerateLocalConnectomeConnectionsRedundantFields(vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, map<string, int>* neuronMap);
 		#endif	
 		#ifdef INDEXED_CSV_DATABASE_CALCULATE_NEURON_LAYERS
-		public: bool calculateLocalConnectomeLayers(vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, map<string, int>* neuronMap, const bool readConnections);
+		#ifdef INDEXED_CSV_DATABASE_H01
+		private: void calculateLocalConnectomeLayers(vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, map<string, int>* neuronMap, const bool readConnections);
+			#ifdef INDEXED_CSV_DATABASE_H01
 			#ifdef LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_LAYERS
 			private: bool transferLocalConnectomeNeuronLayersToConnectionsLayers(vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, map<string, int>* neuronMap);
 			#endif
@@ -99,10 +101,15 @@ class H01indexedCSVdatabaseCalculateNeuronLayerClass
 					private: bool isNeuronInCorticalLayer(const int layerIndex, const vec* neuronPos, vector<vec>* corticalLayerKeypoints, const bool rightOfLine, vec* layerSurfaceNormVector);
 						private: bool isPointRightOrLeftOfLine(const double Ax, const double Ay, const double Bx, const double By, const double X, const double Y, const bool rightOfLine);
 			//#endif
+			#endif
 		#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LARGE_MODEL_NORMALISE_LOCAL_CONNECTIVITY
 		public: bool calculateLocalConnectomeNeuronLayerSurfaceNorms(vector<vector<string>>* localConnectomeCSVdatasetNeurons, map<string, int>* neuronMap);
 			private: bool calculateNeuronLayerSurfaceNorms(vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<vec>>* corticalLayersKeypoints);
 				private: int calculateNeuronLayerSurfaceNorm(int corticalLayersNumLayers, vector<vector<vec>>* corticalLayersKeypoints, const vec* neuronPos, vec* layerSurfaceNormVector);
+		#endif
+		#endif
+		#ifdef INDEXED_CSV_DATABASE_LDC
+		private: void calculateNeuronLayersLDC(vector<vector<string>>* localConnectomeCSVdatasetNeurons);
 		#endif
 		#endif
 };

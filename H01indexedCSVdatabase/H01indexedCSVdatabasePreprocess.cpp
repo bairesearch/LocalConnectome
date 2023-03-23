@@ -48,12 +48,13 @@ void H01indexedCSVdatabasePreprocessClass::generateLocalConnectomeNeuronsDataset
 	vector<string> neuronIDlist = getNeuronIDlist(local_connectome_folder_base, true);
 	vector<string> neuronTypeList = getNeuronTypeList(local_connectome_folder_base, &neuronIDlist);
 	vector<vecString> neuronPOSlist = getNeuronPosList(local_connectome_folder_base, &neuronIDlist);
+	map<string, int> neuronExcitationTypeMap = calculateNeuronExcitationTypeMap(local_connectome_folder_base);
 	
 	string neuronDatasetDataString = string(LOCAL_CONNECTOME_DATASET_NEURONS_HEADER) + STRING_NEWLINE;
 	for(int neuronIndex=0; neuronIndex<neuronIDlist.size(); neuronIndex++)
 	{
-		string excitationTypeString = SHAREDvars.convertIntToString(getNeuronExcitationTypeFromType(neuronTypeList[neuronIndex]));
-		string neuronDatasetLine = neuronIDlist[neuronIndex] + STRING_SPACE + neuronPOSlist[neuronIndex].x + STRING_SPACE + neuronPOSlist[neuronIndex].y + STRING_SPACE + neuronPOSlist[neuronIndex].z + STRING_SPACE + neuronTypeList[neuronIndex] + STRING_SPACE + excitationTypeString; 
+		string excitationTypeString = SHAREDvars.convertIntToString(getNeuronExcitationTypeFromType(neuronTypeList[neuronIndex], &neuronExcitationTypeMap));
+		string neuronDatasetLine = neuronIDlist[neuronIndex] + CSV_DELIMITER_CHAR + neuronPOSlist[neuronIndex].x + CSV_DELIMITER_CHAR + neuronPOSlist[neuronIndex].y + CSV_DELIMITER_CHAR + neuronPOSlist[neuronIndex].z + CSV_DELIMITER_CHAR + neuronTypeList[neuronIndex] + CSV_DELIMITER_CHAR + excitationTypeString; 
 		neuronDatasetDataString += neuronDatasetLine + STRING_NEWLINE;
 	}
 	
@@ -227,6 +228,31 @@ vector<vecString> H01indexedCSVdatabasePreprocessClass::getNeuronPosList(const s
 	return neuronPOSlist;
 }
 
+map<string, int> H01indexedCSVdatabasePreprocessClass::calculateNeuronExcitationTypeMap(const string local_connectome_folder_base)
+{
+	map<string, int> neuronExcitationTypeMap;
+
+	H01indexedCSVdatabaseOperations.prepareLocalConnectomeDatasetRead(local_connectome_folder_base);
+	int neuronTypeFileSize = 0;
+	vector<vector<string>> neuronTypeData;
+	bool expectFirstLineHeader = true;
+	SHAREDvars.getLinesFromFileCSV(INDEXED_CSV_DATABASE_PREPROCESS_NEURON_TYPES_NAME, &neuronTypeData, &neuronTypeFileSize, CHAR_TAB, expectFirstLineHeader);
+	
+	string neuronIDlistDataString;
+	for(int neuronTypeIndex=0; neuronTypeIndex<neuronTypeFileSize; neuronTypeIndex++)
+	{
+		vector<string>* row = &(neuronTypeData[neuronTypeIndex]);
+		string neuronType = (*row)[INDEXED_CSV_DATABASE_PREPROCESS_NEURON_TYPES_FIELD_INDEX_NEURONTYPE];
+		//cout << "neuronType = " << neuronType << endl;
+		int excitationType = SHAREDvars.convertStringToInt((*row)[INDEXED_CSV_DATABASE_PREPROCESS_NEURON_TYPES_FIELD_INDEX_EXCITATIONTYPE]);
+		//neuronTypeIndexMap[neuronType] = neuronTypeIndex;
+		neuronExcitationTypeMap[neuronType] = excitationType;
+	}
+	
+	return neuronExcitationTypeMap;
+}
+	
+	
 #endif
 
 #ifdef INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_FROM_MATRIX
@@ -313,10 +339,10 @@ void H01indexedCSVdatabasePreprocessClass::convertConnectionsListMatrixFile(cons
 #endif
 
 
-int H01indexedCSVdatabasePreprocessClass::getNeuronExcitationTypeFromType(string neuronType)
+int H01indexedCSVdatabasePreprocessClass::getNeuronExcitationTypeFromType(const string neuronType, map<string, int>* neuronExcitationTypeMap)
 {
-	//TODO
-	int excitationType = LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY;
+	int excitationType = (*neuronExcitationTypeMap)[neuronType];
+	//cout << "excitationType = " << excitationType << endl;
 	return excitationType;
 }
 

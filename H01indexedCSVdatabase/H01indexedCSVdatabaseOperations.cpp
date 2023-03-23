@@ -76,7 +76,13 @@ bool H01indexedCSVdatabaseOperationsClass::readLocalConnectomeNeuronsCSVdataset(
 		int layerIndex = SHAREDvars.convertStringToInt(layerString);
 		#endif
 		(*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER] = SHAREDvars.convertIntToString(layerIndex);
-		
+	}
+	#endif
+	#ifdef LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_EXCITATION_TYPE_ARTIFICIAL
+	#ifndef INDEXED_CSV_DATABASE_LDC	//excitationType calculations by LDC use neuronTypes.txt
+	for(int i=0; i<localConnectomeNeuronsCSVdataset->size(); i++)
+	{
+		vector<string>* localConnectomeNeuron = &((*localConnectomeNeuronsCSVdataset)[i]);	
 		string neuronType = (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
 		string neuronExcitationTypeString = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN);
 		if(neuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_PYRAMIDAL)
@@ -95,6 +101,7 @@ bool H01indexedCSVdatabaseOperationsClass::readLocalConnectomeNeuronsCSVdataset(
 		//cout << "neuronExcitationTypeString = " << neuronExcitationTypeString << endl;
 		localConnectomeNeuron->push_back(neuronExcitationTypeString);	//LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE	
 	}
+	#endif
 	#endif
 	#ifdef LOCAL_CONNECTOME_DATASET_NEURONS_IGNORE_ADDITIONAL_NEURON_TYPES
 	for(int i=0; i<localConnectomeNeuronsCSVdataset->size(); i++)

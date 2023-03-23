@@ -36,12 +36,13 @@ class H01indexedCSVdatabasePreprocessClass
 			private: vector<string> getNeuronIDlist(const string local_connectome_folder_base, const bool writeToFile);
 			private: vector<string> getNeuronTypeList(const string local_connectome_folder_base, vector<string>* neuronIDlist);
 			private: vector<vecString> getNeuronPosList(const string local_connectome_folder_base, vector<string>* neuronIDlist);
+			private: map<string, int> calculateNeuronExcitationTypeMap(const string local_connectome_folder_base);
 		#endif
 		#ifdef INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_FROM_MATRIX
 		private: void generateLocalConnectomeConnectionsDatasetFromMatrix(const string local_connectome_folder_base, const string connectionDatasetFileNameWrite);
 			private: void convertConnectionsListMatrixFile(const string local_connectome_folder_base, const string matrixFileName, const string matrixFilePreClassLabel, const string matrixFilePostClassLabel, ofstream* writeFileObject);
 		#endif
-		public: int getNeuronExcitationTypeFromType(string neuronType);
+		public: int getNeuronExcitationTypeFromType(const string neuronType, map<string, int>* neuronExcitationTypeMap);
 };
 
 #endif

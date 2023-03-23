@@ -65,6 +65,8 @@ class H01indexedCSVdatabaseReadLocalConnectomeClass
 			private: void generateLargeModelNeuronsAndConnectionsLayers(constEffective vector<H01connectivityModelClass>* connectivityModelLayersIncomingLayers, constEffective vector<H01connectivityModelClass>* connectivityModelLayersOutgoingLayers);
 				private: void generateLargeModelNeuronsAndConnections(const H01connectivityModelClass* connectivityModelLayersIncoming, const H01connectivityModelClass* connectivityModelLayersOutgoing);
 			#endif
+		private: int calculateConnectionExcitationType(const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, vector<string>* localConnectomeConnection, vector<string>* localConnectomeNeuronSource);
+
 };
 
 #endif

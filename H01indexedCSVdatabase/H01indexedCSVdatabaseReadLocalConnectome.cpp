@@ -203,7 +203,7 @@ bool H01indexedCSVdatabaseReadLocalConnectomeClass::readLocalConnectomeByNeuronD
 	}
 	#endif
 	#endif
-			
+				
 	vector<string> neuronList;
 	map<string, int> neuronMap;
 	vector<vector<string>> localConnectomeCSVdatasetNeurons;	
@@ -421,7 +421,6 @@ bool H01indexedCSVdatabaseReadLocalConnectomeClass::countConnectionsLocalMatrix(
 
 						string sourceNeuronID = "";
 						string targetNeuronID = "";
-						int excitationType;
 						#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_NUMBER_EXCITATORY_INHIBITORY_NEURONS
 						string sourceNeuronType = "";
 						#endif
@@ -448,41 +447,7 @@ bool H01indexedCSVdatabaseReadLocalConnectomeClass::countConnectionsLocalMatrix(
 						vector<string>* localConnectomeNeuronTarget = &((*localConnectomeCSVdatasetNeurons)[neuronIndexTarget]);							
 						
 						#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_NUMBER_EXCITATORY_INHIBITORY_CONNECTIONS
-						#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS
-						if(connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
-						{
-							string presynapticNeuronType = LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_UNKNOWN;
-							if(queryByPresynapticConnectionNeurons)
-							{
-								presynapticNeuronType = (*localConnectomeNeuronSource)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
-							}
-							else
-							{
-								presynapticNeuronType = (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
-							}
-							//cout << "presynapticNeuronType = " << presynapticNeuronType << endl;
-
-							if(presynapticNeuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_PYRAMIDAL)
-							{
-								excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY;
-							}
-							else if(presynapticNeuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_INTERNEURON)
-							{
-								excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY;
-							}
-							else
-							{
-								cerr << "H01indexedCSVdatabaseReadLocalConnectomeClass::countConnectionsLocalMatrix error: presynapticNeuronType unknown" << endl;
-								exit(EXIT_ERROR);
-							}
-						}
-						else
-						{
-						#endif
-							excitationType = SHAREDvars.convertStringToInt((localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE]);
-						#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS
-						}
-						#endif
+						int excitationType = calculateConnectionExcitationType(connectionTypesDerivedFromPresynapticNeuronsOrEMimages, &localConnectomeConnection, localConnectomeNeuronSource);
 						#endif
 
 						bool layerRequirements = true;	
@@ -513,42 +478,47 @@ bool H01indexedCSVdatabaseReadLocalConnectomeClass::countConnectionsLocalMatrix(
 						
 						bool excitationTypeRequirements = true;
 						#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_BY_EXCITATION_TYPE
-						string sourceNeuronExcitationType = (*localConnectomeNeuronSource)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
-						string targetNeuronExcitationType = (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];	
-						int sourceNeuronExcitationTypeIndex = LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN;
-						int targetNeuronExcitationTypeIndex = LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN;	
-						if(sourceNeuronExcitationType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_PYRAMIDAL)
+						#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS_LOOKUP
+						int sourceNeuronExcitationType = SHAREDvars.convertStringToInt((*localConnectomeNeuronSource)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE]);
+						int targetNeuronExcitationType = SHAREDvars.convertStringToInt((*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE]);	
+						#else
+						string sourceNeuronType = (*localConnectomeNeuronSource)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
+						string targetNeuronType = (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];	
+						int sourceNeuronExcitationType = LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN;
+						int targetNeuronExcitationType = LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN;	
+						if(sourceNeuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_PYRAMIDAL)
 						{
-							sourceNeuronExcitationTypeIndex = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY;
+							sourceNeuronExcitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY;
 						}
-						else if(sourceNeuronExcitationType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_INTERNEURON)
+						else if(sourceNeuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_INTERNEURON)
 						{
-							sourceNeuronExcitationTypeIndex = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY;
+							sourceNeuronExcitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY;
 						}
 						else
 						{
 							cerr << "H01indexedCSVdatabaseReadLocalConnectomeClass::countConnectionsLocalMatrix error: sourceNeuronExcitationType unknown" << endl;
 							exit(EXIT_ERROR);
 						}
-						if(targetNeuronExcitationType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_PYRAMIDAL)
+						if(targetNeuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_PYRAMIDAL)
 						{
-							targetNeuronExcitationTypeIndex = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY;
+							targetNeuronExcitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY;
 						}
-						else if(targetNeuronExcitationType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_INTERNEURON)
+						else if(targetNeuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_INTERNEURON)
 						{
-							targetNeuronExcitationTypeIndex = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY;
+							targetNeuronExcitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY;
 						}
 						else
 						{
 							cerr << "H01indexedCSVdatabaseReadLocalConnectomeClass::countConnectionsLocalMatrix error: targetNeuronExcitationType unknown" << endl;
 							exit(EXIT_ERROR);
 						}
-						//cout << "sourceNeuronExcitationTypeIndex = " << sourceNeuronExcitationTypeIndex << endl;
-						//cout << "targetNeuronExcitationTypeIndex = " << targetNeuronExcitationTypeIndex << endl;
+						#endif
+						//cout << "sourceNeuronExcitationType = " << sourceNeuronExcitationType << endl;
+						//cout << "targetNeuronExcitationType = " << targetNeuronExcitationType << endl;
 						if(sourceExcitationTypeIndex == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN)
 						{
 						}
-						else if(sourceExcitationTypeIndex == sourceNeuronExcitationTypeIndex)
+						else if(sourceExcitationTypeIndex == sourceNeuronExcitationType)
 						{
 						}
 						else
@@ -558,7 +528,7 @@ bool H01indexedCSVdatabaseReadLocalConnectomeClass::countConnectionsLocalMatrix(
 						if(targetExcitationTypeIndex == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN)
 						{
 						}
-						else if(targetExcitationTypeIndex == targetNeuronExcitationTypeIndex)
+						else if(targetExcitationTypeIndex == targetNeuronExcitationType)
 						{
 						}
 						else
@@ -607,11 +577,11 @@ bool H01indexedCSVdatabaseReadLocalConnectomeClass::countConnectionsLocalMatrix(
 							{
 								independentSourceNeuronMap[sourceNeuronID] = (*neuronMap)[sourceNeuronID];
 								connectivityModel.numberOfLocalConnectomeNeurons++;
-								if(sourceNeuronType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_TYPE_PYRAMIDAL)
+								if(sourceNeuronExcitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY)
 								{
 									connectivityModel.numberOfLocalConnectomeNeuronsExcitatory++;
 								}
-								else if(sourceNeuronType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_TYPE_INTERNEURON)
+								else if(sourceNeuronExcitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY)
 								{
 									connectivityModel.numberOfLocalConnectomeNeuronsInhibitory++;
 								}
@@ -699,7 +669,6 @@ void H01indexedCSVdatabaseReadLocalConnectomeClass::countConnectionsLocal(const 
 
 		string sourceNeuronID = "";
 		string targetNeuronID = "";
-		int excitationType;
 		string sourceNeuronType = "";
 		if(queryByPresynapticConnectionNeurons)
 		{
@@ -719,47 +688,12 @@ void H01indexedCSVdatabaseReadLocalConnectomeClass::countConnectionsLocal(const 
 		int neuronIndexTarget = (*neuronMap)[targetNeuronID];
 		vector<string>* localConnectomeNeuronTarget = &((*localConnectomeCSVdatasetNeurons)[neuronIndexTarget]);
 
-
-
-		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS
-		if(connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
-		{
-			string presynapticNeuronType = LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_UNKNOWN;
-			if(queryByPresynapticConnectionNeurons)
-			{
-				presynapticNeuronType = (*localConnectomeNeuronSource)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
-			}
-			else
-			{
-				presynapticNeuronType = (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
-			}
-			//cout << "presynapticNeuronType = " << presynapticNeuronType << endl;
-
-			if(presynapticNeuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_PYRAMIDAL)
-			{
-				excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY;
-			}
-			else if(presynapticNeuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_INTERNEURON)
-			{
-				excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY;
-			}
-			else
-			{
-				cerr << "H01indexedCSVdatabaseReadLocalConnectomeClass::countConnectionsLocalMatrix error: presynapticNeuronType unknown" << endl;
-				exit(EXIT_ERROR);
-			}
-		}
-		else
-		{
-		#endif
-			excitationType = SHAREDvars.convertStringToInt((localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE]);
-		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS
-		}
-		#endif
+		int excitationType = calculateConnectionExcitationType(connectionTypesDerivedFromPresynapticNeuronsOrEMimages, &localConnectomeConnection, localConnectomeNeuronSource);
 
 		int localConnectomeNeuronLayer;
 		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_BY_LAYER
 		localConnectomeNeuronLayer = SHAREDvars.convertStringToInt((*localConnectomeNeuronSource)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER]);
+		//cout << "localConnectomeNeuronLayer = " << localConnectomeNeuronLayer << endl;
 		#endif
 
 
@@ -1182,3 +1116,49 @@ void H01indexedCSVdatabaseReadLocalConnectomeClass::generateLargeModelNeuronsAnd
 	*/
 }
 #endif
+
+int H01indexedCSVdatabaseReadLocalConnectomeClass::calculateConnectionExcitationType(const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, vector<string>* localConnectomeConnection, vector<string>* localConnectomeNeuronSource)
+{
+	int excitationType;
+	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS
+	if(connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
+	{
+		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS_LOOKUP
+		excitationType = SHAREDvars.convertStringToInt((*localConnectomeNeuronSource)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE]);
+		#else
+		excitationType = LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_UNKNOWN;
+		if(queryByPresynapticConnectionNeurons)
+		{
+			presynapticNeuronType = (*localConnectomeNeuronSource)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
+		}
+		else
+		{
+			presynapticNeuronType = (*localConnectomeNeuronTarget)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
+		}
+		//cout << "presynapticNeuronType = " << presynapticNeuronType << endl;
+
+		if(presynapticNeuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_PYRAMIDAL)
+		{
+			excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY;
+		}
+		else if(presynapticNeuronType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_INTERNEURON)
+		{
+			excitationType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY;
+		}
+		else
+		{
+			cerr << "H01indexedCSVdatabaseReadLocalConnectomeClass::calculateConnectionExcitationType error: presynapticNeuronType unknown" << endl;
+			exit(EXIT_ERROR);
+		}
+		#endif
+	}
+	else
+	{
+	#endif
+		excitationType = SHAREDvars.convertStringToInt((*localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE]);
+	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS
+	}
+	#endif
+	return excitationType;
+}
+
