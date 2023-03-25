@@ -1,0 +1,28 @@
+      <linearGradient id="exciteConnectionRadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionRadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionRadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionRadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronColor">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#FECCCF "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronColor">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ADD9A8 "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronColor">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>

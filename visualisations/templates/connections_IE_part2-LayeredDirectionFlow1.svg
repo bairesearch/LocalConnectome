@@ -1,4 +1,4 @@
-	  <linearGradient id="exciteConnectionLayer1RadialGradient1FlowDirection1">
+      <linearGradient id="exciteConnectionLayer1RadialGradient1FlowDirection1">
         <!-- green --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
         <stop offset="0%" stop-color="#00ff4c"/>
       </linearGradient>
@@ -14,7 +14,7 @@
         <!-- red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
         <stop offset="0%" stop-color="#ff0000 "/>
       </linearGradient>
-	  <linearGradient id="exciteConnectionLayer1RadialGradient1FlowDirection2">
+      <linearGradient id="exciteConnectionLayer1RadialGradient1FlowDirection2">
         <!-- blue --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
         <stop offset="0%" stop-color="#0000ff"/>
       </linearGradient>
@@ -28,9 +28,9 @@
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer1RadialGradient2FlowDirection2">
         <!-- magenta --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
-		<stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="0%" stop-color="#ff00ff"/>
       </linearGradient>
-	  
+      
       <linearGradient id="inhibitNeuronLayer1Color">
         <!-- magenta -->
         <stop offset="0%" stop-color="#ff00ff "/>
@@ -43,9 +43,9 @@
         <!-- white -->
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient>
-	  
-	  
-	  <linearGradient id="exciteConnectionLayer2RadialGradient1FlowDirection1">
+      
+      
+      <linearGradient id="exciteConnectionLayer2RadialGradient1FlowDirection1">
         <!-- green --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
         <stop offset="0%" stop-color="#00ff4c"/>
       </linearGradient>
@@ -61,7 +61,7 @@
         <!-- red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
         <stop offset="0%" stop-color="#ff0000 "/>
       </linearGradient>
-	  <linearGradient id="exciteConnectionLayer2RadialGradient1FlowDirection2">
+      <linearGradient id="exciteConnectionLayer2RadialGradient1FlowDirection2">
         <!-- blue --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
         <stop offset="0%" stop-color="#0000ff"/>
       </linearGradient>
@@ -75,9 +75,9 @@
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer2RadialGradient2FlowDirection2">
         <!-- magenta --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
-		<stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="0%" stop-color="#ff00ff"/>
       </linearGradient>
-	  
+      
       <linearGradient id="inhibitNeuronLayer2Color">
         <!-- magenta -->
         <stop offset="0%" stop-color="#ff00ff "/>
@@ -90,9 +90,9 @@
         <!-- white -->
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient>
-	  
-	  
-	  <linearGradient id="exciteConnectionLayer3RadialGradient1FlowDirection1">
+      
+      
+      <linearGradient id="exciteConnectionLayer3RadialGradient1FlowDirection1">
         <!-- green --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
         <stop offset="0%" stop-color="#00ff4c"/>
       </linearGradient>
@@ -108,7 +108,7 @@
         <!-- red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
         <stop offset="0%" stop-color="#ff0000 "/>
       </linearGradient>
-	  <linearGradient id="exciteConnectionLayer3RadialGradient1FlowDirection2">
+      <linearGradient id="exciteConnectionLayer3RadialGradient1FlowDirection2">
         <!-- blue --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
         <stop offset="0%" stop-color="#0000ff"/>
       </linearGradient>
@@ -122,9 +122,9 @@
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer3RadialGradient2FlowDirection2">
         <!-- magenta --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
-		<stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="0%" stop-color="#ff00ff"/>
       </linearGradient>
-	  
+      
       <linearGradient id="inhibitNeuronLayer3Color">
         <!-- magenta -->
         <stop offset="0%" stop-color="#ff00ff "/>
@@ -137,9 +137,9 @@
         <!-- white -->
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient>
-	  
-	  
-	  <linearGradient id="exciteConnectionLayer4RadialGradient1FlowDirection1">
+      
+      
+      <linearGradient id="exciteConnectionLayer4RadialGradient1FlowDirection1">
         <!-- green --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
         <stop offset="0%" stop-color="#00ff4c"/>
       </linearGradient>
@@ -155,7 +155,7 @@
         <!-- red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
         <stop offset="0%" stop-color="#ff0000 "/>
       </linearGradient>
-	  <linearGradient id="exciteConnectionLayer4RadialGradient1FlowDirection2">
+      <linearGradient id="exciteConnectionLayer4RadialGradient1FlowDirection2">
         <!-- blue --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
         <stop offset="0%" stop-color="#0000ff"/>
       </linearGradient>
@@ -169,9 +169,9 @@
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer4RadialGradient2FlowDirection2">
         <!-- magenta --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
-		<stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="0%" stop-color="#ff00ff"/>
       </linearGradient>
-	  
+      
       <linearGradient id="inhibitNeuronLayer4Color">
         <!-- magenta -->
         <stop offset="0%" stop-color="#ff00ff "/>
@@ -184,9 +184,9 @@
         <!-- white -->
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient>
-	  
-	  
-	  <linearGradient id="exciteConnectionLayer5RadialGradient1FlowDirection1">
+      
+      
+      <linearGradient id="exciteConnectionLayer5RadialGradient1FlowDirection1">
         <!-- green --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
         <stop offset="0%" stop-color="#00ff4c"/>
       </linearGradient>
@@ -202,7 +202,7 @@
         <!-- red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
         <stop offset="0%" stop-color="#ff0000 "/>
       </linearGradient>
-	  <linearGradient id="exciteConnectionLayer5RadialGradient1FlowDirection2">
+      <linearGradient id="exciteConnectionLayer5RadialGradient1FlowDirection2">
         <!-- blue --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
         <stop offset="0%" stop-color="#0000ff"/>
       </linearGradient>
@@ -216,9 +216,9 @@
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer5RadialGradient2FlowDirection2">
         <!-- magenta --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
-		<stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="0%" stop-color="#ff00ff"/>
       </linearGradient>
-	  
+      
       <linearGradient id="inhibitNeuronLayer5Color">
         <!-- magenta -->
         <stop offset="0%" stop-color="#ff00ff "/>
@@ -231,9 +231,9 @@
         <!-- white -->
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient>
-	  
-	  
-	  <linearGradient id="exciteConnectionLayer6RadialGradient1FlowDirection1">
+      
+      
+      <linearGradient id="exciteConnectionLayer6RadialGradient1FlowDirection1">
         <!-- green --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
         <stop offset="0%" stop-color="#00ff4c"/>
       </linearGradient>
@@ -249,7 +249,7 @@
         <!-- red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
         <stop offset="0%" stop-color="#ff0000 "/>
       </linearGradient>
-	  <linearGradient id="exciteConnectionLayer6RadialGradient1FlowDirection2">
+      <linearGradient id="exciteConnectionLayer6RadialGradient1FlowDirection2">
         <!-- blue --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
         <stop offset="0%" stop-color="#0000ff"/>
       </linearGradient>
@@ -263,9 +263,9 @@
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer6RadialGradient2FlowDirection2">
         <!-- magenta --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
-		<stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="0%" stop-color="#ff00ff"/>
       </linearGradient>
-	  
+      
       <linearGradient id="inhibitNeuronLayer6Color">
         <!-- magenta -->
         <stop offset="0%" stop-color="#ff00ff "/>
@@ -278,9 +278,9 @@
         <!-- white -->
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient>
-	  
-	  
-	  <linearGradient id="exciteConnectionLayer7RadialGradient1FlowDirection1">
+      
+      
+      <linearGradient id="exciteConnectionLayer7RadialGradient1FlowDirection1">
         <!-- green --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
         <stop offset="0%" stop-color="#00ff4c"/>
       </linearGradient>
@@ -296,7 +296,7 @@
         <!-- red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
         <stop offset="0%" stop-color="#ff0000 "/>
       </linearGradient>
-	  <linearGradient id="exciteConnectionLayer7RadialGradient1FlowDirection2">
+      <linearGradient id="exciteConnectionLayer7RadialGradient1FlowDirection2">
         <!-- blue --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
         <stop offset="0%" stop-color="#0000ff"/>
       </linearGradient>
@@ -310,9 +310,9 @@
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer7RadialGradient2FlowDirection2">
         <!-- magenta --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) < 0 -->
-		<stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="0%" stop-color="#ff00ff"/>
       </linearGradient>
-	  
+      
       <linearGradient id="inhibitNeuronLayer7Color">
         <!-- magenta -->
         <stop offset="0%" stop-color="#ff00ff "/>
@@ -325,4 +325,4 @@
         <!-- white -->
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient>
-	  
+      

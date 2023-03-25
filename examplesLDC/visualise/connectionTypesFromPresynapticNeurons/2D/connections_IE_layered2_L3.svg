@@ -1,0 +1,1121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with matplotlib (https://matplotlib.org/) -->
+<svg height="1000pt" version="1.1" viewBox="0 0 1000 1000" width="1000pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <metadata>
+  <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2021-06-10T15:35:39.879008</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.3.4, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linecap:butt;stroke-linejoin:round;}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 1000  L 1000 1000  L 1000 0  L 0 0  z "/>
+  </g>
+  <g id="axes_1">
+   <g id="PathCollection_1">
+    <defs>
+     <!-- white [optional] -->
+     <path d="M -0.5 0.5  L 0.5 0.5  L 0.5 -0.5  L -0.5 -0.5  z " id="m51ca76320d" />    #style="stroke:#ffffff;"
+      <linearGradient id="exciteConnectionLayer1RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer8RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer15RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer22RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer1RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer8RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer15RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer22RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      
+      <linearGradient id="exciteConnectionLayer1RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer8RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer15RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer22RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer1RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer8RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer15RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer22RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitNeuronLayer1Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer8Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer15Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer22Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      
+      <linearGradient id="exciteNeuronLayer1Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer8Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer15Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer22Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      
+      <linearGradient id="unknownNeuronLayer1Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer8Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer15Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer22Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+       
+      
+      <linearGradient id="exciteConnectionLayer2RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer9RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer16RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer23RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer2RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer9RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer16RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer23RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      
+      <linearGradient id="exciteConnectionLayer2RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer9RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer16RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer23RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer2RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer9RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer16RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer23RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitNeuronLayer2Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer9Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer16Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer23Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      
+      <linearGradient id="exciteNeuronLayer2Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer9Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer16Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer23Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      
+      <linearGradient id="unknownNeuronLayer2Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer9Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer16Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer23Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+       
+      
+      <linearGradient id="exciteConnectionLayer3RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer10RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer17RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer24RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer3RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer10RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer17RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer24RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      
+      <linearGradient id="exciteConnectionLayer3RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer10RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer17RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer24RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer3RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer10RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer17RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer24RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitNeuronLayer3Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer10Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer17Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer24Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      
+      <linearGradient id="exciteNeuronLayer3Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer10Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer17Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer24Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      
+      <linearGradient id="unknownNeuronLayer3Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer10Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer17Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer24Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+       
+      
+      <linearGradient id="exciteConnectionLayer4RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer11RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer18RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer25RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer4RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer11RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer18RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer25RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      
+      <linearGradient id="exciteConnectionLayer4RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer11RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer18RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer25RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer4RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer11RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer18RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer25RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitNeuronLayer4Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer11Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer18Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer25Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      
+      <linearGradient id="exciteNeuronLayer4Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer11Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer18Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer25Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      
+      <linearGradient id="unknownNeuronLayer4Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer11Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer18Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer25Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+       
+      
+      <linearGradient id="exciteConnectionLayer5RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer12RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer19RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer26RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer5RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer12RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer19RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer26RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      
+      <linearGradient id="exciteConnectionLayer5RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer12RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer19RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer26RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer5RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer12RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer19RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer26RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitNeuronLayer5Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer12Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer19Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer26Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      
+      <linearGradient id="exciteNeuronLayer5Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer12Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer19Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer26Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      
+      <linearGradient id="unknownNeuronLayer5Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer12Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer19Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer26Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+       
+      
+      <linearGradient id="exciteConnectionLayer6RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer13RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer20RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer27RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer6RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer13RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer20RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer27RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      
+      <linearGradient id="exciteConnectionLayer6RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer13RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer20RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer27RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer6RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer13RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer20RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer27RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitNeuronLayer6Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer13Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer20Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer27Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      
+      <linearGradient id="exciteNeuronLayer6Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer13Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer20Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer27Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      
+      <linearGradient id="unknownNeuronLayer6Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer13Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer20Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer27Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+       
+      
+      <linearGradient id="exciteConnectionLayer7RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer14RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer21RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer28RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer7RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer14RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer21RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer28RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      
+      <linearGradient id="exciteConnectionLayer7RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer14RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer21RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer28RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer7RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer14RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer21RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer28RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitNeuronLayer7Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer14Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer21Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer28Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      
+      <linearGradient id="exciteNeuronLayer7Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer14Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer21Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer28Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      
+      <linearGradient id="unknownNeuronLayer7Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer14Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer21Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer28Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+       
+
+    </defs>
+    <g clip-path="url(#p545b2f616b)">
+     <!-- neurons with excitatory/inhibitory connections -->
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='541.19988' xlink:href='#m51ca76320d' y='495.08338'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='487.50586' xlink:href='#m51ca76320d' y='358.28381'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='481.00208' xlink:href='#m51ca76320d' y='299.81642'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='509.85775' xlink:href='#m51ca76320d' y='281.39303'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='478.92727' xlink:href='#m51ca76320d' y='329.55212'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='486.06352' xlink:href='#m51ca76320d' y='343.09927'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='491.44997' xlink:href='#m51ca76320d' y='300.64065'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='592.62141' xlink:href='#m51ca76320d' y='313.46692'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='576.54179' xlink:href='#m51ca76320d' y='350.54338'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='509.24596' xlink:href='#m51ca76320d' y='303.35818'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='439.82906' xlink:href='#m51ca76320d' y='224.92758'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='453.68478' xlink:href='#m51ca76320d' y='244.02389'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='454.24625' xlink:href='#m51ca76320d' y='214.45503'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='603.11743' xlink:href='#m51ca76320d' y='234.60004'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='633.7621' xlink:href='#m51ca76320d' y='262.90695'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='656.13517' xlink:href='#m51ca76320d' y='260.44425'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='593.61751' xlink:href='#m51ca76320d' y='208.42294'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='622.29508' xlink:href='#m51ca76320d' y='220.59908'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='673.11184' xlink:href='#m51ca76320d' y='238.31518'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='670.32596' xlink:href='#m51ca76320d' y='233.49853'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='573.03316' xlink:href='#m51ca76320d' y='361.76898'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='580.82273' xlink:href='#m51ca76320d' y='322.57172'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='581.09332' xlink:href='#m51ca76320d' y='311.22751'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='594.2982' xlink:href='#m51ca76320d' y='385.65781'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='570.13566' xlink:href='#m51ca76320d' y='434.88746'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='542.14934' xlink:href='#m51ca76320d' y='546.97479'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='549.14673' xlink:href='#m51ca76320d' y='480.77396'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='567.26631' xlink:href='#m51ca76320d' y='550.51954'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='550.13743' xlink:href='#m51ca76320d' y='434.84888'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='546.29452' xlink:href='#m51ca76320d' y='496.48582'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='383.3885' xlink:href='#m51ca76320d' y='213.41559'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='395.55585' xlink:href='#m51ca76320d' y='217.37316'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='479.40255' xlink:href='#m51ca76320d' y='202.82054'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='466.34759' xlink:href='#m51ca76320d' y='252.68492'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='676.59352' xlink:href='#m51ca76320d' y='238.35984'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='645.78458' xlink:href='#m51ca76320d' y='257.15651'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='495.83978' xlink:href='#m51ca76320d' y='203.60245'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='497.622' xlink:href='#m51ca76320d' y='212.57817'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='605.97544' xlink:href='#m51ca76320d' y='229.19177'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='450.36959' xlink:href='#m51ca76320d' y='234.66471'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='596.67158' xlink:href='#m51ca76320d' y='333.77078'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='575.07884' xlink:href='#m51ca76320d' y='383.71261'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='596.92269' xlink:href='#m51ca76320d' y='323.60635'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='582.2531' xlink:href='#m51ca76320d' y='375.70688'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='596.39718' xlink:href='#m51ca76320d' y='352.82487'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='431.3528' xlink:href='#m51ca76320d' y='213.08206'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='499.20917' xlink:href='#m51ca76320d' y='281.13923'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='502.35443' xlink:href='#m51ca76320d' y='355.85437'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='500.24432' xlink:href='#m51ca76320d' y='369.51756'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='487.41668' xlink:href='#m51ca76320d' y='373.12593'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='499.20918' xlink:href='#m51ca76320d' y='317.23648'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='439.43349' xlink:href='#m51ca76320d' y='231.55616'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='616.13559' xlink:href='#m51ca76320d' y='239.29007'/>
+     <use style='fill:url(#exciteNeuronLayer3Color);stroke:url(#exciteNeuronLayer3Color);' x='621.0737' xlink:href='#m51ca76320d' y='225.90287'/>
+    </g>
+   </g>
+   <g id="LineCollection_1">
+   	<!-- excitatory/inhibitory connections -->
+     <path clip-path='url(#p9a78a7c8e7)' d='M 502.35443 355.85437  L 478.92727 329.55212  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 502.35443 355.85437  L 509.85775 281.39303  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 541.19988 495.08338  L 476.60423 502.5904  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 466.34759 252.68492  L 546.29452 496.48582  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 466.34759 252.68492  L 603.11743 234.60004  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 542.14934 546.97479  L 509.85775 281.39303  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 542.14934 546.97479  L 491.44997 300.64065  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 550.13743 434.84888  L 500.24432 369.51756  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 550.13743 434.84888  L 476.60423 502.5904  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 550.13743 434.84888  L 481.00208 299.81642  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 549.14673 480.77396  L 491.44997 300.64065  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 546.29452 496.48582  L 466.34759 252.68492  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 546.29452 496.48582  L 439.82906 224.92758  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 546.29452 496.48582  L 580.82273 322.57172  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 656.13517 260.44425  L 633.7621 262.90695  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 633.7621 262.90695  L 476.60423 502.5904  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 603.11743 234.60004  L 621.0737 225.90287  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 603.11743 234.60004  L 621.0737 225.90287  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 621.0737 225.90287  L 614.03751 534.8467  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 621.0737 225.90287  L 476.60423 502.5904  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 497.622 212.57817  L 509.85775 281.39303  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 497.622 212.57817  L 476.60423 502.5904  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 497.622 212.57817  L 476.60423 502.5904  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 497.622 212.57817  L 633.7621 262.90695  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 497.622 212.57817  L 603.11743 234.60004  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 497.622 212.57817  L 621.0737 225.90287  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 497.622 212.57817  L 593.61751 208.42294  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 497.622 212.57817  L 593.61751 208.42294  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 497.622 212.57817  L 495.83978 203.60245  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 593.61751 208.42294  L 500.24432 369.51756  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 593.61751 208.42294  L 476.60423 502.5904  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 593.61751 208.42294  L 439.82906 224.92758  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 593.61751 208.42294  L 479.40255 202.82054  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 495.83978 203.60245  L 593.61751 208.42294  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 616.13559 239.29007  L 614.03751 534.8467  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 616.13559 239.29007  L 476.60423 502.5904  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 616.13559 239.29007  L 476.60423 502.5904  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 616.13559 239.29007  L 645.78458 257.15651  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 573.03316 361.76898  L 481.00208 299.81642  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 479.40255 202.82054  L 454.24625 214.45503  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 479.40255 202.82054  L 454.24625 214.45503  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 594.2982 385.65781  L 630.15726 305.41482  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 594.2982 385.65781  L 580.80442 297.94201  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 500.24432 369.51756  L 459.92999 320.84679  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 500.24432 369.51756  L 466.34759 252.68492  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 499.20917 281.13923  L 509.85775 281.39303  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 499.20917 281.13923  L 548.80963 535.7936  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 499.20917 281.13923  L 348.1681 213.93907  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 439.43349 231.55616  L 293.3771 227.45559  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 605.97544 229.19177  L 679.165 257.40355  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 605.97544 229.19177  L 722.27391 237.28828  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 570.13566 434.88746  L 661.36934 482.87433  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 431.3528 213.08206  L 346.25702 240.68728  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 431.3528 213.08206  L 367.36958 216.99416  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 592.62141 313.46692  L 594.2982 385.65781  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 592.62141 313.46692  L 581.09332 311.22751  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 596.67158 333.77078  L 596.39718 352.82487  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 487.41668 373.12593  L 486.06352 343.09927  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 453.68478 244.02389  L 517.45108 251.83279  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 500.24432 369.51756  L 444.69607 588.98464  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 431.3528 213.08206  L 314.25816 487.49042  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 431.3528 213.08206  L 227.94142 206.65748  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 570.13566 434.88746  L 366.199 216.47416  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 596.67158 333.77078  L 677.11149 326.09107  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 439.43349 231.55616  L 684.57335 230.24497  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 439.43349 231.55616  L 227.94142 206.65748  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 453.68478 244.02389  L 356.63473 213.84889  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 453.68478 244.02389  L 618.1361 338.08958  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 453.68478 244.02389  L 614.3517 230.29253  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 605.97544 229.19177  L 630.08659 620.71249  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 605.97544 229.19177  L 441.10287 217.32954  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 605.97544 229.19177  L 364.60215 266.23589  ' style='fill:none;stroke:url(#exciteConnectionLayer3RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+   </g>
+  </g>
+ </g>
+ <defs>
+ </defs>
+</svg>

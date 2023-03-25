@@ -82,145 +82,145 @@
         <!-- white -->
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient>
-	  
-	  
+      
+      
       <linearGradient id="inhibitConnectionLayer1RadialGradient1">
         <!-- blue -->
         <stop offset="0%" stop-color="#aec0fe "/>
-		<stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer2RadialGradient1">
         <!-- red -->
         <stop offset="0%" stop-color="#ff9cbb "/>
-		<stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer3RadialGradient1">
         <!-- turqoise [yellow] -->
         <stop offset="0%" stop-color="#cdff84 "/>
-		<stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer4RadialGradient1">
         <!-- cyan -->
         <stop offset="0%" stop-color="#ccf6ff "/>
-		<stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer5RadialGradient1">
         <!-- purple -->
         <stop offset="0%" stop-color="#fbb7ff "/>
-		<stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer6RadialGradient1">
         <!-- orange -->
         <stop offset="0%" stop-color="#feeca2 "/>
-		<stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer7RadialGradient1">
         <!-- green -->
         <stop offset="0%" stop-color="#84ffc9 "/>
-		<stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
       </linearGradient>
       <linearGradient id="exciteConnectionLayer1RadialGradient1">
         <!-- blue -->
         <stop offset="0%" stop-color="#0000ff "/>
-		<stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
       </linearGradient>
       <linearGradient id="exciteConnectionLayer2RadialGradient1">
         <!-- red -->
         <stop offset="0%" stop-color="#ff0000 "/>
-		<stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
       </linearGradient>
       <linearGradient id="exciteConnectionLayer3RadialGradient1">
         <!-- turqoise [yellow] -->
         <stop offset="0%" stop-color="#ffff00"/>
-		<stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
       </linearGradient>
       <linearGradient id="exciteConnectionLayer4RadialGradient1">
         <!-- cyan -->
         <stop offset="0%" stop-color="#00ffff "/>
-		<stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
       </linearGradient>
       <linearGradient id="exciteConnectionLayer5RadialGradient1">
         <!-- purple -->
         <stop offset="0%" stop-color="#ff00ff "/>
-		<stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
       </linearGradient>
       <linearGradient id="exciteConnectionLayer6RadialGradient1">
         <!-- orange -->
         <stop offset="0%" stop-color="#ff9900 "/>
-		<stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
       </linearGradient>
       <linearGradient id="exciteConnectionLayer7RadialGradient1">
         <!-- green -->
         <stop offset="0%" stop-color="#00ff00 "/>
-		<stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer1RadialGradient2">
         <!-- blue -->
         <stop offset="0%" stop-color="#aec0fe "/>
-		<stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer2RadialGradient2">
         <!-- red -->
         <stop offset="0%" stop-color="#ff9cbb "/>
-		<stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer3RadialGradient2">
         <!-- turqoise [yellow] -->
         <stop offset="0%" stop-color="#cdff84 "/>
-		<stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer4RadialGradient2">
         <!-- cyan -->
         <stop offset="0%" stop-color="#ccf6ff "/>
-		<stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer5RadialGradient2">
         <!-- purple -->
         <stop offset="0%" stop-color="#fbb7ff "/>
-		<stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer6RadialGradient2">
         <!-- orange -->
         <stop offset="0%" stop-color="#feeca2 "/>
-		<stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer7RadialGradient2">
         <!-- green -->
         <stop offset="0%" stop-color="#84ffc9 "/>
-		<stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
       </linearGradient>
       <linearGradient id="exciteConnectionLayer1RadialGradient2">
         <!-- blue -->
         <stop offset="0%" stop-color="#0000ff "/>
-		<stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
       </linearGradient>
       <linearGradient id="exciteConnectionLayer2RadialGradient2">
         <!-- red -->
         <stop offset="0%" stop-color="#ff0000 "/>
-		<stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
       </linearGradient>
       <linearGradient id="exciteConnectionLayer3RadialGradient2">
         <!-- turqoise [yellow] -->
         <stop offset="0%" stop-color="#ffff00"/>
-		<stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
       </linearGradient>
       <linearGradient id="exciteConnectionLayer4RadialGradient2">
         <!-- cyan -->
         <stop offset="0%" stop-color="#00ffff "/>
-		<stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
       </linearGradient>
       <linearGradient id="exciteConnectionLayer5RadialGradient2">
         <!-- purple -->
         <stop offset="0%" stop-color="#ff00ff "/>
-		<stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
       </linearGradient>
       <linearGradient id="exciteConnectionLayer6RadialGradient2">
         <!-- orange -->
         <stop offset="0%" stop-color="#ff9900 "/>
-		<stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
       </linearGradient>
       <linearGradient id="exciteConnectionLayer7RadialGradient2">
         <!-- green -->
         <stop offset="0%" stop-color="#00ff00 "/>
-		<stop offset="0%" stop-color="#00ff00 "/>
-      </linearGradient>	 
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>     

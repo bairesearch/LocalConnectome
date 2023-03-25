@@ -633,7 +633,11 @@ void H01indexedCSVdatabaseCalculateNeuronLayerClass::calculateNeuronLayersLDC(ve
 		string neuronType = (*localNeuronCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
 	
 		int neuronTypeIndex = neuronTypeIndexMap[neuronType];
+		#ifdef INDEXED_CSV_DATABASE_LDC_NEURON_LAYERS_REUSE_H01_TEMPLATES
+		int layerIndex = neuronTypeIndex%CORTICAL_LAYER_NUMBER_OF_LAYERS;
+		#else
 		int layerIndex = neuronTypeIndex;
+		#endif
 		//cout << "layerIndex = " << layerIndex << endl;
 		localNeuronCSVdatasetLine->push_back(SHAREDvars.convertIntToString(layerIndex));	//LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER	
 		//cout << "localNeuronCSVdatasetLine->size() = " << localNeuronCSVdatasetLine->size() << endl;

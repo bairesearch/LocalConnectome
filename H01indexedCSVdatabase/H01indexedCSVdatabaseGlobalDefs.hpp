@@ -218,8 +218,12 @@ extern string currentDirectory;
 	#define AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_X (1.0)
 	#define AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_Y (1.0)
 	#define AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_Z (4.0)	//requires calibration	//can be used to enhance Z axis visibility
-#elif defined INDEXED_CSV_DATABASE_LDC		
-	#define INDEXED_CSV_DATABASE_QUERY_LOCAL_ONLY	#no external (csv database) query
+#elif defined INDEXED_CSV_DATABASE_LDC
+	#define INDEXED_CSV_DATABASE_LDC_NEURON_TYPES_REFORMAT	//change all Xs to X neuron type (e.g. PNs -> PN) - neuronTypesCreation-INDEXED_CSV_DATABASE_LDC_NEURON_TYPES_REFORMAT
+	//#define INDEXED_CSV_DATABASE_LDC_NEURON_LAYERS_REUSE_H01_TEMPLATES	//layers are interpreted as specific neuronTypes (for visualisation only)	//mapped to INDEXED_CSV_DATABASE_H01 layers to reuse H01 templates
+	//#define INDEXED_CSV_DATABASE_LDC_DISABLE_2D_VISUALISATIONS	//LDC connectome is not designed for 2D X/Y visualisation
+	
+	#define INDEXED_CSV_DATABASE_QUERY_LOCAL_ONLY	//no external (csv database) query
 	#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURRENT	//optional //measure immediate recurrent connectivity of neurons (a -> b -> a)
 	#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURSIVE	//optional //measure recursive connectivity of neurons (axon to dendrite)
 	#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS	//optional //independently count the connections within the local connectome connections dataset (layer to layer matrix)	//compare local connectome counts against counts from https://www.biorxiv.org/content/10.1101/2021.05.29.446289v3/v4 Supplementary Table 5. Summary of Machine Learning-identified connections	//added 7 December 2021
@@ -732,7 +736,9 @@ extern string currentDirectory;
 #ifdef INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME
 	
 	//2D/3D visualisations;
-	#define LOCAL_CONNECTOME_VISUALISATION_2D_SVG
+	#ifndef INDEXED_CSV_DATABASE_LDC_DISABLE_2D_VISUALISATIONS
+		#define LOCAL_CONNECTOME_VISUALISATION_2D_SVG
+	#endif
 	#define LOCAL_CONNECTOME_VISUALISATION_3D_LDR
 	#ifdef LOCAL_CONNECTOME_VISUALISATION_3D_LDR
 		#define LOCAL_CONNECTOME_VISUALISATION_3D
@@ -745,12 +751,16 @@ extern string currentDirectory;
 	#endif
 
 	//visualisation folder names;	
-	#define LOCAL_CONNECTOME_VISUALISATION_FOLDER "visualisations/"
+	#define LOCAL_CONNECTOME_VISUALISATION_FOLDER "visualisations/"	//"visualisations/"
 	#define LOCAL_CONNECTOME_VISUALISATION_FOLDER_CONNECTION_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS "connectionTypesFromPresynapticNeurons/"
 	#define LOCAL_CONNECTOME_VISUALISATION_FOLDER_CONNECTION_TYPES_DERIVED_FROM_EM_IMAGES "connectionTypesFromEMimages/"
 	#define LOCAL_CONNECTOME_VISUALISATION_FOLDER_2D "2D/"
 	#define LOCAL_CONNECTOME_VISUALISATION_FOLDER_3D "3D/"
-	#define LOCAL_CONNECTOME_VISUALISATION_TEMPLATES_FOLDER "visualisations/templates"
+	#ifdef INDEXED_CSV_DATABASE_H01
+		#define LOCAL_CONNECTOME_VISUALISATION_TEMPLATES_FOLDER "visualisations/templates"
+	#elif defined INDEXED_CSV_DATABASE_LDC
+		#define LOCAL_CONNECTOME_VISUALISATION_TEMPLATES_FOLDER "visualisations/templatesLDC"
+	#endif
 	//visualisation file names;		
 	#define LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_DIRECTION "connections_IE"
 	#define LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_DIRECTION_FLOW "connections_IE_flow"
@@ -778,7 +788,7 @@ extern string currentDirectory;
 	#endif
 	#define LOCAL_CONNECTOME_VISUALISATION_FILENAME_COLOURSET_PREPEND ""	//_colourset
 	
-	//visualisation template file names;	
+	//visualisation template file names;
 	#define LOCAL_CONNECTOME_VISUALISATION_SVG_PART_IMPORT_FILENAME_PREPEND "connections_IE_part"
 	#define LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_PREPEND "connections_IE"
 	#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
@@ -997,9 +1007,9 @@ extern string currentDirectory;
 		#define LOCAL_CONNECTOME_VISUALISATION_POSITIVE_FLOW_VECTOR_Y (-(2069.5776 - 2837.22192))	//(L1->L6)	
 	#elif defined INDEXED_CSV_DATABASE_LDC
 		//calibration values extracted from dev/working/calibration/readme.txt - conversion from C3/CSV database to SVG/LDR visualisation:		
-		#define LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_X (1.0)
-		#define LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_Y (1.0)
-		#define LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_Z (1.0)
+		#define LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_X (0.01)
+		#define LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_Y (0.01)
+		#define LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_Z (0.01)
 		#define LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_MIN_X (0)	
 		#define LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_MIN_Y (0)
 		#define LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_MIN_Z (0)
@@ -1141,7 +1151,15 @@ extern string currentDirectory;
 #elif defined INDEXED_CSV_DATABASE_LDC
 	#ifdef INDEXED_CSV_DATABASE_CALCULATE_NEURON_LAYERS
 		#define CORTICAL_LAYER_KEYPOINT_UNAVAILABLE_VALUE 0
-		#define CORTICAL_LAYER_NUMBER_OF_LAYERS (25)	//number of neuronTypes + LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_TYPE_UNKNOWN //(91)	//OLD: Connectivity-based clustering reveals 90 distinct types of brain neurons
+		#ifdef INDEXED_CSV_DATABASE_LDC_NEURON_LAYERS_REUSE_H01_TEMPLATES
+			#define CORTICAL_LAYER_NUMBER_OF_LAYERS (7)
+		#else
+			#ifdef INDEXED_CSV_DATABASE_LDC_NEURON_TYPES_REFORMAT
+				#define CORTICAL_LAYER_NUMBER_OF_LAYERS (18)
+			#else
+				#define CORTICAL_LAYER_NUMBER_OF_LAYERS (25)	//number of neuronTypes + LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_TYPE_UNKNOWN //(91)	//OLD: Connectivity-based clustering reveals 90 distinct types of brain neurons
+			#endif
+		#endif
 		#define CORTICAL_LAYER_UNKNOWN (0)
 		#define CORTICAL_LAYER_BOUNDARY_KEYPOINT_TABLE_FILE_NAME "corticalLayersBoundaryKeypoints.csv"	//this dataset has already had its X/Y coordindates calibrated for visualisation (as it was derived from connections_I/E.svg visualisation; see working/calibration/connections_IE-FlattenBezier.svg)
 

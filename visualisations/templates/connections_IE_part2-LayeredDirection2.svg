@@ -30,7 +30,7 @@
         <!-- white -->
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient> 
-	  
+      
       <linearGradient id="exciteConnectionLayer2RadialGradient1">
         <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
         <stop offset="0%" stop-color="#00ff4c"/>
@@ -63,7 +63,7 @@
         <!-- white -->
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient> 
-	  
+      
       <linearGradient id="exciteConnectionLayer3RadialGradient1">
         <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
         <stop offset="0%" stop-color="#00ff4c"/>
@@ -96,7 +96,7 @@
         <!-- white -->
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient> 
-	  
+      
       <linearGradient id="exciteConnectionLayer4RadialGradient1">
         <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
         <stop offset="0%" stop-color="#00ff4c"/>
@@ -129,7 +129,7 @@
         <!-- white -->
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient> 
-	  
+      
       <linearGradient id="exciteConnectionLayer5RadialGradient1">
         <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
         <stop offset="0%" stop-color="#00ff4c"/>
@@ -162,7 +162,7 @@
         <!-- white -->
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient> 
-	  
+      
       <linearGradient id="exciteConnectionLayer6RadialGradient1">
         <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
         <stop offset="0%" stop-color="#00ff4c"/>
@@ -195,7 +195,7 @@
         <!-- white -->
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient> 
-	  
+      
       <linearGradient id="exciteConnectionLayer7RadialGradient1">
         <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
         <stop offset="0%" stop-color="#00ff4c"/>
