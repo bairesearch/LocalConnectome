@@ -52,11 +52,9 @@ class H01indexedCSVdatabaseReadLocalConnectomeClass
 				#endif
 				private: void addConnection(const bool excitationTypeConnection, const int localConnectomeNeuronLayer, vector<H01connectivityModelClass>* connectivityModelLayers, const vec* posSource, const vec* posTarget, const vec* sourceNeuronCorticalFlowVector);
 				#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURRENT
-				private: void addRecurrentConnectionToNeuronMap(map<string, int>* neuronsWithRecurrentConnectionMap, string sourceNeuronID);
-				private: void addRecurrentConnection(const bool excitationTypeConnection, const int localConnectomeNeuronLayer, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, vector<H01connectivityModelClass>* connectivityModelLayers);
-				#endif
-				#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURSIVE
-				private: void addRecursiveConnection(const bool excitationTypeConnection, const int localConnectomeNeuronLayer, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, vector<H01connectivityModelClass>* connectivityModelLayers);
+				private: void addRecurrentNeuron(const int r, const bool excitationTypeConnection, const int localConnectomeNeuronLayer, vector<H01connectivityModelClass>* connectivityModelLayers, string sourceNeuronID);
+					private: void addRecurrentConnectionToNeuronMap(map<string, int>* neuronsWithRecurrentConnectionMap, const string sourceNeuronID);
+				private: void addRecurrentConnection(const int r, const bool excitationTypeConnection, const int localConnectomeNeuronLayer, vector<H01connectivityModelClass>* connectivityModelLayers);
 				#endif
 			private: void printNumberOfConnectionsLayersLocal(const bool queryByPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, constEffective vector<H01connectivityModelClass>* connectivityModelLayers);
 				private: void printNumberOfConnectionsLocal(const int layerIndex, const bool queryByPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, const H01connectivityModelClass* connectivityModel);		

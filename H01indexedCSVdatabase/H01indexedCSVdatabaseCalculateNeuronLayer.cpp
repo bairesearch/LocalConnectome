@@ -38,9 +38,12 @@ H01connectivityModelClass::H01connectivityModelClass(void)
 	numberOfLocalConnectomeNeuronsExcitatory = 0;
 	numberOfLocalConnectomeNeuronsInhibitory = 0;
 	#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURRENT_NEURONS
-	numberOfNeuronsWithRecurrentConnections = 0;
-	numberOfNeuronsWithRecurrentConnectionsExcitatory = 0;
-	numberOfNeuronsWithRecurrentConnectionsInhibitory = 0;
+	for(int r=0; r<INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURRENT_NUMBER_ITERATIONS; r++)
+	{
+		numberOfNeuronsWithRecurrentConnections[r] = 0;
+		numberOfNeuronsWithRecurrentConnectionsExcitatory[r] = 0;
+		numberOfNeuronsWithRecurrentConnectionsInhibitory[r] = 0;
+	}
 	#endif
 	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_OUTPUT_VERBOSE_LOCALORNONLOCAL
 	numberConnectionsLocalOrNonLocalConnectomeExcitatory = 0;
@@ -52,15 +55,18 @@ H01connectivityModelClass::H01connectivityModelClass(void)
 	initialiseGaussianQuad(&neuronModelConnectionsExternalConnectome);
 	initialiseGaussianQuad(&neuronModelConnectionsExternalConnectomeExcitatory);
 	initialiseGaussianQuad(&neuronModelConnectionsExternalConnectomeInhibitory);
-	#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURSIVE
-	initialiseGaussianQuad(&neuronModelConnectionsLocalConnectomeRecursive);
-	initialiseGaussianQuad(&neuronModelConnectionsLocalConnectomeExcitatoryRecursive);
-	initialiseGaussianQuad(&neuronModelConnectionsLocalConnectomeInhibitoryRecursive);
-	#endif
 	#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURRENT
-	initialiseGaussianQuad(&neuronModelConnectionsLocalConnectomeRecurrent);
-	initialiseGaussianQuad(&neuronModelConnectionsLocalConnectomeExcitatoryRecurrent);
-	initialiseGaussianQuad(&neuronModelConnectionsLocalConnectomeInhibitoryRecurrent);
+	for(int r=0; r<INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURRENT_NUMBER_ITERATIONS; r++)
+	{
+		initialiseGaussianQuad(&neuronModelConnectionsLocalConnectomeRecurrent[r]);
+		initialiseGaussianQuad(&neuronModelConnectionsLocalConnectomeExcitatoryRecurrent[r]);
+		initialiseGaussianQuad(&neuronModelConnectionsLocalConnectomeInhibitoryRecurrent[r]);
+		#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURRENT_NEURONS
+		//map<string, int> neuronsWithRecurrentConnectionMap = ;
+		//map<string, int> neuronsWithRecurrentConnectionExcitatoryMap = ;
+		//map<string, int> neuronsWithRecurrentConnectionInhibitoryMap = ;
+		#endif
+	}
 	#endif
 }
 H01connectivityModelClass::~H01connectivityModelClass(void)

@@ -141,8 +141,7 @@ extern string currentDirectory;
 		#endif
 	#endif
 	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS
-		#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURRENT	//optional //measure immediate recurrent connectivity of neurons (a -> b -> a)
-		#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURSIVE	//optional //measure recursive connectivity of neurons (axon to dendrite)
+		#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURRENT	//optional //measure recurrent connectivity of neurons (r=0: a -> a [axon to dendrite], r=1: a -> b -> a, etc)
 		#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS	//optional //independently count the connections within the local connectome connections dataset (layer to layer matrix)	//compare local connectome counts against counts from https://www.biorxiv.org/content/10.1101/2021.05.29.446289v3/v4 Supplementary Table 5. Summary of Machine Learning-identified connections	//added 7 December 2021
 		//#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_OUTPUT_VERBOSE_LOCALORNONLOCAL	//optional	//print number excitatory/inhibitory neurons for each source neuronID	//compare against counts from https://h01-release.storage.googleapis.com/data.html - gs://h01-release/data/20210601/c3/tables/segments/counts000000000NNN.csv.gz	//added 24 November 2021a
 		//#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PRINT_DISTANCES	//print distances between neuron somas and their connections at each layer - used to identify INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LARGE_MODEL lateral distance probability of connection functions
@@ -219,13 +218,13 @@ extern string currentDirectory;
 	#define AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_Y (1.0)
 	#define AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_Z (4.0)	//requires calibration	//can be used to enhance Z axis visibility
 #elif defined INDEXED_CSV_DATABASE_LDC
+	#define INDEXED_CSV_DATABASE_LDC_CALIBRATION_ALIGN_WITH_H01	//align with H01 visualisations; 4000x4000 pixels (else 1000x1000 pixels)
 	#define INDEXED_CSV_DATABASE_LDC_NEURON_TYPES_REFORMAT	//change all Xs to X neuron type (e.g. PNs -> PN) - neuronTypesCreation-INDEXED_CSV_DATABASE_LDC_NEURON_TYPES_REFORMAT
 	//#define INDEXED_CSV_DATABASE_LDC_NEURON_LAYERS_REUSE_H01_TEMPLATES	//layers are interpreted as specific neuronTypes (for visualisation only)	//mapped to INDEXED_CSV_DATABASE_H01 layers to reuse H01 templates
 	//#define INDEXED_CSV_DATABASE_LDC_DISABLE_2D_VISUALISATIONS	//LDC connectome is not designed for 2D X/Y visualisation
 	
 	#define INDEXED_CSV_DATABASE_QUERY_LOCAL_ONLY	//no external (csv database) query
-	#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURRENT	//optional //measure immediate recurrent connectivity of neurons (a -> b -> a)
-	#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURSIVE	//optional //measure recursive connectivity of neurons (axon to dendrite)
+	#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURRENT	//optional //measure recurrent connectivity of neurons (r=0: a -> a [axon to dendrite], r=1: a -> b -> a, etc)
 	#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS	//optional //independently count the connections within the local connectome connections dataset (layer to layer matrix)	//compare local connectome counts against counts from https://www.biorxiv.org/content/10.1101/2021.05.29.446289v3/v4 Supplementary Table 5. Summary of Machine Learning-identified connections	//added 7 December 2021
 
 	#ifdef INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_FROM_MATRIX
@@ -621,11 +620,17 @@ extern string currentDirectory;
 		//input:
 		//see above
 
+		#ifdef INDEXED_CSV_DATABASE_H01
+			#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_NORMALISE_Z	//also count inferred local/external connections with Z axis normalised (extended to ~length of X/Y axes)
+		#endif
+		
 		#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_EM_IMAGES
 		#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS //print connections for CONNECTION_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS where local presynaptic neuron is available (not just CONNECTION_TYPES_DERIVED_FROM_EM_IMAGES)	//added 7 December 2021
 			//note excitationType will be LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN if presynaptic neuron is not in local connectome (so numberConnectionsExternalConnectomeExcitatory+numberConnectionsExternalConnectomeInhibitory != numberConnectionsExternalConnectome)
 		
-		#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PROPORTION_LOCAL_VS_NONLOCAL_CONNECTIONS	//original functionality	//mandatory
+		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_NORMALISE_Z
+			#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PROPORTION_LOCAL_VS_NONLOCAL_CONNECTIONS	//original functionality	//mandatory
+		#endif
 		
 		#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_NUMBER_EXCITATORY_INHIBITORY_NEURONS
 		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_NUMBER_EXCITATORY_INHIBITORY_NEURONS
@@ -695,12 +700,11 @@ extern string currentDirectory;
 		//see above
 
 		#ifdef INDEXED_CSV_DATABASE_H01
+			#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_NORMALISE_Z	//also count inferred local/external connections with Z axis normalised (extended to ~length of X/Y axes)
 			#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_EM_IMAGES
 		#endif
 		#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS //print connections for CONNECTION_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS where local presynaptic neuron is available (not just CONNECTION_TYPES_DERIVED_FROM_EM_IMAGES)	//added 7 December 2021
 			//note excitationType will be LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN if presynaptic neuron is not in local connectome (so numberConnectionsExternalConnectomeExcitatory+numberConnectionsExternalConnectomeInhibitory != numberConnectionsExternalConnectome)
-		
-		#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_PROPORTION_LOCAL_VS_NONLOCAL_CONNECTIONS	//original functionality	//mandatory
 		
 		#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_NUMBER_EXCITATORY_INHIBITORY_NEURONS
 		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_NUMBER_EXCITATORY_INHIBITORY_NEURONS
@@ -1006,10 +1010,16 @@ extern string currentDirectory;
 		#define LOCAL_CONNECTOME_VISUALISATION_POSITIVE_FLOW_VECTOR_X (-(3471.18672 - 1925.47464))	//(L1->L6)
 		#define LOCAL_CONNECTOME_VISUALISATION_POSITIVE_FLOW_VECTOR_Y (-(2069.5776 - 2837.22192))	//(L1->L6)	
 	#elif defined INDEXED_CSV_DATABASE_LDC
-		//calibration values extracted from dev/working/calibration/readme.txt - conversion from C3/CSV database to SVG/LDR visualisation:		
-		#define LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_X (0.01)
-		#define LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_Y (0.01)
-		#define LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_Z (0.01)
+		//calibration values extracted from dev/working/calibration/readme.txt - conversion from C3/CSV database to SVG/LDR visualisation:	
+		#ifdef INDEXED_CSV_DATABASE_LDC_CALIBRATION_ALIGN_WITH_H01
+			#define LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_X (0.04)
+			#define LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_Y (0.04)
+			#define LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_Z (0.04)
+		#else
+			#define LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_X (0.01)
+			#define LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_Y (0.01)
+			#define LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_Z (0.01)
+		#endif
 		#define LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_MIN_X (0)	
 		#define LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_MIN_Y (0)
 		#define LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_MIN_Z (0)
