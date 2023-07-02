@@ -1038,3 +1038,29 @@ void SHAREDvarsClass::getLinesFromFileCSV(const string fileName, vector<vector<s
 	*CSVdatasetFileSize = CSVdatasetFile->size();
 }
 
+void SHAREDvarsClass::writeLinesToFileCSV(const string fileName, vector<vector<string>>* CSVdatasetFile, const char delimiter, const bool expectFirstLineHeader, const string headerString)
+{
+	vector<string> stringList;
+	if(expectFirstLineHeader)
+	{
+		stringList.push_back(headerString);
+	}
+	
+	for(int y=0; y<CSVdatasetFile->size(); y++)
+	{
+		vector<string>* lineContentsVector = &(*CSVdatasetFile)[y];
+		string lineContents = "";
+		for(int x=0; x<lineContentsVector->size(); x++)
+		{
+			lineContents += (*lineContentsVector)[x];
+			if(x < lineContentsVector->size()-1)
+			{
+				lineContents += delimiter;
+			}
+		}
+		stringList.push_back(lineContents);
+	}
+	
+	writeStringListToFile(fileName, &stringList);
+}
+

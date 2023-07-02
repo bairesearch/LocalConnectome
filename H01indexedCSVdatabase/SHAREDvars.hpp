@@ -154,6 +154,7 @@ class SHAREDvarsClass
 	public: void printTime(const string startString, const string endString);
 
 	public: void getLinesFromFileCSV(const string fileName, vector<vector<string>>* CSVdatasetFile, int* CSVdatasetFileSize, const char delimiter, const bool expectFirstLineHeader);
+	public: void writeLinesToFileCSV(const string fileName, vector<vector<string>>* CSVdatasetFile, const char delimiter, const bool expectFirstLineHeader, const string headerString);
 
 
 };

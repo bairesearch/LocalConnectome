@@ -26,6 +26,8 @@ class H01indexedCSVdatabaseOperationsClass
 	public: double calibrateCoordinateY(const double csvDatabaseCoordinateY);
 	public: double calibrateCoordinateZ(const double csvDatabaseCoordinateZ);
 
+	public: bool convertLocalConnectomeSomasCSVdataset(const string local_connectome_folder_base, const string LocalConnectomeSomasCSVdatasetFileName, const string LocalConnectomeNeuronsCSVdatasetFileName);
+
 	public: bool readLocalConnectomeNeuronsCSVdataset(const string LocalConnectomeCSVdatasetFileName, vector<vector<string>>* localConnectomeNeuronsCSVdataset, int* localConnectomeNeuronsCSVdatasetSize, vector<string>* neuronList, map<string, int>* neuronMap);
 	public: bool readLocalConnectomeConnectionsCSVdataset(const string LocalConnectomeCSVdatasetFileName, vector<vector<string>>* localConnectomeConnectionsCSVdataset, int* localConnectomeConnectionsCSVdatasetSize);
 		public: bool readLocalConnectomeConnectionsCSVdataset(const string LocalConnectomeCSVdatasetFileName, vector<vector<string>>* localConnectomeConnectionsCSVdataset, int* localConnectomeConnectionsCSVdatasetSize, bool buildConnectionsMap, map<string, int>* connectionsMap);
@@ -33,6 +35,7 @@ class H01indexedCSVdatabaseOperationsClass
 	public: void prepareLocalConnectomeDatasetRead(const string local_connectome_folder_base);
 		public: void prepareLocalConnectomeDatasetReadCustom(const string local_connectome_folder_base, const string folderName);
 	public: ofstream prepareLocalConnectomeDatasetWrite(const bool write, const bool appendToFile, const string datasetFileNameWrite);
+		public: void prepareLocalConnectomeDatasetWrite();
 	public: void finaliseLocalConnectomeDatasetWrite(const bool write, ofstream* writeFileObject);
 
 };

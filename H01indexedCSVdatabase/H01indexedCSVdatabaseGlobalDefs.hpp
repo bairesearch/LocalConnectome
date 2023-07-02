@@ -7,7 +7,7 @@
  * Requirements: BAI SHARED C++ library, Eigen 3 C++ library
  * Compilation: ./compileH01indexedCSVdatabase.sh
  * Usage:
- * 	./H01indexedCSVdatabase.exe -mode 1 -avro_json_database_folder "/media/user/large/h01data/data/exported/json" -indexed_csv_database_folder "/media/user/ssddata/indexed"
+ * 	./H01indexedCSVdatabase.exe -mode 1 -avro_json_database_folder "/media/user/datasets/h01data/data/exported/json" -indexed_csv_database_folder "/media/user/ssddata/indexed"
  * 	./H01indexedCSVdatabase.exe -mode 2 -query 1 -indexed_csv_database_folder "/media/user/ssddata/indexed"
  * 	./H01indexedCSVdatabase.exe -mode 2 -query 2 -indexed_csv_database_folder "/media/user/ssddata/indexed"
  * 	./H01indexedCSVdatabase.exe -mode 2 -query 3 -indexed_csv_database_folder "/media/user/ssddata/indexed"
@@ -33,8 +33,11 @@
 extern string currentDirectory;
 
 //database selection;
-//#define INDEXED_CSV_DATABASE_H01	//H01 Human Connectome
-#define INDEXED_CSV_DATABASE_LDC	//larvalDrosophilaConnectome (local connectome analysis only)
+#define INDEXED_CSV_DATABASE_H01	//H01 Human Connectome
+//#define INDEXED_CSV_DATABASE_LDC	//larvalDrosophilaConnectome (local connectome analysis only)
+//#define INDEXED_CSV_DATABASE_ADC	//adultDrosophilaConnectome (local connectome analysis only)
+
+//#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_REDUNDANT_DEPRECIATED	//support depreciated functionality
 
 //execution modes:
 #ifdef INDEXED_CSV_DATABASE_H01
@@ -53,7 +56,9 @@ extern string currentDirectory;
 		#define INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING	//mode 2 (lookup indexed CSV database by neuron ID, find incoming target connections, and generate visualisation)
 		#define INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET	//mode 3 (automatically generate localConnectomeConnections-typesFromPresynapticNeurons.csv/localConnectomeConnections-typesFromEMimages.csv from localConnectomeNeurons.csv and H01 indexed CSV database)
 		#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS	//mode 4 (lookup indexed CSV database by neuron ID, count/infer proportion of incoming/outgoing excitatory/inhibitory target connections to local vs distal neurons)
-		#define INDEXED_CSV_DATABASE_QUERY_COMPLETE_LOCAL_CONNECTOME_CONNECTIONS_DATASET	//mode 5 (lookup indexed CSV database by pre/post synaptic connection neuron ID, and identify connection with post/pre synaptic X/Y coordinates (if type=UNKNOWN), add post/pre synaptic neuron ID, Z coordinates, and type to connection dataset)	//used to complete localConnectomeConnections-typesFromEMimages 
+		#ifdef LOCAL_CONNECTOME_DATASET_CONNECTIONS_REDUNDANT_DEPRECIATED
+			#define INDEXED_CSV_DATABASE_QUERY_COMPLETE_LOCAL_CONNECTOME_CONNECTIONS_DATASET	//mode 5 (lookup indexed CSV database by pre/post synaptic connection neuron ID, and identify connection with post/pre synaptic X/Y coordinates (if type=UNKNOWN), add post/pre synaptic neuron ID, Z coordinates, and type to connection dataset)	//used to complete localConnectomeConnections-typesFromEMimages 
+		#endif
 		#define INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS	//mode 6 (crawl indexed CSV database by pre/post synaptic connection neuron ID, and count number of unique axons/dendrites as specified by neuron ID - not explicitly connected to local connectome)	//incomplete
 	#endif
 #endif
@@ -79,7 +84,9 @@ extern string currentDirectory;
 		#define QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING 2
 		#define QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET	3
 		#define QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS 4
-		#define QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COMPLETE_LOCAL_CONNECTOME_CONNECTIONS_DATASET 5
+		#ifdef LOCAL_CONNECTOME_DATASET_CONNECTIONS_REDUNDANT_DEPRECIATED
+			#define QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COMPLETE_LOCAL_CONNECTOME_CONNECTIONS_DATASET 5
+		#endif
 		#define QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS 6
 		#define QUERY_MODE_DEFAULT (QUERY_MODE_INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS)
 		#define QUERY_MODES_TOTAL (6)
@@ -154,7 +161,7 @@ extern string currentDirectory;
 		#define INDEXED_CSV_DATABASE_CREATE_CLASS_LABELS_SAVE_VERBATIM //added 30 November 2021	//else save only first character //enabling this makes the compressed indexed CSV database ~10% larger, but provides more robust class label storage
 	#endif
 	#ifdef INDEXED_CSV_DATABASE_QUERY
-		//#define LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS	//use official somas dataset (https://h01-release.storage.googleapis.com/data.html - gs://h01-release/data/20210601/c3/tables/somas.csv) //added 24 November 2021 
+		#define LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS	//use official somas dataset (https://h01-release.storage.googleapis.com/data.html - gs://h01-release/data/20210601/c3/tables/somas.csv) //added 24 November 2021 #contains official (non-derived) neuron layers data
 	#endif
 	#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET
 		#ifdef INDEXED_CSV_DATABASE_CREATE_CLASS_LABELS_SAVE_VERBATIM
@@ -181,6 +188,9 @@ extern string currentDirectory;
 
 	//official c3 local connectome neuron dataset parameters;
 	#ifdef LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS
+		#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET
+			#define INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_NEURONS_DATASET	//generates localConnectomeNeurons.csv dataset from somas.csv dataset also
+		#endif
 		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_EXCITATION_TYPE_ARTIFICIAL	//automatically generate this field
 		#define LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS_EXPECT_SOME_MISSING_FROM_C3_CONNECTIONS_DATABASE
 		#define LOCAL_CONNECTOME_DATASET_NEURONS_IGNORE_ADDITIONAL_NEURON_TYPES	//only read PYRAMIDAL/INTERNEURON exitatory/inihibitory neuron types	//this could be changed in future but is currently required for compatibility with existing !LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS codebase
@@ -198,7 +208,7 @@ extern string currentDirectory;
 			#endif
 		#endif
 		//#define INDEXED_CSV_DATABASE_CREATE_DEBUG	//disable this DEBUG parameter to create the database (enabled for safety - prevents overwrite of indexed database; takes ~6 hours to regenerate)
-		#define AVRO_JSON_DATABASE_FOLDER "/media/user/large/h01data/data/exported/json"
+		#define AVRO_JSON_DATABASE_FOLDER "/media/user/datasets/h01data/data/exported/json"
 	#endif
 
 	//common H01 indexed csv database parameters:
@@ -287,20 +297,19 @@ extern string currentDirectory;
 	#define LOCAL_CONNECTOME_FOLDER_BASE "/media/user/large/source/h01Connectome/H01LocalConnectome/"	
 #endif
 #ifdef INDEXED_CSV_DATABASE_H01
-	#define LOCAL_CONNECTOME_DATASET_FOLDER "datasets/"
+	#define LOCAL_CONNECTOME_DATASET_FOLDER "datasetsH01/"
 #elif defined INDEXED_CSV_DATABASE_LDC
 	#define LOCAL_CONNECTOME_DATASET_FOLDER "datasetsLDC/"
 #endif
 
 #ifdef INDEXED_CSV_DATABASE_H01
 	#ifdef LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME "somas.csv"
+		#define LOCAL_CONNECTOME_DATASET_SOMAS_FILENAME "somas.csv"
+	#endif
+	#ifdef LOCAL_CONNECTOME_VISUALISATION_BACKWARDS_COMPATIBILITY_WITH_ODS_GENERATED_FILES
+		#define LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME "localConnectomeNeurons-nonDistinct.csv"
 	#else
-		#ifdef LOCAL_CONNECTOME_VISUALISATION_BACKWARDS_COMPATIBILITY_WITH_ODS_GENERATED_FILES
-			#define LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME "localConnectomeNeurons-nonDistinct.csv"
-		#else
-			#define LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME "localConnectomeNeurons.csv"
-		#endif
+		#define LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME "localConnectomeNeurons.csv"
 	#endif
 	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS "localConnectomeConnections-typesFromPresynapticNeurons.csv"
 	#ifdef LOCAL_CONNECTOME_VISUALISATION_BACKWARDS_COMPATIBILITY_WITH_ODS_GENERATED_FILES
@@ -325,43 +334,37 @@ extern string currentDirectory;
 
 #ifdef INDEXED_CSV_DATABASE_H01
 	#ifdef LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS
-		//"soma_id","base_seg_id","c2_rep_strict","c2_rep_manual","c3_rep_strict","c3_rep_manual","proofread_104_rep","x","y","z","celltype","layer"
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_SOMA_ID (0)
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_BASE_SEG_ID (1)
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_C2_REP_STRICT (2)
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_C2_REP_MANUAL (3)
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_C3_REP_STRICT (4)
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_C3_REP_MANUAL (5)
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_PROOFREAD_104_REP (6)
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X (7)
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y (8)
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Z (9)
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE (10)
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER (11)	//nonartifical for LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS	//reformatted: Layer 1->White matter to 1->7
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE (12)	//artificial //excitatory (1), inhibitory (0)	//derived from neuron type
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_NEURON_ID (LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_C3_REP_STRICT)	//CHECKTHIS
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_FIRST (LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE)+1
-	#else
-		//id,x,y,z,type,excitation_type
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_NEURON_ID (0)	//C3 database neuron_id
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X (1)	//C3 database neuron centroid coordinates
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y (2)	//C3 database neuron centroid coordinates
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Z (3)	//C3 database neuron centroid coordinates
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE (4)	//C3 database neuron classification (PYRAMIDAL, INTERNEURON)
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE (5)	//excitatory (1), inhibitory (0)	//derived from neuron type
-		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_FIRST (LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE)+1
+		#define LOCAL_CONNECTOME_DATASET_SOMAS_HEADER "\"soma_id\",\"base_seg_id\",\"c2_rep_strict\",\"c2_rep_manual\",\"c3_rep_strict\",\"c3_rep_manual\",\"proofread_104_rep\",\"x\",\"y\",\"z\",\"celltype\",\"layer\""
+		#define LOCAL_CONNECTOME_DATASET_SOMAS_FIELD_INDEX_SOMA_ID (0)
+		#define LOCAL_CONNECTOME_DATASET_SOMAS_FIELD_INDEX_BASE_SEG_ID (1)
+		#define LOCAL_CONNECTOME_DATASET_SOMAS_FIELD_INDEX_C2_REP_STRICT (2)
+		#define LOCAL_CONNECTOME_DATASET_SOMAS_FIELD_INDEX_C2_REP_MANUAL (3)
+		#define LOCAL_CONNECTOME_DATASET_SOMAS_FIELD_INDEX_C3_REP_STRICT (4)
+		#define LOCAL_CONNECTOME_DATASET_SOMAS_FIELD_INDEX_C3_REP_MANUAL (5)
+		#define LOCAL_CONNECTOME_DATASET_SOMAS_FIELD_INDEX_PROOFREAD_104_REP (6)
+		#define LOCAL_CONNECTOME_DATASET_SOMAS_FIELD_INDEX_X (7)
+		#define LOCAL_CONNECTOME_DATASET_SOMAS_FIELD_INDEX_Y (8)
+		#define LOCAL_CONNECTOME_DATASET_SOMAS_FIELD_INDEX_Z (9)
+		#define LOCAL_CONNECTOME_DATASET_SOMAS_FIELD_INDEX_TYPE (10)
+		#define LOCAL_CONNECTOME_DATASET_SOMAS_FIELD_INDEX_LAYER (11)	//nonartifical for LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS	//reformatted: Layer 1->White matter to 1->7
+		#define LOCAL_CONNECTOME_DATASET_SOMAS_FIELD_INDEX_EXCITATION_TYPE (12)	//artificial //excitatory (1), inhibitory (0)	//derived from neuron type
+		#define LOCAL_CONNECTOME_DATASET_SOMAS_FIELD_INDEX_NEURON_ID (LOCAL_CONNECTOME_DATASET_SOMAS_FIELD_INDEX_C3_REP_STRICT)	//CHECKTHIS
+		#define LOCAL_CONNECTOME_DATASET_SOMAS_FIELD_INDEX_ARTIFICIAL_FIRST (LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE)+1
 	#endif
-#elif defined INDEXED_CSV_DATABASE_LDC
-	//id,x,y,z,type,excitation_type
-	#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_NEURON_ID (0)	//C3 database neuron_id
-	#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X (1)	//C3 database neuron centroid coordinates
-	#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y (2)	//C3 database neuron centroid coordinates
-	#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Z (3)	//C3 database neuron centroid coordinates
-	#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE (4)	//C3 database neuron classification (PYRAMIDAL, INTERNEURON)
-	#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE (5)	//excitatory (1), inhibitory (0)	//derived from neuron type
-	#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_FIRST (LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE)+1
 #endif
-#define LOCAL_CONNECTOME_DATASET_NEURONS_HEADER "id,x,y,z,type,excitation_type"
+#ifdef LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_LAYERS
+	#define LOCAL_CONNECTOME_DATASET_NEURONS_HEADER "id,x,y,z,type,excitation_type,layer"
+#else
+	#define LOCAL_CONNECTOME_DATASET_NEURONS_HEADER "id,x,y,z,type,excitation_type"
+#endif
+#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_NEURON_ID (0)	//C3 database neuron_id
+#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X (1)	//C3 database neuron centroid coordinates
+#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y (2)	//C3 database neuron centroid coordinates
+#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Z (3)	//C3 database neuron centroid coordinates
+#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE (4)	//C3 database neuron classification (PYRAMIDAL, INTERNEURON)
+#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE (5)	//excitatory (1), inhibitory (0)	//derived from neuron type
+#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_FIRST (LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE)+1
+
 
 #define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY (1)
 #define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY (0)
@@ -380,7 +383,8 @@ extern string currentDirectory;
 #define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE_UNKNOWN "UNKNOWN"	//not used in current local connectome dataset (localConnectomeNeurons.csv); for internal/intermediary processing only
 
 
-#ifdef INDEXED_CSV_DATABASE_H01
+
+#ifdef LOCAL_CONNECTOME_DATASET_CONNECTIONS_REDUNDANT_DEPRECIATED
 	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_ID (0)	//C3 database neuron_id
 	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_X (1)	//C3 database neuron centroid coordinates
 	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Y (2)	//C3 database neuron centroid coordinates
@@ -396,25 +400,25 @@ extern string currentDirectory;
 	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE (12)	//excitatory (1), inhibitory (0)	//derived from neuron type [connectionTypesDerivedFromEMimages] or C3 connections database [connectionTypesDerivedFromPresynapticNeurons]
 	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_HEADER "pre_id,pre_x,pre_y,pre_z,pre_type,post_id,post_x,post_y,post_z,post_type,post_class_label,syn_num,excitation_type"
 	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_ARTIFICIAL_FIRST (LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE)+1
-#elif defined INDEXED_CSV_DATABASE_LDC
+#else
 	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_ID (0)	//C3 database neuron_id
 	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_ID (1)	//C3 database neuron_id
-	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_CLASS (2)	//C3 database synapse connection site (DENDRITE, AXON, UNKNOWN)
+	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_CLASS (2)	//C3 database synapse connection site (DENDRITE, AXON, UNKNOWN)	#used by INDEXED_CSV_DATABASE_LDC only
 	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_CLASS (3)	//C3 database synapse connection site (DENDRITE, AXON, UNKNOWN)
 	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_SYN_NUM (4)	//number of connections
-	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_HEADER "pre_id,post_id,pre_class_label,post_class_label,syn_num"
+	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE (5)	//excitatory (1), inhibitory (0)	//typesFromEMimages:from EM images, typesFromPresynapticNeurons:derived from neuron type [connectionTypesDerivedFromPresynapticNeurons]
+	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_HEADER "pre_id,post_id,pre_class_label,post_class_label,syn_num,excitation_type"
 	//artificial fields (generated from LOCAL_CONNECTOME_DATASET_NEURONS file);
 	#define INDEXED_CSV_DATABASE_QUERY_READ_DATASET_LOCAL_CONNECTOME_CONNECTIONS_DYNAMICALLY_GENERATE_REDUNDANT_FIELDS	//use LOCAL_CONNECTOME_DATASET_NEURONS file to dynamically generate redundant fields
-	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_X (5)	//C3 database neuron centroid coordinates
-	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Y (6)	//C3 database neuron centroid coordinates
-	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Z (7)	//C3 database neuron centroid coordinates
-	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_TYPE (8)	//C3 database neuron classification (PYRAMIDAL, INTERNEURON)
-	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_X (9)	//C3 database neuron centroid coordinates
-	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Y (10)	//C3 database neuron centroid coordinates
-	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Z (11)	//C3 database neuron centroid coordinates
-	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_TYPE (12)	//C3 database neuron classification (PYRAMIDAL, INTERNEURON)
-	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE (13)	//excitatory (1), inhibitory (0)	//derived from neuron type [connectionTypesDerivedFromPresynapticNeurons]
-	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_ARTIFICIAL_FIRST (LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE)+1
+	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_X (6)	//C3 database neuron centroid coordinates
+	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Y (7)	//C3 database neuron centroid coordinates
+	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Z (8)	//C3 database neuron centroid coordinates
+	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_TYPE (9)	//C3 database neuron classification (PYRAMIDAL, INTERNEURON)
+	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_X (10)	//C3 database neuron centroid coordinates
+	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Y (11)	//C3 database neuron centroid coordinates
+	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Z (12)	//C3 database neuron centroid coordinates
+	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_TYPE (13)	//C3 database neuron classification (PYRAMIDAL, INTERNEURON)
+	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_ARTIFICIAL_FIRST (LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_TYPE)+1
 #endif
 
 #define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY (1)
@@ -643,7 +647,7 @@ extern string currentDirectory;
 			#define INDEXED_CSV_DATABASE_QUERY_READ_DATASET_LOCAL_CONNECTOME_NEURONS	
 			#define INDEXED_CSV_DATABASE_QUERY_LAYERS
 			#ifdef INDEXED_CSV_DATABASE_QUERY_LAYERS
-				#define INDEXED_CSV_DATABASE_CALCULATE_NEURON_LAYERS
+				#define INDEXED_CSV_DATABASE_NEURON_LAYERS
 			#endif
 		#endif
 			
@@ -717,7 +721,7 @@ extern string currentDirectory;
 			#define INDEXED_CSV_DATABASE_QUERY_READ_DATASET_LOCAL_CONNECTOME_NEURONS	
 			#define INDEXED_CSV_DATABASE_QUERY_LAYERS
 			#ifdef INDEXED_CSV_DATABASE_QUERY_LAYERS
-				#define INDEXED_CSV_DATABASE_CALCULATE_NEURON_LAYERS
+				#define INDEXED_CSV_DATABASE_NEURON_LAYERS
 			#endif
 		#endif
 			
@@ -751,7 +755,7 @@ extern string currentDirectory;
 	//layer calculations;
 	#define LOCAL_CONNECTOME_VISUALISATION_LAYERS
 	#ifdef LOCAL_CONNECTOME_VISUALISATION_LAYERS
-		#define INDEXED_CSV_DATABASE_CALCULATE_NEURON_LAYERS
+		#define INDEXED_CSV_DATABASE_NEURON_LAYERS
 	#endif
 
 	//visualisation folder names;	
@@ -761,7 +765,7 @@ extern string currentDirectory;
 	#define LOCAL_CONNECTOME_VISUALISATION_FOLDER_2D "2D/"
 	#define LOCAL_CONNECTOME_VISUALISATION_FOLDER_3D "3D/"
 	#ifdef INDEXED_CSV_DATABASE_H01
-		#define LOCAL_CONNECTOME_VISUALISATION_TEMPLATES_FOLDER "visualisations/templates"
+		#define LOCAL_CONNECTOME_VISUALISATION_TEMPLATES_FOLDER "visualisations/templatesH01"
 	#elif defined INDEXED_CSV_DATABASE_LDC
 		#define LOCAL_CONNECTOME_VISUALISATION_TEMPLATES_FOLDER "visualisations/templatesLDC"
 	#endif
@@ -896,11 +900,9 @@ extern string currentDirectory;
 			*/		
 		#endif
 	#endif
-	#ifdef INDEXED_CSV_DATABASE_CALCULATE_NEURON_LAYERS		
-		#ifndef LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_LAYERS
-			#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER (LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_FIRST+0)	//dynamically pregenerated once and saved for efficiency
-				//INDEXED_CSV_DATABASE_LDC: neuron type (or cluster) id (0->CORTICAL_LAYER_NUMBER_OF_LAYERS-1)
-		#endif
+	#ifdef INDEXED_CSV_DATABASE_NEURON_LAYERS		
+		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER (LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_FIRST+0)	//dynamically pregenerated once and saved for efficiency
+			//INDEXED_CSV_DATABASE_LDC: neuron type (or cluster) id (0->CORTICAL_LAYER_NUMBER_OF_LAYERS-1)
 		#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LARGE_MODEL_NORMALISE_LOCAL_CONNECTIVITY
 			//data storage not currently compatible with INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME execution; 
 			#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER_SURFACE_NORM_X (LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_FIRST+1)
@@ -1144,7 +1146,7 @@ extern string currentDirectory;
 #endif
 
 #ifdef INDEXED_CSV_DATABASE_H01
-	#ifdef INDEXED_CSV_DATABASE_CALCULATE_NEURON_LAYERS
+	#ifdef INDEXED_CSV_DATABASE_NEURON_LAYERS
 		#define CORTICAL_LAYER_KEYPOINT_UNAVAILABLE_VALUE 0
 		#define CORTICAL_LAYER_NUMBER_OF_LAYERS (7)	//L2toL1 (1), L3toL2 (2), L4toL3 (3), L5toL4 (4), L6toL5 (5), WMtoL6 (6), WM (7)
 		#define CORTICAL_LAYER_UNKNOWN (0)
@@ -1159,7 +1161,7 @@ extern string currentDirectory;
 		#define LOCAL_CONNECTOME_LAYERS_LAYER_INDEX_ALL (0)
 	#endif
 #elif defined INDEXED_CSV_DATABASE_LDC
-	#ifdef INDEXED_CSV_DATABASE_CALCULATE_NEURON_LAYERS
+	#ifdef INDEXED_CSV_DATABASE_NEURON_LAYERS
 		#define CORTICAL_LAYER_KEYPOINT_UNAVAILABLE_VALUE 0
 		#ifdef INDEXED_CSV_DATABASE_LDC_NEURON_LAYERS_REUSE_H01_TEMPLATES
 			#define CORTICAL_LAYER_NUMBER_OF_LAYERS (7)
