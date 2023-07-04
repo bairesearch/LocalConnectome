@@ -1064,3 +1064,36 @@ void SHAREDvarsClass::writeLinesToFileCSV(const string fileName, vector<vector<s
 	writeStringListToFile(fileName, &stringList);
 }
 
+vector<string> SHAREDvarsClass::getVectorFromListString(const string listString, const char delimiter, const bool ignoreRepeatedDelimiters)
+{
+	vector<string> listVector;
+	int stringIndex = 0;
+	string vectorElement = "";
+	while(stringIndex < listString.size())
+	{
+		if(listString[stringIndex] == delimiter)
+		{
+			if(!ignoreRepeatedDelimiters || (vectorElement.size() > 0))
+			{
+				listVector.push_back(vectorElement);
+				vectorElement = "";
+			}
+			else
+			{
+				//ignore repeated delimiter characters (eg consecutive spaces)
+			}
+		}
+		else
+		{
+			vectorElement += listString[stringIndex];
+		}
+		stringIndex++;
+	}
+	if(vectorElement.size() > 0)
+	{
+		listVector.push_back(vectorElement);	//add remaining contents
+	}
+	return listVector;
+}
+
+

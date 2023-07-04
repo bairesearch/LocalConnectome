@@ -30,6 +30,7 @@ double H01indexedCSVdatabaseOperationsClass::calibrateCoordinateZ(const double c
 	return visualisationCoordinateZ;
 }
 
+#ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_NEURONS_DATASET
 bool H01indexedCSVdatabaseOperationsClass::convertLocalConnectomeSomasCSVdataset(const string local_connectome_folder_base, const string LocalConnectomeSomasCSVdatasetFileName, const string LocalConnectomeNeuronsCSVdatasetFileName)
 {
 	prepareLocalConnectomeDatasetRead(local_connectome_folder_base);
@@ -141,7 +142,7 @@ bool H01indexedCSVdatabaseOperationsClass::convertLocalConnectomeSomasCSVdataset
 	prepareLocalConnectomeDatasetWrite();
 	SHAREDvars.writeLinesToFileCSV(LocalConnectomeNeuronsCSVdatasetFileName, &localConnectomeNeuronsCSVdataset, CSV_DELIMITER_CHAR, true, LOCAL_CONNECTOME_DATASET_NEURONS_HEADER);
 }
-
+#endif
 
 bool H01indexedCSVdatabaseOperationsClass::readLocalConnectomeNeuronsCSVdataset(const string LocalConnectomeCSVdatasetFileName, vector<vector<string>>* localConnectomeNeuronsCSVdataset, int* localConnectomeNeuronsCSVdatasetSize, vector<string>* neuronList, map<string, int>* neuronMap)
 {

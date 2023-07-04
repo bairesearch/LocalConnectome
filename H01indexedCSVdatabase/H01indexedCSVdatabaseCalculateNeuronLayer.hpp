@@ -108,8 +108,8 @@ class H01indexedCSVdatabaseCalculateNeuronLayerClass
 				private: int calculateNeuronLayerSurfaceNorm(int corticalLayersNumLayers, vector<vector<vec>>* corticalLayersKeypoints, const vec* neuronPos, vec* layerSurfaceNormVector);
 		#endif
 		#endif
-		#ifdef INDEXED_CSV_DATABASE_LDC
-		private: void calculateNeuronLayersLDC(vector<vector<string>>* localConnectomeCSVdatasetNeurons);
+		#ifdef INDEXED_CSV_DATABASE_DC
+		private: void calculateNeuronLayersDC(vector<vector<string>>* localConnectomeCSVdatasetNeurons);
 		#endif
 		#endif
 };
