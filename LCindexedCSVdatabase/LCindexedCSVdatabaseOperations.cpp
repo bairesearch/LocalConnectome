@@ -1,37 +1,37 @@
 /*******************************************************************************
  *
- * File Name: H01indexedCSVdatabaseOperations.cpp
+ * File Name: LCindexedCSVdatabaseOperations.cpp
  * Author: Richard Bruce Baxter - Copyright (c) 2021-2023 Baxter AI (baxterai.com)
  * License: MIT License
- * Project: H01LocalConnectome
- * Requirements: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Compilation: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Usage: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Description: H01 indexed CSV database operations
+ * Project: LCLocalConnectome
+ * Requirements: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Compilation: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Usage: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Description: LC indexed CSV database operations
  * Comments:
  * /
  *******************************************************************************/
 
-#include "H01indexedCSVdatabaseOperations.hpp"
+#include "LCindexedCSVdatabaseOperations.hpp"
 
-double H01indexedCSVdatabaseOperationsClass::calibrateCoordinateX(const double csvDatabaseCoordinateX)
+double LCindexedCSVdatabaseOperationsClass::calibrateCoordinateX(const double csvDatabaseCoordinateX)
 {
 	double visualisationCoordinateX = (csvDatabaseCoordinateX*LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_X) + LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_MIN_X;
 	return visualisationCoordinateX;
 }
-double H01indexedCSVdatabaseOperationsClass::calibrateCoordinateY(const double csvDatabaseCoordinateY)
+double LCindexedCSVdatabaseOperationsClass::calibrateCoordinateY(const double csvDatabaseCoordinateY)
 {
 	double visualisationCoordinateY = (csvDatabaseCoordinateY*LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_Y) + LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_MIN_Y;
 	return visualisationCoordinateY;
 }
-double H01indexedCSVdatabaseOperationsClass::calibrateCoordinateZ(const double csvDatabaseCoordinateZ)
+double LCindexedCSVdatabaseOperationsClass::calibrateCoordinateZ(const double csvDatabaseCoordinateZ)
 {
 	double visualisationCoordinateZ = (csvDatabaseCoordinateZ*LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FACTOR_Z) + LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_MIN_Z;
 	return visualisationCoordinateZ;
 }
 
 #ifdef INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_NEURONS_DATASET
-bool H01indexedCSVdatabaseOperationsClass::convertLocalConnectomeSomasCSVdataset(const string local_connectome_folder_base, const string LocalConnectomeSomasCSVdatasetFileName, const string LocalConnectomeNeuronsCSVdatasetFileName)
+bool LCindexedCSVdatabaseOperationsClass::convertLocalConnectomeSomasCSVdataset(const string local_connectome_folder_base, const string LocalConnectomeSomasCSVdatasetFileName, const string LocalConnectomeNeuronsCSVdatasetFileName)
 {
 	prepareLocalConnectomeDatasetRead(local_connectome_folder_base);
 	
@@ -77,7 +77,7 @@ bool H01indexedCSVdatabaseOperationsClass::convertLocalConnectomeSomasCSVdataset
 		{
 			//"unclassified", "NULL"
 			layerIndex = 0;
-			//cerr << "LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_LAYERS: H01indexedCSVdatabaseOperationsClass::convertLocalConnectomeSomasCSVdataset error: !textInTextArray, layerIndex name unknown; layerString = " << layerString << endl;
+			//cerr << "LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_LAYERS: LCindexedCSVdatabaseOperationsClass::convertLocalConnectomeSomasCSVdataset error: !textInTextArray, layerIndex name unknown; layerString = " << layerString << endl;
 		}
 		//cout << "layerIndex = " << layerIndex << endl;
 		#else
@@ -144,7 +144,7 @@ bool H01indexedCSVdatabaseOperationsClass::convertLocalConnectomeSomasCSVdataset
 }
 #endif
 
-bool H01indexedCSVdatabaseOperationsClass::readLocalConnectomeNeuronsCSVdataset(const string LocalConnectomeCSVdatasetFileName, vector<vector<string>>* localConnectomeNeuronsCSVdataset, int* localConnectomeNeuronsCSVdatasetSize, vector<string>* neuronList, map<string, int>* neuronMap)
+bool LCindexedCSVdatabaseOperationsClass::readLocalConnectomeNeuronsCSVdataset(const string LocalConnectomeCSVdatasetFileName, vector<vector<string>>* localConnectomeNeuronsCSVdataset, int* localConnectomeNeuronsCSVdatasetSize, vector<string>* neuronList, map<string, int>* neuronMap)
 {	
 	SHAREDvars.getLinesFromFileCSV(LocalConnectomeCSVdatasetFileName, localConnectomeNeuronsCSVdataset, localConnectomeNeuronsCSVdatasetSize, CSV_DELIMITER_CHAR, true);
 
@@ -186,11 +186,11 @@ bool H01indexedCSVdatabaseOperationsClass::readLocalConnectomeNeuronsCSVdataset(
 	#endif
 }
 
-bool H01indexedCSVdatabaseOperationsClass::readLocalConnectomeConnectionsCSVdataset(const string LocalConnectomeCSVdatasetFileName, vector<vector<string>>* localConnectomeConnectionsCSVdataset, int* localConnectomeConnectionsCSVdatasetSize)
+bool LCindexedCSVdatabaseOperationsClass::readLocalConnectomeConnectionsCSVdataset(const string LocalConnectomeCSVdatasetFileName, vector<vector<string>>* localConnectomeConnectionsCSVdataset, int* localConnectomeConnectionsCSVdatasetSize)
 {
 	return readLocalConnectomeConnectionsCSVdataset(LocalConnectomeCSVdatasetFileName, localConnectomeConnectionsCSVdataset, localConnectomeConnectionsCSVdatasetSize, false, NULL);
 }
-bool H01indexedCSVdatabaseOperationsClass::readLocalConnectomeConnectionsCSVdataset(const string LocalConnectomeCSVdatasetFileName, vector<vector<string>>* localConnectomeConnectionsCSVdataset, int* localConnectomeConnectionsCSVdatasetSize, bool buildConnectionsMap, map<string, int>* connectionsMap)
+bool LCindexedCSVdatabaseOperationsClass::readLocalConnectomeConnectionsCSVdataset(const string LocalConnectomeCSVdatasetFileName, vector<vector<string>>* localConnectomeConnectionsCSVdataset, int* localConnectomeConnectionsCSVdatasetSize, bool buildConnectionsMap, map<string, int>* connectionsMap)
 {
 	SHAREDvars.getLinesFromFileCSV(LocalConnectomeCSVdatasetFileName, localConnectomeConnectionsCSVdataset, localConnectomeConnectionsCSVdatasetSize, CSV_DELIMITER_CHAR, true);
 
@@ -236,7 +236,7 @@ bool H01indexedCSVdatabaseOperationsClass::readLocalConnectomeConnectionsCSVdata
 	}	
 }
 
-void H01indexedCSVdatabaseOperationsClass::prepareLocalConnectomeDatasetRead(const string local_connectome_folder_base)
+void LCindexedCSVdatabaseOperationsClass::prepareLocalConnectomeDatasetRead(const string local_connectome_folder_base)
 {
 	#ifdef INDEXED_CSV_DATABASE_QUERY_READ_CURRENT_FOLDER
 	const string indexedCSVdatabaseQueryInputFolder = currentDirectory;	
@@ -247,7 +247,7 @@ void H01indexedCSVdatabaseOperationsClass::prepareLocalConnectomeDatasetRead(con
 	#endif
 }
 
-void H01indexedCSVdatabaseOperationsClass::prepareLocalConnectomeDatasetReadCustom(const string local_connectome_folder_base, const string folderName)
+void LCindexedCSVdatabaseOperationsClass::prepareLocalConnectomeDatasetReadCustom(const string local_connectome_folder_base, const string folderName)
 {
 	#ifdef LOCAL_CONNECTOME_FOLDER_BASE_USE_RELATIVE_FOLDER
 	SHAREDvars.setCurrentDirectory(currentDirectory);
@@ -258,7 +258,7 @@ void H01indexedCSVdatabaseOperationsClass::prepareLocalConnectomeDatasetReadCust
 	SHAREDvars.setCurrentDirectory(localConnectomeCSVdatasetFolder);
 }
 	
-ofstream H01indexedCSVdatabaseOperationsClass::prepareLocalConnectomeDatasetWrite(const bool write, const bool appendToFile, const string datasetFileNameWrite)
+ofstream LCindexedCSVdatabaseOperationsClass::prepareLocalConnectomeDatasetWrite(const bool write, const bool appendToFile, const string datasetFileNameWrite)
 {
 	ofstream writeFileObject;
 	ios_base::openmode writeMode;
@@ -279,7 +279,7 @@ ofstream H01indexedCSVdatabaseOperationsClass::prepareLocalConnectomeDatasetWrit
 	return writeFileObject;
 }
 
-void H01indexedCSVdatabaseOperationsClass::prepareLocalConnectomeDatasetWrite()
+void LCindexedCSVdatabaseOperationsClass::prepareLocalConnectomeDatasetWrite()
 {
 	#ifdef INDEXED_CSV_DATABASE_QUERY_WRITE_CURRENT_FOLDER
 	const string indexedCSVdatabaseQueryOutputFolder = currentDirectory;	
@@ -289,7 +289,7 @@ void H01indexedCSVdatabaseOperationsClass::prepareLocalConnectomeDatasetWrite()
 	SHAREDvars.setCurrentDirectory(indexedCSVdatabaseQueryOutputFolder);
 }
 
-void H01indexedCSVdatabaseOperationsClass::finaliseLocalConnectomeDatasetWrite(const bool write, ofstream* writeFileObject)
+void LCindexedCSVdatabaseOperationsClass::finaliseLocalConnectomeDatasetWrite(const bool write, ofstream* writeFileObject)
 {
 	#ifdef INDEXED_CSV_DATABASE_QUERY_OUTPUT
 	writeFileObject->close();

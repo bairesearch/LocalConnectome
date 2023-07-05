@@ -1,32 +1,32 @@
 /*******************************************************************************
  *
- * File Name: H01indexedCSVdatabaseGlobalDefs.hpp
+ * File Name: LCindexedCSVdatabaseGlobalDefs.hpp
  * Author: Richard Bruce Baxter - Copyright (c) 2021-2023 Baxter AI (baxterai.com)
  * License: MIT License
- * Project: H01LocalConnectome
+ * Project: LCLocalConnectome
  * Requirements: BAI SHARED C++ library, Eigen 3 C++ library
- * Compilation: ./compileH01indexedCSVdatabase.sh
+ * Compilation: ./compileLCindexedCSVdatabase.sh
  * Usage:
- * 	./H01indexedCSVdatabase.exe -mode 1 -avro_json_database_folder "/media/user/datasets/h01data/data/exported/json" -indexed_csv_database_folder "/media/user/ssddata/indexed"
- * 	./H01indexedCSVdatabase.exe -mode 2 -query 1 -indexed_csv_database_folder "/media/user/ssddata/indexed"
- * 	./H01indexedCSVdatabase.exe -mode 2 -query 2 -indexed_csv_database_folder "/media/user/ssddata/indexed"
- * 	./H01indexedCSVdatabase.exe -mode 2 -query 3 -indexed_csv_database_folder "/media/user/ssddata/indexed"
- * 	./H01indexedCSVdatabase.exe -mode 2 -query 4 -indexed_csv_database_folder "/media/user/ssddata/indexed"
- * 	./H01indexedCSVdatabase.exe -mode 2 -query 5 -indexed_csv_database_folder "/media/user/ssddata/indexed"
- * 	./H01indexedCSVdatabase.exe -mode 2 -query 6 -indexed_csv_database_folder "/media/user/ssddata/indexed"
- * 	./H01indexedCSVdatabase.exe -mode 3
- * 	./H01indexedCSVdatabase.exe -mode 4
- *  ./H01indexedCSVdatabase.exe -mode 5 -read 1
- *  ./H01indexedCSVdatabase.exe -mode 5 -read 2
- *  ./H01indexedCSVdatabase.exe -mode 6 -preprocess 1
- *  ./H01indexedCSVdatabase.exe -mode 6 -preprocess 2
- * Description: H01 indexed CSV database (global defs)
+ * 	./LCindexedCSVdatabase.exe -mode 1 -avro_json_database_folder "/media/user/datasets/h01data/data/exported/json" -indexed_csv_database_folder "/media/user/ssddata/indexed"
+ * 	./LCindexedCSVdatabase.exe -mode 2 -query 1 -indexed_csv_database_folder "/media/user/ssddata/indexed"
+ * 	./LCindexedCSVdatabase.exe -mode 2 -query 2 -indexed_csv_database_folder "/media/user/ssddata/indexed"
+ * 	./LCindexedCSVdatabase.exe -mode 2 -query 3 -indexed_csv_database_folder "/media/user/ssddata/indexed"
+ * 	./LCindexedCSVdatabase.exe -mode 2 -query 4 -indexed_csv_database_folder "/media/user/ssddata/indexed"
+ * 	./LCindexedCSVdatabase.exe -mode 2 -query 5 -indexed_csv_database_folder "/media/user/ssddata/indexed"
+ * 	./LCindexedCSVdatabase.exe -mode 2 -query 6 -indexed_csv_database_folder "/media/user/ssddata/indexed"
+ * 	./LCindexedCSVdatabase.exe -mode 3
+ * 	./LCindexedCSVdatabase.exe -mode 4
+ *  ./LCindexedCSVdatabase.exe -mode 5 -read 1
+ *  ./LCindexedCSVdatabase.exe -mode 5 -read 2
+ *  ./LCindexedCSVdatabase.exe -mode 6 -preprocess 1
+ *  ./LCindexedCSVdatabase.exe -mode 6 -preprocess 2
+ * Description: LC indexed CSV database (global defs)
  * Comments:
  * /
  *******************************************************************************/
 
-#ifndef HEADER_H01indexedCSVdatabase
-#define HEADER_H01indexedCSVdatabase
+#ifndef HEADER_LCindexedCSVdatabase
+#define HEADER_LCindexedCSVdatabase
 
 #include "SHAREDglobalDefs.hpp"
 
@@ -58,7 +58,7 @@ extern string currentDirectory;
 	#ifdef INDEXED_CSV_DATABASE_QUERY
 		#define INDEXED_CSV_DATABASE_QUERY_EXTRACT_INCOMING_OUTGOING_CONNECTIONS	//mode 1 (lookup indexed CSV database by neuron ID, and find incoming/outgoing target connections, and write them to file)
 		#define INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING	//mode 2 (lookup indexed CSV database by neuron ID, find incoming target connections, and generate visualisation)
-		#define INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET	//mode 3 (automatically generate localConnectomeConnections-typesFromPresynapticNeurons.csv/localConnectomeConnections-typesFromEMimages.csv from localConnectomeNeurons.csv and H01 indexed CSV database)
+		#define INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET	//mode 3 (automatically generate localConnectomeConnections-typesFromPresynapticNeurons.csv/localConnectomeConnections-typesFromEMimages.csv from localConnectomeNeurons.csv and LC indexed CSV database)
 		#define INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS	//mode 4 (lookup indexed CSV database by neuron ID, count/infer proportion of incoming/outgoing excitatory/inhibitory target connections to local vs distal neurons)
 		#ifdef LOCAL_CONNECTOME_DATASET_CONNECTIONS_REDUNDANT_DEPRECIATED
 			#define INDEXED_CSV_DATABASE_QUERY_COMPLETE_LOCAL_CONNECTOME_CONNECTIONS_DATASET	//mode 5 (lookup indexed CSV database by pre/post synaptic connection neuron ID, and identify connection with post/pre synaptic X/Y coordinates (if type=UNKNOWN), add post/pre synaptic neuron ID, Z coordinates, and type to connection dataset)	//used to complete localConnectomeConnections-typesFromEMimages 
@@ -130,7 +130,7 @@ extern string currentDirectory;
 	static string queryModesArray[QUERY_MODES_TOTAL] = {"extract:INDEXED_CSV_DATABASE_QUERY_EXTRACT_INCOMING_OUTGOING_CONNECTIONS","map:INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING","generate:INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET","count:INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS","complete:INDEXED_CSV_DATABASE_QUERY_COMPLETE_LOCAL_CONNECTOME_CONNECTIONS_DATASET","crawl:INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS"};
 	static string readModesArray[READ_MODES_TOTAL] = {"count:READ_MODE_INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS","extrapolate:READ_MODE_INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LARGE_MODEL"};
 
-	static char errmessage[] = "Usage:  H01indexedCSVdatabase.exe [options]"
+	static char errmessage[] = "Usage:  LCindexedCSVdatabase.exe [options]"
 	"\n"
 	"\n\twhere options are any of the following (see documentation)"
 	"\n"
@@ -147,7 +147,7 @@ extern string currentDirectory;
 	static char infomessage[] = "Information regarding execution/query modes:"
 	"\n"
 	"\nexecution mode 1 - INDEXED_CSV_DATABASE_CREATE - converts H01 Avro Json C3 Synaptic connections database to indexed CSV database (indexed by pre/postsynaptic neuron ID)"
-	"\nexecution mode 2 - INDEXED_CSV_DATABASE_QUERY - queries H01 indexed CSV database, based on local connectome neuron id list"
+	"\nexecution mode 2 - INDEXED_CSV_DATABASE_QUERY - queries LC indexed CSV database, based on local connectome neuron id list"
 	"\nexecution mode 3 - INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME - visualises local connectome datasets"
 	"\nexecution mode 4 - INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME - traces local connectome dataset (saving visualisation)"
 	"\nexecution mode 5 - INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME - read local connectome dataset"
@@ -156,7 +156,7 @@ extern string currentDirectory;
 	"\nquery mode 2 - INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING - lookup indexed CSV database by neuron ID, find incoming target connections, and generate visualisation"
 	"\nquery mode 3 - INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET - automatically generate localConnectomeConnections-typesFromPresynapticNeurons.csv/localConnectomeConnections-typesFromEMimages.csv from localConnectomeNeurons.csv and indexed CSV database"
 	"\nquery mode 4 - INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS - lookup indexed CSV database by neuron ID, count/infer proportion of incoming/outgoing excitatory/inhibitory target connections to local vs distal neurons"
-	"\nquery mode 5 - INDEXED_CSV_DATABASE_QUERY_COMPLETE_LOCAL_CONNECTOME_CONNECTIONS_DATASET - lookup indexed CSV database by post/pre synaptic connection neuron ID, and identify connection with pre/post synaptic X/Y coordinates (if pre/post synaptic type=UNKNOWN), add pre/post synaptic neuron ID, Z coordinates, and type coordinates to connection dataset [incomplete]"
+	"\nquery mode 5 - INDEXED_CSV_DATABASE_QUERY_COMPLETE_LOCAL_CONNECTOME_CONNECTIONS_DATASET - lookup indexed CSV database by post/pre synaptic connection neuron ID, and identify connection with pre/post synaptic X/Y coordinates (if pre/post synaptic type=UNKNOWN), add pre/post synaptic neuron ID, Z coordinates, and type coordinates to connection dataset [incomplete: will print UNKNOWN neurons (with x/y coordinates only) along with candidate neuron_ids but not reconcile them] [depreciated: use H01 Release C3 neurons dataset and LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS+INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET instead]"
 	"\nquery mode 6 - INDEXED_CSV_DATABASE_QUERY_CRAWL_CONNECTIONS - crawl indexed CSV database by pre/post synaptic connection neuron ID, and count number of unique axons/dendrites as specified by neuron ID - not explicitly connected to local connectome [incomplete]"
 	"\n"
 	"\nread mode 1 - INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS - count excitatory/inhibitory connections"
@@ -208,7 +208,7 @@ extern string currentDirectory;
 	static string readModesArray[READ_MODES_TOTAL] = {"count:READ_MODE_INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS"};
 	static string preprocessModesArray[PREPROCESS_MODES_TOTAL] = {"connections:PREPROCESS_MODE_INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET","neurons:PREPROCESS_MODE_INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_NEURONS_DATASET"};
 
-	static char errmessage[] = "Usage:  H01indexedCSVdatabase.exe [options]"
+	static char errmessage[] = "Usage:  LCindexedCSVdatabase.exe [options]"
 	"\n"
 	"\n\twhere options are any of the following (see documentation)"
 	"\n"
@@ -225,11 +225,7 @@ extern string currentDirectory;
 	"\nexecution mode 3 - INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME - visualises local connectome datasets"
 	"\nexecution mode 4 - INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME - traces local connectome dataset (saving visualisation)"
 	"\nexecution mode 5 - INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME - read local connectome dataset"
-	#ifdef INDEXED_CSV_DATABASE_LDC
-	"\nexecution mode 6 - INDEXED_CSV_DATABASE_PREPROCESS - preprocess LDC dataset"
-	#elif defined INDEXED_CSV_DATABASE_ADC
-	"\nexecution mode 6 - INDEXED_CSV_DATABASE_PREPROCESS - preprocess ADC dataset"
-	#endif
+	"\nexecution mode 6 - INDEXED_CSV_DATABASE_PREPROCESS - preprocess DC dataset"
 	"\n"
 	"\nread mode 1 - INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS - count excitatory/inhibitory connections"
 	"\n"
@@ -286,7 +282,7 @@ extern string currentDirectory;
 	#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LARGE_MODEL
 		#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LARGE_MODEL_NORMALISE_LOCAL_CONNECTIVITY	//generate higher accuracy model by measuring neuron position relative to precise cortical map
 		#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LARGE_MODEL_NORMALISE_LOCAL_CONNECTIVITY
-			//neural connectivity model will be aligned to localised/average cortical positive flow direction (rather than using default H01 C3 Synaptic connections database/H01 indexed CSV database x/y coordinates system)
+			//neural connectivity model will be aligned to localised/average cortical positive flow direction (rather than using default H01 C3 Synaptic connections database/LC indexed CSV database x/y coordinates system)
 				//this enables a more accurate spatial cortical connectivity model (that is independent of the curvature of the observed H01 cortical sheet)
 			#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LARGE_MODEL_NORMALISE_LOCAL_CONNECTIVITY_USE_LAYER_BOUNDS	//neural spatial connectivity model aligned to localised cortical positive flow direction (based on precise position of source neuron in cortical map)
 			//#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LARGE_MODEL_NORMALISE_LOCAL_CONNECTIVITY_USE_FLOW_VECTOR	//neural spatial connectivity model aligned to average cortical positive flow direction	//less accurate
@@ -321,7 +317,7 @@ extern string currentDirectory;
 		//#define INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET_VERIFICATION	//verify local connectome connections dataset generation vs existing (e.g. dev/ODS generated) connections datasets
 	#endif	
 	#ifdef INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME
-		//#define LOCAL_CONNECTOME_VISUALISATION_BACKWARDS_COMPATIBILITY_WITH_ODS_GENERATED_FILES	//temporary for diff comparisons between H01indexedCSVdatabaseGlobalDefs generated visualisations and ODS generated visualisations (visualisation generation verification)	//slower as uses non-distinct neuron id lists
+		//#define LOCAL_CONNECTOME_VISUALISATION_BACKWARDS_COMPATIBILITY_WITH_ODS_GENERATED_FILES	//temporary for diff comparisons between LCindexedCSVdatabaseGlobalDefs generated visualisations and ODS generated visualisations (visualisation generation verification)	//slower as uses non-distinct neuron id lists
 	#endif
 	
 	#ifndef INDEXED_CSV_DATABASE_CREATE_CLASS_LABELS_SAVE_VERBATIM
@@ -347,7 +343,7 @@ extern string currentDirectory;
 		#define LOCAL_CONNECTOME_DATASET_NEURONS_IGNORE_ADDITIONAL_NEURON_TYPES	//only read PYRAMIDAL/INTERNEURON exitatory/inihibitory neuron types	//this could be changed in future but is currently required for compatibility with existing !LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS codebase
 		#define LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_LAYERS
 		#define LOCAL_CONNECTOME_OFFICAL_RELEASE_C3_SOMAS_EXPECT_STRING_DELIMITERS
-		#define INDEXED_CSV_DATABASE_QUERY_EFFICIENT_STORE_NEURON_IDS_IN_MAP	//required for H01indexedCSVdatabaseCalculateNeuronLayer.transferLocalConnectomeNeuronLayersToConnectionsLayers
+		#define INDEXED_CSV_DATABASE_QUERY_EFFICIENT_STORE_NEURON_IDS_IN_MAP	//required for LCindexedCSVdatabaseCalculateNeuronLayer.transferLocalConnectomeNeuronLayersToConnectionsLayers
 	#endif	
 
 	//apache avro C3 Synaptic connections database parameters:
@@ -364,7 +360,7 @@ extern string currentDirectory;
 
 	//common H01 indexed csv database parameters:
 	#ifdef INDEXED_CSV_DATABASE_CREATE_DEBUG
-		#define INDEXED_CSV_DATABASE_FOLDER "/media/user/large/source/h01Connectome/indexedSVGdatabase/trial/indexedTrial"
+		#define INDEXED_CSV_DATABASE_FOLDER "/media/user/large/source/Connectome/H01indexedCSVdatabase/trial/indexedTrial"
 	#else
 		#define INDEXED_CSV_DATABASE_FOLDER "/media/user/ssddata/indexed"
 	#endif
@@ -500,7 +496,7 @@ extern string currentDirectory;
 #ifdef LOCAL_CONNECTOME_FOLDER_BASE_USE_RELATIVE_FOLDER
 	#define LOCAL_CONNECTOME_FOLDER_BASE "../"	
 #else
-	#define LOCAL_CONNECTOME_FOLDER_BASE "/media/user/large/source/h01Connectome/H01LocalConnectome/"	
+	#define LOCAL_CONNECTOME_FOLDER_BASE "/media/user/large/source/Connectome/LCLocalConnectome/"	
 #endif
 #ifdef INDEXED_CSV_DATABASE_H01
 	#define LOCAL_CONNECTOME_DATASET_FOLDER "datasetsH01/"
@@ -886,7 +882,7 @@ extern string currentDirectory;
 	
 	
 	#ifndef INDEXED_CSV_DATABASE_QUERY_WRITE_CURRENT_FOLDER
-		#define INDEXED_CSV_DATABASE_QUERY_OUTPUT_FOLDER "/media/user/large/source/h01Connectome/indexedSVGdatabase/H01indexedCSVdatabaseQueryOutput"
+		#define INDEXED_CSV_DATABASE_QUERY_OUTPUT_FOLDER "/media/user/large/source/Connectome/H01indexedCSVdatabase/H01indexedCSVdatabaseQueryOutput"
 	#endif
 	#ifndef INDEXED_CSV_DATABASE_QUERY_READ_DATASET_LOCAL_CONNECTOME_NEURONS
 		//#define INDEXED_CSV_DATABASE_QUERY_READ_CURRENT_FOLDER

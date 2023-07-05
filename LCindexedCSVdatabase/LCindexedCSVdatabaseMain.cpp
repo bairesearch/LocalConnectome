@@ -1,35 +1,35 @@
 /*******************************************************************************
  *
- * File Name: H01indexedCSVdatabaseMain.cpp
+ * File Name: LCindexedCSVdatabaseMain.cpp
  * Author: Richard Bruce Baxter - Copyright (c) 2021-2023 Baxter AI (baxterai.com)
  * License: MIT License
- * Project: H01LocalConnectome
- * Requirements: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Compilation: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Usage: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Description: H01 indexed CSV database Main (INDEXED_CSV_DATABASE_CREATE/INDEXED_CSV_DATABASE_QUERY/INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME/INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME)
+ * Project: LCLocalConnectome
+ * Requirements: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Compilation: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Usage: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Description: LC indexed CSV database Main (INDEXED_CSV_DATABASE_CREATE/INDEXED_CSV_DATABASE_QUERY/INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME/INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME)
  * Comments:
  * /
  *******************************************************************************/
 
-#include "H01indexedCSVdatabaseMain.hpp"
+#include "LCindexedCSVdatabaseMain.hpp"
 #ifdef INDEXED_CSV_DATABASE_CREATE
-#include "H01indexedCSVdatabaseCreate.hpp"
+#include "LCindexedCSVdatabaseCreate.hpp"
 #endif
 #ifdef INDEXED_CSV_DATABASE_QUERY
-#include "H01indexedCSVdatabaseQuery.hpp"
+#include "LCindexedCSVdatabaseQuery.hpp"
 #endif
 #ifdef INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME
-#include "H01indexedCSVdatabaseVisualiseLocalConnectome.hpp"
+#include "LCindexedCSVdatabaseVisualiseLocalConnectome.hpp"
 #endif
 #ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME
-#include "H01indexedCSVdatabaseTraceLocalConnectome.hpp"
+#include "LCindexedCSVdatabaseTraceLocalConnectome.hpp"
 #endif
 #ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME
-#include "H01indexedCSVdatabaseReadLocalConnectome.hpp"
+#include "LCindexedCSVdatabaseReadLocalConnectome.hpp"
 #endif
 #ifdef INDEXED_CSV_DATABASE_PREPROCESS
-#include "H01indexedCSVdatabasePreprocess.hpp"
+#include "LCindexedCSVdatabasePreprocess.hpp"
 #endif
 #include "SHAREDvars.hpp"
 
@@ -154,7 +154,7 @@ int main(const int argc, const char** argv)
 		if(userAnswer == 'y')
 		{
 		#endif
-			H01indexedCSVdatabaseCreateClass().createIndexedCSVdatabase(avro_json_database_folder, indexed_csv_database_folder);
+			LCindexedCSVdatabaseCreateClass().createIndexedCSVdatabase(avro_json_database_folder, indexed_csv_database_folder);
 		#ifndef INDEXED_CSV_DATABASE_CREATE_DEBUG
 		}
 		else
@@ -167,31 +167,31 @@ int main(const int argc, const char** argv)
 	#ifdef INDEXED_CSV_DATABASE_QUERY
 	else if(executionMode == EXECUTION_MODE_INDEXED_CSV_DATABASE_QUERY)
 	{
-		H01indexedCSVdatabaseQueryClass().queryIndexedCSVdatabase(queryMode, indexed_csv_database_folder, local_connectome_folder_base);
+		LCindexedCSVdatabaseQueryClass().queryIndexedCSVdatabase(queryMode, indexed_csv_database_folder, local_connectome_folder_base);
 	}
 	#endif
 	#ifdef INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME
 	else if(executionMode == EXECUTION_MODE_INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME)
 	{
-		H01indexedCSVdatabaseVisualiseLocalConnectomeClass().visualiseLocalConnectomeCSVdataset(local_connectome_folder_base);
+		LCindexedCSVdatabaseVisualiseLocalConnectomeClass().visualiseLocalConnectomeCSVdataset(local_connectome_folder_base);
 	}
 	#endif
 	#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME
 	else if(executionMode == EXECUTION_MODE_INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME)
 	{
-		H01indexedCSVdatabaseTraceLocalConnectomeClass().traceLocalConnectomeCSVdataset(local_connectome_folder_base);
+		LCindexedCSVdatabaseTraceLocalConnectomeClass().traceLocalConnectomeCSVdataset(local_connectome_folder_base);
 	}
 	#endif
 	#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME
 	else if(executionMode == EXECUTION_MODE_INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME)
 	{
-		H01indexedCSVdatabaseReadLocalConnectomeClass().readLocalConnectome(readMode, local_connectome_folder_base);
+		LCindexedCSVdatabaseReadLocalConnectomeClass().readLocalConnectome(readMode, local_connectome_folder_base);
 	}
 	#endif
 	#ifdef INDEXED_CSV_DATABASE_PREPROCESS
 	else if(executionMode == EXECUTION_MODE_INDEXED_CSV_DATABASE_PREPROCESS)
 	{
-		H01indexedCSVdatabasePreprocessClass().preprocess(preprocessMode, local_connectome_folder_base);
+		LCindexedCSVdatabasePreprocessClass().preprocess(preprocessMode, local_connectome_folder_base);
 	}
 	#endif
 	else

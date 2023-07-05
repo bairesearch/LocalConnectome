@@ -1,34 +1,34 @@
 
 /*******************************************************************************
  *
- * File Name: H01indexedCSVdatabasePreprocess.hpp
+ * File Name: LCindexedCSVdatabasePreprocess.hpp
  * Author: Richard Bruce Baxter - Copyright (c) 2021-2023 Baxter AI (baxterai.com)
  * License: MIT License
- * Project: H01LocalConnectome
- * Requirements: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Compilation: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Usage: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Description: H01 indexed CSV database preprocess - 
+ * Project: LCLocalConnectome
+ * Requirements: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Compilation: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Usage: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Description: LC indexed CSV database preprocess - 
  * /
  *******************************************************************************/
 
-#ifndef HEADER_H01indexedCSVdatabasePreprocess
-#define HEADER_H01indexedCSVdatabasePreprocess
+#ifndef HEADER_LCindexedCSVdatabasePreprocess
+#define HEADER_LCindexedCSVdatabasePreprocess
 
-#include "H01indexedCSVdatabaseGlobalDefs.hpp"
-#include "H01indexedCSVdatabaseCalculateNeuronLayer.hpp"	//now used universally for local connectome i/o wrapper - not just by INDEXED_CSV_DATABASE_QUERY_LAYERS
-#include "H01indexedCSVdatabaseOperations.hpp"
+#include "LCindexedCSVdatabaseGlobalDefs.hpp"
+#include "LCindexedCSVdatabaseCalculateNeuronLayer.hpp"	//now used universally for local connectome i/o wrapper - not just by INDEXED_CSV_DATABASE_QUERY_LAYERS
+#include "LCindexedCSVdatabaseOperations.hpp"
 #include "SHAREDvars.hpp"
 
 #ifdef INDEXED_CSV_DATABASE_PREPROCESS
 
 typedef struct { string x, y, z; } vecString;
 
-class H01indexedCSVdatabasePreprocessClass
+class LCindexedCSVdatabasePreprocessClass
 {
 	private: SHAREDvarsClass SHAREDvars;
-	private: H01indexedCSVdatabaseOperationsClass H01indexedCSVdatabaseOperations;
-	private: H01indexedCSVdatabaseCalculateNeuronLayerClass H01indexedCSVdatabaseCalculateNeuronLayer;
+	private: LCindexedCSVdatabaseOperationsClass LCindexedCSVdatabaseOperations;
+	private: LCindexedCSVdatabaseCalculateNeuronLayerClass LCindexedCSVdatabaseCalculateNeuronLayer;
 	
 	public: bool preprocess(const int preprocessMode, const string local_connectome_folder_base);
 		#ifdef INDEXED_CSV_DATABASE_ADC

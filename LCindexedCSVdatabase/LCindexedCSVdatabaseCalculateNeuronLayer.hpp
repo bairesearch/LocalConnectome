@@ -1,25 +1,25 @@
 /*******************************************************************************
  *
- * File Name: H01indexedCSVdatabaseCalculateNeuronLayer.hpp
+ * File Name: LCindexedCSVdatabaseCalculateNeuronLayer.hpp
  * Author: Richard Bruce Baxter - Copyright (c) 2021-2023 Baxter AI (baxterai.com)
  * License: MIT License
- * Project: H01LocalConnectome
- * Requirements: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Compilation: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Usage: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Description: H01 indexed CSV database calculate neuron layer
+ * Project: LCLocalConnectome
+ * Requirements: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Compilation: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Usage: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Description: LC indexed CSV database calculate neuron layer
  * Input: corticalLayersBoundaryKeypoints.csv
  * Output Format: vector<vector<vec>> corticalLayersKeypoints
  * Comments:
  * /
  *******************************************************************************/
 
-#ifndef HEADER_H01indexedCSVdatabaseCalculateNeuronLayer
-#define HEADER_H01indexedCSVdatabaseCalculateNeuronLayer
+#ifndef HEADER_LCindexedCSVdatabaseCalculateNeuronLayer
+#define HEADER_LCindexedCSVdatabaseCalculateNeuronLayer
 
-#include "H01indexedCSVdatabaseGlobalDefs.hpp"
-#include "H01indexedCSVdatabaseCalculateNeuronLayer.hpp"	//now used universally for local connectome i/o wrapper - not just by INDEXED_CSV_DATABASE_QUERY_LAYERS
-#include "H01indexedCSVdatabaseOperations.hpp"
+#include "LCindexedCSVdatabaseGlobalDefs.hpp"
+#include "LCindexedCSVdatabaseCalculateNeuronLayer.hpp"	//now used universally for local connectome i/o wrapper - not just by INDEXED_CSV_DATABASE_QUERY_LAYERS
+#include "LCindexedCSVdatabaseOperations.hpp"
 #include "SHAREDvars.hpp"
 #include "SHAREDvector.hpp"
 
@@ -69,11 +69,11 @@ public:
 };
 
 
-class H01indexedCSVdatabaseCalculateNeuronLayerClass
+class LCindexedCSVdatabaseCalculateNeuronLayerClass
 {
 	private: SHAREDvarsClass SHAREDvars;
 	private: SHAREDvectorClass SHAREDvector;
-	private: H01indexedCSVdatabaseOperationsClass H01indexedCSVdatabaseOperations;
+	private: LCindexedCSVdatabaseOperationsClass LCindexedCSVdatabaseOperations;
 
 	//#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS
 	public: vector<H01connectivityModelClass>* generateNumberOfConnectionsLayers();

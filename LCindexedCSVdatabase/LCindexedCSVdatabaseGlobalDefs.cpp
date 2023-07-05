@@ -1,17 +1,17 @@
 /*******************************************************************************
  *
- * File Name: H01indexedCSVdatabaseGlobalDefs.cpp
+ * File Name: LCindexedCSVdatabaseGlobalDefs.cpp
  * Author: Richard Bruce Baxter - Copyright (c) 2021-2023 Baxter AI (baxterai.com)
  * License: MIT License
- * Project: H01LocalConnectome
+ * Project: LCLocalConnectome
  * Requirements: BAI SHARED C++ library, Eigen 3 C++ library
- * Compilation: ./compileH01indexedCSVdatabase.sh
- * Usage: ./H01indexedCSVdatabase.exe
- * Description: H01 indexed CSV database (global defs)
+ * Compilation: ./compileLCindexedCSVdatabase.sh
+ * Usage: ./LCindexedCSVdatabase.exe
+ * Description: LC indexed CSV database (global defs)
  * Comments:
  * /
  *******************************************************************************/
 
-#include "H01indexedCSVdatabaseGlobalDefs.hpp"
+#include "LCindexedCSVdatabaseGlobalDefs.hpp"
 
 string currentDirectory;

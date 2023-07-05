@@ -1,20 +1,20 @@
 /*******************************************************************************
  *
- * File Name: H01indexedCSVdatabaseVisualiseLocalConnectome.cpp
+ * File Name: LCindexedCSVdatabaseVisualiseLocalConnectome.cpp
  * Author: Richard Bruce Baxter - Copyright (c) 2021-2023 Baxter AI (baxterai.com)
  * License: MIT License
- * Project: H01LocalConnectome
- * Requirements: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Compilation: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Usage: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Description: H01 indexed CSV database visualise local connectome - visualises local connectome datasets
+ * Project: LCLocalConnectome
+ * Requirements: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Compilation: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Usage: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Description: LC indexed CSV database visualise local connectome - visualises local connectome datasets
  * Input: localConnectomeNeurons.csv / localConnectomeConnectionsX.csv
  * Output Format: SVG (2D) / LDR (3D)
  * Comments:
  * /
  *******************************************************************************/
 
-#include "H01indexedCSVdatabaseVisualiseLocalConnectome.hpp"
+#include "LCindexedCSVdatabaseVisualiseLocalConnectome.hpp"
 
 #ifdef INDEXED_CSV_DATABASE_VISUALISE_LOCAL_CONNECTOME
 
@@ -46,7 +46,7 @@
 	#endif
 #endif
 
-bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectomeCSVdataset(const string local_connectome_folder_base)
+bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectomeCSVdataset(const string local_connectome_folder_base)
 {
 	bool result = true;
 	
@@ -62,7 +62,7 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 	return result;
 }
 
-bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectomeCSVdataset(const string local_connectome_folder_base, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
+bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectomeCSVdataset(const string local_connectome_folder_base, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
 {
 	bool result = true;
 	
@@ -92,7 +92,7 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 	vector<vector<string>> localConnectomeCSVdatasetNeurons;	
 	vector<vector<string>> localConnectomeCSVdatasetConnections;
 	map<string, int> connectionsMap;	
-	if(!H01indexedCSVdatabaseCalculateNeuronLayer.readLocalNeuronsAndConnections(local_connectome_folder_base, neuronDatasetOrListFileName, true, &neuronList, &neuronMap, &localConnectomeCSVdatasetNeurons, readConnections, neuronListConnectionsFileName, &localConnectomeCSVdatasetConnections, buildConnectionsMap, &connectionsMap, readLayers, readLayersConnections))
+	if(!LCindexedCSVdatabaseCalculateNeuronLayer.readLocalNeuronsAndConnections(local_connectome_folder_base, neuronDatasetOrListFileName, true, &neuronList, &neuronMap, &localConnectomeCSVdatasetNeurons, readConnections, neuronListConnectionsFileName, &localConnectomeCSVdatasetConnections, buildConnectionsMap, &connectionsMap, readLayers, readLayersConnections))
 	{
 		result = false;
 	}
@@ -110,7 +110,7 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 	return result;
 }
 
-bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectomeCSVdataset(const string local_connectome_folder_base, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, const bool generate2Dvisualisation, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, const bool visualiseTrace, const int traceIterationIndex)
+bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectomeCSVdataset(const string local_connectome_folder_base, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, const bool generate2Dvisualisation, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, const bool visualiseTrace, const int traceIterationIndex)
 {
 	bool result = true;
 	
@@ -228,7 +228,7 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 	return result;
 }
 
-bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectomeGenerateContent(const string local_connectome_folder_base, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, const bool generate2Dvisualisation, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, const string local_connectome_visualisation_filename_base, const int coloursetNumber, const bool visualiseLayers, const bool visualiseDirection, const bool visualiseFlow, const bool visualiseLayersSpecific, const int layerIndexVisualise, const bool visualiseTrace, const int traceIterationIndex)
+bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectomeGenerateContent(const string local_connectome_folder_base, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, const bool generate2Dvisualisation, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, const string local_connectome_visualisation_filename_base, const int coloursetNumber, const bool visualiseLayers, const bool visualiseDirection, const bool visualiseFlow, const bool visualiseLayersSpecific, const int layerIndexVisualise, const bool visualiseTrace, const int traceIterationIndex)
 {
 	bool result = true;
 				
@@ -484,10 +484,10 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 		
 			neuronTypeStringSVG += LOCAL_CONNECTOME_VISUALISATION_NEURONS_COLOURSET_REFERENCE_APPEND;
 			
-			double xCalibrated = H01indexedCSVdatabaseOperations.calibrateCoordinateX(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetNeuron[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X]));
-			double yCalibrated = H01indexedCSVdatabaseOperations.calibrateCoordinateY(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetNeuron[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y]));
+			double xCalibrated = LCindexedCSVdatabaseOperations.calibrateCoordinateX(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetNeuron[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X]));
+			double yCalibrated = LCindexedCSVdatabaseOperations.calibrateCoordinateY(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetNeuron[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y]));
 			#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
-			double zCalibrated = H01indexedCSVdatabaseOperations.calibrateCoordinateZ(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetNeuron[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Z]));
+			double zCalibrated = LCindexedCSVdatabaseOperations.calibrateCoordinateZ(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetNeuron[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Z]));
 			#endif
 
 			string localConnectionVisualisationNeuronText = "";
@@ -735,12 +735,12 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 			if(passLayerVisualisationChecks)
 			{
 
-				double xCalibratedPre = H01indexedCSVdatabaseOperations.calibrateCoordinateX(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_X]));
-				double yCalibratedPre = H01indexedCSVdatabaseOperations.calibrateCoordinateY(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Y]));
-				double zCalibratedPre = H01indexedCSVdatabaseOperations.calibrateCoordinateZ(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Z]));
-				double xCalibratedPost = H01indexedCSVdatabaseOperations.calibrateCoordinateX(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_X]));
-				double yCalibratedPost = H01indexedCSVdatabaseOperations.calibrateCoordinateY(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Y]));
-				double zCalibratedPost = H01indexedCSVdatabaseOperations.calibrateCoordinateZ(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Z]));		
+				double xCalibratedPre = LCindexedCSVdatabaseOperations.calibrateCoordinateX(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_X]));
+				double yCalibratedPre = LCindexedCSVdatabaseOperations.calibrateCoordinateY(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Y]));
+				double zCalibratedPre = LCindexedCSVdatabaseOperations.calibrateCoordinateZ(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Z]));
+				double xCalibratedPost = LCindexedCSVdatabaseOperations.calibrateCoordinateX(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_X]));
+				double yCalibratedPost = LCindexedCSVdatabaseOperations.calibrateCoordinateY(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Y]));
+				double zCalibratedPost = LCindexedCSVdatabaseOperations.calibrateCoordinateZ(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Z]));		
 
 				int connectionRadialGradientType = this->calculateConnectionRadialGradientType(xCalibratedPre, xCalibratedPost);	
 				if(connectionRadialGradientType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_RADIALGRADIENT_TYPE_POSITIVE)
@@ -859,7 +859,7 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 	
 	
 	//other data;
-	H01indexedCSVdatabaseOperations.prepareLocalConnectomeDatasetReadCustom(local_connectome_folder_base, LOCAL_CONNECTOME_VISUALISATION_TEMPLATES_FOLDER);
+	LCindexedCSVdatabaseOperations.prepareLocalConnectomeDatasetReadCustom(local_connectome_folder_base, LOCAL_CONNECTOME_VISUALISATION_TEMPLATES_FOLDER);
 	
 	string localConnectomeVisualisationContents = "";
 	if(generate2Dvisualisation)
@@ -954,11 +954,11 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 	return result;
 }		
 
-bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectomeCSVdatasetWriteToFile(const string local_connectome_folder_base, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, const bool generate2Dvisualisation, const string local_connectome_visualisation_filename_base, string* localConnectomeVisualisationContents, const bool visualiseTrace, const int traceIterationIndex)
+bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectomeCSVdatasetWriteToFile(const string local_connectome_folder_base, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, const bool generate2Dvisualisation, const string local_connectome_visualisation_filename_base, string* localConnectomeVisualisationContents, const bool visualiseTrace, const int traceIterationIndex)
 {
 	bool result = true;
 	
-	H01indexedCSVdatabaseOperations.prepareLocalConnectomeDatasetReadCustom(local_connectome_folder_base, LOCAL_CONNECTOME_VISUALISATION_FOLDER);
+	LCindexedCSVdatabaseOperations.prepareLocalConnectomeDatasetReadCustom(local_connectome_folder_base, LOCAL_CONNECTOME_VISUALISATION_FOLDER);
 	string localConnectomeVisualisationFolder;
 	if(connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
 	{
@@ -1019,7 +1019,7 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 }		
 
 
-int H01indexedCSVdatabaseVisualiseLocalConnectomeClass::calculateConnectionFlowType(const double xCalibratedPre, const double yCalibratedPre, const double xCalibratedPost, const double yCalibratedPost)
+int LCindexedCSVdatabaseVisualiseLocalConnectomeClass::calculateConnectionFlowType(const double xCalibratedPre, const double yCalibratedPre, const double xCalibratedPost, const double yCalibratedPost)
 {
 	double connectionFlowVectorX = xCalibratedPost - xCalibratedPre;
 	double connectionFlowVectorY = yCalibratedPost - yCalibratedPre;
@@ -1036,7 +1036,7 @@ int H01indexedCSVdatabaseVisualiseLocalConnectomeClass::calculateConnectionFlowT
 	return connectionFlowType;
 }
 
-int H01indexedCSVdatabaseVisualiseLocalConnectomeClass::calculateConnectionRadialGradientType(const double xCalibratedPre, const double xCalibratedPost)
+int LCindexedCSVdatabaseVisualiseLocalConnectomeClass::calculateConnectionRadialGradientType(const double xCalibratedPre, const double xCalibratedPost)
 {
 	int connectionRadialGradientType;
 	if(xCalibratedPre > xCalibratedPost)
@@ -1050,7 +1050,7 @@ int H01indexedCSVdatabaseVisualiseLocalConnectomeClass::calculateConnectionRadia
 	return connectionRadialGradientType;
 }
 
-string H01indexedCSVdatabaseVisualiseLocalConnectomeClass::convertDoubleToStringCalibrationPrecision(const double value)
+string LCindexedCSVdatabaseVisualiseLocalConnectomeClass::convertDoubleToStringCalibrationPrecision(const double value)
 {	
 	const string doubleFormat = "%0." + SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_DOUBLE_PRECISION) + "f";	//"%0.5f";
 	string doubleString = SHAREDvars.convertDoubleToString(value, doubleFormat);

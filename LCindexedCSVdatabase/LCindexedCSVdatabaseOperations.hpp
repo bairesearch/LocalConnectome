@@ -1,24 +1,24 @@
 /*******************************************************************************
  *
- * File Name: H01indexedCSVdatabaseOperations.hpp
+ * File Name: LCindexedCSVdatabaseOperations.hpp
  * Author: Richard Bruce Baxter - Copyright (c) 2021-2023 Baxter AI (baxterai.com)
  * License: MIT License
- * Project: H01LocalConnectome
- * Requirements: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Compilation: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Usage: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Description: H01 indexed CSV database operations
+ * Project: LCLocalConnectome
+ * Requirements: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Compilation: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Usage: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Description: LC indexed CSV database operations
  * Comments:
  * /
  *******************************************************************************/
 
-#ifndef HEADER_H01indexedCSVdatabaseOperations
-#define HEADER_H01indexedCSVdatabaseOperations
+#ifndef HEADER_LCindexedCSVdatabaseOperations
+#define HEADER_LCindexedCSVdatabaseOperations
 
-#include "H01indexedCSVdatabaseGlobalDefs.hpp"
+#include "LCindexedCSVdatabaseGlobalDefs.hpp"
 #include "SHAREDvars.hpp"
 
-class H01indexedCSVdatabaseOperationsClass
+class LCindexedCSVdatabaseOperationsClass
 {
 	private: SHAREDvarsClass SHAREDvars;
 

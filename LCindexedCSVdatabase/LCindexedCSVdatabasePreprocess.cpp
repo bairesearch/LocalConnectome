@@ -1,22 +1,22 @@
 /*******************************************************************************
  *
- * File Name: H01indexedCSVdatabasePreprocess.cpp
+ * File Name: LCindexedCSVdatabasePreprocess.cpp
  * Author: Richard Bruce Baxter - Copyright (c) 2021-2023 Baxter AI (baxterai.com)
  * License: MIT License
- * Project: H01LocalConnectome
- * Requirements: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Compilation: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Usage: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Description: H01 indexed CSV database preprocess - 
+ * Project: LCLocalConnectome
+ * Requirements: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Compilation: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Usage: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Description: LC indexed CSV database preprocess - 
  * /
  *******************************************************************************/
 
 
-#include "H01indexedCSVdatabasePreprocess.hpp"
+#include "LCindexedCSVdatabasePreprocess.hpp"
 
 #ifdef INDEXED_CSV_DATABASE_PREPROCESS
 
-bool H01indexedCSVdatabasePreprocessClass::preprocess(const int preprocessMode, const string local_connectome_folder_base)
+bool LCindexedCSVdatabasePreprocessClass::preprocess(const int preprocessMode, const string local_connectome_folder_base)
 {
 	bool result = true;
 	
@@ -54,7 +54,7 @@ bool H01indexedCSVdatabasePreprocessClass::preprocess(const int preprocessMode, 
 	#endif
 	else
 	{
-		cerr << "H01indexedCSVdatabasePreprocessClass::preprocess error: preprocessMode unknown: " << preprocessMode << endl;
+		cerr << "LCindexedCSVdatabasePreprocessClass::preprocess error: preprocessMode unknown: " << preprocessMode << endl;
 		exit(EXIT_ERROR);
 	}
 	
@@ -63,9 +63,9 @@ bool H01indexedCSVdatabasePreprocessClass::preprocess(const int preprocessMode, 
 
 
 #ifdef INDEXED_CSV_DATABASE_ADC
-void H01indexedCSVdatabasePreprocessClass::generateLocalConnectomeNeuronsDatasetFromADCneuronsFile(const string local_connectome_folder_base, const string neuronDatasetFileNameWrite)
+void LCindexedCSVdatabasePreprocessClass::generateLocalConnectomeNeuronsDatasetFromADCneuronsFile(const string local_connectome_folder_base, const string neuronDatasetFileNameWrite)
 {	
-	H01indexedCSVdatabaseOperations.prepareLocalConnectomeDatasetRead(local_connectome_folder_base);
+	LCindexedCSVdatabaseOperations.prepareLocalConnectomeDatasetRead(local_connectome_folder_base);
 	
 	vector<vector<string>> ADCneuronsData;
 	int ADCneuronsDataSize;
@@ -87,7 +87,7 @@ void H01indexedCSVdatabasePreprocessClass::generateLocalConnectomeNeuronsDataset
 		}
 		else
 		{
-			//cerr << "H01indexedCSVdatabasePreprocessClass::generateLocalConnectomeNeuronsDatasetFromADCneuronsFile error: (neuronExcitationTypeMap.count(neurotransmitterType) != 0); neurotransmitterType = " << neurotransmitterType << endl;
+			//cerr << "LCindexedCSVdatabasePreprocessClass::generateLocalConnectomeNeuronsDatasetFromADCneuronsFile error: (neuronExcitationTypeMap.count(neurotransmitterType) != 0); neurotransmitterType = " << neurotransmitterType << endl;
 			excitationTypeString = SHAREDvars.convertIntToString(INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_CONNECTIONS_EXCITATION_TYPE_UNKNOWN);
 		}
 		string neuronType = (*ADCneuron)[INDEXED_CSV_DATABASE_PREPROCESS_ADC_NEURONS_DATAFILE_FIELD_INDEX_GROUP];	//layer	//CHECKTHIS
@@ -103,13 +103,13 @@ void H01indexedCSVdatabasePreprocessClass::generateLocalConnectomeNeuronsDataset
 	if(write)
 	{
 		bool appendToFile = false;
-		ofstream writeFileObject = H01indexedCSVdatabaseOperations.prepareLocalConnectomeDatasetWrite(write, appendToFile, neuronDatasetFileNameWrite);
+		ofstream writeFileObject = LCindexedCSVdatabaseOperations.prepareLocalConnectomeDatasetWrite(write, appendToFile, neuronDatasetFileNameWrite);
 		SHAREDvars.writeStringToFileObject(neuronDatasetDataString, &writeFileObject);
-		H01indexedCSVdatabaseOperations.finaliseLocalConnectomeDatasetWrite(write, &writeFileObject);
+		LCindexedCSVdatabaseOperations.finaliseLocalConnectomeDatasetWrite(write, &writeFileObject);
 	}
 }
 
-vector<string> H01indexedCSVdatabasePreprocessClass::parseADCcoordinatesPositionVectorString(const string positionVectorString)
+vector<string> LCindexedCSVdatabasePreprocessClass::parseADCcoordinatesPositionVectorString(const string positionVectorString)
 {	
 	string positionVectorStringFormatted = positionVectorString.substr(1, positionVectorString.size()-2);	//remove [ and ] characters
 	bool ignoreRepeatedDelimiters = true;
@@ -117,9 +117,9 @@ vector<string> H01indexedCSVdatabasePreprocessClass::parseADCcoordinatesPosition
 	return positionVector;
 }
 
-void H01indexedCSVdatabasePreprocessClass::generateLocalConnectomeConnectionsDatasetFromADCconnectionsFile(const string local_connectome_folder_base, const string connectionDatasetFileNameWrite, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
+void LCindexedCSVdatabasePreprocessClass::generateLocalConnectomeConnectionsDatasetFromADCconnectionsFile(const string local_connectome_folder_base, const string connectionDatasetFileNameWrite, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
 {
-	H01indexedCSVdatabaseOperations.prepareLocalConnectomeDatasetRead(local_connectome_folder_base);
+	LCindexedCSVdatabaseOperations.prepareLocalConnectomeDatasetRead(local_connectome_folder_base);
 	
 	vector<vector<string>> ADCconnectionsData;
 	int ADCconnectionsDataSize;
@@ -150,13 +150,13 @@ void H01indexedCSVdatabasePreprocessClass::generateLocalConnectomeConnectionsDat
 				}
 				else
 				{
-					//cerr << "H01indexedCSVdatabasePreprocessClass::generateLocalConnectomeConnectionsDatasetFromADCconnectionsFile error: neuronExcitationTypeMap.count(neuronNeurotransmitterType) != 0; neuronNeurotransmitterType = " << neuronNeurotransmitterType << endl;
+					//cerr << "LCindexedCSVdatabasePreprocessClass::generateLocalConnectomeConnectionsDatasetFromADCconnectionsFile error: neuronExcitationTypeMap.count(neuronNeurotransmitterType) != 0; neuronNeurotransmitterType = " << neuronNeurotransmitterType << endl;
 					excitationTypeString = SHAREDvars.convertIntToString(INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_CONNECTIONS_EXCITATION_TYPE_UNKNOWN);
 				}
 			}
 			else
 			{
-				cerr << "H01indexedCSVdatabasePreprocessClass::generateLocalConnectomeConnectionsDatasetFromADCconnectionsFile error: neuronNeurotransmitterTypeMap[preID] == 0" << endl;
+				cerr << "LCindexedCSVdatabasePreprocessClass::generateLocalConnectomeConnectionsDatasetFromADCconnectionsFile error: neuronNeurotransmitterTypeMap[preID] == 0" << endl;
 				excitationTypeString = SHAREDvars.convertIntToString(INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_CONNECTIONS_EXCITATION_TYPE_UNKNOWN);
 			}
 		}
@@ -174,9 +174,9 @@ void H01indexedCSVdatabasePreprocessClass::generateLocalConnectomeConnectionsDat
 	if(write)
 	{
 		bool appendToFile = false;
-		ofstream writeFileObject = H01indexedCSVdatabaseOperations.prepareLocalConnectomeDatasetWrite(write, appendToFile, connectionDatasetFileNameWrite);
+		ofstream writeFileObject = LCindexedCSVdatabaseOperations.prepareLocalConnectomeDatasetWrite(write, appendToFile, connectionDatasetFileNameWrite);
 		SHAREDvars.writeStringToFileObject(neuronDatasetDataString, &writeFileObject);
-		H01indexedCSVdatabaseOperations.finaliseLocalConnectomeDatasetWrite(write, &writeFileObject);
+		LCindexedCSVdatabaseOperations.finaliseLocalConnectomeDatasetWrite(write, &writeFileObject);
 	}
 }
 #endif
@@ -185,7 +185,7 @@ void H01indexedCSVdatabasePreprocessClass::generateLocalConnectomeConnectionsDat
 #ifdef INDEXED_CSV_DATABASE_LDC
 #ifdef INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_NEURONS_DATASET
 
-void H01indexedCSVdatabasePreprocessClass::generateLocalConnectomeNeuronsDatasetFromSkeletons(const string local_connectome_folder_base, const string neuronDatasetFileNameWrite)
+void LCindexedCSVdatabasePreprocessClass::generateLocalConnectomeNeuronsDatasetFromSkeletons(const string local_connectome_folder_base, const string neuronDatasetFileNameWrite)
 {	
 	vector<string> neuronIDlist = getNeuronIDlist(local_connectome_folder_base, true);
 	vector<string> neuronTypeList = getNeuronTypeList(local_connectome_folder_base, &neuronIDlist);
@@ -204,17 +204,17 @@ void H01indexedCSVdatabasePreprocessClass::generateLocalConnectomeNeuronsDataset
 	if(write)
 	{
 		bool appendToFile = false;
-		ofstream writeFileObject = H01indexedCSVdatabaseOperations.prepareLocalConnectomeDatasetWrite(write, appendToFile, neuronDatasetFileNameWrite);
+		ofstream writeFileObject = LCindexedCSVdatabaseOperations.prepareLocalConnectomeDatasetWrite(write, appendToFile, neuronDatasetFileNameWrite);
 		SHAREDvars.writeStringToFileObject(neuronDatasetDataString, &writeFileObject);
-		H01indexedCSVdatabaseOperations.finaliseLocalConnectomeDatasetWrite(write, &writeFileObject);
+		LCindexedCSVdatabaseOperations.finaliseLocalConnectomeDatasetWrite(write, &writeFileObject);
 	}
 }
 
-vector<string> H01indexedCSVdatabasePreprocessClass::getNeuronIDlist(const string local_connectome_folder_base, const bool writeToFile)
+vector<string> LCindexedCSVdatabasePreprocessClass::getNeuronIDlist(const string local_connectome_folder_base, const bool writeToFile)
 {
 	vector<string> neuronIDlist;
 
-	H01indexedCSVdatabaseOperations.prepareLocalConnectomeDatasetRead(local_connectome_folder_base);
+	LCindexedCSVdatabaseOperations.prepareLocalConnectomeDatasetRead(local_connectome_folder_base);
 	int smSkeletonIDsDataFileSize = 0;
 	vector<vector<string>> smSkeletonIDsData;
 	bool expectFirstLineHeader = true;
@@ -232,15 +232,15 @@ vector<string> H01indexedCSVdatabasePreprocessClass::getNeuronIDlist(const strin
 	if(writeToFile)
 	{
 		bool appendToFile = false;
-		ofstream writeFileObject = H01indexedCSVdatabaseOperations.prepareLocalConnectomeDatasetWrite(writeToFile, appendToFile, INDEXED_CSV_DATABASE_PREPROCESS_NEURON_LIST_FILE_NAME);
+		ofstream writeFileObject = LCindexedCSVdatabaseOperations.prepareLocalConnectomeDatasetWrite(writeToFile, appendToFile, INDEXED_CSV_DATABASE_PREPROCESS_NEURON_LIST_FILE_NAME);
 		SHAREDvars.writeStringToFileObject(neuronIDlistDataString, &writeFileObject);
-		H01indexedCSVdatabaseOperations.finaliseLocalConnectomeDatasetWrite(writeToFile, &writeFileObject);
+		LCindexedCSVdatabaseOperations.finaliseLocalConnectomeDatasetWrite(writeToFile, &writeFileObject);
 	}
 	
 	return neuronIDlist;
 }
 
-vector<string> H01indexedCSVdatabasePreprocessClass::getNeuronTypeList(const string local_connectome_folder_base, vector<string>* neuronIDlist)
+vector<string> LCindexedCSVdatabasePreprocessClass::getNeuronTypeList(const string local_connectome_folder_base, vector<string>* neuronIDlist)
 {	
 	vector<string> neuronTypeList;
 
@@ -253,7 +253,7 @@ vector<string> H01indexedCSVdatabasePreprocessClass::getNeuronTypeList(const str
 		neuronTypeList.push_back(LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_TYPE_UNKNOWN);
 	}	
 
-	H01indexedCSVdatabaseOperations.prepareLocalConnectomeDatasetRead(local_connectome_folder_base);
+	LCindexedCSVdatabaseOperations.prepareLocalConnectomeDatasetRead(local_connectome_folder_base);
 	
 	#ifdef INDEXED_CSV_DATABASE_PREPROCESS_LDC_SM_CELLTYPE_DATAFILE_2
 	{
@@ -308,7 +308,7 @@ vector<string> H01indexedCSVdatabasePreprocessClass::getNeuronTypeList(const str
 			}
 			else
 			{
-				cerr << "H01indexedCSVdatabasePreprocessClass::getNeuronTypeList error: key not found:  rowNeuronID = " << rowNeuronID << endl;
+				cerr << "LCindexedCSVdatabasePreprocessClass::getNeuronTypeList error: key not found:  rowNeuronID = " << rowNeuronID << endl;
 			}
 		}
 	}
@@ -317,7 +317,7 @@ vector<string> H01indexedCSVdatabasePreprocessClass::getNeuronTypeList(const str
 	return neuronTypeList;
 }
 	
-vector<vecString> H01indexedCSVdatabasePreprocessClass::getNeuronPosList(const string local_connectome_folder_base, vector<string>* neuronIDlist)
+vector<vecString> LCindexedCSVdatabasePreprocessClass::getNeuronPosList(const string local_connectome_folder_base, vector<string>* neuronIDlist)
 {	
 	vector<vecString> neuronPOSlist;
 
@@ -331,7 +331,7 @@ vector<vecString> H01indexedCSVdatabasePreprocessClass::getNeuronPosList(const s
 		cout << "skeletonFileName = " << skeletonFileName << endl;
 		cout << "skeletonsFolderName = " << skeletonsFolderName << endl;
 		*/
-		H01indexedCSVdatabaseOperations.prepareLocalConnectomeDatasetReadCustom(local_connectome_folder_base, skeletonsFolderName);
+		LCindexedCSVdatabaseOperations.prepareLocalConnectomeDatasetReadCustom(local_connectome_folder_base, skeletonsFolderName);
 		int skeletonDataFileSize = 0;
 		vector<vector<string>> skeletonData;
 		bool expectFirstLineHeader = false;
@@ -374,11 +374,11 @@ vector<vecString> H01indexedCSVdatabasePreprocessClass::getNeuronPosList(const s
 
 #ifdef INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET
 
-void H01indexedCSVdatabasePreprocessClass::generateLocalConnectomeConnectionsDatasetFromMatrix(const string local_connectome_folder_base, const string connectionDatasetFileNameWrite)
+void LCindexedCSVdatabasePreprocessClass::generateLocalConnectomeConnectionsDatasetFromMatrix(const string local_connectome_folder_base, const string connectionDatasetFileNameWrite)
 {
-	ofstream writeFileObject = H01indexedCSVdatabaseOperations.prepareLocalConnectomeDatasetWrite(true, false, connectionDatasetFileNameWrite);
+	ofstream writeFileObject = LCindexedCSVdatabaseOperations.prepareLocalConnectomeDatasetWrite(true, false, connectionDatasetFileNameWrite);
 
-	H01indexedCSVdatabaseOperations.prepareLocalConnectomeDatasetRead(local_connectome_folder_base);
+	LCindexedCSVdatabaseOperations.prepareLocalConnectomeDatasetRead(local_connectome_folder_base);
 	
 	string neuronConnectionsFileHeader = string(LOCAL_CONNECTOME_DATASET_CONNECTIONS_HEADER) + STRING_NEWLINE;
 	SHAREDvars.writeStringToFileObject(neuronConnectionsFileHeader, &writeFileObject);
@@ -399,10 +399,10 @@ void H01indexedCSVdatabasePreprocessClass::generateLocalConnectomeConnectionsDat
 		convertConnectionsListMatrixFile(local_connectome_folder_base, matrixFileName, matrixFilePreClassLabel, matrixFilePostClassLabel, &writeFileObject, &neuronRegionTypeMap, &neuronExcitationTypeMap);
 	} 
 	
-	H01indexedCSVdatabaseOperations.finaliseLocalConnectomeDatasetWrite(true, &writeFileObject);
+	LCindexedCSVdatabaseOperations.finaliseLocalConnectomeDatasetWrite(true, &writeFileObject);
 }
 
-void H01indexedCSVdatabasePreprocessClass::convertConnectionsListMatrixFile(const string local_connectome_folder_base, const string matrixFileName, const string matrixFilePreClassLabel, const string matrixFilePostClassLabel, ofstream* writeFileObject, map<string, string>* neuronRegionTypeMap, map<string, string>* neuronExcitationTypeMap)
+void LCindexedCSVdatabasePreprocessClass::convertConnectionsListMatrixFile(const string local_connectome_folder_base, const string matrixFileName, const string matrixFilePreClassLabel, const string matrixFilePostClassLabel, ofstream* writeFileObject, map<string, string>* neuronRegionTypeMap, map<string, string>* neuronExcitationTypeMap)
 {	
 	//matrix format: Row neurons are presynaptic, while column neurons are postsynaptic, first row/column contain neuronID (skid)
 		
@@ -450,7 +450,7 @@ void H01indexedCSVdatabasePreprocessClass::convertConnectionsListMatrixFile(cons
 				}
 				else
 				{
-					//cerr << "H01indexedCSVdatabasePreprocessClass::convertConnectionsListMatrixFile error: neuronRegionTypeMap[preID] == 0" << endl;
+					//cerr << "LCindexedCSVdatabasePreprocessClass::convertConnectionsListMatrixFile error: neuronRegionTypeMap[preID] == 0" << endl;
 					excitationTypeString = SHAREDvars.convertIntToString(INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_CONNECTIONS_EXCITATION_TYPE_UNKNOWN);
 				}
 				#endif 
@@ -482,7 +482,7 @@ void H01indexedCSVdatabasePreprocessClass::convertConnectionsListMatrixFile(cons
 
 #endif
 
-int H01indexedCSVdatabasePreprocessClass::getNeuronExcitationTypeFromType(const string neuronType, map<string, string>* neuronExcitationTypeMap)
+int LCindexedCSVdatabasePreprocessClass::getNeuronExcitationTypeFromType(const string neuronType, map<string, string>* neuronExcitationTypeMap)
 {
 	string excitationTypeString = (*neuronExcitationTypeMap)[neuronType];
 	if(neuronExcitationTypeMap->count(neuronType) == 0)
@@ -495,12 +495,12 @@ int H01indexedCSVdatabasePreprocessClass::getNeuronExcitationTypeFromType(const 
 	return excitationType;
 }
 
-map<string, string> H01indexedCSVdatabasePreprocessClass::calculateNeuronExcitationTypeMap(const string local_connectome_folder_base, const string neuronTypesFileName)
+map<string, string> LCindexedCSVdatabasePreprocessClass::calculateNeuronExcitationTypeMap(const string local_connectome_folder_base, const string neuronTypesFileName)
 {
 	return calculateNeuronTypeMap(local_connectome_folder_base, neuronTypesFileName, INDEXED_CSV_DATABASE_PREPROCESS_NEURON_TYPES_FIELD_INDEX_NEURONTYPE, INDEXED_CSV_DATABASE_PREPROCESS_NEURON_TYPES_FIELD_INDEX_NEURONVALUE, CHAR_TAB);
 }
 #ifdef INDEXED_CSV_DATABASE_LDC
-map<string, string> H01indexedCSVdatabasePreprocessClass::calculateNeuronRegionTypeMap(const string local_connectome_folder_base)
+map<string, string> LCindexedCSVdatabasePreprocessClass::calculateNeuronRegionTypeMap(const string local_connectome_folder_base)
 {
 	map<string, string> neuronTypeMap;
 	calculateNeuronTypeMap(local_connectome_folder_base, INDEXED_CSV_DATABASE_PREPROCESS_LDC_SM_CELLTYPE_DATAFILE_3_NAME, INDEXED_CSV_DATABASE_PREPROCESS_LDC_SM_CELLTYPE_DATAFILE_34_FIELD_INDEX_SKID, INDEXED_CSV_DATABASE_PREPROCESS_LDC_SM_CELLTYPE_DATAFILE_34_FIELD_INDEX_CELLTYPE, CSV_DELIMITER_CHAR, &neuronTypeMap);
@@ -509,25 +509,25 @@ map<string, string> H01indexedCSVdatabasePreprocessClass::calculateNeuronRegionT
 }
 #endif
 #ifdef INDEXED_CSV_DATABASE_ADC
-map<string, string> H01indexedCSVdatabasePreprocessClass::calculateNeuronCoordinatesTypeMap(const string local_connectome_folder_base)
+map<string, string> LCindexedCSVdatabasePreprocessClass::calculateNeuronCoordinatesTypeMap(const string local_connectome_folder_base)
 {
 	return calculateNeuronTypeMap(local_connectome_folder_base, INDEXED_CSV_DATABASE_PREPROCESS_ADC_COORDINATES_DATAFILE_NAME, INDEXED_CSV_DATABASE_PREPROCESS_ADC_COORDINATES_DATAFILE_FIELD_INDEX_ID, INDEXED_CSV_DATABASE_PREPROCESS_ADC_COORDINATES_DATAFILE_FIELD_INDEX_POSITION, CSV_DELIMITER_CHAR);
 }
-map<string, string> H01indexedCSVdatabasePreprocessClass::calculateNeuronNeurotransmitterTypeMap(const string local_connectome_folder_base)
+map<string, string> LCindexedCSVdatabasePreprocessClass::calculateNeuronNeurotransmitterTypeMap(const string local_connectome_folder_base)
 {
 	return calculateNeuronTypeMap(local_connectome_folder_base, INDEXED_CSV_DATABASE_PREPROCESS_ADC_NEURONS_DATAFILE_NAME, INDEXED_CSV_DATABASE_PREPROCESS_ADC_NEURONS_DATAFILE_FIELD_INDEX_ID, INDEXED_CSV_DATABASE_PREPROCESS_ADC_NEURONS_DATAFILE_FIELD_INDEX_NT_TYPE, CSV_DELIMITER_CHAR);
 }
 #endif
-map<string, string> H01indexedCSVdatabasePreprocessClass::calculateNeuronTypeMap(const string local_connectome_folder_base, const string neuronTypesFileName, const int neuronTypeIndex, const int neuronValueIndex, const char delimiter)
+map<string, string> LCindexedCSVdatabasePreprocessClass::calculateNeuronTypeMap(const string local_connectome_folder_base, const string neuronTypesFileName, const int neuronTypeIndex, const int neuronValueIndex, const char delimiter)
 {
 	map<string, string> neuronTypeMap;
 	calculateNeuronTypeMap(local_connectome_folder_base, neuronTypesFileName, neuronTypeIndex, neuronValueIndex, delimiter, &neuronTypeMap);
 	return neuronTypeMap;
 }
 
-void H01indexedCSVdatabasePreprocessClass::calculateNeuronTypeMap(const string local_connectome_folder_base, const string neuronTypesFileName, const int neuronTypeIndex, const int neuronValueIndex, const char delimiter, map<string, string>* neuronTypeMap)
+void LCindexedCSVdatabasePreprocessClass::calculateNeuronTypeMap(const string local_connectome_folder_base, const string neuronTypesFileName, const int neuronTypeIndex, const int neuronValueIndex, const char delimiter, map<string, string>* neuronTypeMap)
 {
-	H01indexedCSVdatabaseOperations.prepareLocalConnectomeDatasetRead(local_connectome_folder_base);
+	LCindexedCSVdatabaseOperations.prepareLocalConnectomeDatasetRead(local_connectome_folder_base);
 	int neuronTypeFileSize = 0;
 	vector<vector<string>> neuronTypeData;
 	bool expectFirstLineHeader = true;

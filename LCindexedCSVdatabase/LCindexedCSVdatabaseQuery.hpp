@@ -1,13 +1,13 @@
 /*******************************************************************************
  *
- * File Name: H01indexedCSVdatabaseQuery.hpp
+ * File Name: LCindexedCSVdatabaseQuery.hpp
  * Author: Richard Bruce Baxter - Copyright (c) 2021-2023 Baxter AI (baxterai.com)
  * License: MIT License
- * Project: H01LocalConnectome
- * Requirements: requires H01 indexed CSV database to have already been generated (see INDEXED_CSV_DATABASE_CREATE: H01indexedCSVdatabaseCreate.cpp/.hpp)
- * Compilation: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Usage: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Description: H01 indexed CSV database query - 
+ * Project: LCLocalConnectome
+ * Requirements: requires LC indexed CSV database to have already been generated (see INDEXED_CSV_DATABASE_CREATE: LCindexedCSVdatabaseCreate.cpp/.hpp)
+ * Compilation: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Usage: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Description: LC indexed CSV database query - 
  *  INDEXED_CSV_DATABASE_QUERY_EXTRACT_INCOMING_OUTGOING_CONNECTIONS: mode 1 (lookup indexed CSV database by neuron ID, and find incoming/outgoing target connections, and write them to file)
  *  INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING: mode 2 (lookup indexed CSV database by neuron ID, find incoming target connections, and generate visualisation)
  *  INDEXED_CSV_DATABASE_QUERY_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET: mode 3 (automatically generate localConnectomeConnections-typesFromPresynapticNeurons.csv/localConnectomeConnections-typesFromEMimages.csv from localConnectomeNeurons.csv and indexed CSV database)
@@ -38,24 +38,24 @@
  *******************************************************************************/
 
 
-#ifndef HEADER_H01indexedCSVdatabaseQuery
-#define HEADER_H01indexedCSVdatabaseQuery
+#ifndef HEADER_LCindexedCSVdatabaseQuery
+#define HEADER_LCindexedCSVdatabaseQuery
 
-#include "H01indexedCSVdatabaseGlobalDefs.hpp"
-#include "H01indexedCSVdatabaseCalculateNeuronLayer.hpp"	//now used universally for local connectome i/o wrapper - not just by INDEXED_CSV_DATABASE_QUERY_LAYERS
-#include "H01indexedCSVdatabaseOperations.hpp"
+#include "LCindexedCSVdatabaseGlobalDefs.hpp"
+#include "LCindexedCSVdatabaseCalculateNeuronLayer.hpp"	//now used universally for local connectome i/o wrapper - not just by INDEXED_CSV_DATABASE_QUERY_LAYERS
+#include "LCindexedCSVdatabaseOperations.hpp"
 #include "SHAREDvars.hpp"
 
 #ifdef INDEXED_CSV_DATABASE_QUERY
 
 
 #ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING
-class H01indexedCSVdatabaseQueryObject
+class LCindexedCSVdatabaseQueryObject
 {
 public:
 
-	H01indexedCSVdatabaseQueryObject(void);
-	~H01indexedCSVdatabaseQueryObject(void);
+	LCindexedCSVdatabaseQueryObject(void);
+	~LCindexedCSVdatabaseQueryObject(void);
 
 	long neuronID;
 	int type;
@@ -74,14 +74,14 @@ public:
 
 
 
-class H01indexedCSVdatabaseQueryClass
+class LCindexedCSVdatabaseQueryClass
 {
 	private: SHAREDvarsClass SHAREDvars;
 	#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_GENERATE_LARGE_MODEL
 	private: SHAREDvectorClass SHAREDvector;
 	#endif
-	private: H01indexedCSVdatabaseOperationsClass H01indexedCSVdatabaseOperations;
-	private: H01indexedCSVdatabaseCalculateNeuronLayerClass H01indexedCSVdatabaseCalculateNeuronLayer;
+	private: LCindexedCSVdatabaseOperationsClass LCindexedCSVdatabaseOperations;
+	private: LCindexedCSVdatabaseCalculateNeuronLayerClass LCindexedCSVdatabaseCalculateNeuronLayer;
 	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS
 	private: void incrementNumberOfConnections(GaussianQuad* gaussianQuad, const vec* posSource, const vec* posTarget, const vec* sourceNeuronCorticalFlowVector);
 	#endif

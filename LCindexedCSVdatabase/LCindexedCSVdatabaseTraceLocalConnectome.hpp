@@ -1,13 +1,13 @@
 /*******************************************************************************
  *
- * File Name: H01indexedCSVdatabaseTraceLocalConnectome.hpp
+ * File Name: LCindexedCSVdatabaseTraceLocalConnectome.hpp
  * Author: Richard Bruce Baxter - Copyright (c) 2021-2023 Baxter AI (baxterai.com)
  * License: MIT License
- * Project: H01LocalConnectome
- * Requirements: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Compilation: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Usage: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Description: H01 indexed CSV database trace local connectome - traces local connectome dataset (saving visualisation)
+ * Project: LCLocalConnectome
+ * Requirements: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Compilation: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Usage: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Description: LC indexed CSV database trace local connectome - traces local connectome dataset (saving visualisation)
  * Input: localConnectomeNeurons.csv / localConnectomeConnectionsX.csv
  * Output Format: SVG (2D) / LDR (3D) [multiple files for video construction]
  * Comments:
@@ -15,22 +15,22 @@
  *******************************************************************************/
 
 
-#ifndef HEADER_H01indexedCSVdatabaseTraceLocalConnectome
-#define HEADER_H01indexedCSVdatabaseTraceLocalConnectome
+#ifndef HEADER_LCindexedCSVdatabaseTraceLocalConnectome
+#define HEADER_LCindexedCSVdatabaseTraceLocalConnectome
 
-#include "H01indexedCSVdatabaseGlobalDefs.hpp"
-#include "H01indexedCSVdatabaseVisualiseLocalConnectome.hpp"
-#include "H01indexedCSVdatabaseCalculateNeuronLayer.hpp"
-#include "H01indexedCSVdatabaseOperations.hpp"
+#include "LCindexedCSVdatabaseGlobalDefs.hpp"
+#include "LCindexedCSVdatabaseVisualiseLocalConnectome.hpp"
+#include "LCindexedCSVdatabaseCalculateNeuronLayer.hpp"
+#include "LCindexedCSVdatabaseOperations.hpp"
 #include "SHAREDvars.hpp"
 
 #ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME
 
-class H01indexedCSVdatabaseTraceLocalConnectomeClass
+class LCindexedCSVdatabaseTraceLocalConnectomeClass
 {
-	private: H01indexedCSVdatabaseVisualiseLocalConnectomeClass H01indexedCSVdatabaseVisualiseLocalConnectome;
-	private: H01indexedCSVdatabaseCalculateNeuronLayerClass H01indexedCSVdatabaseCalculateNeuronLayer;
-	private: H01indexedCSVdatabaseOperationsClass H01indexedCSVdatabaseOperations;
+	private: LCindexedCSVdatabaseVisualiseLocalConnectomeClass LCindexedCSVdatabaseVisualiseLocalConnectome;
+	private: LCindexedCSVdatabaseCalculateNeuronLayerClass LCindexedCSVdatabaseCalculateNeuronLayer;
+	private: LCindexedCSVdatabaseOperationsClass LCindexedCSVdatabaseOperations;
 	private: SHAREDvarsClass SHAREDvars;
 	
 	public: bool traceLocalConnectomeCSVdataset(const string local_connectome_folder_base);

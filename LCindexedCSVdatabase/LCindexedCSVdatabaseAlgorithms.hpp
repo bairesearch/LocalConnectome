@@ -1,21 +1,21 @@
 /*******************************************************************************
  *
- * File Name: H01indexedCSVdatabaseAlgorithms.hpp
+ * File Name: LCindexedCSVdatabaseAlgorithms.hpp
  * Author: Richard Bruce Baxter - Copyright (c) 2021-2023 Baxter AI (baxterai.com)
  * License: MIT License
- * Project: H01LocalConnectome
- * Requirements: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Compilation: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Usage: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Description: H01 indexed CSV database algorithms
+ * Project: LCLocalConnectome
+ * Requirements: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Compilation: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Usage: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Description: LC indexed CSV database algorithms
  * Comments:
  * /
  *******************************************************************************/
 
-#ifndef HEADER_H01indexedCSVdatabaseAlgorithms
-#define HEADER_H01indexedCSVdatabaseAlgorithms
+#ifndef HEADER_LCindexedCSVdatabaseAlgorithms
+#define HEADER_LCindexedCSVdatabaseAlgorithms
 
-#include "H01indexedCSVdatabaseGlobalDefs.hpp"
+#include "LCindexedCSVdatabaseGlobalDefs.hpp"
 
 #include <Eigen/Core>
 #include <Eigen/Dense>
@@ -67,12 +67,12 @@
 #include <stdexcept>
 #include "SHAREDvars.hpp"
 
-class H01indexedCSVdatabaseAlgorithmsFit
+class LCindexedCSVdatabaseAlgorithmsFit
 {
 public:
 
-	H01indexedCSVdatabaseAlgorithmsFit(void);
-	~H01indexedCSVdatabaseAlgorithmsFit(void);
+	LCindexedCSVdatabaseAlgorithmsFit(void);
+	~LCindexedCSVdatabaseAlgorithmsFit(void);
 
 	#ifdef INDEXED_CSV_DATABASE_QUERY_PERFORM_INCOMING_AXON_MAPPING_2D_POLY_REGRESSION
 	double calculatePoly(int xx);

@@ -1,26 +1,26 @@
 /*******************************************************************************
  *
- * File Name: H01indexedCSVdatabaseTraceLocalConnectome.cpp
+ * File Name: LCindexedCSVdatabaseTraceLocalConnectome.cpp
  * Author: Richard Bruce Baxter - Copyright (c) 2021-2023 Baxter AI (baxterai.com)
  * License: MIT License
- * Project: H01LocalConnectome
- * Requirements: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Compilation: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Usage: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Description: H01 indexed CSV database trace local connectome - traces local connectome dataset (saving visualisation)
+ * Project: LCLocalConnectome
+ * Requirements: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Compilation: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Usage: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Description: LC indexed CSV database trace local connectome - traces local connectome dataset (saving visualisation)
  * Input: localConnectomeNeurons.csv / localConnectomeConnectionsX.csv
  * Output Format: SVG (2D) / LDR (3D) [multiple files for video construction]
  * Comments:
  * /
  *******************************************************************************/
 
-#include "H01indexedCSVdatabaseTraceLocalConnectome.hpp"
+#include "LCindexedCSVdatabaseTraceLocalConnectome.hpp"
 
 #ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME
 
 int traceIterationIndexSubMax = 0;
 
-bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdataset(const string local_connectome_folder_base)
+bool LCindexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdataset(const string local_connectome_folder_base)
 {
 	#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS
 	this->traceLocalConnectomeCSVdatasetFile(local_connectome_folder_base, READ_FILE_TRUE, LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS, QUERY_POSTSYNAPTIC_CONNECTION_NEURONS, WRITE_FILE_TRUE, APPEND_FILE_FALSE, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS, CONNECTION_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS);
@@ -32,7 +32,7 @@ bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdata
 
 
 
-bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdatasetFile(const string local_connectome_folder_base, const bool datasetRead, const string neuronDatasetFileNameRead, const string connectionDatasetFileNameRead, const bool queryPresynapticConnectionNeurons, const bool connectionDatasetWrite, const bool appendToFile, const string connectionDatasetFileNameWrite, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
+bool LCindexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdatasetFile(const string local_connectome_folder_base, const bool datasetRead, const string neuronDatasetFileNameRead, const string connectionDatasetFileNameRead, const bool queryPresynapticConnectionNeurons, const bool connectionDatasetWrite, const bool appendToFile, const string connectionDatasetFileNameWrite, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
 {
 	bool result = true;
 		
@@ -53,7 +53,7 @@ bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdata
 	bool readLayers = true; 
 	bool readLayersConnections = true;
 
-	if(!H01indexedCSVdatabaseCalculateNeuronLayer.readLocalNeuronsAndConnections(local_connectome_folder_base, neuronDatasetFileNameRead, true, &neuronList, &neuronMap, &localConnectomeCSVdatasetNeurons, readConnections, connectionDatasetFileNameRead, &localConnectomeCSVdatasetConnections, buildConnectionsMap, &connectionsMap, readLayers, readLayersConnections))
+	if(!LCindexedCSVdatabaseCalculateNeuronLayer.readLocalNeuronsAndConnections(local_connectome_folder_base, neuronDatasetFileNameRead, true, &neuronList, &neuronMap, &localConnectomeCSVdatasetNeurons, readConnections, connectionDatasetFileNameRead, &localConnectomeCSVdatasetConnections, buildConnectionsMap, &connectionsMap, readLayers, readLayersConnections))
 	{
 		result = false;
 	}
@@ -84,11 +84,11 @@ bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdata
 	return result;
 }
 
-bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdataset(const string local_connectome_folder_base, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, map<string, int>* neuronMap, map<string, int>* connectionsMap, const bool queryPresynapticConnectionNeurons, const bool connectionDatasetWrite, const bool appendToFile, const int traceIterationIndex, const string connectionDatasetFileNameWrite, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, const bool layerIndexEnforcement, const int layerIndex)
+bool LCindexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdataset(const string local_connectome_folder_base, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, map<string, int>* neuronMap, map<string, int>* connectionsMap, const bool queryPresynapticConnectionNeurons, const bool connectionDatasetWrite, const bool appendToFile, const int traceIterationIndex, const string connectionDatasetFileNameWrite, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, const bool layerIndexEnforcement, const int layerIndex)
 {
 	bool result = true;
 		
-	//cout << "\nH01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdataset: traceIterationIndex = " << traceIterationIndex << endl;
+	//cout << "\nLCindexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdataset: traceIterationIndex = " << traceIterationIndex << endl;
 	
 	//perform trace: update neuron trace;
 	for(int i=0; i<localConnectomeCSVdatasetNeurons->size(); i++)
@@ -295,7 +295,7 @@ bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdata
 	return result;
 }
 
-bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdatasetHighlight(
+bool LCindexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdatasetHighlight(
 	const bool drawConnectionExcitatory, const bool drawConnectionInhibitory, const bool highlightConnectionExcitatory, const bool highlightConnectionInhibitory, const bool markConnectionExcitatory, const bool markConnectionInhibitory, 
 	const bool drawTargetExcitatory, const bool drawTargetInhibitory, const bool highlightTargetExcitatory, const bool highlightTargetInhibitory, const bool markTargetExcitatory, const bool markTargetInhibitory, 
 	const bool drawTargetOfExcitatoryConnection, const bool drawTargetOfInhibitoryConnection, const bool highlightTargetOfExcitatoryConnection, const bool highlightTargetOfInhibitoryConnection, const bool markTargetOfExcitatoryConnection, const bool markTargetOfInhibitoryConnection, const bool markInhibitedNeurons, const bool markExcitedNeurons, 
@@ -527,11 +527,11 @@ bool H01indexedCSVdatabaseTraceLocalConnectomeClass::traceLocalConnectomeCSVdata
 	int traceIterationIndexVisualisation = traceIterationIndex*traceIterationIndexSubMax + traceIterationIndexSub;
 	
 	#ifdef LOCAL_CONNECTOME_VISUALISATION_2D_SVG
-	H01indexedCSVdatabaseVisualiseLocalConnectome.visualiseLocalConnectomeCSVdataset(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, true, localConnectomeCSVdatasetNeurons, localConnectomeCSVdatasetConnections, visualiseTrace, traceIterationIndexVisualisation);
+	LCindexedCSVdatabaseVisualiseLocalConnectome.visualiseLocalConnectomeCSVdataset(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, true, localConnectomeCSVdatasetNeurons, localConnectomeCSVdatasetConnections, visualiseTrace, traceIterationIndexVisualisation);
 	#endif
 	#ifndef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME_EMULATE_PUBLICATION_INFORMATION_FLOW_THROUGH_THE_H01_NETWORK
 	#ifdef LOCAL_CONNECTOME_VISUALISATION_3D_LDR
-	H01indexedCSVdatabaseVisualiseLocalConnectome.visualiseLocalConnectomeCSVdataset(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, false, localConnectomeCSVdatasetNeurons, localConnectomeCSVdatasetConnections, visualiseTrace, traceIterationIndexVisualisation);
+	LCindexedCSVdatabaseVisualiseLocalConnectome.visualiseLocalConnectomeCSVdataset(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, false, localConnectomeCSVdatasetNeurons, localConnectomeCSVdatasetConnections, visualiseTrace, traceIterationIndexVisualisation);
 	#endif
 	#endif
 	

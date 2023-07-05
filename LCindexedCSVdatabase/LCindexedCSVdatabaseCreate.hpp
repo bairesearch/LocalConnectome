@@ -1,27 +1,27 @@
 /*******************************************************************************
  *
- * File Name: H01indexedCSVdatabaseCreate.hpp
+ * File Name: LCindexedCSVdatabaseCreate.hpp
  * Author: Richard Bruce Baxter - Copyright (c) 2021-2023 Baxter AI (baxterai.com)
  * License: MIT License
- * Project: H01LocalConnectome
- * Requirements: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Compilation: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Usage: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Description: H01 indexed CSV database create - convert C3 Synaptic connections Avro Json To indexed CSV database (indexed by pre/postsynaptic neuron ID)
+ * Project: LCLocalConnectome
+ * Requirements: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Compilation: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Usage: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Description: LC indexed CSV database create - convert C3 Synaptic connections Avro Json To indexed CSV database (indexed by pre/postsynaptic neuron ID)
  * Input: C3 Synaptic connections database (gs://h01-release/data/20210601/c3/synapses/exported/json)
  * Output Format: ssddata/indexed/123/csvPreSynapticNeuronID123456.csv - presynapticSiteNeuronID, postsynapticSiteNeuronID, presynapticSiteType, postsynapticSiteType, presynapticSiteClassLabel, postsynapticSiteClassLabel, presynapticSiteBaseNeuronID, postsynapticSiteBaseNeuronID, synapseLocationXcoordinates, synapseLocationYcoordinates, synapseLocationZcoordinates, synapseType
  * Comments:
  * /
  *******************************************************************************/
 
-#ifndef HEADER_H01indexedCSVdatabaseCreate
-#define HEADER_H01indexedCSVdatabaseCreate
+#ifndef HEADER_LCindexedCSVdatabaseCreate
+#define HEADER_LCindexedCSVdatabaseCreate
 
-#include "H01indexedCSVdatabaseGlobalDefs.hpp"
+#include "LCindexedCSVdatabaseGlobalDefs.hpp"
 #include "SHAREDvars.hpp"
 
 #ifdef INDEXED_CSV_DATABASE_CREATE
-class H01indexedCSVdatabaseCreateClass
+class LCindexedCSVdatabaseCreateClass
 {
 	private: SHAREDvarsClass SHAREDvars;
 

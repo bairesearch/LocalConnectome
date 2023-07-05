@@ -1,25 +1,25 @@
 /*******************************************************************************
  *
- * File Name: H01indexedCSVdatabaseCreate.cpp
+ * File Name: LCindexedCSVdatabaseCreate.cpp
  * Author: Richard Bruce Baxter - Copyright (c) 2021-2023 Baxter AI (baxterai.com)
  * License: MIT License
- * Project: H01LocalConnectome
- * Requirements: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Compilation: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Usage: see H01indexedCSVdatabaseGlobalDefs.hpp
- * Description: H01 indexed CSV database create - convert C3 Synaptic connections Avro Json To indexed CSV database (indexed by pre/postsynaptic neuron ID)
+ * Project: LCLocalConnectome
+ * Requirements: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Compilation: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Usage: see LCindexedCSVdatabaseGlobalDefs.hpp
+ * Description: LC indexed CSV database create - convert C3 Synaptic connections Avro Json To indexed CSV database (indexed by pre/postsynaptic neuron ID)
  * Input: C3 Synaptic connections database (gs://h01-release/data/20210601/c3/synapses/exported/json)
  * Output Format: ssddata/indexed/123/csvPreSynapticNeuronID123456.csv - presynapticSiteNeuronID, postsynapticSiteNeuronID, presynapticSiteType, postsynapticSiteType, presynapticSiteClassLabel, postsynapticSiteClassLabel, presynapticSiteBaseNeuronID, postsynapticSiteBaseNeuronID, synapseLocationXcoordinates, synapseLocationYcoordinates, synapseLocationZcoordinates, synapseType
  * Comments:
  * /
  *******************************************************************************/
 
-#include "H01indexedCSVdatabaseCreate.hpp"
+#include "LCindexedCSVdatabaseCreate.hpp"
 
 #ifdef INDEXED_CSV_DATABASE_CREATE
 
 
-bool H01indexedCSVdatabaseCreateClass::createIndexedCSVdatabase(const string avro_json_database_folder, const string indexed_csv_database_folder)
+bool LCindexedCSVdatabaseCreateClass::createIndexedCSVdatabase(const string avro_json_database_folder, const string indexed_csv_database_folder)
 {
 	bool result = true;
 	
@@ -206,7 +206,7 @@ bool H01indexedCSVdatabaseCreateClass::createIndexedCSVdatabase(const string avr
 	return result;
 }	
 
-bool H01indexedCSVdatabaseCreateClass::addSynapseToCSVdatabase(string indexed_csv_database_folder, const string neuronIDcontents, const string* csvText, const string* rawText, const bool indexByPresynapticNeuron)
+bool LCindexedCSVdatabaseCreateClass::addSynapseToCSVdatabase(string indexed_csv_database_folder, const string neuronIDcontents, const string* csvText, const string* rawText, const bool indexByPresynapticNeuron)
 {
 	bool result = true;
 	
@@ -282,7 +282,7 @@ bool H01indexedCSVdatabaseCreateClass::addSynapseToCSVdatabase(string indexed_cs
 	return result;
 }
 				
-string H01indexedCSVdatabaseCreateClass::findJsonFieldValue1(const string* currentLineText, const string jsonFieldName, bool lastInstance, const bool jsonFieldValueStringDelimiter, const string jsonFieldValueEndDelimiter)
+string LCindexedCSVdatabaseCreateClass::findJsonFieldValue1(const string* currentLineText, const string jsonFieldName, bool lastInstance, const bool jsonFieldValueStringDelimiter, const string jsonFieldValueEndDelimiter)
 {
 	int searchStartPos = 0;
 	if(lastInstance)
@@ -292,12 +292,12 @@ string H01indexedCSVdatabaseCreateClass::findJsonFieldValue1(const string* curre
 	int jsonFieldNameIndex = CPP_STRING_FIND_RESULT_FAIL_VALUE2;
 	return this->findJsonFieldValue3(currentLineText, jsonFieldName, lastInstance, searchStartPos, &jsonFieldNameIndex, jsonFieldValueStringDelimiter, jsonFieldValueEndDelimiter);
 }
-string H01indexedCSVdatabaseCreateClass::findJsonFieldValue2(const string* currentLineText, const string jsonFieldName, bool lastInstance, const int searchStartPos, const bool jsonFieldValueStringDelimiter, const string jsonFieldValueEndDelimiter)
+string LCindexedCSVdatabaseCreateClass::findJsonFieldValue2(const string* currentLineText, const string jsonFieldName, bool lastInstance, const int searchStartPos, const bool jsonFieldValueStringDelimiter, const string jsonFieldValueEndDelimiter)
 {
 	int jsonFieldNameIndex = CPP_STRING_FIND_RESULT_FAIL_VALUE2;
 	return this->findJsonFieldValue3(currentLineText, jsonFieldName, lastInstance, searchStartPos, &jsonFieldNameIndex, jsonFieldValueStringDelimiter, jsonFieldValueEndDelimiter);
 }
-string H01indexedCSVdatabaseCreateClass::findJsonFieldValue3(const string* currentLineText, const string jsonFieldName, bool lastInstance, const int searchStartPos, int* jsonFieldNameIndex, const bool jsonFieldValueStringDelimiter, const string jsonFieldValueEndDelimiter)
+string LCindexedCSVdatabaseCreateClass::findJsonFieldValue3(const string* currentLineText, const string jsonFieldName, bool lastInstance, const int searchStartPos, int* jsonFieldNameIndex, const bool jsonFieldValueStringDelimiter, const string jsonFieldValueEndDelimiter)
 {
 	string jsonFieldContents = "";
 	
