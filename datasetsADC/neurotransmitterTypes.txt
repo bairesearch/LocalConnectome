@@ -1,7 +1,7 @@
 neurotransmitterType	excitationType
-ACH	1
+ACH	2
 GLUT	1
-GABA	1
-DA	1
-SER	1
-OCT	1
+GABA	0
+DA	2
+SER	2
+OCT	3

@@ -131,10 +131,10 @@ preprocess mode 2 - INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_NE
 ./H01indexedCSVdatabase.exe -mode 2 -query 6 -indexed_csv_database_folder "/media/user/ssddata/indexed"
 ./H01indexedCSVdatabase.exe -mode 3
 ./H01indexedCSVdatabase.exe -mode 4
-./H01indexedCSVdatabase.exe -mode 5 -read 1 -indexed_csv_database_folder "/media/user/ssddata/indexed"
-./H01indexedCSVdatabase.exe -mode 5 -read 2 -indexed_csv_database_folder "/media/user/ssddata/indexed"
-./H01indexedCSVdatabase.exe -mode 6 -preprocess 1 -indexed_csv_database_folder "/media/user/ssddata/indexed"
-./H01indexedCSVdatabase.exe -mode 6 -preprocess 2 -indexed_csv_database_folder "/media/user/ssddata/indexed"
+./H01indexedCSVdatabase.exe -mode 5 -read 1
+./H01indexedCSVdatabase.exe -mode 5 -read 2
+./H01indexedCSVdatabase.exe -mode 6 -preprocess 1
+./H01indexedCSVdatabase.exe -mode 6 -preprocess 2
 ```
 
 ### Development notes
@@ -219,13 +219,13 @@ H01indexedCSVdatabaseReadLocalConnectome.cpp/.hpp (execution mode 6: INDEXED_CSV
 
  * Description: H01 indexed CSV database read local connectome - read local connectome dataset
  * Input: 
- 	#ifdef INDEXED_CSV_DATABASE_LDC
+#ifdef INDEXED_CSV_DATABASE_LDC
      * INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET: aa_connectivity_matrix.csv/ad_connectivity_matrix.csv/da_connectivity_matrix.csv/dd_connectivity_matrix.csv
      * INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_NEURONS_DATASET: skeleton[SKID].swc, science.add9330_data_s2.csv/science.add9330_data_s3.csv/science.add9330_data_s4.csv, inputs.csv
-	#elif defined INDEXED_CSV_DATABASE_ADC
+#elif defined INDEXED_CSV_DATABASE_ADC
      * INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET: connections.csv, neurons.csv
      * INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_NEURONS_DATASET: neurons.csv, coordinates.csv
-	#endif
+#endif
 	
 
  * Output:

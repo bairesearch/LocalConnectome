@@ -77,7 +77,7 @@ bool H01indexedCSVdatabaseOperationsClass::convertLocalConnectomeSomasCSVdataset
 		{
 			//"unclassified", "NULL"
 			layerIndex = 0;
-			//cerr << "LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_LAYERS: H01indexedCSVdatabaseOperationsClass::readLocalConnectomeNeuronsCSVdataset error: !textInTextArray, layerIndex name unknown; layerString = " << layerString << endl;
+			//cerr << "LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_LAYERS: H01indexedCSVdatabaseOperationsClass::convertLocalConnectomeSomasCSVdataset error: !textInTextArray, layerIndex name unknown; layerString = " << layerString << endl;
 		}
 		//cout << "layerIndex = " << layerIndex << endl;
 		#else
@@ -145,9 +145,28 @@ bool H01indexedCSVdatabaseOperationsClass::convertLocalConnectomeSomasCSVdataset
 #endif
 
 bool H01indexedCSVdatabaseOperationsClass::readLocalConnectomeNeuronsCSVdataset(const string LocalConnectomeCSVdatasetFileName, vector<vector<string>>* localConnectomeNeuronsCSVdataset, int* localConnectomeNeuronsCSVdatasetSize, vector<string>* neuronList, map<string, int>* neuronMap)
-{
+{	
 	SHAREDvars.getLinesFromFileCSV(LocalConnectomeCSVdatasetFileName, localConnectomeNeuronsCSVdataset, localConnectomeNeuronsCSVdatasetSize, CSV_DELIMITER_CHAR, true);
 
+	#ifdef INDEXED_CSV_DATABASE_DC_ENFORCE_EXCITATORYINHIBITORY_NEURONS_CONNECTIONS
+	for(int i=0; i<localConnectomeNeuronsCSVdataset->size(); i++)
+	{	
+		vector<string>* localConnectomeNeuron = &((*localConnectomeNeuronsCSVdataset)[i]);
+		int neuronExcitationType = SHAREDvars.convertStringToInt((*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE]);
+		if((neuronExcitationType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_EITHER) || (neuronExcitationType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN))
+		{
+			#ifdef INDEXED_CSV_DATABASE_DC_ENFORCE_EXCITATORYINHIBITORY_NEURONS_CONNECTIONS_FILTER
+			(*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE] = INDEXED_CSV_DATABASE_DC_ENFORCE_EXCITATORYINHIBITORY_NEURONS_CONVERT_TYPE;
+			/*//do not filter neurons by type as they may have incoming/outgoing connections
+			localConnectomeNeuronsCSVdataset->erase(localConnectomeNeuronsCSVdataset->begin() + i);	i--;
+			*/
+			#elif defined INDEXED_CSV_DATABASE_DC_ENFORCE_EXCITATORYINHIBITORY_NEURONS_CONNECTIONS_CONVERT
+			(*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE] = INDEXED_CSV_DATABASE_DC_ENFORCE_EXCITATORYINHIBITORY_NEURONS_CONVERT_TYPE;
+			#endif
+		}
+	}
+	#endif
+	
 	for(int i=0; i<localConnectomeNeuronsCSVdataset->size(); i++)
 	{
 		vector<string>* localConnectomeNeuron = &((*localConnectomeNeuronsCSVdataset)[i]);
@@ -155,11 +174,9 @@ bool H01indexedCSVdatabaseOperationsClass::readLocalConnectomeNeuronsCSVdataset(
 		//populate neuronList;
 		string neuronID = (*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_NEURON_ID];
 		//cout << "neuronID = " << neuronID << endl;
-		neuronList->push_back(neuronID);		
+		neuronList->push_back(neuronID);
 	}
-	
-	cout << "neuronList->size() = " << neuronList->size() << endl;
-		
+			
 	#ifdef INDEXED_CSV_DATABASE_QUERY_EFFICIENT_STORE_NEURON_IDS_IN_MAP
 	//populate neuronMap;
 	for(int i=0; i < neuronList->size(); i++)
@@ -177,6 +194,36 @@ bool H01indexedCSVdatabaseOperationsClass::readLocalConnectomeConnectionsCSVdata
 {
 	SHAREDvars.getLinesFromFileCSV(LocalConnectomeCSVdatasetFileName, localConnectomeConnectionsCSVdataset, localConnectomeConnectionsCSVdatasetSize, CSV_DELIMITER_CHAR, true);
 
+	#ifdef INDEXED_CSV_DATABASE_DC_ENFORCE_EXCITATORYINHIBITORY_NEURONS_CONNECTIONS
+	#ifdef INDEXED_CSV_DATABASE_DC_ENFORCE_EXCITATORYINHIBITORY_NEURONS_CONNECTIONS_FILTER
+	vector<vector<string>> localConnectomeConnectionsCSVdatasetCulled;
+	#endif
+	for(int i=0; i<localConnectomeConnectionsCSVdataset->size(); i++)
+	{	
+		vector<string>* localConnectomeConnection = &((*localConnectomeConnectionsCSVdataset)[i]);
+		int neuronExcitationType = SHAREDvars.convertStringToInt((*localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE]);
+		if((neuronExcitationType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_EITHER) || (neuronExcitationType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN))
+		{
+			#ifdef INDEXED_CSV_DATABASE_DC_ENFORCE_EXCITATORYINHIBITORY_NEURONS_CONNECTIONS_FILTER
+			//cout << "remove neuron from localConnectomeSomasCSVdataset" << endl;	//remove neuron from localConnectomeSomasCSVdataset
+			//localConnectomeConnectionsCSVdataset->erase(localConnectomeConnectionsCSVdataset->begin() + i);	i--;	//slow erase
+			#elif defined INDEXED_CSV_DATABASE_DC_ENFORCE_EXCITATORYINHIBITORY_NEURONS_CONNECTIONS_CONVERT
+			(*localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE] = INDEXED_CSV_DATABASE_DC_ENFORCE_EXCITATORYINHIBITORY_CONNECTIONS_CONVERT_TYPE;
+			#endif
+		}
+		else
+		{
+			#ifdef INDEXED_CSV_DATABASE_DC_ENFORCE_EXCITATORYINHIBITORY_NEURONS_CONNECTIONS_FILTER
+			localConnectomeConnectionsCSVdatasetCulled.push_back(*localConnectomeConnection);
+			#endif
+		}
+	}
+	#ifdef INDEXED_CSV_DATABASE_DC_ENFORCE_EXCITATORYINHIBITORY_NEURONS_CONNECTIONS_FILTER
+	//localConnectomeConnectionsCSVdataset = new (localConnectomeConnectionsCSVdataset) vector<vector<string>>;
+	*localConnectomeConnectionsCSVdataset = localConnectomeConnectionsCSVdatasetCulled;
+	#endif
+	#endif
+		
 	if(buildConnectionsMap)
 	{
 		for(int i=0; i < localConnectomeConnectionsCSVdataset->size(); i++)

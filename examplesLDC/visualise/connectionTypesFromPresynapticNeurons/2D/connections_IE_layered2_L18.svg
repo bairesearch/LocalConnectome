@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Created with matplotlib (https://matplotlib.org/) -->
-<svg height="1000pt" version="1.1" viewBox="0 0 1000 1000" width="1000pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg height="4000pt" version="1.1" viewBox="0 0 4000 4000" width="4000pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
  <metadata>
   <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
@@ -21,7 +21,7 @@
  </defs>
  <g id="figure_1">
   <g id="patch_1">
-   <path d="M 0 1000  L 1000 1000  L 1000 0  L 0 0  z "/>
+   <path d="M 0 4000  L 4000 4000  L 4000 0  L 0 0  z "/>
   </g>
   <g id="axes_1">
    <g id="PathCollection_1">

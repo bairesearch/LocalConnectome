@@ -570,8 +570,11 @@ bool H01indexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectom
 		}
 		#endif
 		
-		
+		#ifdef LOCAL_CONNECTOME_VISUALISATION_DRAW_CONNECTIONS_FOR_INDIVIDUAL_SYNAPSES
 		int numberOfSynapses = SHAREDvars.convertStringToInt(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_SYN_NUM]);
+		#else
+		int numberOfSynapses = 1;
+		#endif
 		for(int s=0; s<numberOfSynapses; s++)
 		{
 			bool passLayerVisualisationChecks = true;
