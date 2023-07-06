@@ -37,7 +37,7 @@ extern string currentDirectory;
 //#define INDEXED_CSV_DATABASE_LDC	//larvalDrosophilaConnectome (local connectome analysis only)
 //#define INDEXED_CSV_DATABASE_ADC	//adultDrosophilaConnectome (local connectome analysis only)
 
-//#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_REDUNDANT_DEPRECIATED	//support depreciated functionality
+//#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_REDUNDANT_DEPRECIATED	//support depreciated functionality	//localConnectomeConnections.csv LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD contain PRE+POST X/Y/Z/TYPE
 
 #if defined INDEXED_CSV_DATABASE_LDC || defined INDEXED_CSV_DATABASE_ADC
 	#define INDEXED_CSV_DATABASE_DC
@@ -385,7 +385,7 @@ extern string currentDirectory;
 	#define INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_CONNECTIONS_EXCITATION_TYPE	//generate excitationType for connections based on presynaptic neuron type
 	#define INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_CONNECTIONS_EXCITATION_TYPE_UNKNOWN (LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN)
 	#define INDEXED_CSV_DATABASE_DC_CALIBRATION_ALIGN_WITH_H01	//align with H01 visualisations; 4000x4000 pixels (else 1000x1000 pixels)
-	#define INDEXED_CSV_DATABASE_LDC_NEURON_TYPES_REFORMAT	//change all Xs to X neuron type (e.g. PNs -> PN) - neuronTypesCreation-INDEXED_CSV_DATABASE_LDC_NEURON_TYPES_REFORMAT
+	#define INDEXED_CSV_DATABASE_LDC_NEURON_TYPES_REFORMAT	//change all Xs to X neuron type (e.g. PNs -> PN) - neuronTypesCreation-INDEXED_CSV_DATABASE_LDC_NEURON_TYPES_REFORMAT	//mandatory
 	//#define INDEXED_CSV_DATABASE_DC_NEURON_LAYERS_REUSE_H01_TEMPLATES	//layers are interpreted as specific neuronTypes (for visualisation only)	//mapped to INDEXED_CSV_DATABASE_H01 layers to reuse H01 templates
 	//#define INDEXED_CSV_DATABASE_LDC_DISABLE_2D_VISUALISATIONS	//LDC connectome is not designed for 2D X/Y visualisation
 	
@@ -437,7 +437,7 @@ extern string currentDirectory;
 	#define INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_CONNECTIONS_EXCITATION_TYPE	//mandatory (implied)	//generate excitationType for connections based on presynaptic neuron type
 	#define INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_CONNECTIONS_EXCITATION_TYPE_UNKNOWN (LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN)
 	#define INDEXED_CSV_DATABASE_DC_CALIBRATION_ALIGN_WITH_H01	//align with H01 visualisations; 4000x4000 pixels (else 1000x1000 pixels)
-	#define INDEXED_CSV_DATABASE_DC_NEURON_LAYERS_REUSE_H01_TEMPLATES	//layers are interpreted as specific neuronRegions (for visualisation only)	//mapped to INDEXED_CSV_DATABASE_H01 layers to reuse H01 templates
+	//#define INDEXED_CSV_DATABASE_DC_NEURON_LAYERS_REUSE_H01_TEMPLATES	//layers are interpreted as specific neuronRegions (for visualisation only)	//mapped to INDEXED_CSV_DATABASE_H01 layers to reuse H01 templates
 	//#define INDEXED_CSV_DATABASE_LDC_DISABLE_2D_VISUALISATIONS	//LDC connectome is not designed for 2D X/Y visualisation
 	
 	#define INDEXED_CSV_DATABASE_QUERY_LOCAL_ONLY	//no external (csv database) query
@@ -445,9 +445,10 @@ extern string currentDirectory;
 	#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS	//optional //independently count the connections within the local connectome connections dataset (layer to layer matrix)	//compare local connectome counts against counts from https://www.biorxiv.org/content/10.1101/2021.05.29.446289v3/v4 Supplementary Table 5. Summary of Machine Learning-identified connections	//added 7 December 2021
 
 	#ifdef INDEXED_CSV_DATABASE_PREPROCESS
-		#define INDEXED_CSV_DATABASE_PREPROCESS_ADC_NEUROPIL_TYPES_FILE_NAME "neuropilTypes.txt"	//list of neuropilTypes (connection regionTypes)
-		#define INDEXED_CSV_DATABASE_PREPROCESS_ADC_GROUP_TYPES_FILE_NAME "groupTypes.txt"	//list of groupTypes (neuron regionTypes)
-		#define INDEXED_CSV_DATABASE_PREPROCESS_LAYERS_FILE_NAME (INDEXED_CSV_DATABASE_PREPROCESS_ADC_GROUP_TYPES_FILE_NAME)	//CHECKTHIS - consider INDEXED_CSV_DATABASE_PREPROCESS_ADC_NEUROPIL_TYPES_FILE_NAME
+		//#define INDEXED_CSV_DATABASE_PREPROCESS_ADC_NEUROPIL_TYPES_FILE_NAME "neuropilTypes.txt"	//list of neuropilTypes (connection regionTypes; format: groupNeuropilType_L/_R hemisphere)
+		//#define INDEXED_CSV_DATABASE_PREPROCESS_ADC_GROUP_TYPES_FILE_NAME "groupTypes.txt"	//list of groupTypes (neuron regionTypes; format: inputGroupNeuropilType.outputGroupNeuropilType region)
+		#define INDEXED_CSV_DATABASE_PREPROCESS_ADC_GROUP_NEUROPIL_TYPES_FILE_NAME "groupNeuropilTypes.txt"	//list of groupNeuropilTypes (neuron regionTypes)
+		#define INDEXED_CSV_DATABASE_PREPROCESS_LAYERS_FILE_NAME (INDEXED_CSV_DATABASE_PREPROCESS_ADC_GROUP_NEUROPIL_TYPES_FILE_NAME)
 		#define INDEXED_CSV_DATABASE_PREPROCESS_ADC_GROUP_TYPES_FIELD_INDEX_GROUPTYPE (0)
 		//#define INDEXED_CSV_DATABASE_PREPROCESS_ADC_GROUP_TYPES_FIELD_INDEX_EXCITATIONTYPE (1)
 		
@@ -1412,7 +1413,14 @@ extern string currentDirectory;
 					#define CORTICAL_LAYER_NUMBER_OF_LAYERS (25)	//number of neuronTypes + LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_TYPE_UNKNOWN //(91)	//OLD: Connectivity-based clustering reveals 90 distinct types of brain neurons
 				#endif
 			#elif defined INDEXED_CSV_DATABASE_ADC
-				#define CORTICAL_LAYER_NUMBER_OF_LAYERS (634)	//not currently supported (too many regions); use INDEXED_CSV_DATABASE_DC_NEURON_LAYERS_REUSE_H01_TEMPLATES instead
+				#define CORTICAL_LAYER_NUMBER_OF_LAYERS (45)	//45 groupNeuropils (brain regions), 79 neuropils, 634 unique neuron groups
+				#define INDEXED_CSV_DATABASE_ADC_NEURON_LAYERS_GROUP_NEUROPIL_IO	
+				#ifdef INDEXED_CSV_DATABASE_ADC_NEURON_LAYERS_GROUP_NEUROPIL_IO
+					#define INDEXED_CSV_DATABASE_ADC_NEURON_LAYERS_GROUP_NEUROPIL_IO_USE_INPUT	//use input neuropil region of neuron (where input/output region differ) to classify neuron 'layer'	//else use output neuropil region
+					#define INDEXED_CSV_DATABASE_ADC_NEURON_LAYERS_GROUP_NEUROPIL_IO_DELIMITER '.'
+					#define INDEXED_CSV_DATABASE_ADC_NEURON_LAYERS_GROUP_NEUROPIL_IO_INDEX_INPUT (0)
+					#define INDEXED_CSV_DATABASE_ADC_NEURON_LAYERS_GROUP_NEUROPIL_IO_INDEX_OUTPUT (1)
+				#endif
 			#endif
 		#endif
 		#define CORTICAL_LAYER_UNKNOWN (0)

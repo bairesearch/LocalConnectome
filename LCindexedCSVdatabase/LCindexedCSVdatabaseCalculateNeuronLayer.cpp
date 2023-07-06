@@ -634,7 +634,23 @@ void LCindexedCSVdatabaseCalculateNeuronLayerClass::calculateNeuronLayersDC(vect
 		//cout << "neuronX = " << neuronX << endl;
 		//cout << "neuronY = " << neuronY << endl;
 		string neuronType = (*localNeuronCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
-	
+		
+		#ifdef INDEXED_CSV_DATABASE_ADC_NEURON_LAYERS_GROUP_NEUROPIL_IO
+		vector<string> groupNeuropilIO = SHAREDvars.getVectorFromListString(neuronType, INDEXED_CSV_DATABASE_ADC_NEURON_LAYERS_GROUP_NEUROPIL_IO_DELIMITER, false);
+		if(groupNeuropilIO.size() > 0)
+		{
+			#ifdef INDEXED_CSV_DATABASE_ADC_NEURON_LAYERS_GROUP_NEUROPIL_IO_USE_INPUT
+			neuronType = groupNeuropilIO[INDEXED_CSV_DATABASE_ADC_NEURON_LAYERS_GROUP_NEUROPIL_IO_INDEX_INPUT];
+			#else
+			neuronType = groupNeuropilIO[INDEXED_CSV_DATABASE_ADC_NEURON_LAYERS_GROUP_NEUROPIL_IO_INDEX_OUTPUT];
+			#endif
+		}
+		else
+		{
+			neuronType = groupNeuropilIO[INDEXED_CSV_DATABASE_ADC_NEURON_LAYERS_GROUP_NEUROPIL_IO_INDEX_INPUT];
+		}
+		#endif
+		
 		int neuronTypeIndex = neuronTypeIndexMap[neuronType];
 		#ifdef INDEXED_CSV_DATABASE_DC_NEURON_LAYERS_REUSE_H01_TEMPLATES
 		int layerIndex = neuronTypeIndex%CORTICAL_LAYER_NUMBER_OF_LAYERS;

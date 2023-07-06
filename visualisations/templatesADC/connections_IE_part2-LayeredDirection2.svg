@@ -18,6 +18,56 @@
         <stop offset="0%" stop-color="#00ff4c"/>
         <stop offset="100%" stop-color="#ffff00"/>
       </linearGradient>
+      <linearGradient id="exciteConnectionLayer29RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer36RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer43RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer50RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer57RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer64RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer71RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer78RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer85RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer92RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
       
       <linearGradient id="inhibitConnectionLayer1RadialGradient1">
         <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
@@ -35,6 +85,56 @@
         <stop offset="100%" stop-color="#ff00ff"/>
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer22RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer29RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer36RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer43RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer50RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer57RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer64RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer71RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer78RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer85RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer92RadialGradient1">
         <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
         <stop offset="0%" stop-color="#ff0000 "/>
         <stop offset="100%" stop-color="#ff00ff"/>
@@ -60,6 +160,56 @@
         <stop offset="0%" stop-color="#ffff00"/>
         <stop offset="100%" stop-color="#00ff4c"/>
       </linearGradient>
+      <linearGradient id="exciteConnectionLayer29RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer36RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer43RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer50RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer57RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer64RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer71RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer78RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer85RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer92RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
       
       <linearGradient id="inhibitConnectionLayer1RadialGradient2">
         <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
@@ -81,6 +231,56 @@
         <stop offset="0%" stop-color="#ff00ff"/>
         <stop offset="100%" stop-color="#ff0000"/>
       </linearGradient>
+      <linearGradient id="inhibitConnectionLayer29RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer36RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer43RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer50RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer57RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer64RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer71RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer78RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer85RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer92RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
       
       <linearGradient id="inhibitNeuronLayer1Color">
         <!-- purple -->
@@ -95,6 +295,46 @@
         <stop offset="0%" stop-color="#ff00ff "/>
       </linearGradient>
       <linearGradient id="inhibitNeuronLayer22Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer29Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer36Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer43Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer50Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer57Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer64Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer71Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer78Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer85Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer92Color">
         <!-- purple -->
         <stop offset="0%" stop-color="#ff00ff "/>
       </linearGradient>
@@ -115,6 +355,46 @@
         <!-- yellow -->
         <stop offset="0%" stop-color="#ffff00 "/>
       </linearGradient>
+      <linearGradient id="exciteNeuronLayer29Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer36Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer43Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer50Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer57Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer64Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer71Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer78Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer85Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer92Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
       
       <linearGradient id="unknownNeuronLayer1Color">
         <!-- white -->
@@ -129,6 +409,46 @@
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient>
       <linearGradient id="unknownNeuronLayer22Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer29Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer36Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer43Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer50Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer57Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer64Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer71Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer78Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer85Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer92Color">
         <!-- white -->
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient>
@@ -154,6 +474,56 @@
         <stop offset="0%" stop-color="#00ff4c"/>
         <stop offset="100%" stop-color="#ffff00"/>
       </linearGradient>
+      <linearGradient id="exciteConnectionLayer30RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer37RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer44RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer51RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer58RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer65RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer72RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer79RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer86RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer93RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
       
       <linearGradient id="inhibitConnectionLayer2RadialGradient1">
         <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
@@ -171,6 +541,56 @@
         <stop offset="100%" stop-color="#ff00ff"/>
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer23RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer30RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer37RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer44RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer51RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer58RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer65RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer72RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer79RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer86RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer93RadialGradient1">
         <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
         <stop offset="0%" stop-color="#ff0000 "/>
         <stop offset="100%" stop-color="#ff00ff"/>
@@ -196,6 +616,56 @@
         <stop offset="0%" stop-color="#ffff00"/>
         <stop offset="100%" stop-color="#00ff4c"/>
       </linearGradient>
+      <linearGradient id="exciteConnectionLayer30RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer37RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer44RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer51RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer58RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer65RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer72RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer79RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer86RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer93RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
       
       <linearGradient id="inhibitConnectionLayer2RadialGradient2">
         <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
@@ -217,6 +687,56 @@
         <stop offset="0%" stop-color="#ff00ff"/>
         <stop offset="100%" stop-color="#ff0000"/>
       </linearGradient>
+      <linearGradient id="inhibitConnectionLayer30RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer37RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer44RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer51RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer58RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer65RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer72RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer79RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer86RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer93RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
       
       <linearGradient id="inhibitNeuronLayer2Color">
         <!-- purple -->
@@ -231,6 +751,46 @@
         <stop offset="0%" stop-color="#ff00ff "/>
       </linearGradient>
       <linearGradient id="inhibitNeuronLayer23Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer30Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer37Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer44Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer51Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer58Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer65Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer72Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer79Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer86Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer93Color">
         <!-- purple -->
         <stop offset="0%" stop-color="#ff00ff "/>
       </linearGradient>
@@ -251,6 +811,46 @@
         <!-- yellow -->
         <stop offset="0%" stop-color="#ffff00 "/>
       </linearGradient>
+      <linearGradient id="exciteNeuronLayer30Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer37Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer44Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer51Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer58Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer65Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer72Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer79Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer86Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer93Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
       
       <linearGradient id="unknownNeuronLayer2Color">
         <!-- white -->
@@ -265,6 +865,46 @@
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient>
       <linearGradient id="unknownNeuronLayer23Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer30Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer37Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer44Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer51Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer58Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer65Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer72Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer79Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer86Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer93Color">
         <!-- white -->
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient>
@@ -290,6 +930,56 @@
         <stop offset="0%" stop-color="#00ff4c"/>
         <stop offset="100%" stop-color="#ffff00"/>
       </linearGradient>
+      <linearGradient id="exciteConnectionLayer31RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer38RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer45RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer52RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer59RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer66RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer73RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer80RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer87RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer94RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
       
       <linearGradient id="inhibitConnectionLayer3RadialGradient1">
         <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
@@ -307,6 +997,56 @@
         <stop offset="100%" stop-color="#ff00ff"/>
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer24RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer31RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer38RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer45RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer52RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer59RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer66RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer73RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer80RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer87RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer94RadialGradient1">
         <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
         <stop offset="0%" stop-color="#ff0000 "/>
         <stop offset="100%" stop-color="#ff00ff"/>
@@ -332,6 +1072,56 @@
         <stop offset="0%" stop-color="#ffff00"/>
         <stop offset="100%" stop-color="#00ff4c"/>
       </linearGradient>
+      <linearGradient id="exciteConnectionLayer31RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer38RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer45RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer52RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer59RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer66RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer73RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer80RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer87RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer94RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
       
       <linearGradient id="inhibitConnectionLayer3RadialGradient2">
         <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
@@ -353,6 +1143,56 @@
         <stop offset="0%" stop-color="#ff00ff"/>
         <stop offset="100%" stop-color="#ff0000"/>
       </linearGradient>
+      <linearGradient id="inhibitConnectionLayer31RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer38RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer45RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer52RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer59RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer66RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer73RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer80RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer87RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer94RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
       
       <linearGradient id="inhibitNeuronLayer3Color">
         <!-- purple -->
@@ -367,6 +1207,46 @@
         <stop offset="0%" stop-color="#ff00ff "/>
       </linearGradient>
       <linearGradient id="inhibitNeuronLayer24Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer31Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer38Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer45Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer52Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer59Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer66Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer73Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer80Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer87Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer94Color">
         <!-- purple -->
         <stop offset="0%" stop-color="#ff00ff "/>
       </linearGradient>
@@ -387,6 +1267,46 @@
         <!-- yellow -->
         <stop offset="0%" stop-color="#ffff00 "/>
       </linearGradient>
+      <linearGradient id="exciteNeuronLayer31Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer38Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer45Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer52Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer59Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer66Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer73Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer80Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer87Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer94Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
       
       <linearGradient id="unknownNeuronLayer3Color">
         <!-- white -->
@@ -401,6 +1321,46 @@
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient>
       <linearGradient id="unknownNeuronLayer24Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer31Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer38Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer45Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer52Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer59Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer66Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer73Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer80Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer87Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer94Color">
         <!-- white -->
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient>
@@ -426,6 +1386,56 @@
         <stop offset="0%" stop-color="#00ff4c"/>
         <stop offset="100%" stop-color="#ffff00"/>
       </linearGradient>
+      <linearGradient id="exciteConnectionLayer32RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer39RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer46RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer53RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer60RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer67RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer74RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer81RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer88RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer95RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
       
       <linearGradient id="inhibitConnectionLayer4RadialGradient1">
         <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
@@ -443,6 +1453,56 @@
         <stop offset="100%" stop-color="#ff00ff"/>
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer25RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer32RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer39RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer46RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer53RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer60RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer67RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer74RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer81RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer88RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer95RadialGradient1">
         <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
         <stop offset="0%" stop-color="#ff0000 "/>
         <stop offset="100%" stop-color="#ff00ff"/>
@@ -468,6 +1528,56 @@
         <stop offset="0%" stop-color="#ffff00"/>
         <stop offset="100%" stop-color="#00ff4c"/>
       </linearGradient>
+      <linearGradient id="exciteConnectionLayer32RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer39RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer46RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer53RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer60RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer67RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer74RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer81RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer88RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer95RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
       
       <linearGradient id="inhibitConnectionLayer4RadialGradient2">
         <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
@@ -489,6 +1599,56 @@
         <stop offset="0%" stop-color="#ff00ff"/>
         <stop offset="100%" stop-color="#ff0000"/>
       </linearGradient>
+      <linearGradient id="inhibitConnectionLayer32RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer39RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer46RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer53RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer60RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer67RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer74RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer81RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer88RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer95RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
       
       <linearGradient id="inhibitNeuronLayer4Color">
         <!-- purple -->
@@ -503,6 +1663,46 @@
         <stop offset="0%" stop-color="#ff00ff "/>
       </linearGradient>
       <linearGradient id="inhibitNeuronLayer25Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer32Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer39Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer46Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer53Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer60Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer67Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer74Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer81Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer88Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer95Color">
         <!-- purple -->
         <stop offset="0%" stop-color="#ff00ff "/>
       </linearGradient>
@@ -523,6 +1723,46 @@
         <!-- yellow -->
         <stop offset="0%" stop-color="#ffff00 "/>
       </linearGradient>
+      <linearGradient id="exciteNeuronLayer32Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer39Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer46Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer53Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer60Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer67Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer74Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer81Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer88Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer95Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
       
       <linearGradient id="unknownNeuronLayer4Color">
         <!-- white -->
@@ -537,6 +1777,46 @@
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient>
       <linearGradient id="unknownNeuronLayer25Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer32Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer39Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer46Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer53Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer60Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer67Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer74Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer81Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer88Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer95Color">
         <!-- white -->
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient>
@@ -562,6 +1842,56 @@
         <stop offset="0%" stop-color="#00ff4c"/>
         <stop offset="100%" stop-color="#ffff00"/>
       </linearGradient>
+      <linearGradient id="exciteConnectionLayer33RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer40RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer47RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer54RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer61RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer68RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer75RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer82RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer89RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer96RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
       
       <linearGradient id="inhibitConnectionLayer5RadialGradient1">
         <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
@@ -579,6 +1909,56 @@
         <stop offset="100%" stop-color="#ff00ff"/>
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer26RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer33RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer40RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer47RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer54RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer61RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer68RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer75RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer82RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer89RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer96RadialGradient1">
         <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
         <stop offset="0%" stop-color="#ff0000 "/>
         <stop offset="100%" stop-color="#ff00ff"/>
@@ -604,6 +1984,56 @@
         <stop offset="0%" stop-color="#ffff00"/>
         <stop offset="100%" stop-color="#00ff4c"/>
       </linearGradient>
+      <linearGradient id="exciteConnectionLayer33RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer40RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer47RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer54RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer61RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer68RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer75RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer82RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer89RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer96RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
       
       <linearGradient id="inhibitConnectionLayer5RadialGradient2">
         <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
@@ -625,6 +2055,56 @@
         <stop offset="0%" stop-color="#ff00ff"/>
         <stop offset="100%" stop-color="#ff0000"/>
       </linearGradient>
+      <linearGradient id="inhibitConnectionLayer33RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer40RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer47RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer54RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer61RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer68RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer75RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer82RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer89RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer96RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
       
       <linearGradient id="inhibitNeuronLayer5Color">
         <!-- purple -->
@@ -639,6 +2119,46 @@
         <stop offset="0%" stop-color="#ff00ff "/>
       </linearGradient>
       <linearGradient id="inhibitNeuronLayer26Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer33Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer40Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer47Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer54Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer61Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer68Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer75Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer82Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer89Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer96Color">
         <!-- purple -->
         <stop offset="0%" stop-color="#ff00ff "/>
       </linearGradient>
@@ -659,6 +2179,46 @@
         <!-- yellow -->
         <stop offset="0%" stop-color="#ffff00 "/>
       </linearGradient>
+      <linearGradient id="exciteNeuronLayer33Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer40Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer47Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer54Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer61Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer68Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer75Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer82Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer89Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer96Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
       
       <linearGradient id="unknownNeuronLayer5Color">
         <!-- white -->
@@ -673,6 +2233,46 @@
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient>
       <linearGradient id="unknownNeuronLayer26Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer33Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer40Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer47Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer54Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer61Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer68Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer75Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer82Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer89Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer96Color">
         <!-- white -->
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient>
@@ -698,6 +2298,56 @@
         <stop offset="0%" stop-color="#00ff4c"/>
         <stop offset="100%" stop-color="#ffff00"/>
       </linearGradient>
+      <linearGradient id="exciteConnectionLayer34RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer41RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer48RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer55RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer62RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer69RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer76RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer83RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer90RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer97RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
       
       <linearGradient id="inhibitConnectionLayer6RadialGradient1">
         <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
@@ -715,6 +2365,56 @@
         <stop offset="100%" stop-color="#ff00ff"/>
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer27RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer34RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer41RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer48RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer55RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer62RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer69RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer76RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer83RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer90RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer97RadialGradient1">
         <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
         <stop offset="0%" stop-color="#ff0000 "/>
         <stop offset="100%" stop-color="#ff00ff"/>
@@ -740,6 +2440,56 @@
         <stop offset="0%" stop-color="#ffff00"/>
         <stop offset="100%" stop-color="#00ff4c"/>
       </linearGradient>
+      <linearGradient id="exciteConnectionLayer34RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer41RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer48RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer55RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer62RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer69RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer76RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer83RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer90RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer97RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
       
       <linearGradient id="inhibitConnectionLayer6RadialGradient2">
         <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
@@ -761,6 +2511,56 @@
         <stop offset="0%" stop-color="#ff00ff"/>
         <stop offset="100%" stop-color="#ff0000"/>
       </linearGradient>
+      <linearGradient id="inhibitConnectionLayer34RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer41RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer48RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer55RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer62RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer69RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer76RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer83RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer90RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer97RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
       
       <linearGradient id="inhibitNeuronLayer6Color">
         <!-- purple -->
@@ -775,6 +2575,46 @@
         <stop offset="0%" stop-color="#ff00ff "/>
       </linearGradient>
       <linearGradient id="inhibitNeuronLayer27Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer34Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer41Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer48Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer55Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer62Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer69Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer76Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer83Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer90Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer97Color">
         <!-- purple -->
         <stop offset="0%" stop-color="#ff00ff "/>
       </linearGradient>
@@ -795,6 +2635,46 @@
         <!-- yellow -->
         <stop offset="0%" stop-color="#ffff00 "/>
       </linearGradient>
+      <linearGradient id="exciteNeuronLayer34Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer41Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer48Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer55Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer62Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer69Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer76Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer83Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer90Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer97Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
       
       <linearGradient id="unknownNeuronLayer6Color">
         <!-- white -->
@@ -809,6 +2689,46 @@
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient>
       <linearGradient id="unknownNeuronLayer27Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer34Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer41Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer48Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer55Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer62Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer69Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer76Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer83Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer90Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer97Color">
         <!-- white -->
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient>
@@ -834,6 +2754,56 @@
         <stop offset="0%" stop-color="#00ff4c"/>
         <stop offset="100%" stop-color="#ffff00"/>
       </linearGradient>
+      <linearGradient id="exciteConnectionLayer35RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer42RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer49RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer56RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer63RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer70RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer77RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer84RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer91RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer98RadialGradient1">
+        <!-- green to yellow --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#00ff4c"/>
+        <stop offset="100%" stop-color="#ffff00"/>
+      </linearGradient>
       
       <linearGradient id="inhibitConnectionLayer7RadialGradient1">
         <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
@@ -851,6 +2821,56 @@
         <stop offset="100%" stop-color="#ff00ff"/>
       </linearGradient>
       <linearGradient id="inhibitConnectionLayer28RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer35RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer42RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer49RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer56RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer63RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer70RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer77RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer84RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer91RadialGradient1">
+        <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="100%" stop-color="#ff00ff"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer98RadialGradient1">
         <!-- red to purple --><!-- presynaptic X > postsynaptic neuron X [colors will be drawn in switched order] -->
         <stop offset="0%" stop-color="#ff0000 "/>
         <stop offset="100%" stop-color="#ff00ff"/>
@@ -876,6 +2896,56 @@
         <stop offset="0%" stop-color="#ffff00"/>
         <stop offset="100%" stop-color="#00ff4c"/>
       </linearGradient>
+      <linearGradient id="exciteConnectionLayer35RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer42RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer49RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer56RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer63RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer70RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer77RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer84RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer91RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer98RadialGradient2">
+        <!-- yellow to green --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="100%" stop-color="#00ff4c"/>
+      </linearGradient>
       
       <linearGradient id="inhibitConnectionLayer7RadialGradient2">
         <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
@@ -897,6 +2967,56 @@
         <stop offset="0%" stop-color="#ff00ff"/>
         <stop offset="100%" stop-color="#ff0000"/>
       </linearGradient>
+      <linearGradient id="inhibitConnectionLayer35RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer42RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer49RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer56RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer63RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer70RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer77RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer84RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer91RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer98RadialGradient2">
+        <!-- purple to red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] -->
+        <stop offset="0%" stop-color="#ff00ff"/>
+        <stop offset="100%" stop-color="#ff0000"/>
+      </linearGradient>
       
       <linearGradient id="inhibitNeuronLayer7Color">
         <!-- purple -->
@@ -911,6 +3031,46 @@
         <stop offset="0%" stop-color="#ff00ff "/>
       </linearGradient>
       <linearGradient id="inhibitNeuronLayer28Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer35Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer42Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer49Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer56Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer63Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer70Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer77Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer84Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer91Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer98Color">
         <!-- purple -->
         <stop offset="0%" stop-color="#ff00ff "/>
       </linearGradient>
@@ -931,6 +3091,46 @@
         <!-- yellow -->
         <stop offset="0%" stop-color="#ffff00 "/>
       </linearGradient>
+      <linearGradient id="exciteNeuronLayer35Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer42Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer49Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer56Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer63Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer70Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer77Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer84Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer91Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer98Color">
+        <!-- yellow -->
+        <stop offset="0%" stop-color="#ffff00 "/>
+      </linearGradient>
       
       <linearGradient id="unknownNeuronLayer7Color">
         <!-- white -->
@@ -945,6 +3145,46 @@
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient>
       <linearGradient id="unknownNeuronLayer28Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer35Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer42Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer49Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer56Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer63Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer70Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer77Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer84Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer91Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer98Color">
         <!-- white -->
         <stop offset="0%" stop-color="#ffffff "/>
       </linearGradient>

@@ -2,7 +2,7 @@
 Introduction
 ============
 
-This repository (LocalConnectome/LC) contains various structural/functional interrogations (including visualisations) of various connectome datasets (H01, LDC, ADC), and software used in their derivation. 
+This repository (LocalConnectome/LC) contains structural/functional interrogations (including visualisations) of various connectome datasets (H01, LDC, ADC), and software used in their derivation. 
 
 The "Local Connectome" is taken as the connectivity data between those neurons (neuron_id) which have cell soma/centroids that reside within a connectome Release dataset. The local connectome is analysed along with its immediate incoming and outgoing connections.
 
