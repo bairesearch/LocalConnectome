@@ -655,7 +655,12 @@ void LCindexedCSVdatabaseReadLocalConnectomeClass::countConnectionsLocal(const i
 		addConnectionNumberInhibitoryExcitatoryNeurons(neuronExcitationType, localConnectomeNeuronLayer, connectivityModelLayers);
 	}
 	#endif
-				
+	
+	#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURRENT_MIRROR_TWINS
+	map<string, int> mirrorTwinsMap;
+	LCindexedCSVdatabaseOperations.readPreprocessMirrorTwinsCSVdataset(&mirrorTwinsMap);
+	#endif
+			
 	for(int i=0;i<localConnectomeCSVdatasetConnections->size(); i++)
 	{
 		//cout << "localConnectomeCSVdatasetConnections: i = " << i << endl;
@@ -734,6 +739,13 @@ void LCindexedCSVdatabaseReadLocalConnectomeClass::countConnectionsLocal(const i
 				{
 					foundRecurrentConnection = true;
 				}
+				#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURRENT_MIRROR_TWINS
+				string mirrorTwinsMapKey = recurrentConnectionConnectionsMapKey;
+				if(mirrorTwinsMap.count(mirrorTwinsMapKey) == 0)	//verify that mirrorTwinsMapKey is found
+				{
+					foundRecurrentConnection = false;
+				}
+				#endif
 				if(foundRecurrentConnection)
 				{	
 					addRecurrentConnection(r, excitationType, localConnectomeNeuronLayer, connectivityModelLayers);

@@ -296,3 +296,20 @@ void LCindexedCSVdatabaseOperationsClass::finaliseLocalConnectomeDatasetWrite(co
 	#endif
 }
 	
+
+#ifdef INDEXED_CSV_DATABASE_PREPROCESS_ADC_MIRRORTWINS
+bool LCindexedCSVdatabaseOperationsClass::readPreprocessMirrorTwinsCSVdataset(map<string, int>* mirrorTwinsMap)
+{
+	int localConnectomeConnectionsCSVdatasetSize;
+	vector<vector<string>> mirrorTwinsCSVdataset;
+	SHAREDvars.getLinesFromFileCSV(INDEXED_CSV_DATABASE_PREPROCESS_ADC_MIRRORTWINS_DATAFILE_NAME, &mirrorTwinsCSVdataset, &localConnectomeConnectionsCSVdatasetSize, CSV_DELIMITER_CHAR, true);
+
+	for(int i=0; i < mirrorTwinsCSVdataset.size(); i++)
+	{
+		vector<string>* mirrorTwin = &(mirrorTwinsCSVdataset[i]);
+		string mirrorTwinsMapKey = (*mirrorTwin)[INDEXED_CSV_DATABASE_PREPROCESS_ADC_MIRRORTWINS_DATAFILE_FIELD_INDEX_NEURONA] + (*mirrorTwin)[INDEXED_CSV_DATABASE_PREPROCESS_ADC_MIRRORTWINS_DATAFILE_FIELD_INDEX_NEURONB];
+		//cout << "mirrorTwinsMapKey to insert = " << mirrorTwinsMapKey << endl;
+    	(*mirrorTwinsMap)[mirrorTwinsMapKey] = i;
+	}
+}
+#endif

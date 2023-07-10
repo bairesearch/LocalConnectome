@@ -442,6 +442,17 @@ extern string currentDirectory;
 	
 	#define INDEXED_CSV_DATABASE_QUERY_LOCAL_ONLY	//no external (csv database) query
 	#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURRENT	//optional //measure recurrent connectivity of neurons (r=0: a -> a [axon to dendrite], r=1: a -> b -> a, etc)
+	#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURRENT
+		//#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURRENT_MIRROR_TWINS	//optional	//only count recurrent connections for mirror twins
+		#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURRENT_MIRROR_TWINS
+			#define INDEXED_CSV_DATABASE_PREPROCESS_ADC_MIRRORTWINS
+			#ifdef INDEXED_CSV_DATABASE_PREPROCESS_ADC_MIRRORTWINS
+				#define INDEXED_CSV_DATABASE_PREPROCESS_ADC_MIRRORTWINS_DATAFILE_NAME "mirrorTwins.csv"
+				#define INDEXED_CSV_DATABASE_PREPROCESS_ADC_MIRRORTWINS_DATAFILE_FIELD_INDEX_NEURONA (0)
+				#define INDEXED_CSV_DATABASE_PREPROCESS_ADC_MIRRORTWINS_DATAFILE_FIELD_INDEX_NEURONB (1)
+			#endif
+		#endif
+	#endif
 	#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS	//optional //independently count the connections within the local connectome connections dataset (layer to layer matrix)	//compare local connectome counts against counts from https://www.biorxiv.org/content/10.1101/2021.05.29.446289v3/v4 Supplementary Table 5. Summary of Machine Learning-identified connections	//added 7 December 2021
 
 	#ifdef INDEXED_CSV_DATABASE_PREPROCESS
