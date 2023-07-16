@@ -250,6 +250,8 @@ LCindexedCSVdatabaseReadLocalConnectome.cpp/.hpp (execution mode 6: INDEXED_CSV_
      * INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_NEURONS_DATASET: localConnectomeNeurons.csv - id, x, y, z, type, excitation_type
 
 
+Examples
+================
 
 Local connectome visualisations
 -----------------------------------
@@ -286,3 +288,51 @@ Current local connectome visualisations for connectionTypesDerivedFromEMimages/c
 \- 3D LDR colour sets can be changed by modifying LCindexedCSVdatabase.hpp: local_connectome_visualisation_neurons_colour_\*. / local_connectome_visualisation_connections_colour_\*. \
 \- 3D LDR colour sets can be added/removed by modifying LCindexedCSVdatabase.hpp: LOCAL_CONNECTOME_VISUALISATION_LDR_FILENAME_\*_NUMBER_COLOURSETS and upgrading the source code (advanced).
 
+
+INDEXED_CSV_DATABASE_H01
+------------------------
+
+| Visualisation | Link |
+| ------------- | ---- |
+| connections_IE1.svg | [![connections_IE1.svg](https://github.com/bairesearch/LocalConnectome/blob/master/examplesH01/visualise/visualisations-generatedLocalConnectionsDatasets/connectionTypesFromPresynapticNeurons/2D/thumbnails/connections_IE1.png?raw=true)](https://github.com/bairesearch/LocalConnectome/blob/master/examplesH01/visualise/visualisations-generatedLocalConnectionsDatasets/connectionTypesFromPresynapticNeurons/2D/connections_IE1.svg?raw=true) |
+| connections_IE2.svg | [![connections_IE2.svg](https://github.com/bairesearch/LocalConnectome/blob/master/examplesH01/visualise/visualisations-generatedLocalConnectionsDatasets/connectionTypesFromPresynapticNeurons/2D/thumbnails/connections_IE2.png?raw=true)](https://github.com/bairesearch/LocalConnectome/blob/master/examplesH01/visualise/visualisations-generatedLocalConnectionsDatasets/connectionTypesFromPresynapticNeurons/2D/connections_IE2.svg?raw=true) |
+| connections_IE_flow1.svg | [![connections_IE_flow1.svg](https://github.com/bairesearch/LocalConnectome/blob/master/examplesH01/visualise/visualisations-generatedLocalConnectionsDatasets/connectionTypesFromPresynapticNeurons/2D/thumbnails/connections_IE_flow1.png?raw=true)](https://github.com/bairesearch/LocalConnectome/blob/master/examplesH01/visualise/visualisations-generatedLocalConnectionsDatasets/connectionTypesFromPresynapticNeurons/2D/connections_IE_flow1.svg?raw=true) |
+| connections_IE_flow2.svg | [![connections_IE_flow2.svg](https://github.com/bairesearch/LocalConnectome/blob/master/examplesH01/visualise/visualisations-generatedLocalConnectionsDatasets/connectionTypesFromPresynapticNeurons/2D/thumbnails/connections_IE_flow2.png?raw=true)](https://github.com/bairesearch/LocalConnectome/blob/master/examplesH01/visualise/visualisations-generatedLocalConnectionsDatasets/connectionTypesFromPresynapticNeurons/2D/connections_IE_flow2.svg?raw=true) |
+| connections_IE_flow3.svg | [![connections_IE_flow3.svg](https://github.com/bairesearch/LocalConnectome/blob/master/examplesH01/visualise/visualisations-generatedLocalConnectionsDatasets/connectionTypesFromPresynapticNeurons/2D/thumbnails/connections_IE_flow3.png?raw=true)](https://github.com/bairesearch/LocalConnectome/blob/master/examplesH01/visualise/visualisations-generatedLocalConnectionsDatasets/connectionTypesFromPresynapticNeurons/2D/connections_IE_flow3.svg?raw=true) |
+| connections_IE_layered1.svg | [![connections_IE_layered1.svg](https://github.com/bairesearch/LocalConnectome/blob/master/examplesH01/visualise/visualisations-generatedLocalConnectionsDatasets/connectionTypesFromPresynapticNeurons/2D/thumbnails/connections_IE_layered1.png?raw=true)](https://github.com/bairesearch/LocalConnectome/blob/master/examplesH01/visualise/visualisations-generatedLocalConnectionsDatasets/connectionTypesFromPresynapticNeurons/2D/connections_IE_layered1.svg?raw=true) |
+
+INDEXED_CSV_DATABASE_LDC
+------------------------
+
+| Visualisation | Link |
+| ------------- | ---- |
+| connections_IE1.svg | [![connections_IE1.svg](https://github.com/bairesearch/LocalConnectome/blob/master/examplesLDC/visualise/connectionTypesFromPresynapticNeurons/2D/thumbnails/connections_IE1.png?raw=true)](https://github.com/bairesearch/LocalConnectome/blob/master/examplesLDC/visualise/connectionTypesFromPresynapticNeurons/2D/connections_IE1.svg?raw=true) |
+| connections_IE2.svg | [![connections_IE2.svg](https://github.com/bairesearch/LocalConnectome/blob/master/examplesLDC/visualise/connectionTypesFromPresynapticNeurons/2D/thumbnails/connections_IE2.png?raw=true)](https://github.com/bairesearch/LocalConnectome/blob/master/examplesLDC/visualise/connectionTypesFromPresynapticNeurons/2D/connections_IE2.svg?raw=true) |
+| connections_IE_flow1.svg | [![connections_IE_flow1.svg](https://github.com/bairesearch/LocalConnectome/blob/master/examplesLDC/visualise/connectionTypesFromPresynapticNeurons/2D/thumbnails/connections_IE_flow1.png?raw=true)](https://github.com/bairesearch/LocalConnectome/blob/master/examplesLDC/visualise/connectionTypesFromPresynapticNeurons/2D/connections_IE_flow1.svg?raw=true) |
+| connections_IE_flow2.svg | [![connections_IE_flow2.svg](https://github.com/bairesearch/LocalConnectome/blob/master/examplesLDC/visualise/connectionTypesFromPresynapticNeurons/2D/thumbnails/connections_IE_flow2.png?raw=true)](https://github.com/bairesearch/LocalConnectome/blob/master/examplesLDC/visualise/connectionTypesFromPresynapticNeurons/2D/connections_IE_flow2.svg?raw=true) |
+| connections_IE_flow3.svg | [![connections_IE_flow3.svg](https://github.com/bairesearch/LocalConnectome/blob/master/examplesLDC/visualise/connectionTypesFromPresynapticNeurons/2D/thumbnails/connections_IE_flow3.png?raw=true)](https://github.com/bairesearch/LocalConnectome/blob/master/examplesLDC/visualise/connectionTypesFromPresynapticNeurons/2D/connections_IE_flow3.svg?raw=true) |
+| connections_IE_layered1.svg | [![connections_IE_layered1.svg](https://github.com/bairesearch/LocalConnectome/blob/master/examplesLDC/visualise/connectionTypesFromPresynapticNeurons/2D/thumbnails/connections_IE_layered1.png?raw=true)](https://github.com/bairesearch/LocalConnectome/blob/master/examplesLDC/visualise/connectionTypesFromPresynapticNeurons/2D/connections_IE_layered1.svg?raw=true) |
+
+INDEXED_CSV_DATABASE_ADC
+------------------------
+
+| Visualisation | Link |
+| ------------- | ---- |
+| connections_IE1.svg | [![connections_IE1.svg](https://github.com/bairesearch/LocalConnectome/blob/master/examplesADC/visualise/connectionTypesFromPresynapticNeurons/2D/thumbnails/connections_IE1.png?raw=true)](https://github.com/bairesearch/LocalConnectome/blob/master/examplesADC/visualise/connectionTypesFromPresynapticNeurons/2D/connections_IE1.svg?raw=true) |
+| connections_IE2.svg | [![connections_IE2.svg](https://github.com/bairesearch/LocalConnectome/blob/master/examplesADC/visualise/connectionTypesFromPresynapticNeurons/2D/thumbnails/connections_IE2.png?raw=true)](https://github.com/bairesearch/LocalConnectome/blob/master/examplesADC/visualise/connectionTypesFromPresynapticNeurons/2D/connections_IE2.svg?raw=true) |
+| connections_IE_flow1.svg | [![connections_IE_flow1.svg](https://github.com/bairesearch/LocalConnectome/blob/master/examplesADC/visualise/connectionTypesFromPresynapticNeurons/2D/thumbnails/connections_IE_flow1.png?raw=true)](https://github.com/bairesearch/LocalConnectome/blob/master/examplesADC/visualise/connectionTypesFromPresynapticNeurons/2D/connections_IE_flow1.svg?raw=true) |
+| connections_IE_flow2.svg | [![connections_IE_flow2.svg](https://github.com/bairesearch/LocalConnectome/blob/master/examplesADC/visualise/connectionTypesFromPresynapticNeurons/2D/thumbnails/connections_IE_flow2.png?raw=true)](https://github.com/bairesearch/LocalConnectome/blob/master/examplesADC/visualise/connectionTypesFromPresynapticNeurons/2D/connections_IE_flow2.svg?raw=true) |
+| connections_IE_flow3.svg | [![connections_IE_flow3.svg](https://github.com/bairesearch/LocalConnectome/blob/master/examplesADC/visualise/connectionTypesFromPresynapticNeurons/2D/thumbnails/connections_IE_flow3.png?raw=true)](https://github.com/bairesearch/LocalConnectome/blob/master/examplesADC/visualise/connectionTypesFromPresynapticNeurons/2D/connections_IE_flow3.svg?raw=true) |
+| connections_IE_layered1.svg | [![connections_IE_layered1.svg](https://github.com/bairesearch/LocalConnectome/blob/master/examplesADC/visualise/connectionTypesFromPresynapticNeurons/2D/thumbnails/connections_IE_layered1.png?raw=true)](https://github.com/bairesearch/LocalConnectome/blob/master/examplesADC/visualise/connectionTypesFromPresynapticNeurons/2D/connections_IE_layered1.svg?raw=true) |
+
+INDEXED_CSV_DATABASE_CEC
+------------------------
+
+| Visualisation | Link |
+| ------------- | ---- |
+| connections_IE1.svg | [![connections_IE1.svg](https://github.com/bairesearch/LocalConnectome/blob/master/examplesCEC/visualise/connectionTypesFromEMimages/2D/thumbnails/connections_IE1.png?raw=true)](https://github.com/bairesearch/LocalConnectome/blob/master/examplesCEC/visualise/connectionTypesFromEMimages/2D/connections_IE1.svg?raw=true) |
+| connections_IE2.svg | [![connections_IE2.svg](https://github.com/bairesearch/LocalConnectome/blob/master/examplesCEC/visualise/connectionTypesFromEMimages/2D/thumbnails/connections_IE2.png?raw=true)](https://github.com/bairesearch/LocalConnectome/blob/master/examplesCEC/visualise/connectionTypesFromEMimages/2D/connections_IE2.svg?raw=true) |
+| connections_IE_flow1.svg | [![connections_IE_flow1.svg](https://github.com/bairesearch/LocalConnectome/blob/master/examplesCEC/visualise/connectionTypesFromEMimages/2D/thumbnails/connections_IE_flow1.png?raw=true)](https://github.com/bairesearch/LocalConnectome/blob/master/examplesCEC/visualise/connectionTypesFromEMimages/2D/connections_IE_flow1.svg?raw=true) |
+| connections_IE_flow2.svg | [![connections_IE_flow2.svg](https://github.com/bairesearch/LocalConnectome/blob/master/examplesCEC/visualise/connectionTypesFromEMimages/2D/thumbnails/connections_IE_flow2.png?raw=true)](https://github.com/bairesearch/LocalConnectome/blob/master/examplesCEC/visualise/connectionTypesFromEMimages/2D/connections_IE_flow2.svg?raw=true) |
+| connections_IE_flow3.svg | [![connections_IE_flow3.svg](https://github.com/bairesearch/LocalConnectome/blob/master/examplesCEC/visualise/connectionTypesFromEMimages/2D/thumbnails/connections_IE_flow3.png?raw=true)](https://github.com/bairesearch/LocalConnectome/blob/master/examplesCEC/visualise/connectionTypesFromEMimages/2D/connections_IE_flow3.svg?raw=true) |
+| connections_IE_layered1.svg | [![connections_IE_layered1.svg](https://github.com/bairesearch/LocalConnectome/blob/master/examplesCEC/visualise/connectionTypesFromEMimages/2D/thumbnails/connections_IE_layered1.png?raw=true)](https://github.com/bairesearch/LocalConnectome/blob/master/examplesCEC/visualise/connectionTypesFromEMimages/2D/connections_IE_layered1.svg?raw=true) |
