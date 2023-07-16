@@ -111,6 +111,9 @@ class LCindexedCSVdatabaseCalculateNeuronLayerClass
 		#ifdef INDEXED_CSV_DATABASE_DC
 		private: void calculateNeuronLayersDC(vector<vector<string>>* localConnectomeCSVdatasetNeurons);
 		#endif
+		#ifdef INDEXED_CSV_DATABASE_CEC
+		private: void calculateNeuronLayersCEC(vector<vector<string>>* localConnectomeCSVdatasetNeurons);
+		#endif
 		#endif
 };
 

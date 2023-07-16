@@ -153,6 +153,9 @@ bool LCindexedCSVdatabaseOperationsClass::readLocalConnectomeNeuronsCSVdataset(c
 	{	
 		vector<string>* localConnectomeNeuron = &((*localConnectomeNeuronsCSVdataset)[i]);
 		int neuronExcitationType = SHAREDvars.convertStringToInt((*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE]);
+		#ifdef INDEXED_CSV_DATABASE_DC_ENFORCE_EXCITATORYINHIBITORY_NEURONS_CONNECTIONS_CONVERT_ALL
+		(*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE] = INDEXED_CSV_DATABASE_DC_ENFORCE_EXCITATORYINHIBITORY_NEURONS_CONVERT_TYPE;
+		#else
 		if((neuronExcitationType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_EITHER) || (neuronExcitationType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN))
 		{
 			#ifdef INDEXED_CSV_DATABASE_DC_ENFORCE_EXCITATORYINHIBITORY_NEURONS_CONNECTIONS_FILTER
@@ -164,6 +167,7 @@ bool LCindexedCSVdatabaseOperationsClass::readLocalConnectomeNeuronsCSVdataset(c
 			(*localConnectomeNeuron)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE] = INDEXED_CSV_DATABASE_DC_ENFORCE_EXCITATORYINHIBITORY_NEURONS_CONVERT_TYPE;
 			#endif
 		}
+		#endif
 	}
 	#endif
 	
@@ -202,6 +206,9 @@ bool LCindexedCSVdatabaseOperationsClass::readLocalConnectomeConnectionsCSVdatas
 	{	
 		vector<string>* localConnectomeConnection = &((*localConnectomeConnectionsCSVdataset)[i]);
 		int neuronExcitationType = SHAREDvars.convertStringToInt((*localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE]);
+		#ifdef INDEXED_CSV_DATABASE_DC_ENFORCE_EXCITATORYINHIBITORY_NEURONS_CONNECTIONS_CONVERT_ALL
+		(*localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE] = INDEXED_CSV_DATABASE_DC_ENFORCE_EXCITATORYINHIBITORY_CONNECTIONS_CONVERT_TYPE;
+		#else
 		if((neuronExcitationType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_EITHER) || (neuronExcitationType == LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN))
 		{
 			#ifdef INDEXED_CSV_DATABASE_DC_ENFORCE_EXCITATORYINHIBITORY_NEURONS_CONNECTIONS_FILTER
@@ -217,6 +224,7 @@ bool LCindexedCSVdatabaseOperationsClass::readLocalConnectomeConnectionsCSVdatas
 			localConnectomeConnectionsCSVdatasetCulled.push_back(*localConnectomeConnection);
 			#endif
 		}
+		#endif
 	}
 	#ifdef INDEXED_CSV_DATABASE_DC_ENFORCE_EXCITATORYINHIBITORY_NEURONS_CONNECTIONS_FILTER
 	//localConnectomeConnectionsCSVdataset = new (localConnectomeConnectionsCSVdataset) vector<vector<string>>;
@@ -298,7 +306,7 @@ void LCindexedCSVdatabaseOperationsClass::finaliseLocalConnectomeDatasetWrite(co
 	
 
 #ifdef INDEXED_CSV_DATABASE_PREPROCESS_ADC_MIRRORTWINS
-bool LCindexedCSVdatabaseOperationsClass::readPreprocessMirrorTwinsCSVdataset(map<string, int>* mirrorTwinsMap)
+bool LCindexedCSVdatabaseOperationsClass::readPreprocessMirrorTwinsCSVdataset(map<string, int>* mirrorTwinsMap, map<string, int>* neuronMap)
 {
 	int localConnectomeConnectionsCSVdatasetSize;
 	vector<vector<string>> mirrorTwinsCSVdataset;
@@ -310,6 +318,14 @@ bool LCindexedCSVdatabaseOperationsClass::readPreprocessMirrorTwinsCSVdataset(ma
 		string mirrorTwinsMapKey = (*mirrorTwin)[INDEXED_CSV_DATABASE_PREPROCESS_ADC_MIRRORTWINS_DATAFILE_FIELD_INDEX_NEURONA] + (*mirrorTwin)[INDEXED_CSV_DATABASE_PREPROCESS_ADC_MIRRORTWINS_DATAFILE_FIELD_INDEX_NEURONB];
 		//cout << "mirrorTwinsMapKey to insert = " << mirrorTwinsMapKey << endl;
     	(*mirrorTwinsMap)[mirrorTwinsMapKey] = i;
+		if(neuronMap->count((*mirrorTwin)[INDEXED_CSV_DATABASE_PREPROCESS_ADC_MIRRORTWINS_DATAFILE_FIELD_INDEX_NEURONA]) == 0)
+		{
+			cerr << "readPreprocessMirrorTwinsCSVdataset error: INDEXED_CSV_DATABASE_PREPROCESS_ADC_MIRRORTWINS_DATAFILE_FIELD_INDEX_NEURONA not found in neuronMap" << endl;
+		}
+		if(neuronMap->count((*mirrorTwin)[INDEXED_CSV_DATABASE_PREPROCESS_ADC_MIRRORTWINS_DATAFILE_FIELD_INDEX_NEURONB]) == 0)
+		{
+			cerr << "readPreprocessMirrorTwinsCSVdataset error: INDEXED_CSV_DATABASE_PREPROCESS_ADC_MIRRORTWINS_DATAFILE_FIELD_INDEX_NEURONB not found in neuronMap" << endl;
+		}
 	}
 }
 #endif

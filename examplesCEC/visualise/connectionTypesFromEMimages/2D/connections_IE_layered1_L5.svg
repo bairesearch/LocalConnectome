@@ -1,0 +1,3260 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with matplotlib (https://matplotlib.org/) -->
+<svg height="4000pt" version="1.1" viewBox="0 0 4000 4000" width="4000pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <metadata>
+  <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2021-06-10T15:35:39.879008</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.3.4, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linecap:butt;stroke-linejoin:round;}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 4000  L 4000 4000  L 4000 0  L 0 0  z "/>
+  </g>
+  <g id="axes_1">
+   <g id="PathCollection_1">
+    <defs>
+     <!-- white [optional] -->
+     <path d="M -0.5 0.5  L 0.5 0.5  L 0.5 -0.5  L -0.5 -0.5  z " id="m51ca76320d" />    #style="stroke:#ffffff;"
+      <linearGradient id="inhibitNeuronLayer1Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer8Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer15Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer22Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer29Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer36Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer43Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer50Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer57Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer64Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer71Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer78Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer85Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer92Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitNeuronLayer2Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer9Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer16Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer23Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer30Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer37Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer44Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer51Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer58Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer65Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer72Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer79Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer86Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer93Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitNeuronLayer3Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer10Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer17Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer24Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer31Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer38Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer45Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer52Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer59Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer66Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer73Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer80Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer87Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer94Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitNeuronLayer4Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer11Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer18Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer25Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer32Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer39Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer46Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer53Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer60Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer67Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer74Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer81Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer88Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer95Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitNeuronLayer5Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer12Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer19Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer26Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer33Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer40Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer47Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer54Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer61Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer68Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer75Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer82Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer89Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer96Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitNeuronLayer6Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer13Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer20Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer27Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer34Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer41Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer48Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer55Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer62Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer69Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer76Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer83Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer90Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer97Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitNeuronLayer7Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer14Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer21Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer28Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer35Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer42Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer49Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer56Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer63Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer70Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer77Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer84Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer91Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitNeuronLayer98Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      
+      <linearGradient id="exciteNeuronLayer1Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer8Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer15Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer22Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer29Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer36Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer43Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer50Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer57Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer64Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer71Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer78Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer85Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer92Color">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      
+      <linearGradient id="exciteNeuronLayer2Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer9Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer16Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer23Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer30Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer37Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer44Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer51Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer58Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer65Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer72Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer79Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer86Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer93Color">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      
+      <linearGradient id="exciteNeuronLayer3Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer10Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer17Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer24Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer31Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer38Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer45Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer52Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer59Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer66Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer73Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer80Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer87Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer94Color">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      
+      <linearGradient id="exciteNeuronLayer4Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer11Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer18Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer25Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer32Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer39Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer46Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer53Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer60Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer67Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer74Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer81Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer88Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer95Color">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      
+      <linearGradient id="exciteNeuronLayer5Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer12Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer19Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer26Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer33Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer40Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer47Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer54Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer61Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer68Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer75Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer82Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer89Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer96Color">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      
+      <linearGradient id="exciteNeuronLayer6Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer13Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer20Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer27Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer34Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer41Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer48Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer55Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer62Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer69Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer76Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer83Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer90Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer97Color">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      
+      <linearGradient id="exciteNeuronLayer7Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer14Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer21Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer28Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer35Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer42Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer49Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer56Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer63Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer70Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer77Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer84Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer91Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteNeuronLayer98Color">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      
+      <linearGradient id="unknownNeuronLayer1Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer8Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer15Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer22Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer29Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer36Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer43Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer50Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer57Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer64Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer71Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer78Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer85Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer92Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      
+      <linearGradient id="unknownNeuronLayer2Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer9Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer16Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer23Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer30Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer37Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer44Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer51Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer58Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer65Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer72Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer79Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer86Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer93Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      
+      <linearGradient id="unknownNeuronLayer3Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer10Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer17Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer24Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer31Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer38Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer45Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer52Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer59Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer66Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer73Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer80Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer87Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer94Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      
+      <linearGradient id="unknownNeuronLayer4Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer11Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer18Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer25Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer32Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer39Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer46Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer53Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer60Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer67Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer74Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer81Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer88Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer95Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      
+      <linearGradient id="unknownNeuronLayer5Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer12Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer19Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer26Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer33Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer40Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer47Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer54Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer61Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer68Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer75Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer82Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer89Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer96Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      
+      <linearGradient id="unknownNeuronLayer6Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer13Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer20Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer27Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer34Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer41Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer48Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer55Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer62Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer69Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer76Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer83Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer90Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer97Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      
+      <linearGradient id="unknownNeuronLayer7Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer14Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer21Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer28Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer35Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer42Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer49Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer56Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer63Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer70Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer77Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer84Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer91Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      <linearGradient id="unknownNeuronLayer98Color">
+        <!-- white -->
+        <stop offset="0%" stop-color="#ffffff "/>
+      </linearGradient>
+      
+      
+      
+      <linearGradient id="inhibitConnectionLayer1RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer8RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer15RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer22RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer29RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer36RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer43RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer50RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer57RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer64RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer71RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer78RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer85RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer92RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer2RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer9RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer16RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer23RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer30RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer37RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer44RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer51RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer58RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer65RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer72RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer79RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer86RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer93RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer3RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer10RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer17RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer24RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer31RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer38RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer45RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer52RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer59RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer66RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer73RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer80RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer87RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer94RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer4RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer11RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer18RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer25RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer32RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer39RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer46RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer53RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer60RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer67RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer74RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer81RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer88RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer95RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer5RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer12RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer19RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer26RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer33RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer40RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer47RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer54RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer61RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer68RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer75RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer82RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer89RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer96RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer6RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer13RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer20RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer27RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer34RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer41RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer48RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer55RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer62RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer69RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer76RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer83RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer90RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer97RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer7RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer14RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer21RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer28RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer35RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer42RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer49RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer56RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer63RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer70RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer77RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer84RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer91RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer98RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      
+      <linearGradient id="exciteConnectionLayer1RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer8RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer15RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer22RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer29RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer36RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer43RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer50RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer57RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer64RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer71RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer78RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer85RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer92RadialGradient1">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      
+      <linearGradient id="exciteConnectionLayer2RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer9RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer16RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer23RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer30RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer37RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer44RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer51RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer58RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer65RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer72RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer79RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer86RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer93RadialGradient1">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      
+      <linearGradient id="exciteConnectionLayer3RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer10RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer17RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer24RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer31RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer38RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer45RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer52RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer59RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer66RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer73RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer80RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer87RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer94RadialGradient1">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      
+      <linearGradient id="exciteConnectionLayer4RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer11RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer18RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer25RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer32RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer39RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer46RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer53RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer60RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer67RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer74RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer81RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer88RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer95RadialGradient1">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      
+      <linearGradient id="exciteConnectionLayer5RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer12RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer19RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer26RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer33RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer40RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer47RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer54RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer61RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer68RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer75RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer82RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer89RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer96RadialGradient1">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      
+      <linearGradient id="exciteConnectionLayer6RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer13RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer20RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer27RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer34RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer41RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer48RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer55RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer62RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer69RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer76RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer83RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer90RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer97RadialGradient1">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      
+      <linearGradient id="exciteConnectionLayer7RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer14RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer21RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer28RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer35RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer42RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer49RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer56RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer63RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer70RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer77RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer84RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer91RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer98RadialGradient1">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer1RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer8RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer15RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer22RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer29RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer36RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer43RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer50RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer57RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer64RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer71RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer78RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer85RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer92RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#aec0fe "/>
+        <stop offset="0%" stop-color="#aec0fe "/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer2RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer9RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer16RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer23RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer30RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer37RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer44RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer51RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer58RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer65RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer72RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer79RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer86RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer93RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff9cbb "/>
+        <stop offset="0%" stop-color="#ff9cbb "/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer3RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer10RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer17RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer24RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer31RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer38RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer45RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer52RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer59RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer66RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer73RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer80RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer87RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer94RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#cdff84 "/>
+        <stop offset="0%" stop-color="#cdff84 "/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer4RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer11RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer18RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer25RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer32RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer39RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer46RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer53RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer60RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer67RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer74RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer81RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer88RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer95RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#ccf6ff "/>
+        <stop offset="0%" stop-color="#ccf6ff "/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer5RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer12RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer19RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer26RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer33RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer40RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer47RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer54RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer61RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer68RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer75RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer82RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer89RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer96RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#fbb7ff "/>
+        <stop offset="0%" stop-color="#fbb7ff "/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer6RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer13RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer20RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer27RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer34RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer41RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer48RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer55RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer62RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer69RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer76RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer83RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer90RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer97RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#feeca2 "/>
+        <stop offset="0%" stop-color="#feeca2 "/>
+      </linearGradient>
+      
+      <linearGradient id="inhibitConnectionLayer7RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer14RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer21RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer28RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer35RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer42RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer49RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer56RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer63RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer70RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer77RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer84RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer91RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      <linearGradient id="inhibitConnectionLayer98RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#84ffc9 "/>
+        <stop offset="0%" stop-color="#84ffc9 "/>
+      </linearGradient>
+      
+      <linearGradient id="exciteConnectionLayer1RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer8RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer15RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer22RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer29RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer36RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer43RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer50RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer57RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer64RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer71RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer78RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer85RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer92RadialGradient2">
+        <!-- blue -->
+        <stop offset="0%" stop-color="#0000ff "/>
+        <stop offset="0%" stop-color="#0000ff "/>
+      </linearGradient>
+      
+      <linearGradient id="exciteConnectionLayer2RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer9RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer16RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer23RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer30RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer37RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer44RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer51RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer58RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer65RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer72RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer79RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer86RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer93RadialGradient2">
+        <!-- red -->
+        <stop offset="0%" stop-color="#ff0000 "/>
+        <stop offset="0%" stop-color="#ff0000 "/>
+      </linearGradient>
+      
+      <linearGradient id="exciteConnectionLayer3RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer10RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer17RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer24RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer31RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer38RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer45RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer52RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer59RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer66RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer73RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer80RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer87RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer94RadialGradient2">
+        <!-- turqoise [yellow] -->
+        <stop offset="0%" stop-color="#ffff00"/>
+        <stop offset="0%" stop-color="#ffff00"/>
+      </linearGradient>
+      
+      <linearGradient id="exciteConnectionLayer4RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer11RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer18RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer25RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer32RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer39RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer46RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer53RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer60RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer67RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer74RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer81RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer88RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer95RadialGradient2">
+        <!-- cyan -->
+        <stop offset="0%" stop-color="#00ffff "/>
+        <stop offset="0%" stop-color="#00ffff "/>
+      </linearGradient>
+      
+      <linearGradient id="exciteConnectionLayer5RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer12RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer19RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer26RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer33RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer40RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer47RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer54RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer61RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer68RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer75RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer82RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer89RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer96RadialGradient2">
+        <!-- purple -->
+        <stop offset="0%" stop-color="#ff00ff "/>
+        <stop offset="0%" stop-color="#ff00ff "/>
+      </linearGradient>
+      
+      <linearGradient id="exciteConnectionLayer6RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer13RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer20RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer27RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer34RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer41RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer48RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer55RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer62RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer69RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer76RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer83RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer90RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer97RadialGradient2">
+        <!-- orange -->
+        <stop offset="0%" stop-color="#ff9900 "/>
+        <stop offset="0%" stop-color="#ff9900 "/>
+      </linearGradient>
+      
+      <linearGradient id="exciteConnectionLayer7RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer14RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer21RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer28RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer35RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer42RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer49RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer56RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer63RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer70RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer77RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer84RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer91RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+      <linearGradient id="exciteConnectionLayer98RadialGradient2">
+        <!-- green -->
+        <stop offset="0%" stop-color="#00ff00 "/>
+        <stop offset="0%" stop-color="#00ff00 "/>
+      </linearGradient>
+           
+
+    </defs>
+    <g clip-path="url(#p545b2f616b)">
+     <!-- neurons with excitatory/inhibitory connections -->
+     <use style='fill:url(#unknownNeuronLayer5Color);stroke:url(#unknownNeuronLayer5Color);' x='1635' xlink:href='#m51ca76320d' y='284.4096'/>
+     <use style='fill:url(#unknownNeuronLayer5Color);stroke:url(#unknownNeuronLayer5Color);' x='598' xlink:href='#m51ca76320d' y='284.4096'/>
+    </g>
+   </g>
+   <g id="LineCollection_1">
+   	<!-- excitatory/inhibitory connections -->
+     <path clip-path='url(#p9a78a7c8e7)' d='M 1635 284.4096  L 1640 295.8396  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 1635 284.4096  L 588 295.8396  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 1635 284.4096  L 1308 201.2468  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 1635 284.4096  L 924 201.2468  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 1635 284.4096  L 1178 179.4924  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 1635 284.4096  L 1060 179.4924  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 1635 284.4096  L 1209 186.1848  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 1635 284.4096  L 1016.76 186.1848  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 1635 284.4096  L 1193.32 191.256  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 1635 284.4096  L 1038.68 191.3448  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 1635 284.4096  L 1106.2 3005.4092  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 1635 284.4096  L 598 284.4096  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 598 284.4096  L 588 295.8396  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient1);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 598 284.4096  L 924 201.2468  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 598 284.4096  L 1178 179.4924  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 598 284.4096  L 1060 179.4924  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 598 284.4096  L 1209 186.1848  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 598 284.4096  L 1016.76 186.1848  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 598 284.4096  L 1193.32 191.256  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 598 284.4096  L 1038.68 191.3448  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 598 284.4096  L 1310 183.6504  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 598 284.4096  L 864 183.6504  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 598 284.4096  L 1010 189.6588  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 598 284.4096  L 1106.2 3005.4092  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 598 284.4096  L 1635 284.4096  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 598 284.4096  L 1234 3043.5868  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+     <path clip-path='url(#p9a78a7c8e7)' d='M 598 284.4096  L 1138 311.3396  ' style='fill:none;stroke:url(#exciteConnectionLayer5RadialGradient2);stroke-opacity:0.75;stroke-width:0.25;'/>
+   </g>
+  </g>
+ </g>
+ <defs>
+ </defs>
+</svg>

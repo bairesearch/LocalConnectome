@@ -24,7 +24,9 @@ bool LCindexedCSVdatabasePreprocessClass::preprocess(const int preprocessMode, c
 	#ifdef INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET
 	if(preprocessMode == PREPROCESS_MODE_INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET)
 	{
+		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_PRESYNAPTIC_NEURONS
 		generateLocalConnectomeConnectionsDatasetFromMatrix(local_connectome_folder_base, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_PRESYNAPTIC_NEURONS);
+		#endif
 	}
 	#endif
 	#ifdef INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_NEURONS_DATASET
@@ -51,6 +53,21 @@ bool LCindexedCSVdatabasePreprocessClass::preprocess(const int preprocessMode, c
 		generateLocalConnectomeNeuronsDatasetFromADCneuronsFile(local_connectome_folder_base, LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME);
 	}
 	#endif	
+	#elif defined INDEXED_CSV_DATABASE_CEC
+	#ifdef INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET
+	if(preprocessMode == PREPROCESS_MODE_INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET)
+	{
+		#ifdef INDEXED_CSV_DATABASE_QUERY_COUNT_CONNECTIONS_EXCITATION_TYPE_FROM_EM_IMAGES
+		generateLocalConnectomeConnectionsDatasetFromCECconnectionsFile(local_connectome_folder_base, LOCAL_CONNECTOME_DATASET_CONNECTIONS_FILENAME_TYPES_DERIVED_FROM_EM_IMAGES, CONNECTION_TYPES_DERIVED_FROM_EM_IMAGES);
+		#endif
+	}
+	#endif
+	#ifdef INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_NEURONS_DATASET
+	else if(preprocessMode == PREPROCESS_MODE_INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_NEURONS_DATASET)
+	{
+		generateLocalConnectomeNeuronsDatasetFromCECneuronsFile(local_connectome_folder_base, LOCAL_CONNECTOME_DATASET_NEURONS_FILENAME);
+	}
+	#endif	
 	#endif
 	else
 	{
@@ -62,6 +79,94 @@ bool LCindexedCSVdatabasePreprocessClass::preprocess(const int preprocessMode, c
 }
 
 
+#ifdef INDEXED_CSV_DATABASE_CEC
+void LCindexedCSVdatabasePreprocessClass::generateLocalConnectomeNeuronsDatasetFromCECneuronsFile(const string local_connectome_folder_base, const string neuronDatasetFileNameWrite)
+{	
+	LCindexedCSVdatabaseOperations.prepareLocalConnectomeDatasetRead(local_connectome_folder_base);
+	
+	vector<vector<string>> CECdistancesData;
+	int CECdistancesDataSize;
+	SHAREDvars.getLinesFromFileCSV(INDEXED_CSV_DATABASE_PREPROCESS_CEC_DISTANCES_DATAFILE_NAME, &CECdistancesData, &CECdistancesDataSize, CSV_DELIMITER_CHAR, true);
+	
+	string neuronDatasetDataString = string(LOCAL_CONNECTOME_DATASET_NEURONS_HEADER) + STRING_NEWLINE;
+	for(int neuronIndex=0; neuronIndex<CECdistancesData.size(); neuronIndex++)
+	{
+		vector<string>* CECneuron = &(CECdistancesData[neuronIndex]);
+		string neuronID = SHAREDvars.convertIntToString(neuronIndex);
+		string neuronType = (*CECneuron)[INDEXED_CSV_DATABASE_PREPROCESS_CEC_DISTANCES_DATAFILE_FIELD_INDEX_NEURON];	//CHECKTHIS - currently store neuronType as alphabetical neuron name (the first few letters of which indicate its type)
+		string excitationTypeString = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_EXCITATION_TYPE_UNKNOWN);	//excitation types are currently taken from individual synapses
+		
+		//id,x,y,z,type,excitation_type
+		string neuronDatasetLine = neuronID + CSV_DELIMITER_CHAR + (*CECneuron)[INDEXED_CSV_DATABASE_PREPROCESS_CEC_DISTANCES_DATAFILE_FIELD_INDEX_X] + CSV_DELIMITER_CHAR + (*CECneuron)[INDEXED_CSV_DATABASE_PREPROCESS_CEC_DISTANCES_DATAFILE_FIELD_INDEX_Y] + CSV_DELIMITER_CHAR + (*CECneuron)[INDEXED_CSV_DATABASE_PREPROCESS_CEC_DISTANCES_DATAFILE_FIELD_INDEX_Z] + CSV_DELIMITER_CHAR + neuronType + CSV_DELIMITER_CHAR + excitationTypeString; 	//NOTREQUIRED (automatically generated); CSV_DELIMITER_CHAR + layerString
+		neuronDatasetDataString += neuronDatasetLine + STRING_NEWLINE;
+	}
+	
+	bool write = true;
+	if(write)
+	{
+		bool appendToFile = false;
+		ofstream writeFileObject = LCindexedCSVdatabaseOperations.prepareLocalConnectomeDatasetWrite(write, appendToFile, neuronDatasetFileNameWrite);
+		SHAREDvars.writeStringToFileObject(neuronDatasetDataString, &writeFileObject);
+		LCindexedCSVdatabaseOperations.finaliseLocalConnectomeDatasetWrite(write, &writeFileObject);
+	}
+}
+
+void LCindexedCSVdatabasePreprocessClass::generateLocalConnectomeConnectionsDatasetFromCECconnectionsFile(const string local_connectome_folder_base, const string connectionDatasetFileNameWrite, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages)
+{
+	LCindexedCSVdatabaseOperations.prepareLocalConnectomeDatasetRead(local_connectome_folder_base);
+	
+	vector<vector<string>> CECconnectomeData;
+	int CECconnectomeDataSize;
+	SHAREDvars.getLinesFromFileCSV(INDEXED_CSV_DATABASE_PREPROCESS_CEC_CONNECTOME_DATAFILE_NAME, &CECconnectomeData, &CECconnectomeDataSize, CSV_DELIMITER_CHAR, true);
+	
+	map<string, string> neuronIDMap = calculateNeuronIDMap(local_connectome_folder_base);
+	
+	string neuronDatasetDataString = string(LOCAL_CONNECTOME_DATASET_CONNECTIONS_HEADER) + STRING_NEWLINE;
+	for(int connectionIndex=0; connectionIndex<CECconnectomeData.size(); connectionIndex++)
+	{
+		vector<string>* CECconnection = &(CECconnectomeData[connectionIndex]);
+		string preNeuron = (*CECconnection)[INDEXED_CSV_DATABASE_PREPROCESS_CEC_CONNECTOME_DATAFILE_FIELD_INDEX_SOURCENEURON];
+		string postNeuron = (*CECconnection)[INDEXED_CSV_DATABASE_PREPROCESS_CEC_CONNECTOME_DATAFILE_FIELD_INDEX_TARGETNEURON];
+		string preID = neuronIDMap[preNeuron];
+		string postID = neuronIDMap[postNeuron];
+		string preClassLabel = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_CLASS_LABEL_UNKNOWN;
+		string postClassLabel = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_CLASS_LABEL_UNKNOWN;
+		string connectionSynNumFloatString = (*CECconnection)[INDEXED_CSV_DATABASE_PREPROCESS_CEC_CONNECTOME_DATAFILE_FIELD_INDEX_NUMBEROFCONNECTIONS];
+		float connectionSynNumFloat = SHAREDvars.convertStringToFloat(connectionSynNumFloatString);
+		int connectionSynNum = int(connectionSynNumFloat);
+		string connectionSynNumString = SHAREDvars.convertIntToString(connectionSynNum);
+		string excitationTypeAcronym = (*CECconnection)[INDEXED_CSV_DATABASE_PREPROCESS_CEC_CONNECTOME_DATAFILE_FIELD_INDEX_EXCITATIONTYPE];
+		string excitationTypeString;
+		if(excitationTypeAcronym == INDEXED_CSV_DATABASE_PREPROCESS_CEC_CONNECTOME_DATAFILE_FIELD_INDEX_EXCITATIONTYPE_EXCITATORY)
+		{
+			excitationTypeString = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY);
+		}
+		else if(excitationTypeAcronym == INDEXED_CSV_DATABASE_PREPROCESS_CEC_CONNECTOME_DATAFILE_FIELD_INDEX_EXCITATIONTYPE_INHIBITORY)
+		{
+			excitationTypeString = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY);
+		}
+		else
+		{
+			cerr << "LCindexedCSVdatabasePreprocessClass::generateLocalConnectomeConnectionsDatasetFromCECconnectionsFile error: excitationTypeAcronym unknown; excitationTypeAcronym = " << excitationTypeAcronym << endl;
+			exit(EXIT_ERROR);
+		}
+
+		//pre_id, post_id, pre_class_label, post_class_label, syn_num, excitation_type
+		string neuronDatasetLine = preID + CSV_DELIMITER_CHAR + postID + CSV_DELIMITER_CHAR + preClassLabel + CSV_DELIMITER_CHAR + postClassLabel + CSV_DELIMITER_CHAR + connectionSynNumString + CSV_DELIMITER_CHAR + excitationTypeString;
+		neuronDatasetDataString += neuronDatasetLine + STRING_NEWLINE;
+	}
+
+	bool write = true;
+	if(write)
+	{
+		bool appendToFile = false;
+		ofstream writeFileObject = LCindexedCSVdatabaseOperations.prepareLocalConnectomeDatasetWrite(write, appendToFile, connectionDatasetFileNameWrite);
+		SHAREDvars.writeStringToFileObject(neuronDatasetDataString, &writeFileObject);
+		LCindexedCSVdatabaseOperations.finaliseLocalConnectomeDatasetWrite(write, &writeFileObject);
+	}
+}
+#endif
+	
 #ifdef INDEXED_CSV_DATABASE_ADC
 void LCindexedCSVdatabasePreprocessClass::generateLocalConnectomeNeuronsDatasetFromADCneuronsFile(const string local_connectome_folder_base, const string neuronDatasetFileNameWrite)
 {	
@@ -503,8 +608,8 @@ map<string, string> LCindexedCSVdatabasePreprocessClass::calculateNeuronExcitati
 map<string, string> LCindexedCSVdatabasePreprocessClass::calculateNeuronRegionTypeMap(const string local_connectome_folder_base)
 {
 	map<string, string> neuronTypeMap;
-	calculateNeuronTypeMap(local_connectome_folder_base, INDEXED_CSV_DATABASE_PREPROCESS_LDC_SM_CELLTYPE_DATAFILE_3_NAME, INDEXED_CSV_DATABASE_PREPROCESS_LDC_SM_CELLTYPE_DATAFILE_34_FIELD_INDEX_SKID, INDEXED_CSV_DATABASE_PREPROCESS_LDC_SM_CELLTYPE_DATAFILE_34_FIELD_INDEX_CELLTYPE, CSV_DELIMITER_CHAR, &neuronTypeMap);
-	calculateNeuronTypeMap(local_connectome_folder_base, INDEXED_CSV_DATABASE_PREPROCESS_LDC_SM_CELLTYPE_DATAFILE_4_NAME, INDEXED_CSV_DATABASE_PREPROCESS_LDC_SM_CELLTYPE_DATAFILE_34_FIELD_INDEX_SKID, INDEXED_CSV_DATABASE_PREPROCESS_LDC_SM_CELLTYPE_DATAFILE_34_FIELD_INDEX_CELLTYPE, CSV_DELIMITER_CHAR, &neuronTypeMap);
+	calculateNeuronTypeMap(local_connectome_folder_base, INDEXED_CSV_DATABASE_PREPROCESS_LDC_SM_CELLTYPE_DATAFILE_3_NAME, INDEXED_CSV_DATABASE_PREPROCESS_LDC_SM_CELLTYPE_DATAFILE_34_FIELD_INDEX_SKID, INDEXED_CSV_DATABASE_PREPROCESS_LDC_SM_CELLTYPE_DATAFILE_34_FIELD_INDEX_CELLTYPE, CSV_DELIMITER_CHAR, &neuronTypeMap, false);
+	calculateNeuronTypeMap(local_connectome_folder_base, INDEXED_CSV_DATABASE_PREPROCESS_LDC_SM_CELLTYPE_DATAFILE_4_NAME, INDEXED_CSV_DATABASE_PREPROCESS_LDC_SM_CELLTYPE_DATAFILE_34_FIELD_INDEX_SKID, INDEXED_CSV_DATABASE_PREPROCESS_LDC_SM_CELLTYPE_DATAFILE_34_FIELD_INDEX_CELLTYPE, CSV_DELIMITER_CHAR, &neuronTypeMap, false);
 	return neuronTypeMap;
 }
 #endif
@@ -518,14 +623,22 @@ map<string, string> LCindexedCSVdatabasePreprocessClass::calculateNeuronNeurotra
 	return calculateNeuronTypeMap(local_connectome_folder_base, INDEXED_CSV_DATABASE_PREPROCESS_ADC_NEURONS_DATAFILE_NAME, INDEXED_CSV_DATABASE_PREPROCESS_ADC_NEURONS_DATAFILE_FIELD_INDEX_ID, INDEXED_CSV_DATABASE_PREPROCESS_ADC_NEURONS_DATAFILE_FIELD_INDEX_NT_TYPE, CSV_DELIMITER_CHAR);
 }
 #endif
+#ifdef INDEXED_CSV_DATABASE_CEC
+map<string, string> LCindexedCSVdatabasePreprocessClass::calculateNeuronIDMap(const string local_connectome_folder_base)
+{
+	map<string, string> neuronTypeMap;
+	calculateNeuronTypeMap(local_connectome_folder_base, INDEXED_CSV_DATABASE_PREPROCESS_CEC_DISTANCES_DATAFILE_NAME, INDEXED_CSV_DATABASE_PREPROCESS_CEC_DISTANCES_DATAFILE_FIELD_INDEX_NEURON, INT_IRRELEVANT, CSV_DELIMITER_CHAR, &neuronTypeMap, true);
+	return neuronTypeMap;
+}
+#endif
 map<string, string> LCindexedCSVdatabasePreprocessClass::calculateNeuronTypeMap(const string local_connectome_folder_base, const string neuronTypesFileName, const int neuronTypeIndex, const int neuronValueIndex, const char delimiter)
 {
 	map<string, string> neuronTypeMap;
-	calculateNeuronTypeMap(local_connectome_folder_base, neuronTypesFileName, neuronTypeIndex, neuronValueIndex, delimiter, &neuronTypeMap);
+	calculateNeuronTypeMap(local_connectome_folder_base, neuronTypesFileName, neuronTypeIndex, neuronValueIndex, delimiter, &neuronTypeMap, false);
 	return neuronTypeMap;
 }
 
-void LCindexedCSVdatabasePreprocessClass::calculateNeuronTypeMap(const string local_connectome_folder_base, const string neuronTypesFileName, const int neuronTypeIndex, const int neuronValueIndex, const char delimiter, map<string, string>* neuronTypeMap)
+void LCindexedCSVdatabasePreprocessClass::calculateNeuronTypeMap(const string local_connectome_folder_base, const string neuronTypesFileName, const int neuronTypeIndex, const int neuronValueIndex, const char delimiter, map<string, string>* neuronTypeMap, const bool deriveNeuronID)
 {
 	LCindexedCSVdatabaseOperations.prepareLocalConnectomeDatasetRead(local_connectome_folder_base);
 	int neuronTypeFileSize = 0;
@@ -537,13 +650,22 @@ void LCindexedCSVdatabasePreprocessClass::calculateNeuronTypeMap(const string lo
 	for(int rowIndex=0; rowIndex<neuronTypeFileSize; rowIndex++)
 	{
 		vector<string>* row = &(neuronTypeData[rowIndex]);
-		string neuronType = (*row)[neuronTypeIndex];
-		string neuronValue = (*row)[neuronValueIndex];
-		//cout << "neuronType = " << neuronType << endl;
-		//cout << "neuronValue = " << neuronValue << endl;
-		(*neuronTypeMap)[neuronType] = neuronValue;
+		string neuronType = "";
+		if(deriveNeuronID)
+		{
+			string neuronID = SHAREDvars.convertIntToString(rowIndex);
+			string neuronValue = (*row)[neuronValueIndex];
+			(*neuronTypeMap)[neuronValue] = neuronID;
+		}
+		else
+		{
+			neuronType = (*row)[neuronTypeIndex];
+			string neuronValue = (*row)[neuronValueIndex];
+			//cout << "neuronType = " << neuronType << endl;
+			//cout << "neuronValue = " << neuronValue << endl;
+			(*neuronTypeMap)[neuronType] = neuronValue;
+		}
 	}
 }
-
 
 #endif

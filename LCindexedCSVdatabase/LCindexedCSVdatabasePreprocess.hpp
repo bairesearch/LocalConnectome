@@ -31,6 +31,10 @@ class LCindexedCSVdatabasePreprocessClass
 	private: LCindexedCSVdatabaseCalculateNeuronLayerClass LCindexedCSVdatabaseCalculateNeuronLayer;
 	
 	public: bool preprocess(const int preprocessMode, const string local_connectome_folder_base);
+		#ifdef INDEXED_CSV_DATABASE_CEC
+		private: void generateLocalConnectomeNeuronsDatasetFromCECneuronsFile(const string local_connectome_folder_base, const string neuronDatasetFileNameWrite);
+		private: void generateLocalConnectomeConnectionsDatasetFromCECconnectionsFile(const string local_connectome_folder_base, const string connectionDatasetFileNameWrite, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages);
+		#endif
 		#ifdef INDEXED_CSV_DATABASE_ADC
 		private: void generateLocalConnectomeNeuronsDatasetFromADCneuronsFile(const string local_connectome_folder_base, const string neuronDatasetFileNameWrite);
 			private: vector<string> parseADCcoordinatesPositionVectorString(const string positionVectorString);
@@ -57,8 +61,11 @@ class LCindexedCSVdatabasePreprocessClass
 		private: map<string, string> calculateNeuronCoordinatesTypeMap(const string local_connectome_folder_base);
 		private: map<string, string> calculateNeuronNeurotransmitterTypeMap(const string local_connectome_folder_base);
 		#endif
+		#ifdef INDEXED_CSV_DATABASE_CEC
+		private: map<string, string> calculateNeuronIDMap(const string local_connectome_folder_base);
+		#endif
 			private: map<string, string> calculateNeuronTypeMap(const string local_connectome_folder_base, const string neuronTypesFileName, const int neuronTypeIndex, const int neuronValueIndex, const char delimiter);
-				private: void calculateNeuronTypeMap(const string local_connectome_folder_base, const string neuronTypesFileName, const int neuronTypeIndex, const int neuronValueIndex, const char delimiter, map<string, string>* neuronTypeMap);
+				private: void calculateNeuronTypeMap(const string local_connectome_folder_base, const string neuronTypesFileName, const int neuronTypeIndex, const int neuronValueIndex, const char delimiter, map<string, string>* neuronTypeMap, const bool deriveNeuronID);
 
 };
 

@@ -41,7 +41,7 @@ class LCindexedCSVdatabaseOperationsClass
 	public: void finaliseLocalConnectomeDatasetWrite(const bool write, ofstream* writeFileObject);
 
 	#ifdef INDEXED_CSV_DATABASE_PREPROCESS_ADC_MIRRORTWINS
-	public: bool readPreprocessMirrorTwinsCSVdataset(map<string, int>* mirrorTwinsMap);
+	public: bool readPreprocessMirrorTwinsCSVdataset(map<string, int>* mirrorTwinsMap, map<string, int>* neuronMap);
 	#endif
 
 };

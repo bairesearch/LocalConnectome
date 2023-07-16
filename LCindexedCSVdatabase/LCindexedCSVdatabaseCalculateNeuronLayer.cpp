@@ -88,7 +88,7 @@ double LCindexedCSVdatabaseCalculateNeuronLayerClass::getZNormalisationFactor()
 {
 	#ifdef INDEXED_CSV_DATABASE_H01
 	double normalisationFactorZ = double(AVRO_JSON_DATABASE_COORDINATES_RANGE_X*AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_X + AVRO_JSON_DATABASE_COORDINATES_RANGE_Y*AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_Y)/2.0 / (AVRO_JSON_DATABASE_COORDINATES_RANGE_Z*AVRO_JSON_DATABASE_COORDINATES_CALIBRATION_Z);
-	#elif defined INDEXED_CSV_DATABASE_DC
+	#elif defined INDEXED_CSV_DATABASE_DC_OR_CEC
 	double normalisationFactorZ = 1.0;	//CHECKTHIS
 	#endif
 	return normalisationFactorZ;
@@ -139,6 +139,8 @@ bool LCindexedCSVdatabaseCalculateNeuronLayerClass::readLocalNeuronsAndConnectio
 	}
 	#elif defined INDEXED_CSV_DATABASE_DC
 	calculateNeuronLayersDC(localConnectomeCSVdatasetNeurons);
+	#elif defined INDEXED_CSV_DATABASE_CEC
+	calculateNeuronLayersCEC(localConnectomeCSVdatasetNeurons);
 	#endif
 	#endif
 	
@@ -663,6 +665,50 @@ void LCindexedCSVdatabaseCalculateNeuronLayerClass::calculateNeuronLayersDC(vect
 	}
 }
 #endif
+#ifdef INDEXED_CSV_DATABASE_CEC
+void LCindexedCSVdatabaseCalculateNeuronLayerClass::calculateNeuronLayersCEC(vector<vector<string>>* localConnectomeCSVdatasetNeurons)
+{
+	map<string, int> neuronTypeIndexMap;
+
+	int neuronTypeFileSize = 0;
+	vector<vector<string>> neuronTypeData;
+	bool expectFirstLineHeader = true;
+	SHAREDvars.getLinesFromFileCSV(INDEXED_CSV_DATABASE_PREPROCESS_LAYERS_FILE_NAME, &neuronTypeData, &neuronTypeFileSize, CHAR_TAB, expectFirstLineHeader);
+	
+	for(int i=0; i<localConnectomeCSVdatasetNeurons->size(); i++)
+	{
+		vector<string>* localNeuronCSVdatasetLine = &((*localConnectomeCSVdatasetNeurons)[i]);
+		
+		string neuronType = (*localNeuronCSVdatasetLine)[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_TYPE];
+		int neuronRegionTypeIndex = CORTICAL_LAYER_UNKNOWN;
+		
+		bool neuronRegionFound = false;
+		for(int regionTypeIndex=0; regionTypeIndex<neuronTypeFileSize; regionTypeIndex++)
+		{
+			if(!neuronRegionFound)
+			{
+				string regionType = (neuronTypeData[regionTypeIndex])[INDEXED_CSV_DATABASE_PREPROCESS_ADC_GROUP_TYPES_FIELD_INDEX_REGIONTYPE];
+				if(neuronType.find(regionType) == 0)
+				{
+					neuronRegionFound = true;
+					neuronRegionTypeIndex = regionTypeIndex;
+				}
+			}	
+		}
+		
+		#ifdef INDEXED_CSV_DATABASE_DC_NEURON_LAYERS_REUSE_H01_TEMPLATES
+		int layerIndex = neuronRegionTypeIndex%CORTICAL_LAYER_NUMBER_OF_LAYERS;
+		#else
+		int layerIndex = neuronRegionTypeIndex;
+		#endif
+		//cout << "layerIndex = " << layerIndex << endl;
+		localNeuronCSVdatasetLine->push_back(SHAREDvars.convertIntToString(layerIndex));	//LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER	
+		//cout << "localNeuronCSVdatasetLine->size() = " << localNeuronCSVdatasetLine->size() << endl;
+	}
+}
+
+#endif
+
 #endif
 
 

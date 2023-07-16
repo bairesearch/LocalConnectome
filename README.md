@@ -2,11 +2,11 @@
 Introduction
 ============
 
-This repository (LocalConnectome/LC) contains structural/functional interrogations (including visualisations) of various connectome datasets (H01, LDC, ADC), and software used in their derivation. 
+This repository (LocalConnectome/LC) contains structural/functional interrogations (including visualisations) of various connectome datasets (H01, LDC, ADC, CEC), and software used in their derivation. 
 
 The "Local Connectome" is taken as the connectivity data between those neurons (neuron_id) which have cell soma/centroids that reside within a connectome Release dataset. The local connectome is analysed along with its immediate incoming and outgoing connections.
 
-With the expansion of the LC software to support multiple, complete brain datasets (LDC/ADC), the title of the repository "Local Connectome" now refers more generally to the local machine processing of connectome data.
+With the expansion of the LC software to support multiple, complete brain datasets (LDC/ADC/CEC), the title of the repository "Local Connectome" now refers more generally to the local machine processing of connectome data.
 
 Acknowledgements
 ================
@@ -52,6 +52,15 @@ Dorkenwald, S., Matsliah, A., Sterling, A.R., Schlegel, P., Yu, S., McKellar, C.
 Schlegel, P., Yin, Y., Bates, A.S., Dorkenwald, S., Eichler, K., Brooks, P., Han, D.S., Gkantia, M., dos Santos, M., Munnelly, E.J. et al. (2023). A consensus cell type atlas from multiple connectomes reveals principles of circuit stereotypy and variation. bioRxiv. (https://www.biorxiv.org/content/10.1101/2023.06.27.546055v1)
 
 adultDrosophilaConnectome (local connectome analysis only; entire organism neuronal dataset is represented in local connectome)
+
+INDEXED_CSV_DATABASE_CEC
+------------------------
+
+Source datasets are from the complete CEC (Caenorhabditis Elegans Connectome);
+
+Varshney, L. R., Chen, B. L., Paniagua, E., Hall, D. H., & Chklovskii, D. B. (2011). Structural properties of the Caenorhabditis elegans neuronal network. PLoS computational biology, 7(2), e1001066.
+
+caenorhabditisElegansConnectome (local connectome analysis only; entire organism neuronal dataset is represented in local connectome)
 
 
 License
@@ -120,6 +129,9 @@ preprocess mode 2 - INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_NE
 #elif defined INDEXED_CSV_DATABASE_ADC
 preprocess mode 1 - INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET - automatically generate localConnectomeConnections-typesFromPresynapticNeurons.csv/typesFromEMimages.csv from Codex FlyWire Connectome Data
 preprocess mode 2 - INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_NEURONS_DATASET - automatically generate localConnectomeNeurons.csv from Codex FlyWire Connectome Data
+#elif defined INDEXED_CSV_DATABASE_CEC
+preprocess mode 1 - INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET - automatically generate localConnectomeConnections-typesFromPresynapticNeurons.csv/typesFromEMimages.csv from CElegansTP data
+preprocess mode 2 - INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_NEURONS_DATASET - automatically generate localConnectomeNeurons.csv from CElegansTP data
 #endif
 ```
 
@@ -229,9 +241,10 @@ LCindexedCSVdatabaseReadLocalConnectome.cpp/.hpp (execution mode 6: INDEXED_CSV_
 	#elif defined INDEXED_CSV_DATABASE_ADC
      * INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET: connections.csv, neurons.csv
      * INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_NEURONS_DATASET: neurons.csv, coordinates.csv
+	#elif defined INDEXED_CSV_DATABASE_CEC
+     * INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET: Connectome.csv, distances.csv
+     * INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_NEURONS_DATASET: distances.csv
 	#endif
-	
-
  * Output:
      * INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_CONNECTIONS_DATASET: localConnectomeConnections-typesFromPresynapticNeurons/typesFromEMimages.csv - pre_id, post_id, pre_class_label, post_class_label, syn_num, excitation_type
      * INDEXED_CSV_DATABASE_PREPROCESS_GENERATE_LOCAL_CONNECTOME_NEURONS_DATASET: localConnectomeNeurons.csv - id, x, y, z, type, excitation_type
