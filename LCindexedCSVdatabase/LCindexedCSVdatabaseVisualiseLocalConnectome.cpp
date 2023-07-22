@@ -288,7 +288,18 @@ bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectome
 bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectomeGenerateContent(const string local_connectome_folder_base, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, const bool generate2Dvisualisation, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, const string local_connectome_visualisation_filename_base, const int coloursetNumber, const bool visualiseLayers, const bool visualiseDirection, const bool visualiseFlow, const bool visualiseLayersSpecific, const int layerIndexVisualise, const bool visualiseTrace, const int traceIterationIndex)
 {
 	bool result = true;
-				
+		
+	#ifdef LOCAL_CONNECTOME_VISUALISATION_FLOW_CONTRAIPSILATERAL
+	double xCalibratedAverage = 0.0;
+	for(int i=0;i<localConnectomeCSVdatasetNeurons->size(); i++)
+	{
+		vector<string> localConnectionCSVdatasetNeuron = (*localConnectomeCSVdatasetNeurons)[i];
+		double xCalibrated = LCindexedCSVdatabaseOperations.calibrateCoordinateX(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetNeuron[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X]));
+		xCalibratedAverage = xCalibratedAverage + xCalibrated;
+	}
+	xCalibratedAverage = xCalibratedAverage/localConnectomeCSVdatasetNeurons->size();
+	#endif
+			
 	//neuron data;
 	string localConnectomeVisualisationContentsPart4 = "";
 	if(generate2Dvisualisation)
@@ -542,9 +553,16 @@ bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectome
 			neuronTypeStringSVG += LOCAL_CONNECTOME_VISUALISATION_NEURONS_COLOURSET_REFERENCE_APPEND;
 			
 			double xCalibrated = LCindexedCSVdatabaseOperations.calibrateCoordinateX(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetNeuron[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_X]));
+			#ifdef LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FLIP_Y_Z
+			double zCalibrated = LCindexedCSVdatabaseOperations.calibrateCoordinateY(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetNeuron[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y]));
+			#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
+			double yCalibrated = LCindexedCSVdatabaseOperations.calibrateCoordinateZ(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetNeuron[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Z]));
+			#endif
+			#else
 			double yCalibrated = LCindexedCSVdatabaseOperations.calibrateCoordinateY(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetNeuron[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Y]));
 			#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 			double zCalibrated = LCindexedCSVdatabaseOperations.calibrateCoordinateZ(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetNeuron[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_Z]));
+			#endif
 			#endif
 
 			string localConnectionVisualisationNeuronText = "";
@@ -793,11 +811,18 @@ bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectome
 			{
 
 				double xCalibratedPre = LCindexedCSVdatabaseOperations.calibrateCoordinateX(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_X]));
+				double xCalibratedPost = LCindexedCSVdatabaseOperations.calibrateCoordinateX(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_X]));
+				#ifdef LOCAL_CONNECTOME_VISUALISATION_CALIBRATION_FLIP_Y_Z
+				double zCalibratedPre = LCindexedCSVdatabaseOperations.calibrateCoordinateY(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Y]));
+				double yCalibratedPre = LCindexedCSVdatabaseOperations.calibrateCoordinateZ(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Z]));
+				double zCalibratedPost = LCindexedCSVdatabaseOperations.calibrateCoordinateY(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Y]));
+				double yCalibratedPost = LCindexedCSVdatabaseOperations.calibrateCoordinateZ(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Z]));
+				#else
 				double yCalibratedPre = LCindexedCSVdatabaseOperations.calibrateCoordinateY(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Y]));
 				double zCalibratedPre = LCindexedCSVdatabaseOperations.calibrateCoordinateZ(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Z]));
-				double xCalibratedPost = LCindexedCSVdatabaseOperations.calibrateCoordinateX(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_X]));
 				double yCalibratedPost = LCindexedCSVdatabaseOperations.calibrateCoordinateY(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Y]));
-				double zCalibratedPost = LCindexedCSVdatabaseOperations.calibrateCoordinateZ(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Z]));		
+				double zCalibratedPost = LCindexedCSVdatabaseOperations.calibrateCoordinateZ(SHAREDvars.convertStringToDouble(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Z]));
+				#endif	
 
 				int connectionRadialGradientType = this->calculateConnectionRadialGradientType(xCalibratedPre, xCalibratedPost);	
 				if(connectionRadialGradientType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_RADIALGRADIENT_TYPE_POSITIVE)
@@ -812,7 +837,7 @@ bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectome
 				int connectionFlowType = INT_DEFAULT_VALUE;
 				if(visualiseFlow)
 				{
-					connectionFlowType = this->calculateConnectionFlowType(xCalibratedPre, yCalibratedPre, xCalibratedPost, yCalibratedPost);	
+					connectionFlowType = this->calculateConnectionFlowType(xCalibratedPre, yCalibratedPre, xCalibratedPost, yCalibratedPost, xCalibratedAverage);	
 					if(connectionFlowType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_POSITIVE)
 					{
 						connectionTypeStringSVG += LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_FLOW_TYPE_POSITIVE;
@@ -1076,12 +1101,22 @@ bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectome
 }		
 
 
-int LCindexedCSVdatabaseVisualiseLocalConnectomeClass::calculateConnectionFlowType(const double xCalibratedPre, const double yCalibratedPre, const double xCalibratedPost, const double yCalibratedPost)
+int LCindexedCSVdatabaseVisualiseLocalConnectomeClass::calculateConnectionFlowType(const double xCalibratedPre, const double yCalibratedPre, const double xCalibratedPost, const double yCalibratedPost, const double xCalibratedAverage)
 {
+	int connectionFlowType;
+	#ifdef LOCAL_CONNECTOME_VISUALISATION_FLOW_CONTRAIPSILATERAL
+	if(((xCalibratedPre < xCalibratedAverage) && (xCalibratedPost > xCalibratedAverage)) || ((xCalibratedPre > xCalibratedAverage) && (xCalibratedPost < xCalibratedAverage)))
+	{
+		connectionFlowType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_NEGATIVE;	//contralateral connection
+	}
+	else
+	{
+		connectionFlowType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_POSITIVE;	//ipsilateral connection
+	}
+	#else
 	double connectionFlowVectorX = xCalibratedPost - xCalibratedPre;
 	double connectionFlowVectorY = yCalibratedPost - yCalibratedPre;
 	double dotProduct = connectionFlowVectorX*LOCAL_CONNECTOME_VISUALISATION_POSITIVE_FLOW_VECTOR_X + connectionFlowVectorY*LOCAL_CONNECTOME_VISUALISATION_POSITIVE_FLOW_VECTOR_Y;
-	int connectionFlowType;
 	if(dotProduct > 0)
 	{
 		connectionFlowType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_POSITIVE;
@@ -1090,6 +1125,7 @@ int LCindexedCSVdatabaseVisualiseLocalConnectomeClass::calculateConnectionFlowTy
 	{
 		connectionFlowType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_NEGATIVE;
 	}
+	#endif
 	return connectionFlowType;
 }
 
