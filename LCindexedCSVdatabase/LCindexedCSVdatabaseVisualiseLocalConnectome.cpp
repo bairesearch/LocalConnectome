@@ -351,20 +351,18 @@ bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectome
 			{	
 				if(!visualiseFlow)
 				{
-					if(!visualiseLayers)
-					{
-						neuronUnknownColourLDR = local_connectome_visualisation_neurons_colour_excitation_type_unknown[coloursetNumber-1];
-						neuronExcitatoryColourLDR = local_connectome_visualisation_neurons_colour_excitation_type_excitatory[coloursetNumber-1];
-						neuronInhibitoryColourLDR = local_connectome_visualisation_neurons_colour_excitation_type_inhibitory[coloursetNumber-1];
-						#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME
-						neuronInactiveColourLDRtraceHighlight = local_connectome_visualisation_neurons_colour_trace_highlight1_value_inactive[coloursetNumber-1];
-						neuronExcitatoryColourLDRtraceHighlight = local_connectome_visualisation_neurons_colour_trace_highlight1_value_excitatory[coloursetNumber-1];
-						neuronInhibitoryColourLDRtraceHighlight = local_connectome_visualisation_neurons_colour_trace_highlight1_value_inhibitory[coloursetNumber-1];
-						neuronInactiveColourLDRtraceMark = local_connectome_visualisation_neurons_colour_trace_highlight2_value_inactive[coloursetNumber-1];
-						neuronExcitatoryColourLDRtraceMark = local_connectome_visualisation_neurons_colour_trace_highlight2_value_excitatory[coloursetNumber-1];
-						neuronInhibitoryColourLDRtraceMark = local_connectome_visualisation_neurons_colour_trace_highlight2_value_inhibitory[coloursetNumber-1];						
-						#endif
-					}
+					//old before LOCAL_CONNECTOME_VISUALISATION_TEMPLATES_LAYERED_LAST_PART_ONLY: if(!visualiseLayers)
+					neuronUnknownColourLDR = local_connectome_visualisation_neurons_colour_excitation_type_unknown[coloursetNumber-1];
+					neuronExcitatoryColourLDR = local_connectome_visualisation_neurons_colour_excitation_type_excitatory[coloursetNumber-1];
+					neuronInhibitoryColourLDR = local_connectome_visualisation_neurons_colour_excitation_type_inhibitory[coloursetNumber-1];
+					#ifdef INDEXED_CSV_DATABASE_TRACE_LOCAL_CONNECTOME
+					neuronInactiveColourLDRtraceHighlight = local_connectome_visualisation_neurons_colour_trace_highlight1_value_inactive[coloursetNumber-1];
+					neuronExcitatoryColourLDRtraceHighlight = local_connectome_visualisation_neurons_colour_trace_highlight1_value_excitatory[coloursetNumber-1];
+					neuronInhibitoryColourLDRtraceHighlight = local_connectome_visualisation_neurons_colour_trace_highlight1_value_inhibitory[coloursetNumber-1];
+					neuronInactiveColourLDRtraceMark = local_connectome_visualisation_neurons_colour_trace_highlight2_value_inactive[coloursetNumber-1];
+					neuronExcitatoryColourLDRtraceMark = local_connectome_visualisation_neurons_colour_trace_highlight2_value_excitatory[coloursetNumber-1];
+					neuronInhibitoryColourLDRtraceMark = local_connectome_visualisation_neurons_colour_trace_highlight2_value_inhibitory[coloursetNumber-1];						
+					#endif
 				}
 			}
 		}
@@ -540,7 +538,7 @@ bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectome
 					{
 						if(visualiseLayers)
 						{
-							if(coloursetNumber == 1)
+							if(coloursetNumber == LOCAL_CONNECTOME_VISUALISATION_TEMPLATES_LAYERED_LAST_PART_3D)
 							{
 								if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY)
 								{
@@ -910,7 +908,7 @@ bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectome
 						{
 							if(visualiseLayers)
 							{
-								if(coloursetNumber == 1)
+								if(coloursetNumber == LOCAL_CONNECTOME_VISUALISATION_TEMPLATES_LAYERED_LAST_PART_3D)
 								{
 									if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY)
 									{
@@ -1175,8 +1173,8 @@ bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::getUseFilenameLayered(co
 	bool useFilenameLayered = false;
 	if(visualiseLayers)
 	{
-		#ifdef LOCAL_CONNECTOME_VISUALISATION_TEMPLATES_LAYERED_PART1_ONLY
-		if((coloursetNumber == 1) && !visualiseFlow)
+		#ifdef LOCAL_CONNECTOME_VISUALISATION_TEMPLATES_LAYERED_LAST_PART_ONLY
+		if((coloursetNumber == LOCAL_CONNECTOME_VISUALISATION_TEMPLATES_LAYERED_LAST_PART_2D) && !visualiseFlow)
 		{
 			useFilenameLayered = true;
 		}

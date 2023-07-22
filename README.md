@@ -267,10 +267,12 @@ Current local connectome visualisations for connectionTypesDerivedFromEMimages/c
 - connections_IE_flow1.svg - connections coloured by excitatory/inhibitory type and flow direction (through the cortical layers); neurons coloured by cell type.
 - connections_IE_flow2.svg - connections coloured by excitatory/inhibitory type, pre/post synaptic direction, and flow direction (through the cortical layers) [unique hue for connection source and target]; neurons coloured by cell type.
 - connections_IE_flow3.svg - connections coloured by excitatory/inhibitory type, pre/post synaptic direction, and flow direction (through the cortical layers) [unique hue for connection target only]; neurons coloured by cell type.
-- connections_IE_layered1.svg (connections_IE_layered1_Lx.svg) - neurons/connections coloured by layer (excitatory/inhibitory connection types indicated by saturation).
-- connections_IE_layered2.svg (connections_IE_layered2_Lx.svg) - connections coloured by excitatory/inhibitory type and pre/post synaptic direction; neurons coloured by cell type.
+- connections_IE_layered1.svg (connections_IE_layered1_Lx.svg) - connections coloured by excitatory/inhibitory type and pre/post synaptic direction; neurons coloured by cell type.
+- connections_IE_layered2.svg (connections_IE_layered2_Lx.svg) - connections coloured by excitatory/inhibitory type; neurons coloured by cell type.
+- connections_IE_layered3.svg (connections_IE_layered3_Lx.svg) - neurons/connections coloured by layer (excitatory/inhibitory connection types indicated by saturation).
 - connections_IE_layered_flow1.svg (connections_IE_layered_flow1_Lx.svg) - connections coloured by excitatory/inhibitory type and flow direction (through the cortical layers); neurons coloured by cell type.
 - connections_IE_layered_flow2.svg (connections_IE_layered_flow2_Lx.svg) - connections coloured by excitatory/inhibitory type, pre/post synaptic direction, and flow direction (through the cortical layers) [unique hue for connection source and target]; neurons coloured by cell type.
+- connections_IE_layered_flow3.svg (connections_IE_layered_flow2_Lx.svg) - connections coloured by excitatory/inhibitory type, pre/post synaptic direction, and flow direction (through the cortical layers) [unique hue for connection target only]; neurons coloured by cell type.
 
 \- A web browser/Inkscape/etc can be used to view 2D SVG visualisations.\
 \- 2D SVG colour sets can be changed by modifying the visualisations/templates/connections_IE_part2-\*.svg file <"linearGradient"> tags.\
@@ -280,8 +282,9 @@ Current local connectome visualisations for connectionTypesDerivedFromEMimages/c
 - connections_IE1.ldr - connections coloured by excitatory/inhibitory type; neurons coloured by cell type.
 - connections_IE2.ldr - connections coloured by excitatory/inhibitory type; neurons coloured by cell type.
 - connections_IE_flow1.ldr - connections coloured by excitatory/inhibitory type and flow direction (through the cortical layers); neurons coloured by cell type.
-- connections_IE_layered1.ldr (connections_IE_layered1_Lx.ldr) - neurons/connections coloured by layer (excitatory/inhibitory connection types indicated by saturation).
+- connections_IE_layered1.ldr (connections_IE_layered1_Lx.ldr) - connections coloured by excitatory/inhibitory type; neurons coloured by cell type.
 - connections_IE_layered2.ldr (connections_IE_layered2_Lx.ldr) - connections coloured by excitatory/inhibitory type; neurons coloured by cell type.
+- connections_IE_layered3.ldr (connections_IE_layered1_Lx.ldr) - neurons/connections coloured by layer (excitatory/inhibitory connection types indicated by saturation).
 - connections_IE_layered_flow1.ldr (connections_IE_layered_flow1_Lx.ldr) - connections coloured by excitatory/inhibitory type and flow direction (through the cortical layers); neurons coloured by cell type.
 
 \- LDView can be used to view 3D LDR visualisations (https://tcobbs.github.io/ldview/Downloads.html - **[LDView Ubuntu 20.04 installation](https://gist.github.com/bairesearch/d7ca85a88d253b68501b5166d752746d)**) \
