@@ -248,16 +248,19 @@ bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectome
 	if(!visualiseTrace)	//visualiseTrace coloursets not (yet) defined
 	{	
 	#endif
+		
 		#ifdef LOCAL_CONNECTOME_VISUALISATION_LAYERS
 		cout << "generate visualisations (layered);" << endl;
 		for(int coloursetIndex=1; coloursetIndex<=local_connectome_visualisation_filename_layered_direction_number_coloursets; coloursetIndex++)
 		{
-			string local_connectome_visualisation_filename_base = string(LOCAL_CONNECTOME_VISUALISATION_FILENAME_COLOURSET_PREPEND) + local_connectome_visualisation_filename_layered_direction + SHAREDvars.convertIntToString(coloursetIndex);
+			string local_connectome_visualisation_filename_layered = local_connectome_visualisation_filename_layered_direction;
+			string local_connectome_visualisation_filename_base = string(LOCAL_CONNECTOME_VISUALISATION_FILENAME_COLOURSET_PREPEND) + local_connectome_visualisation_filename_layered + SHAREDvars.convertIntToString(coloursetIndex);
 			this->visualiseLocalConnectomeGenerateContent(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, generate2Dvisualisation, localConnectomeCSVdatasetNeurons, localConnectomeCSVdatasetConnections, local_connectome_visualisation_filename_base, coloursetIndex, true, true, false, false, INT_DEFAULT_VALUE, visualiseTrace, traceIterationIndex);
 		}
 		for(int coloursetIndex=1; coloursetIndex<=local_connectome_visualisation_filename_layered_direction_flow_number_coloursets; coloursetIndex++)
 		{
-			string local_connectome_visualisation_filename_base = string(LOCAL_CONNECTOME_VISUALISATION_FILENAME_COLOURSET_PREPEND) + local_connectome_visualisation_filename_layered_direction_flow + SHAREDvars.convertIntToString(coloursetIndex);
+			string local_connectome_visualisation_filename_layered = local_connectome_visualisation_filename_layered_direction_flow;
+			string local_connectome_visualisation_filename_base = string(LOCAL_CONNECTOME_VISUALISATION_FILENAME_COLOURSET_PREPEND) + local_connectome_visualisation_filename_layered + SHAREDvars.convertIntToString(coloursetIndex);
 			this->visualiseLocalConnectomeGenerateContent(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, generate2Dvisualisation, localConnectomeCSVdatasetNeurons, localConnectomeCSVdatasetConnections, local_connectome_visualisation_filename_base, coloursetIndex, true, true, true, false, INT_DEFAULT_VALUE, visualiseTrace, traceIterationIndex);
 		}
 		//generate visualisations (specific layers; LX);
@@ -267,12 +270,14 @@ bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectome
 		{
 			for(int coloursetIndex=1; coloursetIndex<=local_connectome_visualisation_filename_layered_direction_number_coloursets; coloursetIndex++)
 			{
-				string local_connectome_visualisation_filename_base = string(LOCAL_CONNECTOME_VISUALISATION_FILENAME_COLOURSET_PREPEND) + local_connectome_visualisation_filename_layered_direction + SHAREDvars.convertIntToString(coloursetIndex) + LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_LAYERED_SPECIFIC_LAYER + SHAREDvars.convertIntToString(layerIndex);
+				string local_connectome_visualisation_filename_layered = local_connectome_visualisation_filename_layered_direction;
+				string local_connectome_visualisation_filename_base = string(LOCAL_CONNECTOME_VISUALISATION_FILENAME_COLOURSET_PREPEND) + local_connectome_visualisation_filename_layered + SHAREDvars.convertIntToString(coloursetIndex) + LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_LAYERED_SPECIFIC_LAYER + SHAREDvars.convertIntToString(layerIndex);
 				this->visualiseLocalConnectomeGenerateContent(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, generate2Dvisualisation, localConnectomeCSVdatasetNeurons, localConnectomeCSVdatasetConnections, local_connectome_visualisation_filename_base, coloursetIndex, true, true, false, true, layerIndex, visualiseTrace, traceIterationIndex);
 			}
 			for(int coloursetIndex=1; coloursetIndex<=local_connectome_visualisation_filename_layered_direction_flow_number_coloursets; coloursetIndex++)
 			{
-				string local_connectome_visualisation_filename_base = string(LOCAL_CONNECTOME_VISUALISATION_FILENAME_COLOURSET_PREPEND) + local_connectome_visualisation_filename_layered_direction_flow+ SHAREDvars.convertIntToString(coloursetIndex) + LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_LAYERED_SPECIFIC_LAYER + SHAREDvars.convertIntToString(layerIndex);
+				string local_connectome_visualisation_filename_layered = local_connectome_visualisation_filename_layered_direction_flow;
+				string local_connectome_visualisation_filename_base = string(LOCAL_CONNECTOME_VISUALISATION_FILENAME_COLOURSET_PREPEND) + local_connectome_visualisation_filename_layered+ SHAREDvars.convertIntToString(coloursetIndex) + LOCAL_CONNECTOME_VISUALISATION_SVG_FILENAME_LAYERED_SPECIFIC_LAYER + SHAREDvars.convertIntToString(layerIndex);
 				this->visualiseLocalConnectomeGenerateContent(local_connectome_folder_base, connectionTypesDerivedFromPresynapticNeuronsOrEMimages, generate2Dvisualisation, localConnectomeCSVdatasetNeurons, localConnectomeCSVdatasetConnections, local_connectome_visualisation_filename_base, coloursetIndex, true, true, true, true, layerIndex, visualiseTrace, traceIterationIndex);
 			}		
 		}
@@ -288,9 +293,11 @@ bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectome
 bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectomeGenerateContent(const string local_connectome_folder_base, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, const bool generate2Dvisualisation, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, const string local_connectome_visualisation_filename_base, const int coloursetNumber, const bool visualiseLayers, const bool visualiseDirection, const bool visualiseFlow, const bool visualiseLayersSpecific, const int layerIndexVisualise, const bool visualiseTrace, const int traceIterationIndex)
 {
 	bool result = true;
-		
-	#ifdef LOCAL_CONNECTOME_VISUALISATION_FLOW_CONTRAIPSILATERAL
+
+	bool useFilenameLayered = getUseFilenameLayered(visualiseLayers, coloursetNumber, visualiseFlow);
+
 	double xCalibratedAverage = 0.0;
+	#ifdef LOCAL_CONNECTOME_VISUALISATION_FLOW_CONTRAIPSILATERAL
 	for(int i=0;i<localConnectomeCSVdatasetNeurons->size(); i++)
 	{
 		vector<string> localConnectionCSVdatasetNeuron = (*localConnectomeCSVdatasetNeurons)[i];
@@ -502,7 +509,11 @@ bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectome
 		if(visualiseLayers)
 		{
 			layerIndex = SHAREDvars.convertStringToInt(localConnectionCSVdatasetNeuron[LOCAL_CONNECTOME_DATASET_NEURONS_FIELD_INDEX_ARTIFICIAL_LAYER]);
-			neuronTypeStringSVG += (string(LOCAL_CONNECTOME_VISUALISATION_NEURONS_COLOURSET_REFERENCE_LAYER) + SHAREDvars.convertIntToString(layerIndex));
+			
+			if(useFilenameLayered)
+			{
+				neuronTypeStringSVG += (string(LOCAL_CONNECTOME_VISUALISATION_NEURONS_COLOURSET_REFERENCE_LAYER) + SHAREDvars.convertIntToString(layerIndex));
+			}
 			
 			if(visualiseLayersSpecific)
 			{
@@ -795,8 +806,11 @@ bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectome
 			if(visualiseLayers)
 			{
 				layerIndex = SHAREDvars.convertStringToInt(localConnectionCSVdatasetConnection[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_ARTIFICIAL_LAYER]);
-				connectionTypeStringSVG += (string(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_LAYER) + SHAREDvars.convertIntToString(layerIndex));
-
+				if(useFilenameLayered)
+				{
+					connectionTypeStringSVG += (string(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_LAYER) + SHAREDvars.convertIntToString(layerIndex));
+				}
+				
 				if(visualiseLayersSpecific)
 				{
 					passLayerVisualisationChecks = false;
@@ -964,7 +978,7 @@ bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectome
 		//colour set data
 		string localConnectomeVisualisationContentsPart2FileName = "";
 		#ifdef LOCAL_CONNECTOME_VISUALISATION_LAYERS
-		if(visualiseLayers)
+		if(useFilenameLayered)
 		{
 			if(visualiseDirection)
 			{
@@ -1156,4 +1170,21 @@ string LCindexedCSVdatabaseVisualiseLocalConnectomeClass::convertDoubleToStringC
 	return doubleString;
 }
 
+bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::getUseFilenameLayered(const bool visualiseLayers, const int coloursetNumber, const bool visualiseFlow)
+{
+	bool useFilenameLayered = false;
+	if(visualiseLayers)
+	{
+		#ifdef LOCAL_CONNECTOME_VISUALISATION_TEMPLATES_LAYERED_PART1_ONLY
+		if((coloursetNumber == 1) && !visualiseFlow)
+		{
+			useFilenameLayered = true;
+		}
+		#else
+		useFilenameLayered = true;
+		#endif
+	}
+	return useFilenameLayered;
+}
+			
 #endif

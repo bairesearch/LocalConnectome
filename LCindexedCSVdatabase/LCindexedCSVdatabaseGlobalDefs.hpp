@@ -39,6 +39,7 @@ extern string currentDirectory;
 //#define INDEXED_CSV_DATABASE_CEC	//caenorhabditisElegansConnectome (local connectome analysis only)
 
 //#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_REDUNDANT_DEPRECIATED	//support depreciated functionality	//localConnectomeConnections.csv LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD contain PRE+POST X/Y/Z/TYPE
+#define LOCAL_CONNECTOME_VISUALISATION_TEMPLATES_LAYERED_PART1_ONLY	//remove redundant templates connections_IE_part2-LayeredDirection2/connections_IE_part2-LayeredDirectionFlow1/connections_IE_part2-LayeredDirectionFlow2
 
 #if defined INDEXED_CSV_DATABASE_LDC || defined INDEXED_CSV_DATABASE_ADC
 	#define INDEXED_CSV_DATABASE_DC
@@ -1262,7 +1263,7 @@ extern string currentDirectory;
 	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_POSITIVE (1)    //flow	INDEXED_CSV_DATABASE_H01: from layer 1->7	INDEXED_CSV_DATABASE_LDC: Y coordinates up to down
 	#define LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_NEGATIVE (0)    //flow	INDEXED_CSV_DATABASE_H01: from layer 7->1	INDEXED_CSV_DATABASE_LDC: Y coordinates up to down
 	#define LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_FLOW_TYPE_POSITIVE "FlowDirection1"
-	#define LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_FLOW_TYPE_NEGATIVE "FlowDirection2"  
+	#define LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_FLOW_TYPE_NEGATIVE "FlowDirection2"
 	#define LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_SVG_HEADER_TEXT "   	<!-- excitatory/inhibitory connections -->"
 	#ifdef LOCAL_CONNECTOME_VISUALISATION_3D
 		static int local_connectome_visualisation_connections_colour_excitation_type_unknown[LOCAL_CONNECTOME_VISUALISATION_LDR_FILENAME_DIRECTION_NUMBER_COLOURSETS] = {SHARED_COLOUR_WHITE,SHARED_COLOUR_WHITE};

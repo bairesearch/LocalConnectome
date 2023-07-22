@@ -39,6 +39,7 @@ class LCindexedCSVdatabaseVisualiseLocalConnectomeClass
 	private: int calculateConnectionFlowType(const double xCalibratedPre, const double yCalibratedPre, const double xCalibratedPost, const double yCalibratedPost, const double xCalibratedAverage);
 	private: int calculateConnectionRadialGradientType(const double xCalibratedPre, const double xCalibratedPost);
 	private: string convertDoubleToStringCalibrationPrecision(const double value);
+	private: bool getUseFilenameLayered(const bool visualiseLayers, const int coloursetNumber, const bool visualiseFlow);
 };
 
 #endif
