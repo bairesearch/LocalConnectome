@@ -297,7 +297,7 @@ bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectome
 	bool useFilenameLayered = getUseFilenameLayered(visualiseLayers, coloursetNumber, visualiseFlow);
 
 	double xCalibratedAverage = 0.0;
-	#ifdef LOCAL_CONNECTOME_VISUALISATION_FLOW_CONTRAIPSILATERAL
+	//#ifdef LOCAL_CONNECTOME_VISUALISATION_FLOW_CONTRA_OR_IPSI_LATERAL
 	for(int i=0;i<localConnectomeCSVdatasetNeurons->size(); i++)
 	{
 		vector<string> localConnectionCSVdatasetNeuron = (*localConnectomeCSVdatasetNeurons)[i];
@@ -305,7 +305,7 @@ bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectome
 		xCalibratedAverage = xCalibratedAverage + xCalibrated;
 	}
 	xCalibratedAverage = xCalibratedAverage/localConnectomeCSVdatasetNeurons->size();
-	#endif
+	//#endif
 			
 	//neuron data;
 	string localConnectomeVisualisationContentsPart4 = "";
@@ -849,7 +849,7 @@ bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectome
 				int connectionFlowType = INT_DEFAULT_VALUE;
 				if(visualiseFlow)
 				{
-					connectionFlowType = this->calculateConnectionFlowType(xCalibratedPre, yCalibratedPre, xCalibratedPost, yCalibratedPost, xCalibratedAverage);	
+					connectionFlowType = this->calculateConnectionFlowType(generate2Dvisualisation, coloursetNumber, xCalibratedPre, yCalibratedPre, xCalibratedPost, yCalibratedPost, xCalibratedAverage);	
 					if(connectionFlowType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_POSITIVE)
 					{
 						connectionTypeStringSVG += LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_FLOW_TYPE_POSITIVE;
@@ -858,6 +858,24 @@ bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectome
 					{
 						connectionTypeStringSVG += LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_FLOW_TYPE_NEGATIVE;
 					}
+					#ifdef LOCAL_CONNECTOME_VISUALISATION_FLOW_CONTRA_AND_IPSI_LATERAL
+					else if(connectionFlowType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_IPSILATERAL_UP)
+					{
+						connectionTypeStringSVG += LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_FLOW_TYPE_IPSILATERAL_UP;
+					}
+					else if(connectionFlowType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_IPSILATERAL_DOWN)
+					{
+						connectionTypeStringSVG += LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_FLOW_TYPE_IPSILATERAL_DOWN;
+					}
+					else if(connectionFlowType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_CONTRALATERAL_LEFT)
+					{
+						connectionTypeStringSVG += LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_FLOW_TYPE_CONTRALATERAL_LEFT;
+					}
+					else if(connectionFlowType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_CONTRALATERAL_RIGHT)
+					{
+						connectionTypeStringSVG += LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_FLOW_TYPE_CONTRALATERAL_RIGHT;
+					}
+					#endif
 				}
 
 				connectionTypeStringSVG += LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOURSET_REFERENCE_APPEND;
@@ -870,25 +888,61 @@ bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectome
 					{
 						if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_EXCITATORY)
 						{
-							if(connectionFlowType)
+							if(connectionFlowType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_POSITIVE)
 							{
 								connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_EXCITATORY_FLOW_TYPE_POSITIVE);
 							}
-							else
+							else if(connectionFlowType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_NEGATIVE)
 							{
 								connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_EXCITATORY_FLOW_TYPE_NEGATIVE);
 							}
+							#ifdef LOCAL_CONNECTOME_VISUALISATION_FLOW_CONTRA_AND_IPSI_LATERAL
+							else if(connectionFlowType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_IPSILATERAL_UP)
+							{
+								connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_EXCITATORY_FLOW_TYPE_IPSILATERAL_UP);
+							}
+							else if(connectionFlowType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_IPSILATERAL_DOWN)
+							{
+								connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_EXCITATORY_FLOW_TYPE_IPSILATERAL_DOWN);
+							}
+							else if(connectionFlowType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_CONTRALATERAL_LEFT)
+							{
+								connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_EXCITATORY_FLOW_TYPE_CONTRALATERAL_LEFT);
+							}
+							else if(connectionFlowType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_CONTRALATERAL_RIGHT)
+							{
+								connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_EXCITATORY_FLOW_TYPE_CONTRALATERAL_RIGHT);
+							}
+							#endif
 						}
 						else if(excitationType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_EXCITATION_TYPE_INHIBITORY)
 						{
-							if(connectionFlowType)
+							if(connectionFlowType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_POSITIVE)
 							{
 								connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_INHIBITORY_FLOW_TYPE_POSITIVE);
 							}
-							else
+							else if(connectionFlowType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_NEGATIVE)
 							{
 								connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_INHIBITORY_FLOW_TYPE_NEGATIVE);
 							}
+							#ifdef LOCAL_CONNECTOME_VISUALISATION_FLOW_CONTRA_AND_IPSI_LATERAL
+							else if(connectionFlowType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_IPSILATERAL_UP)
+							{
+								connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_INHIBITORY_FLOW_TYPE_IPSILATERAL_UP);
+							}
+							else if(connectionFlowType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_IPSILATERAL_DOWN)
+							{
+								connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_INHIBITORY_FLOW_TYPE_IPSILATERAL_DOWN);
+							}
+							else if(connectionFlowType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_CONTRALATERAL_LEFT)
+							{
+								connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_INHIBITORY_FLOW_TYPE_CONTRALATERAL_LEFT);
+							}
+							else if(connectionFlowType == LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_CONTRALATERAL_RIGHT)
+							{
+								connectionTypeStringLDR = SHAREDvars.convertIntToString(LOCAL_CONNECTOME_VISUALISATION_CONNECTIONS_COLOUR_EXCITATION_TYPE_INHIBITORY_FLOW_TYPE_CONTRALATERAL_RIGHT);
+							}
+							#endif
 						}
 						//cout << "connectionTypeStringLDR = " << connectionTypeStringLDR << endl;
 					}
@@ -1113,18 +1167,66 @@ bool LCindexedCSVdatabaseVisualiseLocalConnectomeClass::visualiseLocalConnectome
 }		
 
 
-int LCindexedCSVdatabaseVisualiseLocalConnectomeClass::calculateConnectionFlowType(const double xCalibratedPre, const double yCalibratedPre, const double xCalibratedPost, const double yCalibratedPost, const double xCalibratedAverage)
+int LCindexedCSVdatabaseVisualiseLocalConnectomeClass::calculateConnectionFlowType(const bool generate2Dvisualisation, const int coloursetNumber, const double xCalibratedPre, const double yCalibratedPre, const double xCalibratedPost, const double yCalibratedPost, const double xCalibratedAverage)
 {
 	int connectionFlowType;
-	#ifdef LOCAL_CONNECTOME_VISUALISATION_FLOW_CONTRAIPSILATERAL
-	if(((xCalibratedPre < xCalibratedAverage) && (xCalibratedPost > xCalibratedAverage)) || ((xCalibratedPre > xCalibratedAverage) && (xCalibratedPost < xCalibratedAverage)))
+	
+	#ifdef LOCAL_CONNECTOME_VISUALISATION_FLOW_CONTRA_OR_IPSI_LATERAL
+	#ifdef LOCAL_CONNECTOME_VISUALISATION_FLOW_CONTRA_AND_IPSI_LATERAL
+	bool visualiseFlowContraAndIpsilateral = false;
+	if(generate2Dvisualisation)
 	{
-		connectionFlowType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_NEGATIVE;	//contralateral connection
+		if(coloursetNumber == LOCAL_CONNECTOME_VISUALISATION_TEMPLATES_FLOW_LAST_PART_2D)
+		{
+			visualiseFlowContraAndIpsilateral = true;
+		}
 	}
 	else
 	{
-		connectionFlowType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_POSITIVE;	//ipsilateral connection
+		if(coloursetNumber == LOCAL_CONNECTOME_VISUALISATION_TEMPLATES_FLOW_LAST_PART_3D)
+		{
+			visualiseFlowContraAndIpsilateral = true;
+		}
 	}
+	if(visualiseFlowContraAndIpsilateral)
+	{
+		if(((xCalibratedPre < xCalibratedAverage) && (xCalibratedPost > xCalibratedAverage)) || ((xCalibratedPre > xCalibratedAverage) && (xCalibratedPost < xCalibratedAverage)))
+		{
+			if(xCalibratedPost > xCalibratedPre)
+			{
+				connectionFlowType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_CONTRALATERAL_RIGHT;	//contralateral connection (right)
+			}
+			else
+			{
+				connectionFlowType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_CONTRALATERAL_LEFT;	//contralateral connection (left)
+			}
+		}
+		else
+		{
+			if(yCalibratedPost > yCalibratedPre)
+			{
+				connectionFlowType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_IPSILATERAL_UP;	//ipsilateral connection (up)
+			}
+			else
+			{
+				connectionFlowType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_IPSILATERAL_DOWN;	//ipsilateral connection (down)
+			}
+		}
+	}
+	else
+	{
+	#endif
+		if(((xCalibratedPre < xCalibratedAverage) && (xCalibratedPost > xCalibratedAverage)) || ((xCalibratedPre > xCalibratedAverage) && (xCalibratedPost < xCalibratedAverage)))
+		{
+			connectionFlowType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_NEGATIVE;	//contralateral connection
+		}
+		else
+		{
+			connectionFlowType = LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_FLOW_TYPE_POSITIVE;	//ipsilateral connection
+		}	
+	#ifdef LOCAL_CONNECTOME_VISUALISATION_FLOW_CONTRA_AND_IPSI_LATERAL
+	}
+	#endif
 	#else
 	double connectionFlowVectorX = xCalibratedPost - xCalibratedPre;
 	double connectionFlowVectorY = yCalibratedPost - yCalibratedPre;
