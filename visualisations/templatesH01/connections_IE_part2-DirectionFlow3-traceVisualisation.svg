@@ -56,7 +56,7 @@
       </linearGradient>
       <linearGradient id="inhibitConnectionRadialGradient2FlowDirection3">
         <!-- red --><!-- presynaptic X < postsynaptic neuron X [colors will be drawn in this order] --><!-- dot product(pre->postsynaptic neuron connection vector, positive flow vector L1->L6) > 0 -->
-        <stop offset="0%" stop-color="ff0000"/>
+        <stop offset="0%" stop-color="#ff0000"/>
         <stop offset="100%" stop-color="#ff0000"/>
       </linearGradient>
 	  
