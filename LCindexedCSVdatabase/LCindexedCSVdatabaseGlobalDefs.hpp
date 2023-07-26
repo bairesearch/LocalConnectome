@@ -407,6 +407,7 @@ extern string currentDirectory;
 	//#define INDEXED_CSV_DATABASE_DC_DISABLE_2D_VISUALISATIONS	//DC connectome is not designed for 2D X/Y visualisation
 	
 	#define INDEXED_CSV_DATABASE_QUERY_LOCAL_ONLY	//no external (csv database) query
+	#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_CONTRALATERAL	//optional	//count contralateral connections (that have non/recurrent contralateral connections)
 	#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURRENT	//optional //measure recurrent connectivity of neurons (r=0: a -> a [axon to dendrite], r=1: a -> b -> a, etc)
 	#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS	//optional //independently count the connections within the local connectome connections dataset (layer to layer matrix)
 
@@ -452,6 +453,7 @@ extern string currentDirectory;
 	//#define INDEXED_CSV_DATABASE_DC_DISABLE_2D_VISUALISATIONS	//DC connectome is not designed for 2D X/Y visualisation
 	
 	#define INDEXED_CSV_DATABASE_QUERY_LOCAL_ONLY	//no external (csv database) query
+	#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_CONTRALATERAL	//optional	//count contralateral connections (that have non/recurrent contralateral connections)
 	#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURRENT	//optional //measure recurrent connectivity of neurons (r=0: a -> a [axon to dendrite], r=1: a -> b -> a, etc)
 	#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURRENT
 		//#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURRENT_MIRROR_TWINS	//optional	//only count recurrent connections for mirror twins
@@ -493,6 +495,7 @@ extern string currentDirectory;
 	//#define INDEXED_CSV_DATABASE_DC_DISABLE_2D_VISUALISATIONS	//CEC connectome is not designed for 2D X/Y visualisation
 	
 	#define INDEXED_CSV_DATABASE_QUERY_LOCAL_ONLY	//no external (csv database) query
+	#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_CONTRALATERAL	//optional	//count contralateral connections (that have non/recurrent contralateral connections)
 	#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_RECURRENT	//optional //measure recurrent connectivity of neurons (r=0: a -> a [axon to dendrite], r=1: a -> b -> a, etc)
 	#define INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS	//optional //independently count the connections within the local connectome connections dataset (layer to layer matrix)
 

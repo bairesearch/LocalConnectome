@@ -329,3 +329,25 @@ bool LCindexedCSVdatabaseOperationsClass::readPreprocessMirrorTwinsCSVdataset(ma
 	}
 }
 #endif
+
+bool LCindexedCSVdatabaseOperationsClass::isConnectionContralateral(vector<string>* localConnectomeConnection, const double xCalibratedAverage)
+{
+	double xCalibratedPre = calibrateCoordinateX(SHAREDvars.convertStringToDouble((*localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_X]));
+	double xCalibratedPost = calibrateCoordinateX(SHAREDvars.convertStringToDouble((*localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_X]));
+	double yCalibratedPre = calibrateCoordinateY(SHAREDvars.convertStringToDouble((*localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Y]));
+	double zCalibratedPre = calibrateCoordinateZ(SHAREDvars.convertStringToDouble((*localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_PRE_Z]));
+	double yCalibratedPost = calibrateCoordinateY(SHAREDvars.convertStringToDouble((*localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Y]));
+	double zCalibratedPost = calibrateCoordinateZ(SHAREDvars.convertStringToDouble((*localConnectomeConnection)[LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_Z]));
+
+	bool connectionContralateral;
+	if(((xCalibratedPre < xCalibratedAverage) && (xCalibratedPost > xCalibratedAverage)) || ((xCalibratedPre > xCalibratedAverage) && (xCalibratedPost < xCalibratedAverage)))
+	{
+		connectionContralateral = true;	//contralateral connection
+	}
+	else
+	{
+		connectionContralateral = false;	//ipsilateral connection
+	}
+	return connectionContralateral;
+}
+	

@@ -1241,7 +1241,7 @@ int LCindexedCSVdatabaseVisualiseLocalConnectomeClass::calculateConnectionFlowTy
 	}
 	#endif
 	return connectionFlowType;
-}
+}	
 
 int LCindexedCSVdatabaseVisualiseLocalConnectomeClass::calculateConnectionRadialGradientType(const double xCalibratedPre, const double xCalibratedPost)
 {

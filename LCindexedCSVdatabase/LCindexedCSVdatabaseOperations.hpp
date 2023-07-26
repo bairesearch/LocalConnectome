@@ -43,7 +43,8 @@ class LCindexedCSVdatabaseOperationsClass
 	#ifdef INDEXED_CSV_DATABASE_PREPROCESS_ADC_MIRRORTWINS
 	public: bool readPreprocessMirrorTwinsCSVdataset(map<string, int>* mirrorTwinsMap, map<string, int>* neuronMap);
 	#endif
-
+	
+	public: bool isConnectionContralateral(vector<string>* localConnectomeConnection, const double xCalibratedAverage);
 };
 
 #endif
