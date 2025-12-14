@@ -270,6 +270,8 @@ bool LCindexedCSVdatabaseReadLocalConnectomeClass::readLocalConnectomeByNeuronDa
 		#endif
 	}
 	#endif
+	
+	return result;
 }
 		
 
@@ -317,6 +319,8 @@ bool LCindexedCSVdatabaseReadLocalConnectomeClass::generateLargeModelNeuronsAndC
 
 	LCindexedCSVdatabaseOperations.finaliseLocalConnectomeDatasetWrite(write, &writeFileObject);
 	*/
+	
+	return result;
 }
 #endif
 
@@ -634,6 +638,8 @@ bool LCindexedCSVdatabaseReadLocalConnectomeClass::countConnectionsLocalMatrix(c
 	#ifdef INDEXED_CSV_DATABASE_READ_LOCAL_CONNECTOME_COUNT_CONNECTIONS_BY_LAYER
 	}
 	#endif
+	
+	return result;
 }
 
 void LCindexedCSVdatabaseReadLocalConnectomeClass::countConnectionsLocal(const int readMode, vector<string>* neuronList, map<string, int>* neuronMap, map<string, int>* connectionsMap, vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<string>>* localConnectomeCSVdatasetConnections, const bool queryPresynapticConnectionNeurons, const bool connectionTypesDerivedFromPresynapticNeuronsOrEMimages, vector<H01connectivityModelClass>* connectivityModelLayers)
@@ -1295,4 +1301,3 @@ int LCindexedCSVdatabaseReadLocalConnectomeClass::calculateConnectionExcitationT
 	#endif
 	return excitationType;
 }
-

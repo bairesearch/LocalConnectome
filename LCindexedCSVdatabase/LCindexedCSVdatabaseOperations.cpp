@@ -141,6 +141,8 @@ bool LCindexedCSVdatabaseOperationsClass::convertLocalConnectomeSomasCSVdataset(
 	//id,x,y,z,type,excitation_type,layer
 	prepareLocalConnectomeDatasetWrite();
 	SHAREDvars.writeLinesToFileCSV(LocalConnectomeNeuronsCSVdatasetFileName, &localConnectomeNeuronsCSVdataset, CSV_DELIMITER_CHAR, true, LOCAL_CONNECTOME_DATASET_NEURONS_HEADER);
+	
+	return true;
 }
 #endif
 
@@ -188,6 +190,8 @@ bool LCindexedCSVdatabaseOperationsClass::readLocalConnectomeNeuronsCSVdataset(c
     	(*neuronMap)[(*neuronList)[i]] = i;
 	}
 	#endif
+	
+	return true;
 }
 
 bool LCindexedCSVdatabaseOperationsClass::readLocalConnectomeConnectionsCSVdataset(const string LocalConnectomeCSVdatasetFileName, vector<vector<string>>* localConnectomeConnectionsCSVdataset, int* localConnectomeConnectionsCSVdatasetSize)
@@ -242,6 +246,8 @@ bool LCindexedCSVdatabaseOperationsClass::readLocalConnectomeConnectionsCSVdatas
     		(*connectionsMap)[connectionsMapKey] = i;
 		}
 	}	
+	
+	return true;
 }
 
 void LCindexedCSVdatabaseOperationsClass::prepareLocalConnectomeDatasetRead(const string local_connectome_folder_base)

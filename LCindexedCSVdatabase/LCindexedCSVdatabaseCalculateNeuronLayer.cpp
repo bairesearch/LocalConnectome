@@ -214,6 +214,8 @@ bool LCindexedCSVdatabaseCalculateNeuronLayerClass::dynamicallyGenerateLocalConn
 		localConnectionCSVdatasetLine->push_back(layerIndexPost);	//LOCAL_CONNECTOME_DATASET_CONNECTIONS_FIELD_INDEX_POST_ARTIFICIAL_LAYER
 		#endif
 	}
+	
+	return true;
 }
 #endif
 
@@ -532,6 +534,8 @@ bool LCindexedCSVdatabaseCalculateNeuronLayerClass::calculateLocalConnectomeNeur
 	vector<vector<vec>> corticalLayersKeypoints;
 	readCorticalLayersBoundaryKeypointTable(corticalLayersBoundaryKeypointTableFileName, &corticalLayersKeypoints);
 	calculateNeuronLayerSurfaceNorms(localConnectomeCSVdatasetNeurons, &corticalLayersKeypoints);
+	
+	return true;
 }
 
 bool LCindexedCSVdatabaseCalculateNeuronLayerClass::calculateNeuronLayerSurfaceNorms(vector<vector<string>>* localConnectomeCSVdatasetNeurons, vector<vector<vec>>* corticalLayersKeypoints)
@@ -710,8 +714,6 @@ void LCindexedCSVdatabaseCalculateNeuronLayerClass::calculateNeuronLayersCEC(vec
 #endif
 
 #endif
-
-
 
 
 
