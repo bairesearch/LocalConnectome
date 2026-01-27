@@ -291,6 +291,31 @@ void SHAREDvarsClass::setCurrentDirectory(const string* folder)
 	#endif
 }
 
+bool SHAREDvarsClass::setCurrentDirectoryAndCheck(string folder)
+{
+	return setCurrentDirectoryAndCheck(&folder);
+}
+
+bool SHAREDvarsClass::setCurrentDirectoryAndCheck(const string* folder)
+{
+	const char* folderCharStar = folder->c_str();
+	#ifdef LINUX
+	int result = chdir(folderCharStar);
+	if(result != 0)
+	{
+		cerr << "SHAREDvarsClass::setCurrentDirectoryAndCheck error: cannot set current directory to " << *folder << endl;
+		return false;
+	}
+	#else
+	if(::SetCurrentDirectoryA(folderCharStar) == 0)
+	{
+		cerr << "SHAREDvarsClass::setCurrentDirectoryAndCheck error: cannot set current directory to " << *folder << endl;
+		return false;
+	}
+	#endif
+	return true;
+}
+
 void SHAREDvarsClass::createDirectory(const string* folder)
 {
 	const char* folderCharStar = folder->c_str();
@@ -1095,5 +1120,4 @@ vector<string> SHAREDvarsClass::getVectorFromListString(const string listString,
 	}
 	return listVector;
 }
-
 

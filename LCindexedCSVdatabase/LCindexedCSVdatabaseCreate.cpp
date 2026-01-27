@@ -28,6 +28,35 @@ bool LCindexedCSVdatabaseCreateClass::createIndexedCSVdatabase(const string avro
 	
 	const string avroJsonDatabaseFolder = avro_json_database_folder;
 	const string avroJsonDatabaseFileExtension = JSON_FILE_EXTENSION;
+	const string indexedCSVdatabaseFolder = indexed_csv_database_folder;
+	const string format = "%012d";	//"000000000000";
+
+	if(!SHAREDvars.directoryExists(&avroJsonDatabaseFolder))
+	{
+		cerr << "LCindexedCSVdatabaseCreateClass::createIndexedCSVdatabase error: avro_json_database_folder not found: " << avroJsonDatabaseFolder << endl;
+		return false;
+	}
+	if(!SHAREDvars.directoryExists(&indexedCSVdatabaseFolder))
+	{
+		SHAREDvars.createDirectory(&indexedCSVdatabaseFolder);
+		if(!SHAREDvars.directoryExists(&indexedCSVdatabaseFolder))
+		{
+			cerr << "LCindexedCSVdatabaseCreateClass::createIndexedCSVdatabase error: indexed_csv_database_folder not found and could not be created: " << indexedCSVdatabaseFolder << endl;
+			return false;
+		}
+	}
+	{
+		string firstFileToOpenName = string("export") + SHAREDvars.convertIntToString(minJsonFileIndex, format) + avroJsonDatabaseFileExtension;
+		if(!SHAREDvars.setCurrentDirectoryAndCheck(&avroJsonDatabaseFolder))
+		{
+			return false;
+		}
+		if(!SHAREDvars.fileExists(firstFileToOpenName))
+		{
+			cerr << "LCindexedCSVdatabaseCreateClass::createIndexedCSVdatabase error: expected input file not found: " << firstFileToOpenName << " in " << avroJsonDatabaseFolder << endl;
+			return false;
+		}
+	}
 		
 	//int jsonFieldContentsStartRelativeIndex = neuronIDname.length() + 2;	//"neuron_id":"	[+ :"]
 	string jsonObjectCharacterOpen = "{";
@@ -51,15 +80,21 @@ bool LCindexedCSVdatabaseCreateClass::createIndexedCSVdatabase(const string avro
 	for(int f=minJsonFileIndex; f<=maxJsonFileIndex; f++)
 	{
 		//cout << "f = " << f << endl;
-		string format = "%012d";	//"000000000000";
 		string fileToOpenName = string("export") + SHAREDvars.convertIntToString(f, format) + avroJsonDatabaseFileExtension;	//eg export000000000001.json
 		vector<string> fileLinesList;
 		int numberOfLinesInFile = 0;
 		cout << "fileToOpenName = " << fileToOpenName << endl;
 		//exit(0);
 		
-		SHAREDvars.setCurrentDirectory(avroJsonDatabaseFolder);
-		SHAREDvars.getLinesFromFile(fileToOpenName, &fileLinesList, &numberOfLinesInFile);
+		if(!SHAREDvars.setCurrentDirectoryAndCheck(&avroJsonDatabaseFolder))
+		{
+			return false;
+		}
+		if(!SHAREDvars.getLinesFromFile(fileToOpenName, &fileLinesList, &numberOfLinesInFile))
+		{
+			cerr << "LCindexedCSVdatabaseCreateClass::createIndexedCSVdatabase error: failed to open input file: " << fileToOpenName << " in " << avroJsonDatabaseFolder << endl;
+			return false;
+		}
 		
 		#ifdef INDEXED_CSV_DATABASE_CREATE_DEBUG
 		//numberOfLinesInFile = 1;
@@ -181,8 +216,14 @@ bool LCindexedCSVdatabaseCreateClass::createIndexedCSVdatabase(const string avro
 				#endif
 				
 				string rawText = currentLineText + STRING_NEWLINE;	
-				this->addSynapseToCSVdatabase(indexed_csv_database_folder, neuronIDcontents1index, &csvText, &rawText, true);
-				this->addSynapseToCSVdatabase(indexed_csv_database_folder, neuronIDcontents2index, &csvText, &rawText, false);
+				if(!this->addSynapseToCSVdatabase(indexed_csv_database_folder, neuronIDcontents1index, &csvText, &rawText, true))
+				{
+					return false;
+				}
+				if(!this->addSynapseToCSVdatabase(indexed_csv_database_folder, neuronIDcontents2index, &csvText, &rawText, false))
+				{
+					return false;
+				}
 				
 				#ifdef INDEXED_CSV_DATABASE_CREATE_PRINT_STATUS
 				//cout << "l = " << l << "\r";
@@ -244,7 +285,10 @@ bool LCindexedCSVdatabaseCreateClass::addSynapseToCSVdatabase(string indexed_csv
 		indexedCSVdatabaseFileNameRawPrefix = INDEXED_CSV_DATABASE_FILENAME_PREFIX_POSTSYNAPTIC_RAW;
 	}
 
-	SHAREDvars.setCurrentDirectory(indexedCSVdatabaseFolder);
+	if(!SHAREDvars.setCurrentDirectoryAndCheck(&indexedCSVdatabaseFolder))
+	{
+		return false;
+	}
 	for(int r=0; r<numberLevels; r++)
 	{
 		string neuronIDlevelName = neuronIDcontents.substr(r*numberCharactersPerFolderLevel, numberCharactersPerFolderLevel);

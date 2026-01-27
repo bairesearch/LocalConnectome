@@ -81,6 +81,8 @@ class SHAREDvarsClass
 	public: string getCurrentDirectory();
 	public: void setCurrentDirectory(string folder);
 		public: void setCurrentDirectory(const string* folder);
+	public: bool setCurrentDirectoryAndCheck(string folder);
+	public: bool setCurrentDirectoryAndCheck(const string* folder);
 	public: void createDirectory(const string* folder);
 	public: bool directoryExists(const string* folder);
 	public: bool checkIfFolderExistsAndIfNotMakeAndSetAsCurrent(const string* folderName);
